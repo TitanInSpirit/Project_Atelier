@@ -1,14 +1,19 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-const root = createRoot(document.getElementById("root"));
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Overview from './components/overview/Overview.jsx';
+import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.jsx';
+
+const root = createRoot(document.getElementById('root'));
 
 
-class App extends React.Component {
-
-  render() {
-    return <h1>Hello world</h1>
-  }
-}
-
+const App = () => {
+  return (
+    <div>
+      <h1> Header: Hello World!!!!!!</h1>
+      <Overview />
+      <RatingsAndReviews />
+    </div>
+  );
+};
 
 root.render(<App />);
