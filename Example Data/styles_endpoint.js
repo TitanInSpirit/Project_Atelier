@@ -5,6 +5,10 @@
 
 Endpoint URL: https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642/styles
 
+Example use with template literal
+    let product_id = 66642
+    let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/styles`
+
 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
@@ -16,7 +20,7 @@ var config = {
   method: 'get',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642/styles',
     headers: {
-    'Authorization': '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'
+    'Authorization': `${PROCESS.ENV.GITHUB_API_KEY}`
   }
 };
 
