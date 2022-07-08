@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Overview from "/Users/travisredden/Documents/Software Engineering/HackReactor/FEC/Project_Atelier/src/components/overview/Overview.jsx";
+import Overview from "./components/overview/Overview.jsx";
 
 const root = createRoot(document.getElementById("root"));
 
