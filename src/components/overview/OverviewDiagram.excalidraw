@@ -2,6 +2,9 @@
   "type": "excalidraw",
   "version": 2,
   "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+<<<<<<< HEAD
+  "elements": [],
+=======
   "elements": [
     {
       "type": "line",
@@ -3691,6 +3694,7 @@
       "originalText": "API Response\noriginal_price\nand sale_price"
     }
   ],
+>>>>>>> ce675ce6ec506afbbb7b76a4313533276fc6edd9
   "appState": {
     "gridSize": null,
     "viewBackgroundColor": "#ffffff"
