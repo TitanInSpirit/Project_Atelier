@@ -23,9 +23,10 @@ General information about the product will be displayed at the top of the Overvi
 
     If there are no reviews, this entire section should be hidden.
 
-## Product Category
+- **Product Category**
 
-- **Product Title Price**
+- **Product Titl**
+- **Price**
 
   - The price is not actually derived from the product, but the style currently selected. It should update dynamically with the user’s updates to style selected. A default style will be designated for each product. This style should appear if no further selection has been made.
 

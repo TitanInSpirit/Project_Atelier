@@ -5,6 +5,10 @@
 
 Endpoint URL: https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/583295/answers
 
+Example use with template literal
+    let question_id = 583295
+    let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question_id}/answers`
+
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ==== Example Axios Config
