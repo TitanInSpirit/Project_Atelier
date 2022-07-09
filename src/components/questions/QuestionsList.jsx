@@ -5,33 +5,12 @@ import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
-function QuestionList(props) {
-  console.log('props: ', props);
-  const renderQuestion = ({questions}) => {
-    console.log('questions: ', questions);
-    questions.map((question) => {
-      let {
-        asker_name,
-        question_body,
-        question_date,
-        question_helpfulness,
-        question_id,
-        reported
-      } = question;
-
-      return (
-        <div>
-          <div>{`Q: ${question_body}`}</div>
-          <div>Answer</div>
-        </div>
-      )
-    })
-  }
+function QuestionList({questions}) {
 
   return (
     <div>
       <SearchBar />
-      {renderQuestion()}
+      {questions.map((question) => <IndividualQuestion key={'question' + question.question_id} question={question} />)}
     </div>
   )
 }

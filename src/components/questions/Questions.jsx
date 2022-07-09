@@ -32,20 +32,25 @@ class Questions extends React.Component {
 
     axios(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data.results));
-      this.setState({questions: [...JSON.stringify(response.data.results)]});
-      // this.setState({questions: response.data});
-      console.log('this.state after data: ', this.state);
+      this.setState({questions: response.data.results});
     })
     .catch((err) => {
       console.error(err);
     });
   }
 
+  renderQuestionList() {
+    if (this.state.questions.length === 0) {
+      return <h2> Loading . . .</h2>
+    } else {
+      return (<QuestionsList questions={this.state.questions}/>)
+    }
+  }
+
   render() {
     return (
       <div>
-        {/* <QuestionsList customerQuestions={this.state}/> */}
+        {this.renderQuestionList()}
         <button>Answer More Questions</button>
         <button>Add a Question</button>
       </div>
