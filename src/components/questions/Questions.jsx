@@ -15,11 +15,11 @@ class Questions extends React.Component {
     this.state = {};
   }
 
-  // componentDidMount() {
-  //   this.getQuestions();
-  // }
+  componentDidMount() {
+    this.getQuestions();
+  }
 
-  getQuestions() {
+  getQuestions = () => {
     var config = {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642',
@@ -29,12 +29,11 @@ class Questions extends React.Component {
     };
 
     axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
+    .then((response) => {
       this.setState({questions: response.data.results})
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch((err) => {
+      console.error(err);
     });
   }
 
