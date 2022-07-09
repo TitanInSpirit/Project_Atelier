@@ -5,6 +5,7 @@ import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.
 import '../public/stylesheets/style.css'
 import Questions from './components/questions/Questions.jsx';
 
+
 const root = createRoot(document.getElementById('root'));
 
 const App = () => {

@@ -6,9 +6,10 @@ import axios from 'axios'
 
 
 
+
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState({});
   const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('2')
 
@@ -18,17 +19,19 @@ const RatingsAndReviews = () => {
 
   const config = {
     method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-    headers:{'Authorization': 'test'},
-    params: {
-      product_id,
-      sort,
-      count
-    }
+    // url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
+    url: 'http://localhost:3001/reviews',
+    // headers:{'Authorization': 'test'},
+    // params: {
+    //   product_id,
+    //   sort,
+    //   count
+    // }
   }
 
   const fetchData = () => {
     axios(config)
+    // axios.get('http://localhost:3001/reviews')
     .then(res => console.log(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
@@ -40,14 +43,14 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      <h5>RATINGS & REVIEWS</h5>
+      <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
             <Ratings/>
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue}/>
-            <Reviews/>
+            <Reviews reviews={reviews}/>
           </div>
         </div>
     </div>
