@@ -6,9 +6,10 @@ import SearchBar from './SearchBar.jsx';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
 
-function QuestionList = () => {
+function QuestionList() {
   return (
     <div>
+      <SearchBar />
     </div>
   )
 }

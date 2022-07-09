@@ -3,7 +3,7 @@ import React from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
 
-function IndividualQuestion = () => {
+function IndividualQuestion() {
   return (
     <div>
     </div>

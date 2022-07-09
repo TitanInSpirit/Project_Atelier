@@ -1,18 +1,54 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React from 'react';
+import axios from 'axios';
+import env from 'react-dotenv';
+
 
 /*==================== INTERNAL MODULES ====================*/
-import QuestionList from './QuestionList.jsx';
+import QuestionsList from './QuestionsList.jsx';
 import Form from './Form.jsx';
 
-function Questions = () => {
-  return (
-    <div>
-      <button></button>
-      <button></button>
-    </div>
-  )
+class Questions extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  // componentDidMount() {
+  //   this.getQuestions();
+  // }
+
+  getQuestions() {
+    var config = {
+      method: 'get',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642',
+      headers: {
+        'Authorization': `${env.GITHUB_API_KEY}`
+      }
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+      this.setState({questions: response.data.results})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <QuestionsList />
+        <button>Answer More Questions</button>
+        <button>Add a Question</button>
+      </div>
+    )
+  }
 }
+
 
 /*==================== EXPORTS ====================*/
 export default Questions;
