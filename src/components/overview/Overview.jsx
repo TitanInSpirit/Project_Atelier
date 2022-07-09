@@ -1,4 +1,6 @@
 import React from "react";
+import ImageGallery from "./ImageGallery.jsx";
+import Sidebar from "./Sidebar.jsx";
 
 class Overview extends React.Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class Overview extends React.Component {
   render() {
     return (
       <div>
-        <p> This is where the overview goes</p>
+        <ImageGallery />
+        <Sidebar />
       </div>
     );
   }
