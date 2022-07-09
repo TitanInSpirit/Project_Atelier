@@ -3,7 +3,7 @@ import React from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
 
-function Form = () => {
+function Form() {
   return (
     <form>
       <input></input>

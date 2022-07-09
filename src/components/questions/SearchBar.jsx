@@ -3,9 +3,9 @@ import React from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
 
-function SearchBar = () => {
+function SearchBar() {
   return (
-    <div>
+    <div>Search Bar
     </div>
   )
 }
