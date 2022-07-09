@@ -14,7 +14,6 @@ class Overview extends React.Component {
   }
 
   render() {
-    console.log(PROCESS.ENV.GITHUB_API_KEY);
     return (
       <div>
         <ImageGallery />
