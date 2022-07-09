@@ -12,7 +12,9 @@ class Questions extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      questions: []
+    };
   }
 
   componentDidMount() {
@@ -30,7 +32,10 @@ class Questions extends React.Component {
 
     axios(config)
     .then((response) => {
-      this.setState({questions: response.data.results})
+      console.log(JSON.stringify(response.data.results));
+      this.setState({questions: [...JSON.stringify(response.data.results)]});
+      // this.setState({questions: response.data});
+      console.log('this.state after data: ', this.state);
     })
     .catch((err) => {
       console.error(err);
@@ -40,7 +45,7 @@ class Questions extends React.Component {
   render() {
     return (
       <div>
-        <QuestionsList />
+        {/* <QuestionsList customerQuestions={this.state}/> */}
         <button>Answer More Questions</button>
         <button>Add a Question</button>
       </div>
