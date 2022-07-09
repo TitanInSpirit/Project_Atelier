@@ -7,6 +7,12 @@ class Overview extends React.Component {
     super(props), (this.state = {});
   }
 
+  testRequestHandler(event) {
+    let request = event.target;
+
+    event.preventDefault();
+  }
+
   render() {
     console.log(PROCESS.ENV.GITHUB_API_KEY);
     return (
