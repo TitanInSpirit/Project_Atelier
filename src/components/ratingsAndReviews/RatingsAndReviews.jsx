@@ -19,18 +19,20 @@ const RatingsAndReviews = () => {
 
   const config = {
     method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-    headers:{'Authorization': 'test'},
-    params: {
-      product_id,
-      sort,
-      count
-    }
+    // url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
+    url: 'http://localhost:3001/reviews',
+    // headers:{'Authorization': 'test'},
+    // params: {
+    //   product_id,
+    //   sort,
+    //   count
+    // }
   }
 
   const fetchData = () => {
     axios(config)
-    .then(res => setReviews(res.data))
+    // axios.get('http://localhost:3001/reviews')
+    .then(res => console.log(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
 
@@ -44,7 +46,6 @@ const RatingsAndReviews = () => {
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
-
             <Ratings/>
           </div>
           <div className="reviewsContainer">

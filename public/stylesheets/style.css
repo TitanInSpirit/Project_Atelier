@@ -47,3 +47,20 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.ratingsContainer {
+  width: 20%;
+}
+
+.reviewsContainer {
+  width: 50%;
+}
+
+.reviewFooter {
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewFooter p {
+  margin-left: 8px;
+}
