@@ -19,7 +19,7 @@ var config = {
   method: 'get',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/583295/answers',
   headers: {
-    'Authorization': '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'
+    'Authorization': `${PROCESS.ENV.GITHUB_API_KEY}`
   }
 };
 
