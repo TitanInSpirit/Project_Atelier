@@ -6,9 +6,10 @@ import axios from 'axios'
 
 
 
+
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState({});
   const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('2')
 
@@ -29,7 +30,7 @@ const RatingsAndReviews = () => {
 
   const fetchData = () => {
     axios(config)
-    .then(res => console.log(res.data))
+    .then(res => setReviews(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
 
@@ -40,14 +41,15 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      <h5>RATINGS & REVIEWS</h5>
+      <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
+
             <Ratings/>
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue}/>
-            <Reviews/>
+            <Reviews reviews={reviews}/>
           </div>
         </div>
     </div>

@@ -37,7 +37,13 @@
   justify-content: space-around;
 }
 
-/* .reviewsContainer {
-  position: absolute;
-  right: 20px;
-} */
+.reviewsRatingTitle {
+  position: relative;
+  left: 19.3%;
+}
+
+.ratingAndTimeContainer {
+  display: flex;;
+  flex-direction: row;
+  justify-content: space-between;
+}
