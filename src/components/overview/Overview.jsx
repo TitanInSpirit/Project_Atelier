@@ -1,6 +1,6 @@
-import React from "react";
-import ImageGallery from "./ImageGallery.jsx";
-import Sidebar from "./Sidebar.jsx";
+import React from 'react';
+import ImageGallery from './ImageGallery.jsx';
+import Sidebar from './Sidebar.jsx';
 
 class Overview extends React.Component {
   constructor(props) {

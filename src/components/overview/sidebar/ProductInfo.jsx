@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function ProductInfo(props) {
   return <div> ProductInfo Here </div>;
