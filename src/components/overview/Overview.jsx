@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageGallery from './ImageGallery.jsx';
 import Sidebar from './Sidebar.jsx';
+import axios from 'axios';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Overview extends React.Component {
 
   testRequestHandler(event) {
     let request = event.target;
-
+    axios.get(`http://localhost:3002/${request}`)
     event.preventDefault();
   }
 
@@ -17,7 +18,7 @@ class Overview extends React.Component {
     return (
       <div>
         <ImageGallery />
-        <Sidebar />
+        <Sidebar testRequestHandler={testRequestHandler}/>
       </div>
     );
   }

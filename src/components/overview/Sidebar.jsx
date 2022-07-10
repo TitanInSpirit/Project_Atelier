@@ -6,6 +6,10 @@ import StyleSelector from './sidebar/StyleSelector.jsx';
 function Sidebar(props) {
   return (
     <div className={'overview_sidebar'}>
+      <form onSubmit={props.testRequestHandler}>
+        <input type='text'></input>
+        <button type='Submit'>Submit</button>
+      </form>
       <ProductInfo />
       <StyleSelector />
       <AddToCart />
