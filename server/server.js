@@ -19,7 +19,9 @@ const app = express();
   })
 
 // System Variables
-let GithubToken = process.env.GITHUB_API_KEY;
+const GithubToken = process.env.GITHUB_API_KEY;
+const port = process.env.port || 3000; // test
+
 
 // Routes
 app.get('/answers', (req, res) => {
@@ -216,8 +218,7 @@ app.get('/styles', (req, res) => {
   });
 });
 
-const port = process.env.port || 3000; // test
-
+// Initialize Server
 app.listen(port, () => console.log(`listening to port ${port}`));
 
 
