@@ -4,6 +4,7 @@ import ProductInfo from './sidebar/ProductInfo.jsx';
 import StyleSelector from './sidebar/StyleSelector.jsx';
 
 function Sidebar(props) {
+  console.log(props)
   return (
     <div className={'overview_sidebar'}>
       <form onSubmit={props.testRequestHandler}>

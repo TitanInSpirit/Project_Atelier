@@ -20,7 +20,7 @@ var config = {
   method: 'get',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642/styles',
     headers: {
-    'Authorization': `${PROCESS.ENV.GITHUB_API_KEY}`
+    'Authorization': `${process.env.GITHUB_API_KEY}`
   }
 };
 

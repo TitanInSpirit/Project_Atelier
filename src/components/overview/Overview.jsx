@@ -9,8 +9,16 @@ class Overview extends React.Component {
   }
 
   testRequestHandler(event) {
-    let request = event.target;
+    let request = event.target[0].value;
+
     axios.get(`http://localhost:3002/${request}`)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     event.preventDefault();
   }
 
@@ -18,7 +26,7 @@ class Overview extends React.Component {
     return (
       <div>
         <ImageGallery />
-        <Sidebar testRequestHandler={testRequestHandler}/>
+        <Sidebar testRequestHandler={this.testRequestHandler}/>
       </div>
     );
   }
