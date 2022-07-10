@@ -8,7 +8,7 @@ const app = express();
 // Middleware
   // Body Data
   app.use(express.json())
-  // Serves Satic Files
+  // Serves Static Files
   app.use(express.static(path.join(__dirname, '/client/dist')));
   // Custom Request Logging Middleware
   app.use((req,res,next) => {
