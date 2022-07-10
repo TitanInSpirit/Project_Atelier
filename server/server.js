@@ -1,3 +1,4 @@
+// External Modules
 require('dotenv').config();
 const axios = require('axios');
 const path = require('path');
@@ -5,14 +6,20 @@ const express = require('express');
 const app = express();
 
 // Middleware
-app.use(express.json())
-app.use(express.static(path.join(__dirname, '/client/dist')));
-app.use((req,res,next) => {
-  console.log(
-    `*=== New Request Logged: Type: ${req.method} REQUEST, URL: ${req.url} ===*`
-  );
-  next();
-})
+  // Body Data
+  app.use(express.json())
+  // Serves Satic Files
+  app.use(express.static(path.join(__dirname, '/client/dist')));
+  // Custom Request Logging Middleware
+  app.use((req,res,next) => {
+    console.log(
+      `*=== New Request Logged: Type: ${req.method} REQUEST, URL: ${req.url} ===*`
+    );
+    next();
+  })
+
+// System Variables
+let GithubToken = process.env.GITHUB_API_KEY;
 
 // Routes
 app.get('/answers', (req, res) => {
@@ -26,7 +33,7 @@ app.get('/answers', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -48,7 +55,7 @@ app.get('/cart', (req, res) => {
     method: 'get',
     url: endpointUrl,
     headers: {
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -73,7 +80,7 @@ app.get('/reviews', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -95,7 +102,7 @@ app.get('/products', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -120,7 +127,7 @@ app.get('/questions', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -145,7 +152,7 @@ app.get('/related', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -170,7 +177,7 @@ app.get('/reviews/meta', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
@@ -195,7 +202,7 @@ app.get('/styles', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     }
   };
 
