@@ -20,7 +20,7 @@ const app = express();
 
 // System Variables
 const GithubToken = process.env.GITHUB_API_KEY;
-const port = process.env.port || 3000; // test
+const port = process.env.port || 3000;
 
 
 // Routes
