@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 
-const Sort = () => {
-  const [sortValue, setSortValue] = useState('')
+const Sort = ({handleSortValue}) => {
   return (
     <form>
       248 reviews, sorted by
       <select className='sortForm'>
-        <option value="1">relevance</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value='relevance'>Relevance</option>
+        <option value='newest'>Newest</option>
+        <option value='helpful'>Helpful</option>
       </select>
     </form>
   )

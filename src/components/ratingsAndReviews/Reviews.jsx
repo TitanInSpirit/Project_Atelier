@@ -10,9 +10,6 @@ const Reviews = ({reviews}) => {
   return (
     <div>
       <div>
-        {/* {reviews.results.map(review => {
-          return <Review review={review} key={review.review_id}/>
-        })} */}
         {results && results.map(review => {
           return <Review key={review.review_id} review={review}/>
         })}

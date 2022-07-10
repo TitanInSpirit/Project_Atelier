@@ -64,3 +64,30 @@
 .reviewFooter p {
   margin-left: 8px;
 }
+
+.showMore {
+  border: none;
+  text-decoration: underline;
+  background-color: #fff;
+}
+
+.reviewPhotos {
+  margin-top: 10px;
+  display: flex;;
+  flex-direction: row;
+}
+
+.reviewPhoto {
+  width: 100px;
+  height: 100px;
+  margin-left: 10px
+}
+
+.helpful {
+  text-decoration: underline;
+}
+
+.helpfulNum {
+  position: relative;
+  left: -5px;
+}
