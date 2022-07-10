@@ -13,11 +13,14 @@ const port = process.env.port || 3001;
 // Middleware
   // Body Data
   app.use(express.json())
+
   // Serves Static Files
   app.use(express.static(path.join(__dirname, '/client/dist')));
-  app.options("*", cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
 
+  // Headers / CORS Settings
+  app.options("*", cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
   app.use(cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
+
   // Custom Request Logging Middleware
   app.use((req,res,next) => {
     console.log(
