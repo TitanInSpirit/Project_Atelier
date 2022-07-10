@@ -4,24 +4,21 @@ import Ratings from './Ratings.jsx';
 import Sort from './Sort.jsx';
 import axios from 'axios'
 
-
-
-
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
   const [product_id, setProduct_id] = useState('66666');
-  const [count, setCount] = useState('2')
+  const [count, setCount] = useState('5')
 
   const handleSortValue = value => {
-    setSortValue(value)
+    setSort(value)
   }
 
   const config = {
     method: 'get',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
     // url: 'http://localhost:3001/reviews',
-    headers:{'Authorization': 'testt'},
+    headers:{'Authorization': 'test1'},
     params: {
       product_id,
       sort,
