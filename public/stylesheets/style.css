@@ -34,7 +34,7 @@
 .ratingAndReviewContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .reviewsRatingTitle {
@@ -50,10 +50,12 @@
 
 .ratingsContainer {
   width: 20%;
+  margin-right: 30px
 }
 
 .reviewsContainer {
-  width: 50%;
+  width: 40%;
+  margin-left: 30px;
 }
 
 .reviewFooter {
@@ -90,4 +92,25 @@
 .helpfulNum {
   position: relative;
   left: -5px;
+}
+
+.RatingBarContainer {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  /* display: inline; */
+}
+
+.ratingContainer {
+  height: 11px;
+  width: 100%;
+  background-color: lightgray;
+  margin-left: 10px;
+  position: relative;
+  top: 20px;
+}
+
+.ratinglevel {
+  text-decoration: underline;
+  width: 60px;
 }

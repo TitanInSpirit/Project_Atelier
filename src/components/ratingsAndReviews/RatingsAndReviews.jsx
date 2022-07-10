@@ -8,7 +8,8 @@ const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
   const [product_id, setProduct_id] = useState('66666');
-  const [count, setCount] = useState('5')
+  const [count, setCount] = useState('5');
+  const [rating, setRating] = useState({});
 
   const handleSortValue = value => {
     setSort(value)
@@ -18,7 +19,7 @@ const RatingsAndReviews = () => {
     method: 'get',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
     // url: 'http://localhost:3001/reviews',
-    headers:{'Authorization': 'test1'},
+    headers:{'Authorization': 'test'},
     params: {
       product_id,
       sort,
@@ -26,16 +27,36 @@ const RatingsAndReviews = () => {
     }
   }
 
-  const fetchData = () => {
+  const fetchReviewData = () => {
     axios(config)
     // axios.get('http://localhost:3001/reviews')
     .then(res => setReviews(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
 
+  var configRating = {
+    method: 'get',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta',
+    headers: {
+      'Authorization': 'test'
+    },
+    params: {product_id}
+  }
+
+
+  const fetchRatingData = () => {
+    axios(configRating)
+    .then(res => console.log(res.data))
+    .catch(err => console.log('err in fetching data', err))
+  }
+
   useEffect(() => {
-    fetchData();
+    fetchReviewData();
   }, [product_id, sort, count])
+
+  useEffect(() => {
+    fetchRatingData()
+  }, [product_id])
 
 
   return (

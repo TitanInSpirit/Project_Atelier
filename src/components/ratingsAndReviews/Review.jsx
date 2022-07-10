@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
 
 const Review = ({review}) => {
-  const formatDate = format(parseISO(review.date), "LLLL.dd.yyyy");
+  const formatDate = format(parseISO(review.date), "LLLL d, yyyy");
   const [showMore, setShowMore] = useState(false);
   const [helpful, setHelpful] = useState(false)
   const [helpfulNum, setHelpfulNum] = useState(review.helpfulness)
@@ -34,8 +34,10 @@ const Review = ({review}) => {
     <div>
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`}></span>
-        <span>{review.reviewer_name}</span>,
+        <div>
+        <span>{review.reviewer_name},  </span>
         <span>{formatDate}</span>
+        </div>
       </div>
       <div className='reviewBody'>
         <b>{review.summary}</b>
