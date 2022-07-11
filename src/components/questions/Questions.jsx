@@ -39,6 +39,7 @@ class Questions extends React.Component {
 
   getQuestions = () => {
 
+
     axios.get(`http://localhost:3001/questions`)
     .then(response => this.setState({questions:response.data.results}))
     .catch(err => `Unable to get questions due to following error: ${console.error(err.message)}`);

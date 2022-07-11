@@ -29,8 +29,30 @@ axios.defaults.headers.common['Authorization'] = GithubToken;
     );
     next();
   })
-
+  
 // Routes
+// Get Requests
+app.get('/products', (req, res) => {
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products';
+
+  var config = {
+    method: 'get',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    }
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
+
 app.get('/answers', (req, res) => {
 
   /* TODO: Update question_id with data sent from client */
@@ -56,7 +78,6 @@ app.get('/answers', (req, res) => {
 
 });
 
-// Get Requests
 app.get('/cart', (req, res) => {
   let endpointUrl =  'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart';
 
@@ -77,16 +98,18 @@ app.get('/cart', (req, res) => {
   });
 });
 
-app.get('/products', (req, res) => {
-  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products';
+app.get('/reviews', (req, res) => {
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews'
+  let params = req.query;
 
   var config = {
     method: 'get',
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
-    }
+      'Authorization': `${process.env.GITHUB_API_KEY}`
+    },
+    params
   };
 
   axios(config)
@@ -149,9 +172,8 @@ app.get('/related', (req, res) => {
 
 app.get('/reviews/meta', (req, res) => {
 
-  /* TODO: Update product_id with data sent from client */
-  let product_id = 66642 // Fix me
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta';
+  let params = req.query;
 
   var config = {
     method: 'get',
@@ -160,6 +182,7 @@ app.get('/reviews/meta', (req, res) => {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
     }
+    params
   };
 
   axios(config)
@@ -172,18 +195,17 @@ app.get('/reviews/meta', (req, res) => {
 });
 
 // Post Requests
-
 app.post('/styles', (req, res) => {
   let product_id = req.body.productId
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/styles`
-
+  
   var config = {
     method: 'get',
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    }
+    },
   };
 
   axios(config)
@@ -217,12 +239,36 @@ app.post('/reviews', (req, res) => {
   });
 });
 
-
 // PUT Requests
+app.put('/reviews/:review_id/helpful', (req, res) => {
+   
+  let updateInfo = req.body.update;
+  let product_id = req.params.review_id 
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
+  
+  var config = {
+    method: 'put',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    },
+    updateInfo
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+    // console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
 
 app.put('/answers/report/:id', (req, res) => {
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
-
+  
   var config = {
     method: 'put',
     url: endpointUrl,
