@@ -26,7 +26,7 @@ class Questions extends React.Component {
       method: 'get',
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642',
       headers: {
-        'Authorization': `${env.GITHUB_API_KEY}`
+        'Authorization': `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`
       }
     };
 
