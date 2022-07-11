@@ -3,6 +3,12 @@
   display: inline;
   border: none;
   text-decoration: underline;
+  font-size: 16px;
+}
+
+.sortContainer {
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .rating-static {
@@ -64,7 +70,15 @@
 
 .reviewsContainer {
   width: 35%;
-  margin-left: 2rem;
+  margin-left: 4rem;
+}
+
+.renderReviews {
+  width: 700px;
+  height: 620px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
 }
 
 .reviewFooter {

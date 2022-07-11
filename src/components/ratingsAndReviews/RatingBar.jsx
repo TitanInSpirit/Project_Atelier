@@ -24,13 +24,13 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
       height: '100%',
       backgroundColor: 'green',
       width: `${ratingPercent}%`,
-      borderRadius: 'inherit',
+      borderRadius: '5px 0 0 5px',
       boxSizing: 'border-box'
     }
 
   return (
     <div className='ratingBarContainer' onClick={() => handleFilterRating(level)}>
-      {console.log('rating',ratingPercent)}
+      {/* {console.log('rating',ratingPercent)} */}
       <div className='ratinglevel' >{level} stars</div>
       <div className='ratingContainer'>
         <div style={style}></div>

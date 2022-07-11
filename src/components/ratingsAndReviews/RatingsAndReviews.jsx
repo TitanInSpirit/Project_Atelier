@@ -7,8 +7,8 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66667');
-  const [count, setCount] = useState('15');
+  const [product_id, setProduct_id] = useState('66666');
+  const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [filterRating, setFilterRating] = useState('')
   const [showReviews, setShowReviews] = useState(reviews)
@@ -60,6 +60,10 @@ const RatingsAndReviews = () => {
     fetchRatingData()
   }, [product_id])
 
+  useEffect(() => {
+    setShowReviews(reviews)
+  }, [reviews])
+
   const handleFilterRating = (value) => {
     setFilterRating(value)
   }
@@ -80,8 +84,8 @@ const RatingsAndReviews = () => {
             <Ratings rating={rating} handleFilterRating={handleFilterRating}/>
           </div>
           <div className="reviewsContainer">
-            <Sort handleSortValue={handleSortValue}/>
-            <Reviews reviews={reviews}/>
+            <Sort handleSortValue={handleSortValue} reviews={showReviews}/>
+            <Reviews reviews={showReviews}/>
           </div>
         </div>
     </div>
