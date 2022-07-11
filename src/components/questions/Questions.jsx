@@ -42,13 +42,13 @@ class Questions extends React.Component {
   handleHelpful = (event) => {
     // axios.put()
     // this.setState({[]: event.target.name});
-    console.log(`handleHelpful: ${event.target.value}`);
+    console.log(`handleHelpful: ${event.target.name}`);
   }
 
   handleReport = (event) => {
     // axios.put()
     // this.setState({[]: event.target.name});
-    console.log(`handleReport: ${event.target.value}`);
+    console.log(`handleReport: ${event.target.name}`);
   }
 
   renderQuestionList() {

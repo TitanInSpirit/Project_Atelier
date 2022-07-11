@@ -23,11 +23,11 @@ function Answer({answer, handleHelpful, handleReport}) {
     if (answer.reported === true) {
       return <button className="button-link">Reported</button>;
     }
-    return <button className="button-link" onClick={handleReport}>Report</button>;
+    return <button className="button-link" onClick={handleReport} name={id}>Report</button>;
   }
 
   const renderHelp = () => {
-    return <button className="button-link" onClick={handleHelpful}>Yes</button>;
+    return <button className="button-link" onClick={handleHelpful} name={id}>Yes</button>;
   }
 
   return (
