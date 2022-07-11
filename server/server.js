@@ -25,7 +25,7 @@ axios.defaults.headers.common['Authorization'] = GithubToken;
   // Custom Request Logging Middleware
   app.use((req,res,next) => {
     console.log(
-      `*=== New Request Logged: Type: ${req.method} REQUEST, URL: ${req.url} ===*`
+      `*=== \x1b[34mNew Request Logged:\x1b[0m Type: \x1b[33m${req.method}\x1b[0m REQUEST, URL: \x1b[33m${req.url}\x1b[0m ===*`
     );
     next();
   })
@@ -49,7 +49,6 @@ app.get('/answers', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -57,6 +56,7 @@ app.get('/answers', (req, res) => {
 
 });
 
+// Get Requests
 app.get('/cart', (req, res) => {
   let endpointUrl =  'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/cart';
 
@@ -71,32 +71,6 @@ app.get('/cart', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-});
-
-app.get('/reviews', (req, res) => {
-
-  /* TODO: Update product_id with data sent from client */
-  let product_id = 66642; // Fix me
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}`
-
-  var config = {
-    method: 'get',
-    url: endpointUrl,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
-    }
-  };
-
-  axios(config)
-  .then(function (response) {
-    res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -118,7 +92,6 @@ app.get('/products', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -128,7 +101,7 @@ app.get('/products', (req, res) => {
 app.get('/questions', (req, res) => {
 
   /* TODO: Update question_id with data sent from client */
-  let question_id = 66643 // Fix me
+  let question_id = 66642 // Fix me
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${question_id}`
 
   var config = {
@@ -143,7 +116,6 @@ app.get('/questions', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -155,6 +127,7 @@ app.get('/related', (req, res) => {
   /* TODO: Update product_id with data sent from client */
   let product_id = 66642 // Fix me
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/related`
+
 
   var config = {
     method: 'get',
@@ -168,7 +141,6 @@ app.get('/related', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -193,17 +165,16 @@ app.get('/reviews/meta', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
   });
 });
 
-app.get('/styles', (req, res) => {
+// Post Requests
 
-  /* TODO: Update product_id with data sent from client */
-  let product_id = 66642 // Fix me
+app.post('/styles', (req, res) => {
+  let product_id = req.body.productId
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/styles`
 
   var config = {
@@ -218,12 +189,34 @@ app.get('/styles', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
   });
 });
+
+app.post('/reviews', (req, res) => {
+  let product_id = req.body.productId
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}`
+
+  var config = {
+    method: 'get',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    }
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
+
 
 // PUT Requests
 
@@ -266,6 +259,7 @@ app.put('/answers/helpful/:id', (req, res) => {
   })
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
+
 
 // Initialize Server
 app.listen(port, () => console.log(`listening to port ${port}`));
