@@ -22,21 +22,24 @@ class Questions extends React.Component {
   }
 
   getQuestions = () => {
-    var config = {
-      method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66643',
-      headers: {
-        'Authorization': `${env.GITHUB_API_KEY}`
-      }
-    };
+    // var config = {
+    //   method: 'get',
+    //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66643',
+    //   headers: {
+    //     'Authorization': `${env.GITHUB_API_KEY}`
+    //   }
+    // };
 
-    axios(config)
-    .then((response) => {
-      this.setState({questions: response.data.results});
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    // axios(config)
+    // .then((response) => {
+    //   this.setState({questions: response.data.results});
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // });
+    axios.get(`http://localhost:3001/questions`)
+      .then(response => this.setState({questions:response.data.results}))
+      .catch(err => `Unable to get questiosn due to following error: ${console.error(err)}`);
   }
 
   handleHelpful = (event) => {
@@ -49,6 +52,8 @@ class Questions extends React.Component {
     // axios.put()
     // this.setState({[]: event.target.name});
     console.log(`handleReport: ${event.target.name}`);
+    let target = this.state.questions.map((question) => question.answers.filter(answers => answers.answer.id === event.target.name));
+    console.log('target: ', target);
   }
 
   renderQuestionList() {
