@@ -24,7 +24,7 @@ class Questions extends React.Component {
   getQuestions = () => {
     var config = {
       method: 'get',
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642',
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66643',
       headers: {
         'Authorization': `${env.GITHUB_API_KEY}`
       }
@@ -39,11 +39,16 @@ class Questions extends React.Component {
     });
   }
 
+  handleHelpful = (event) => {
+    // axios.put()
+    // this.setState({[]: event.target.name});
+  }
+
   renderQuestionList() {
     if (this.state.questions.length === 0) {
       return <h2> Loading . . .</h2>
     } else {
-      return (<QuestionsList questions={this.state.questions}/>)
+      return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful}/>)
     }
   }
 

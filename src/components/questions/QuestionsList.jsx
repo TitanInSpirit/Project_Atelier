@@ -5,12 +5,11 @@ import React from 'react';
 import SearchBar from './SearchBar.jsx';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
-function QuestionList({questions}) {
-
+function QuestionList({questions, handleHelpful}) {
   return (
     <div>
       <SearchBar />
-      {questions.map((question) => <IndividualQuestion key={'question' + question.question_id} question={question} />)}
+      {questions.map((question) => <IndividualQuestion key={'question' + question.question_id} question={question} handleHelpful={handleHelpful}/>)}
     </div>
   )
 }
