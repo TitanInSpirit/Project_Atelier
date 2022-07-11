@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 const RatingBar = ({level, ratings, handleFilterRating}) => {
   const [ratingPercent, serRatingPercent] = useState('')
+  const [show, setShow] = useState(true);
+
   const calRating = () => {
     let sum = 0
     for (let value of Object.values(ratings)) {
@@ -28,8 +30,15 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
       boxSizing: 'border-box'
     }
 
+    //why show state here update immediately??? because it's callback???
+    //test
+  const handleClick = () => {
+    setShow(!show)
+    handleFilterRating(level, show)
+  }
+
   return (
-    <div className='ratingBarContainer' onClick={() => handleFilterRating(level)}>
+    <div className='ratingBarContainer' onClick={handleClick}>
       {/* {console.log('rating',ratingPercent)} */}
       <div className='ratinglevel' >{level} stars</div>
       <div className='ratingContainer'>

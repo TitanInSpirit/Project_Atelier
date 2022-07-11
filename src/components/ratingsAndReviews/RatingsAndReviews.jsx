@@ -40,7 +40,7 @@ const RatingsAndReviews = () => {
     method: 'get',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta',
     headers: {
-      'Authorization': 'test'
+      'Authorization': 'test 2'
     },
     params: {product_id}
   }
@@ -65,11 +65,11 @@ const RatingsAndReviews = () => {
   }, [reviews])
 
   const handleFilterRating = (value) => {
-    setFilterRating(value)
+    // setFilterRating(value)
   }
 
   const handleFilterReview = () => {
-
+    console.log(reviews)
   }
 
   // useEffect(() => {

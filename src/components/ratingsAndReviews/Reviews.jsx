@@ -34,7 +34,7 @@ const Reviews = ({reviews}) => {
 
   return (
     <div>
-      {console.log(results)}
+      {/* {console.log(results)} */}
       <div className='renderReviews'>
         {renderReview && renderReview.map(review => {
           return <Review key={review.review_id} review={review}/>
