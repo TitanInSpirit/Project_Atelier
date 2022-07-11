@@ -1,11 +1,27 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React from 'react';
 
-/*==================== INTERNAL MODULES ====================*/
 
-function IndividualQuestion() {
+/*==================== INTERNAL MODULES ====================*/
+import AnswerList from './AnswerList.jsx';
+
+
+function IndividualQuestion({question, getUpdate}) {
+  let {answers,
+    asker_name,
+    question_body,
+    question_date,
+    question_helpfulness,
+    question_id,
+    reported} = question
+
+  answers = Object.keys(answers).map((key) => answers[key]);
+
+  /*----- RENDERER -----*/
   return (
     <div>
+      <div>{`Q: ${question_body} Helpful? Yes (${question_helpfulness}) | Add Answer`}</div>
+      <AnswerList answers={answers} getUpdate={getUpdate}/>
     </div>
   )
 }
