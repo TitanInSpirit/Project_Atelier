@@ -14,14 +14,14 @@ function Answer({answer, getUpdate}) {
   /*----- EVENT HANDLER -----*/
   const handleReport = () => {
     console.log(id);
-    axios.put(`http://localhost:3001/qa/answers/${id}/report`)
+    axios.put(`http://localhost:3001/answers/report/${id}`)
     .then(response => getUpdate())
     .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
   const handleHelpful = () => {
     console.log(id);
-    axios.put(`http://localhost:3001/qa/answers/${id}/helpful`)
+    axios.put(`http://localhost:3001/answers/helpful/${id}`)
       .then(response => getUpdate())
       .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
