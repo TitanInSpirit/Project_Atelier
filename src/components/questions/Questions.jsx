@@ -44,17 +44,23 @@ class Questions extends React.Component {
     // this.setState({[]: event.target.name});
   }
 
+  handleReport = (event) => {
+    // axios.put()
+    // this.setState({[]: event.target.name});
+  }
+
   renderQuestionList() {
     if (this.state.questions.length === 0) {
       return <h2> Loading . . .</h2>
     } else {
-      return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful}/>)
+      return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>)
     }
   }
 
   render() {
     return (
       <div>
+        <h5>QUESTIONS & ANSWERS</h5>
         {this.renderQuestionList()}
         <button>Answer More Questions</button>
         <button>Add a Question</button>

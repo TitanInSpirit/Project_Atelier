@@ -6,12 +6,12 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-function AnswerList({answers, handleHelpful}) {
+function AnswerList({answers, handleHelpful, handleReport}) {
 
   const renderAnswerList = () => {
-    // reponses from the seller should be at the top regardless of helpfulness
+    // sorts answers by "helpfulness" and so that Seller responses are alwasy at the top
 
-    let answerList = answers.map((answer) => <Answer key={'answer' + answer.id} answer={answer} handleHelpful={handleHelpful}/>);
+    let answerList = answers.map((answer) => <Answer key={'answer' + answer.id} answer={answer} handleHelpful={handleHelpful} handleReport={handleReport}/>);
     answerList.sort((a,b) => b.props.answer.helpfulness - a.props.answer.helpfulness);
     answerList.sort((a,b) => {
       if (a.props.answer.answerer_name === 'Seller') {
@@ -37,11 +37,9 @@ function AnswerList({answers, handleHelpful}) {
     }
   }
 
-
   return (
     <div>
       {renderAnswerList()}
-      {/* {answers.map((answer) => <Answer key={'answer' + answer.id} answer={answer}/>)} */}
     </div>
   )
 }
