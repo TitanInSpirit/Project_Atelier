@@ -7,7 +7,10 @@ class Overview extends React.Component {
   constructor(props) {
     super(props), (this.state = {
       products: [],
-      current_product: {}
+      all_styles:  [],
+      current_product: {},
+      current_style: {},
+
     });
   }
 
@@ -26,6 +29,16 @@ class Overview extends React.Component {
     })
   }
 
+  setCurrentStyle = (styleId, productId) => {
+    styleId = styleId || null;
+    productId = productId || null;
+    // get current style id
+    // get original price
+    // get all skus (array of objects)
+    // get sale price
+    // get all photos
+  }
+
   getInfo = (productId) => {
     let payload = productId
     axios.post('http://localhost:3002/reviews', {productId}).then((res) => {
@@ -42,19 +55,12 @@ class Overview extends React.Component {
 
     axios.post('http://localhost:3002/styles', {productId}).then((res) => {
       let response = res.data
-      console.log(`Styles for Product: ${productId}`)
-      console.log(res.data)
-      // get style id
-      // get original price
-      // get all skus (array of objects)
-      // get sale price
-      // get all photos
-
+      this.setState({all_styles: res.data.results})
+      this.setCurrentStyle(productId)
     }).catch((err) => {
       console.log('Axios Post Error, ', err)
     })
   }
-
 
   render() {
     if (this.state.products.length === 0) {
