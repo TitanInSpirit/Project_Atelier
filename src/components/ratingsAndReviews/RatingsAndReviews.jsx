@@ -7,9 +7,11 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66666');
-  const [count, setCount] = useState('5');
+  const [product_id, setProduct_id] = useState('66667');
+  const [count, setCount] = useState('15');
   const [rating, setRating] = useState({});
+  const [filterRating, setFilterRating] = useState('')
+  const [showReviews, setShowReviews] = useState(reviews)
 
   const handleSortValue = value => {
     setSort(value)
@@ -46,7 +48,7 @@ const RatingsAndReviews = () => {
 
   const fetchRatingData = () => {
     axios(configRating)
-    .then(res => console.log(res.data))
+    .then(res => setRating(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
 
@@ -58,13 +60,24 @@ const RatingsAndReviews = () => {
     fetchRatingData()
   }, [product_id])
 
+  const handleFilterRating = (value) => {
+    setFilterRating(value)
+  }
+
+  const handleFilterReview = () => {
+
+  }
+
+  // useEffect(() => {
+  //    handleFilterReview()
+  // }, [filterRating])
 
   return (
     <div>
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
-            <Ratings/>
+            <Ratings rating={rating} handleFilterRating={handleFilterRating}/>
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue}/>
