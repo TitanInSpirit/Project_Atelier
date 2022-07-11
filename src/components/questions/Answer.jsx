@@ -1,5 +1,6 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React from 'react';
+import axios from 'axios';
 import {format, parseISO} from  'date-fns';
 
 
@@ -7,9 +8,18 @@ import {format, parseISO} from  'date-fns';
 
 
 
-function Answer({answer, handleHelpful, handleReport}) {
+function Answer({answer, getUpdate}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
   date = format(parseISO(date), 'MMMM d, yyyy');
+
+  /*----- EVENT HANDLER -----*/
+  const handleReport = () => {
+
+  }
+
+  const handleHelpful = () => {
+
+  }
 
   /*----- RENDER FUNCTIONS -----*/
   const renderName = () => {

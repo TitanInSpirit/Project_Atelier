@@ -12,6 +12,7 @@ class Questions extends React.Component {
     super(props);
 
     this.state = {
+      products: this.props.products,
       questions: []
     };
   }
@@ -47,7 +48,8 @@ class Questions extends React.Component {
     if (this.state.questions.length === 0) {
       return <h2> Loading . . .</h2>
     } else {
-      return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>)
+      // return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>)
+      return (<QuestionsList questions={this.state.questions} getUpdate={this.getQuestions} />)
     }
   }
 

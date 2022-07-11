@@ -6,13 +6,13 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-function AnswerList({answers, handleHelpful, handleReport}) {
+function AnswerList({answers, getUpdate}) {
 
   /*----- RENDER FUNCTIONS -----*/
   const renderAnswerList = () => {
-    // sorts answers by "helpfulness" and so that Seller responses are alwasy at the top
+    let answerList = answers.map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} />);
 
-    let answerList = answers.map((answer) => <Answer key={'answer' + answer.id} answer={answer} handleHelpful={handleHelpful} handleReport={handleReport}/>);
+    // sorts answers by "helpfulness" and so that Seller responses are alwasy at the top
     answerList.sort((a,b) => b.props.answer.helpfulness - a.props.answer.helpfulness);
     answerList.sort((a,b) => {
       if (a.props.answer.answerer_name === 'Seller') {
@@ -23,18 +23,18 @@ function AnswerList({answers, handleHelpful, handleReport}) {
     // if answer list has more than 2 answers, only show two answers and show a "load more answers"
     if (answerList.length > 2) {
       return (
-        <div>
+        <React.Fragment>
           <div>{answerList[0]}</div>
           <div>{answerList[1]}</div>
           <button>LOAD MORE ANSWERS</button>
-        </div>
+        </React.Fragment>
       )
     } else {
       return (
         <div>
           {answerList}
         </div>
-        )
+      )
     }
   }
 

@@ -6,7 +6,7 @@ import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
 
-function IndividualQuestion({question, handleHelpful, handleReport}) {
+function IndividualQuestion({question, getUpdate}) {
   let {answers,
     asker_name,
     question_body,
@@ -21,7 +21,7 @@ function IndividualQuestion({question, handleHelpful, handleReport}) {
   return (
     <div>
       <div>{`Q: ${question_body} Helpful? Yes (${question_helpfulness}) | Add Answer`}</div>
-      <AnswerList answers={answers} handleHelpful={handleHelpful} handleReport={handleReport}/>
+      <AnswerList answers={answers} getUpdate={getUpdate}/>
     </div>
   )
 }
