@@ -7,18 +7,23 @@ import {format, parseISO} from  'date-fns';
 /*==================== INTERNAL MODULES ====================*/
 
 
-
 function Answer({answer, getUpdate}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
   date = format(parseISO(date), 'MMMM d, yyyy');
 
   /*----- EVENT HANDLER -----*/
   const handleReport = () => {
-
+    console.log(id);
+    axios.put(`http://localhost:3001/qa/answers/${id}/report`)
+    .then(response => getUpdate())
+    .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
   const handleHelpful = () => {
-
+    console.log(id);
+    axios.put(`http://localhost:3001/qa/answers/${id}/helpful`)
+      .then(response => getUpdate())
+      .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
   /*----- RENDER FUNCTIONS -----*/
