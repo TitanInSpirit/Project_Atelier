@@ -17,7 +17,7 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getAllProducts()
   }
 
@@ -25,6 +25,7 @@ class App extends React.Component {
     axios.get('http://localhost:3002/products')
     .then((response) => {
       this.setState({products: response.data})
+      console.log(JSON.stringify(this.state.products[0]))
     })
     .catch((err) => {
       console.log(err)
@@ -35,9 +36,9 @@ class App extends React.Component {
     return (
       <div>
         <h1> Header: Hello World!!!!!!</h1>
-        <Overview products={this.state.products}/>
-        <Questions products={this.state.products}/>
-        <RatingsAndReviews products={this.state.products}/>
+        <Overview products={this.state.products} getAllProducts={this.getAllProducts}/>
+        <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
+        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts}/>
       </div>
     );
   }
