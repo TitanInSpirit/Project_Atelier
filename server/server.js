@@ -78,24 +78,28 @@ app.get('/cart', (req, res) => {
 });
 
 app.get('/reviews', (req, res) => {
-
+  //  console.log('here')
+  //  console.log('config is', req.query)
   /* TODO: Update product_id with data sent from client */
-  let product_id = 66642; // Fix me
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}`
+  // let product_id = 66642; // Fix me
+  // let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}`
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews'
+  let params = req.query;
 
   var config = {
     method: 'get',
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
-    }
+      'Authorization': `${process.env.GITHUB_API_KEY}`
+    },
+    params
   };
 
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
+    // console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -177,8 +181,10 @@ app.get('/related', (req, res) => {
 app.get('/reviews/meta', (req, res) => {
 
   /* TODO: Update product_id with data sent from client */
-  let product_id = 66642 // Fix me
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`
+  // let product_id = 66642 // Fix me
+  // let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${product_id}`
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta';
+  let params = req.query;
 
   var config = {
     method: 'get',
@@ -186,13 +192,14 @@ app.get('/reviews/meta', (req, res) => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    }
+    },
+    params
   };
 
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
+    // console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -223,6 +230,7 @@ app.get('/styles', (req, res) => {
     console.log(error);
   });
 });
+
 
 // Initialize Server
 app.listen(port, () => console.log(`listening to port ${port}`));

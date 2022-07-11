@@ -17,11 +17,7 @@ const RatingsAndReviews = () => {
     setSort(value)
   }
 
-  const config = {
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
-    // url: 'http://localhost:3001/reviews',
-    headers:{'Authorization': 'test'},
+  const configReview = {
     params: {
       product_id,
       sort,
@@ -30,24 +26,17 @@ const RatingsAndReviews = () => {
   }
 
   const fetchReviewData = () => {
-    axios(config)
-    // axios.get('http://localhost:3001/reviews')
+    axios.get('http://localhost:3001/reviews', configReview)
     .then(res => setReviews(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
 
   var configRating = {
-    method: 'get',
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta',
-    headers: {
-      'Authorization': 'test 2'
-    },
     params: {product_id}
   }
 
-
   const fetchRatingData = () => {
-    axios(configRating)
+    axios.get('http://localhost:3001/reviews/meta', configRating)
     .then(res => setRating(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
