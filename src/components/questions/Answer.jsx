@@ -11,6 +11,7 @@ function Answer({answer, handleHelpful, handleReport}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
   date = format(parseISO(date), 'MMMM d, yyyy');
 
+  /*----- RENDER FUNCTIONS -----*/
   const renderName = () => {
     if (answerer_name === 'Seller') {
       return <b>Seller</b>;
@@ -30,6 +31,7 @@ function Answer({answer, handleHelpful, handleReport}) {
     return <button className="button-link" onClick={handleHelpful} name={id}>Yes</button>;
   }
 
+  /*----- RENDERER -----*/
   return (
     <div>
       <div>{`A: ${body}`}</div>

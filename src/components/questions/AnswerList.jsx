@@ -8,6 +8,7 @@ import Answer from './Answer.jsx';
 
 function AnswerList({answers, handleHelpful, handleReport}) {
 
+  /*----- RENDER FUNCTIONS -----*/
   const renderAnswerList = () => {
     // sorts answers by "helpfulness" and so that Seller responses are alwasy at the top
 
@@ -37,6 +38,7 @@ function AnswerList({answers, handleHelpful, handleReport}) {
     }
   }
 
+  /*----- RENDERER -----*/
   return (
     <div>
       {renderAnswerList()}

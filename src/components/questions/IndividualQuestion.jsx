@@ -17,6 +17,7 @@ function IndividualQuestion({question, handleHelpful, handleReport}) {
 
   answers = Object.keys(answers).map((key) => answers[key]);
 
+  /*----- RENDERER -----*/
   return (
     <div>
       <div>{`Q: ${question_body} Helpful? Yes (${question_helpfulness}) | Add Answer`}</div>

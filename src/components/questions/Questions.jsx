@@ -1,7 +1,6 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React from 'react';
 import axios from 'axios';
-import env from 'react-dotenv';
 
 
 /*==================== INTERNAL MODULES ====================*/
@@ -17,31 +16,12 @@ class Questions extends React.Component {
     };
   }
 
+  /*----- LIFECYCLE -----*/
   componentDidMount() {
     this.getQuestions();
   }
 
-  getQuestions = () => {
-    // var config = {
-    //   method: 'get',
-    //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66643',
-    //   headers: {
-    //     'Authorization': `${env.GITHUB_API_KEY}`
-    //   }
-    // };
-
-    // axios(config)
-    // .then((response) => {
-    //   this.setState({questions: response.data.results});
-    // })
-    // .catch((err) => {
-    //   console.error(err);
-    // });
-    axios.get(`http://localhost:3001/questions`)
-      .then(response => this.setState({questions:response.data.results}))
-      .catch(err => `Unable to get questiosn due to following error: ${console.error(err)}`);
-  }
-
+  /*----- EVENT HANDLERS -----*/
   handleHelpful = (event) => {
     // axios.put()
     // this.setState({[]: event.target.name});
@@ -56,6 +36,13 @@ class Questions extends React.Component {
     console.log('target: ', target);
   }
 
+  getQuestions = () => {
+    axios.get(`http://localhost:3001/questions`)
+    .then(response => this.setState({questions:response.data.results}))
+    .catch(err => `Unable to get questiosn due to following error: ${console.error(err)}`);
+}
+
+  /*----- RENDER FUNCTIONS -----*/
   renderQuestionList() {
     if (this.state.questions.length === 0) {
       return <h2> Loading . . .</h2>
@@ -64,6 +51,7 @@ class Questions extends React.Component {
     }
   }
 
+  /*----- RENDERER -----*/
   render() {
     return (
       <div>
