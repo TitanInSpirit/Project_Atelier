@@ -7,11 +7,11 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66666');
+  const [product_id, setProduct_id] = useState('66669');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
-  const [filterRating, setFilterRating] = useState('')
   const [showReviews, setShowReviews] = useState(reviews)
+  const {results} = reviews;
 
   const handleSortValue = value => {
     setSort(value)
@@ -21,7 +21,7 @@ const RatingsAndReviews = () => {
     params: {
       product_id,
       sort,
-      count
+      count,
     }
   }
 
@@ -53,17 +53,28 @@ const RatingsAndReviews = () => {
     setShowReviews(reviews)
   }, [reviews])
 
-  const handleFilterRating = (value) => {
-    // setFilterRating(value)
-  }
+  let showRating = [];
+  const handleFilterRating = (level, show) => {
+    //clear all reviews in showReviews
 
-  const handleFilterReview = () => {
+    //helper function to decide if claer all reviews
     console.log(reviews)
-  }
+    console.log(results)
+    console.log(level, show)
+    if(show) {
+      showRating.push(level)
+      // console.log('results',results)
+      let filter = results.filter(review => review.rating === Number(level))
+      //find all of review with the rate in my showRating
+      //update showReviews to be the newArr
+      // console.log('filter',filter)
+      // [...showReviews, filterReview]
+    } else {
+      showRating = showRating.filter(rate => rate !== level)
 
-  // useEffect(() => {
-  //    handleFilterReview()
-  // }, [filterRating])
+    }
+    console.log(showRating)
+  }
 
   return (
     <div>

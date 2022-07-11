@@ -206,6 +206,7 @@ app.get('/reviews/meta', (req, res) => {
   });
 });
 
+
 app.get('/styles', (req, res) => {
 
   /* TODO: Update product_id with data sent from client */
@@ -231,6 +232,32 @@ app.get('/styles', (req, res) => {
   });
 });
 
+app.put('/reviews/:review_id/helpful', (req, res) => {
+   console.log('body issss',req.body.update)
+   let updateInfo = req.body.update;
+  /* TODO: Update product_id with data sent from client */
+  let product_id = req.params.review_id // Fix me
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
+
+  var config = {
+    method: 'put',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    },
+    updateInfo
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+    // console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
 
 // Initialize Server
 app.listen(port, () => console.log(`listening to port ${port}`));

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
+import axios from 'axios'
 
 const Review = ({review}) => {
   const [showMore, setShowMore] = useState(false);
@@ -23,17 +24,26 @@ const Review = ({review}) => {
     }
   }
 
-  useEffect(() => {
+  const updateHelpful = (review, update) => {
+    axios.put(`http://localhost:3001/reviews/${review.review_id}/helpful`, {update})
+  }
+
+  const handleClick = () => {
+    setHelpful(!helpful);
     if(helpful) {
-      setHelpfulNum(helpfulNum + 1)
+      updateHelpful(review, {helpfulness: helpfulNum + 1})
     } else {
-      setHelpfulNum(helpfulNum - 1)
+      updateHelpful(review, {helpfulness: helpfulNum - 1})
     }
-  }, [helpful])
+  }
+
+  useEffect(() => {
+    setHelpfulNum(review.helpfulness)
+  }, [review])
 
   return (
     <div>
-      {/* {console.log(review)} */}
+      {console.log(helpfulNum)}
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`}></span>
         <div>
@@ -53,7 +63,7 @@ const Review = ({review}) => {
       </div>
       <div className='reviewFooter'>
         <p>Helpful?</p>
-        <p className='helpful' onClick={() => setHelpful(!helpful)}>{helpful ? 'No' : 'Yes'}</p> <p className='helpfulNum'>({helpfulNum + 1})</p>
+        <p className='helpful' onClick={handleClick}>{helpful ? 'No' : 'Yes'}</p> <p className='helpfulNum'>({helpfulNum})</p>
         <p> | </p>
         <p className='report'>Report</p>
       </div>
