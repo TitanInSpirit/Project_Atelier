@@ -7,7 +7,7 @@ import {format, parseISO} from  'date-fns';
 
 
 
-function Answer({answer, handleHelpful}) {
+function Answer({answer, handleHelpful, handleReport}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
   date = format(parseISO(date), 'MMMM d, yyyy');
 
@@ -19,11 +19,22 @@ function Answer({answer, handleHelpful}) {
     }
   }
 
+  const renderReport = () => {
+    if (answer.reported === true) {
+      return <button className="button-link">Reported</button>;
+    }
+    return <button className="button-link" onClick={handleReport}>Report</button>;
+  }
+
+  const renderHelp = () => {
+    return <button className="button-link" onClick={handleHelpful}>Yes</button>;
+  }
+
   return (
     <div>
       <div>{`A: ${body}`}</div>
       <div>{photos.map((photo) => <p>img</p>)}</div>
-      <div>by {renderName()} {`, ${date} | Helpful? Yes (${helpfulness}) | Report`}</div>
+      <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {helpfulness} {` | `} {renderReport()}</div>
     </div>
   )
 }
