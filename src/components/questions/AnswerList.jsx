@@ -13,6 +13,11 @@ function AnswerList({answers, handleHelpful}) {
 
     let answerList = answers.map((answer) => <Answer key={'answer' + answer.id} answer={answer} handleHelpful={handleHelpful}/>);
     answerList.sort((a,b) => b.props.answer.helpfulness - a.props.answer.helpfulness);
+    answerList.sort((a,b) => {
+      if (a.props.answer.answerer_name === 'Seller') {
+        return b.props.answer.answerer_name - a.props.answer.answerer_name;
+      }
+    })
 
     // if answer list has more than 2 answers, only show two answers and show a "load more answers"
     if (answerList.length > 2) {
