@@ -49,7 +49,6 @@ app.get('/answers', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -71,7 +70,6 @@ app.get('/cart', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -96,7 +94,6 @@ app.get('/reviews', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -118,7 +115,6 @@ app.get('/products', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -143,7 +139,6 @@ app.get('/questions', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -168,7 +163,6 @@ app.get('/related', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -193,7 +187,6 @@ app.get('/reviews/meta', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -218,7 +211,6 @@ app.get('/styles', (req, res) => {
   axios(config)
   .then(function (response) {
     res.send(JSON.stringify(response.data))
-    console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {
     console.log(error);
@@ -242,7 +234,6 @@ app.put('/answers/report/:id', (req, res) => {
   axios(config)
   .then(response => {
     res.json(response.data);
-    console.log(res.json(response.data));
   })
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
@@ -262,7 +253,6 @@ app.put('/answers/helpful/:id', (req, res) => {
   axios(config)
   .then(response => {
     res.json(response.data);
-    console.log(res.json(response.data));
   })
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
