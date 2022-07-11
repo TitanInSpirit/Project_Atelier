@@ -15,7 +15,7 @@ var config = {
   method: 'get',
   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products',
   headers: {
-    'Authorization': `${PROCESS.ENV.GITHUB_API_KEY}`
+    'Authorization': `${process.env.GITHUB_API_KEY}`
   }
 };
 
