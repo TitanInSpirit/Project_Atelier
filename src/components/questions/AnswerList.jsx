@@ -82,10 +82,10 @@ class AnswerList extends React.Component {
       }
       if (this.state.showAnswers) {
         return (
-          <React.Fragment>
-            <div className="all-answers-list">{this.state.answerList}</div>
+          <div className="all-answers-list" style={{maxheight: '50vh'}}>
+            {this.state.answerList}
             <button className="more-answers-button" onClick={this.toggleAnswers}>COLLAPSE</button>
-          </React.Fragment>
+          </div>
         )
       }
     } else {

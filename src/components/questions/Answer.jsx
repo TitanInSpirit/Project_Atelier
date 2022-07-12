@@ -9,11 +9,12 @@ import {format, parseISO} from  'date-fns';
 
 function Answer({answer, getUpdate}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
-  date = format(parseISO(date), 'MMMM d, yyyy');
 
   const [wasHelpful, setWasHelpful] = useState(false);
   const [wasReported, setWasReported] = useState(false);
   const [increaseHelpfulness, setIncreaseHelpfulness] = useState(helpfulness);
+
+  date = format(parseISO(date), 'MMMM d, yyyy');
 
   /*----- EVENT HANDLER -----*/
   const handleReport = () => {
@@ -57,8 +58,8 @@ function Answer({answer, getUpdate}) {
   /*----- RENDERER -----*/
   return (
     <div>
-      <div>{body}</div>
-      <div>{photos.map((photo) => <img src={photo} width="auto" height="100"/>)}</div>
+      <div className="answer-body">{body}</div>
+      <div className="answer-photos">{photos.map((photo) => <img src={photo} width="auto" height="100" key={`P-${photo}-${id}`}/>)}</div>
       <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {increaseHelpfulness} {` | `} {renderReport()}</div>
     </div>
   )

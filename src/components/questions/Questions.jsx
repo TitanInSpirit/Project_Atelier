@@ -41,11 +41,11 @@ class Questions extends React.Component {
   /*----- RENDERER -----*/
   render() {
     return (
-      <div>
+      <div style={{margin: '30px'}} className="questions-and-answeres">
         <h5>QUESTIONS & ANSWERS</h5>
         {this.renderQuestionList()}
-        <button>Answer More Questions</button>
-        <button>Add a Question</button>
+        <button style={{margin: '10px'}}>Answer More Questions</button>
+        <button style={{margin: '10px'}}>Add a Question</button>
       </div>
     )
   }
