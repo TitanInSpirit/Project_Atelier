@@ -23,23 +23,7 @@ class Questions extends React.Component {
   }
 
   /*----- EVENT HANDLERS -----*/
-  handleHelpful = (event) => {
-    // axios.put()
-    // this.setState({[]: event.target.name});
-    console.log(`handleHelpful: ${event.target.name}`);
-  }
-
-  handleReport = (event) => {
-    // axios.put()
-    // this.setState({[]: event.target.name});
-    console.log(`handleReport: ${event.target.name}`);
-    let target = this.state.questions.map((question) => question.answers.filter(answers => answers.answer.id === event.target.name));
-    console.log('target: ', target);
-  }
-
   getQuestions = () => {
-
-
     axios.get(`http://localhost:3001/questions`)
     .then(response => this.setState({questions:response.data.results}))
     .catch(err => `Unable to get questions due to following error: ${console.error(err.message)}`);
@@ -50,8 +34,7 @@ class Questions extends React.Component {
     if (this.state.questions.length === 0) {
       return <h2> Loading . . .</h2>
     } else {
-      // return (<QuestionsList questions={this.state.questions} handleHelpful={this.handleHelpful} handleReport={this.handleReport}/>)
-      return (<QuestionsList questions={this.state.questions} getUpdate={this.getQuestions} />)
+      return <QuestionsList questions={this.state.questions} getUpdate={this.getQuestions} />;
     }
   }
 

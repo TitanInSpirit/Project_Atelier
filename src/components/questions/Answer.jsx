@@ -34,9 +34,9 @@ function Answer({answer, getUpdate}) {
   }
 
   const renderReport = () => {
-    if (answer.reported === true) {
-      return <button className="button-link">Reported</button>;
-    }
+    // if (answer.reported === true) {
+    //   return <button className="button-link">Reported</button>;
+    // }
     return <button className="button-link" onClick={handleReport} name={id}>Report</button>;
   }
 
@@ -47,7 +47,7 @@ function Answer({answer, getUpdate}) {
   /*----- RENDERER -----*/
   return (
     <div>
-      <div>{`A: ${body}`}</div>
+      <div>{body}</div>
       <div>{photos.map((photo) => <p>img</p>)}</div>
       <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {helpfulness} {` | `} {renderReport()}</div>
     </div>
