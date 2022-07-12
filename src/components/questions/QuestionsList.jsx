@@ -7,6 +7,7 @@ import IndividualQuestion from './IndividualQuestion.jsx';
 
 function QuestionList({questions, getUpdate}) {
 
+  /*----- RENDER FUNCTIONS -----*/
   const renderIndividualQuestion = () => {
     return questions.map((question) => <IndividualQuestion key={'Q-' + question.question_id} question={question} getUpdate={getUpdate}/>)
   }

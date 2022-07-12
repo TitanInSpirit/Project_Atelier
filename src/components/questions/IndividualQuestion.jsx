@@ -17,6 +17,7 @@ function IndividualQuestion({question, getUpdate}) {
 
   answers = Object.keys(answers).map((key) => answers[key]);
 
+  /*----- RENDER FUNCTIONS -----*/
   const renderQuestion = () => {
     return <div>{`Q: ${question_body} Helpful? Yes (${question_helpfulness}) | Add Answer`}</div>;
   }
