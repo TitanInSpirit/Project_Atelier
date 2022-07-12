@@ -3,14 +3,9 @@ import ImageGallery from './ImageGallery.jsx';
 import Sidebar from './Sidebar.jsx';
 import axios from 'axios';
 
-class Overview extends React.Component {
-  constructor(props) {
-    super(props), (this.state = {
-      products: [],
-      all_styles:  [],
-      current_product: {},
-      current_style: {},
+const Overview = (props) => {
 
+<<<<<<< questions
     });
   }
 
@@ -71,17 +66,34 @@ class Overview extends React.Component {
             </div>
             <div>
             </div>
+=======
+  if (props.products.length === 0) {
+    return (
+    <div>
+      <div className="loading">
+          <div>
+          </div>
+          <div>
+>>>>>>> main
           </div>
         </div>
-      )
-    } else {
-      return (
-        <div>
-          <ImageGallery current_product={this.state.current_product}/>
-          <Sidebar current_product={this.state.current_product}/>
-        </div>
-      );
-    }
+      </div>
+    )
+  } else {
+    return (
+      <div className="overview_container">
+        <ImageGallery current_product={props.current_product} currentStyle = {props.current_style}/>
+        <Sidebar
+        products={props.products}
+        getAllProducts={props.getAllProducts}
+        all_styles={props.all_styles}
+        current_product={props.current_product}
+        current_style={props.current_style}
+        total_reviews={props.total_reviews}
+        average_reviews={props.average_reviews}
+        />
+      </div>
+    );
   }
 }
 //

@@ -108,7 +108,7 @@ app.get('/reviews', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     },
     params
   };
@@ -243,7 +243,10 @@ app.post('/reviews', (req, res) => {
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {
 
+<<<<<<< questions
   let updateInfo = req.body.update;
+=======
+>>>>>>> main
   let product_id = req.params.review_id
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
 
@@ -253,8 +256,7 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    },
-    updateInfo
+    }
   };
 
   axios(config)
@@ -279,6 +281,11 @@ app.put('/questions/helpful/:id', (req, res) => {
 });
 
 app.put('/answers/report/:id', (req, res) => {
+<<<<<<< questions
+=======
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
+
+>>>>>>> main
   var config = {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/report`
@@ -298,6 +305,29 @@ app.put('/answers/helpful/:id', (req, res) => {
   axios(config)
   .then(response => res.json(response.data))
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+});
+
+app.put('/reviews/:review_id/report', (req, res) => {
+  let product_id = req.params.review_id
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/report`
+
+  var config = {
+    method: 'put',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    }
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+    // console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 });
 
 

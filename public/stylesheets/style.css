@@ -1,5 +1,3 @@
-
-
 .sortForm {
   width: auto;
   display: inline;
@@ -70,7 +68,7 @@
   margin-right: 5px;
   font-size: 300%;
   position: relative;
-  top: -7px
+  top: -7px;
 }
 
 .ratingAveStar {
@@ -98,7 +96,7 @@
 }
 
 .ratingsContainer {
-  width: 15%;
+  width: 20%;
   margin-right: 5rem
 }
 
@@ -134,8 +132,10 @@
 
 .reviewPhotos {
   margin-top: 10px;
-  display: flex;;
+  display: flex;
+  ;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .reviewPhoto {
@@ -144,9 +144,19 @@
   margin-left: 10px
 }
 
-.helpful {
+.helpfulAndReport {
   text-decoration: underline;
+  border: none;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
 }
+
+/* .helpfulAndReport:hover {
+  color: red;
+  font-weight: bolder;
+} */
 
 .helpfulNum {
   position: relative;
@@ -166,17 +176,17 @@
 .ratingContainer {
   height: 15px;
   width: 70%;
-  background-color: lightgray;
+  background-color: rgb(231, 231, 231);
   margin-left: 10px;
   position: relative;
   top: 18px;
   right: 1.5rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   position: absolute;
   box-sizing: border-box;
 }
 
-.ratingBarContainer:hover > .ratingContainer {
+.ratingBarContainer:hover>.ratingContainer {
   border: 1px solid green;
   background-color: rgba(194, 246, 166, 0.174)
 }
@@ -187,19 +197,18 @@
 
   position: absolute;
   top: 15px
-
 }
 
-.ratingBarContainer:hover > .ratinglevel {
+.ratingBarContainer:hover>.ratinglevel {
   color: green
 }
 
-.ratingBarContainer:hover > .ratingPercent {
+.ratingBarContainer:hover>.ratingPercent {
   color: green
 }
 
 .ratingSum {
-  height: 5rem;
+  height: 3rem;
 }
 
 .ratingPercent {
@@ -209,6 +218,13 @@
 }
 
 /* OVERVIEW COMPONENT STYLES */
+/* Overview Container */
+.overview_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* Loading screen */
 .loading {
   display: inline-block;
@@ -261,4 +277,196 @@
     height: 72px;
     opacity: 0;
   }
+}
+
+
+.ratingLabelContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratingLabel {
+  background-color: orange;
+  padding: 2px 10px;
+  border-radius: 3rem;
+  margin-right: 5px;
+  font-size: 80%;
+}
+
+.removeLabel{
+  cursor: pointer;
+}
+
+.ratingScale {
+  width: 105%;
+  margin-top: 15%;
+  position: relative;
+}
+
+.ratingScaleDes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0;
+  position: relative;
+  top: -15px
+}
+
+.ratingScalepoints {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+}
+
+.ratingScalepointslooking {
+  height: 10px;
+  width: 40%;
+  background-color: rgb(231, 231, 231);
+  margin-right: 2px;
+  margin-top: 5px;
+}
+
+.reviewModal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  padding: 0;
+}
+
+.reviewModalBg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.reviewModalImg{
+  width: 800px;
+  height: 600px;
+}
+
+.ModalCloseBtn{
+  position: fixed;;
+  top: 0;
+  left: 0;
+}
+
+.newReviewContainer {
+  padding: 10px;;
+  background-color: #fff;
+  width: 800px;
+  height: 600px;
+}
+
+.starRatingContainer {
+  display: flex;
+}
+
+.starRatingRadio {
+  display: none;
+}
+
+.ratingStar {
+  cursor: pointer;
+  transition: color 200ms;
+
+/* Overview | Gallery Container */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Overview | Img Carousel */
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  height: 100vh;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.image {
+  width: 455px;
+  height: 455px;
+  margin-top: 2.5px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 277.5px;
+  font-size: 3rem;
+  color: rgb(43, 43, 43);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 400px;
+  font-size: 3rem;
+  color: rgb(43, 43, 43);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-delay: 1s ease;
+}
+
+.slide.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+}
+
+/* Overview | Vertical Gallery */
+.thumb_image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+
+}
+
+.imageGallery {
+  height: 500px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-bottom: 0 px;
+  align-self: auto;
+}
+
+.currentImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: -150px;
+  padding-left: 0px;
+
 }

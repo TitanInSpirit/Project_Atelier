@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
-const Sort = ({handleSortValue, reviews}) => {
+const Sort = ({handleSortValue, results}) => {
   const [sortValue, setSortValue] = useState('')
 
   const options = ['relevance', 'newest', 'helpful']
-  const {results} = reviews;
 
   const handleChange = e => {
     setSortValue(e.target.value);
@@ -12,6 +11,7 @@ const Sort = ({handleSortValue, reviews}) => {
   }
   return (
     <form className='sortContainer'>
+      {/* {console.log(results)} */}
       {results && results.length} reviews, sorted by
       <select
         className='sortForm'
