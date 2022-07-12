@@ -70,7 +70,7 @@
   margin-right: 5px;
   font-size: 300%;
   position: relative;
-  top: -7px
+  top: -7px;
 }
 
 .ratingAveStar {
@@ -98,7 +98,7 @@
 }
 
 .ratingsContainer {
-  width: 15%;
+  width: 20%;
   margin-right: 5rem
 }
 
@@ -209,7 +209,7 @@
 }
 
 .ratingSum {
-  height: 5rem;
+  height: 3rem;
 }
 
 .ratingPercent {
@@ -271,4 +271,21 @@
     height: 72px;
     opacity: 0;
   }
+}
+
+.ratingLabelContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.ratingLabel {
+  background-color: orange;
+  padding: 2px 10px;
+  border-radius: 3rem;
+  margin-right: 5px;
+  font-size: 80%;
+}
+
+.removeLabel{
+  cursor: pointer;
 }

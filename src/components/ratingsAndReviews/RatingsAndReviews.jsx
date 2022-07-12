@@ -7,7 +7,7 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66669');
+  const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
@@ -89,7 +89,7 @@ const RatingsAndReviews = () => {
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
-            <Ratings rating={rating} handleFilterRating={handleFilterRating}/>
+            <Ratings rating={rating} handleFilterRating={handleFilterRating} rateArr={rateArr}/>
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue} results={showReviews}/>

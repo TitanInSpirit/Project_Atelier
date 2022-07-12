@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import RatingBar from './RatingBar.jsx'
 
 
-const Ratings = ({rating, handleFilterRating}) => {
+const Ratings = ({rating, handleFilterRating, rateArr}) => {
   let aveRating = 0;
 
   const calAveRating = () => {
@@ -16,12 +16,6 @@ const Ratings = ({rating, handleFilterRating}) => {
     return aveRating;
   }
 
-  // useEffect(() => {
-  //   if(Object.keys(rating).length > 0) {
-  //     calAveRating()
-  //   }
-  // },[rating])
-
   const formatRating = () => {
     let str = aveRating.toString();
     let check = Number(str.slice(-1));
@@ -34,6 +28,7 @@ const Ratings = ({rating, handleFilterRating}) => {
     }
   }
 
+
   return (
     <div>
       {/* {console.log(rating)} */}
@@ -41,16 +36,23 @@ const Ratings = ({rating, handleFilterRating}) => {
         <h3 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
         <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p>
         </h3>
-
       </div>
       <small>100% of reviews recommend this product</small>
-      <div className='ratingChart'>
-        <RatingBar level='5' ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
-        <RatingBar level='4' ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
-        <RatingBar level='3' ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
-        <RatingBar level='2' ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
-        <RatingBar level='1' ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
+      <p>Rating Breakdown</p>
+      <div className='ratingLabelContainer'>
+        {rateArr && rateArr.map((rate, i) => {
+          if(rate === '1') {
+            return <div key={i} className='ratingLabel'>{rate} star</div>
+          }
+          return <div key={i} className='ratingLabel'>{rate} stars</div>
+        })}
+        {rateArr.length > 0 && <div onClick={() => rateArr = []} className='ratingLabel removeLabel'>Remove all labels</div>}
 
+      </div>
+      <div className='ratingChart'>
+        {['5', '4', '3', '2', '1'].map((rate, i) => {
+          return  <RatingBar level={rate} key={i} ratings = {rating.ratings} handleFilterRating={handleFilterRating}/>
+        })}
       </div>
       <div className='ratingDetail'></div>
     </div>

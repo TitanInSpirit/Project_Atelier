@@ -31,7 +31,7 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
     }
 
     //why show state here update immediately??? because it's callback???
-    //test
+
   const handleClick = () => {
     setShow(!show)
     handleFilterRating(level, show)
@@ -40,7 +40,9 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
   return (
     <div className='ratingBarContainer' onClick={handleClick}>
       {/* {console.log('rating',ratingPercent)} */}
-      <div className='ratinglevel' >{level} stars</div>
+      {level === '1' ?
+      <div className='ratinglevel' >{level} star</div> :
+      <div className='ratinglevel' >{level} stars</div>}
       <div className='ratingContainer'>
         <div style={style}></div>
       </div>
