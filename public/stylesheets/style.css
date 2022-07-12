@@ -1,5 +1,3 @@
-
-
 .sortForm {
   width: auto;
   display: inline;
@@ -134,7 +132,8 @@
 
 .reviewPhotos {
   margin-top: 10px;
-  display: flex;;
+  display: flex;
+  ;
   flex-direction: row;
 }
 
@@ -176,7 +175,7 @@
   box-sizing: border-box;
 }
 
-.ratingBarContainer:hover > .ratingContainer {
+.ratingBarContainer:hover>.ratingContainer {
   border: 1px solid green;
   background-color: rgba(194, 246, 166, 0.174)
 }
@@ -187,14 +186,13 @@
 
   position: absolute;
   top: 15px
-
 }
 
-.ratingBarContainer:hover > .ratinglevel {
+.ratingBarContainer:hover>.ratinglevel {
   color: green
 }
 
-.ratingBarContainer:hover > .ratingPercent {
+.ratingBarContainer:hover>.ratingPercent {
   color: green
 }
 
@@ -206,9 +204,16 @@
   position: absolute;
   right: -1.3rem;
   bottom: -0.3rem;
-
+}
 
 /* OVERVIEW COMPONENT STYLES */
+/* Overview Container */
+.overview_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /* Loading screen */
 .loading {
   display: inline-block;
@@ -261,4 +266,100 @@
     height: 72px;
     opacity: 0;
   }
+}
+
+/* Overview | Gallery Container */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Overview | Img Carousel */
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+  height: 100vh;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.image {
+  width: 455px;
+  height: 455px;
+  margin-top: 2.5px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 277.5px;
+  font-size: 3rem;
+  color: rgb(43, 43, 43);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 400px;
+  font-size: 3rem;
+  color: rgb(43, 43, 43);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-delay: 1s ease;
+}
+
+.slide.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+}
+
+/* Overview | Vertical Gallery */
+.thumb_image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+
+}
+
+.imageGallery {
+  height: 500px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-bottom: 0 px;
+  align-self: auto;
+}
+
+.currentImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: -150px;
+  padding-left: 0px;
 }
