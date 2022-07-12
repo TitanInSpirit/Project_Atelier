@@ -60,7 +60,7 @@ function Answer({answer, getUpdate}) {
     <div>
       <div className="answer-body">{body}</div>
       <div className="answer-photos">{photos.map((photo) => <img src={photo} width="auto" height="100" key={`P-${photo}-${id}`}/>)}</div>
-      <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {increaseHelpfulness} {` | `} {renderReport()}</div>
+      <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
     </div>
   )
 }

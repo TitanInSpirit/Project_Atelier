@@ -267,6 +267,17 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
   });
 });
 
+app.put('/questions/helpful/:id', (req, res) => {
+  var config = {
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${req.params.id}/helpful`
+  };
+
+  axios(config)
+  .then(response => res.json(response.data))
+  .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+});
+
 app.put('/answers/report/:id', (req, res) => {
   var config = {
     method: 'put',
