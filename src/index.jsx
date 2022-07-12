@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   getAllProducts = () => {
-    axios.get('http://localhost:3002/products')
+    axios.get('http://localhost:3001/products')
     .then((response) => {
       this.setState({products: response.data})
       console.log(JSON.stringify(this.state.products[0]))

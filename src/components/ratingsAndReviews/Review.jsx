@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
 import axios from 'axios'
 
-const Review = ({review}) => {
+const Review = ({review, fetchReviewData}) => {
   const [showMore, setShowMore] = useState(false);
-  const [helpful, setHelpful] = useState(false)
-  const [helpfulNum, setHelpfulNum] = useState(review.helpfulness)
+  const [helpful, setHelpful] = useState(false);
+  const [helpfulNum, setHelpfulNum] = useState(review.helpfulness);
+  const [report, setReprot] = useState(false);
 
   const formatDate = format(parseISO(review.date), "LLLL d, yyyy");
 
@@ -24,26 +25,26 @@ const Review = ({review}) => {
     }
   }
 
-  const updateHelpful = (review, update) => {
-    axios.put(`http://localhost:3001/reviews/${review.review_id}/helpful`, {update})
+
+  const handleHelpfulClick = async() => {
+    await setHelpful(true);
+    axios.put(`http://localhost:3001/reviews/${review.review_id}/helpful`)
+      .then(() => fetchReviewData())
+      .catch(err => console.log('err in udpate helpful', err))
   }
 
-  const handleClick = () => {
-    setHelpful(!helpful);
-    if(helpful) {
-      updateHelpful(review, {helpfulness: helpfulNum + 1})
-    } else {
-      updateHelpful(review, {helpfulness: helpfulNum - 1})
-    }
+  const handleReportClick = async() => {
+    // console.log(review)
+    await setReprot(true);
+    axios.put(`http://localhost:3001/reviews/${review.review_id}/report`)
+      .then(() => fetchReviewData())
+      .catch(err => console.log('err in udpate report', err))
   }
 
-  useEffect(() => {
-    setHelpfulNum(review.helpfulness)
-  }, [review])
 
   return (
     <div>
-      {console.log(helpfulNum)}
+      {/* {console.log(helpfulNum)} */}
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`}></span>
         <div>
@@ -63,9 +64,15 @@ const Review = ({review}) => {
       </div>
       <div className='reviewFooter'>
         <p>Helpful?</p>
-        <p className='helpful' onClick={handleClick}>{helpful ? 'No' : 'Yes'}</p> <p className='helpfulNum'>({helpfulNum})</p>
+        <button className='helpfulAndReport' onClick={handleHelpfulClick} disabled={helpful}>Yes</button> <p className='helpfulNum'>({review.helpfulness})</p>
         <p> | </p>
-        <p className='report'>Report</p>
+        <button
+          className='helpfulAndReport'
+          onClick={handleReportClick}
+          disabled={report}
+          >
+            {report ? 'Reported' : 'Report'}
+        </button>
       </div>
       <hr/>
     </div>

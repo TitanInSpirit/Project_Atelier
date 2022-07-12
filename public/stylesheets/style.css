@@ -144,8 +144,18 @@
   margin-left: 10px
 }
 
-.helpful {
+.helpfulAndReport {
   text-decoration: underline;
+  border: none;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.helpfulAndReport:disabled {
+  color: red;
+  font-weight: bolder;
 }
 
 .helpfulNum {
@@ -206,7 +216,7 @@
   position: absolute;
   right: -1.3rem;
   bottom: -0.3rem;
-
+}
 
 /* OVERVIEW COMPONENT STYLES */
 /* Loading screen */

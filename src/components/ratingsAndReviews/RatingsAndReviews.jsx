@@ -10,7 +10,8 @@ const RatingsAndReviews = () => {
   const [product_id, setProduct_id] = useState('66669');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
-  const [showReviews, setShowReviews] = useState(reviews)
+  const [showReviews, setShowReviews] = useState(reviews.results)
+  const [rateArr, setRateArr] = useState([]);
   const {results} = reviews;
 
   const handleSortValue = value => {
@@ -50,31 +51,38 @@ const RatingsAndReviews = () => {
   }, [product_id])
 
   useEffect(() => {
-    setShowReviews(reviews)
+    setShowReviews(results)
   }, [reviews])
 
-  let showRating = [];
+
   const handleFilterRating = (level, show) => {
-    //clear all reviews in showReviews
-
-    //helper function to decide if claer all reviews
-    console.log(reviews)
-    console.log(results)
-    console.log(level, show)
+    // console.log(reviews)
+    // console.log(results)
+    // console.log(level, show)
     if(show) {
-      showRating.push(level)
-      // console.log('results',results)
-      let filter = results.filter(review => review.rating === Number(level))
-      //find all of review with the rate in my showRating
-      //update showReviews to be the newArr
-      // console.log('filter',filter)
-      // [...showReviews, filterReview]
+      setRateArr([...rateArr, level])
     } else {
-      showRating = showRating.filter(rate => rate !== level)
-
+      let filterRating = rateArr.filter(rate => rate !== level);
+      setRateArr(filterRating);
     }
-    console.log(showRating)
+    console.log('rating arr', rateArr)
+
   }
+
+  useEffect(() => {
+    if(rateArr.length > 0) {
+      let filterReview = [];
+      for (let rate of rateArr) {
+        let filter = results.filter(review => review.rating === Number(rate))
+        filterReview = [...filterReview, ...filter]
+      }
+      console.log('filter review is',filterReview)
+      setShowReviews(filterReview)
+    } else {
+      // console.log('results',results)
+      setShowReviews(results)
+    }
+  }, [rateArr])
 
   return (
     <div>
@@ -84,8 +92,8 @@ const RatingsAndReviews = () => {
             <Ratings rating={rating} handleFilterRating={handleFilterRating}/>
           </div>
           <div className="reviewsContainer">
-            <Sort handleSortValue={handleSortValue} reviews={showReviews}/>
-            <Reviews reviews={showReviews}/>
+            <Sort handleSortValue={handleSortValue} results={showReviews}/>
+            <Reviews results={showReviews} fetchReviewData={fetchReviewData}/>
           </div>
         </div>
     </div>

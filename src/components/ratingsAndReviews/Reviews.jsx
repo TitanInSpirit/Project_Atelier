@@ -5,10 +5,9 @@ import Review from './Review.jsx'
 
 
 
-const Reviews = ({reviews}) => {
+const Reviews = ({results, fetchReviewData}) => {
   const [renderReview, setRenderReview] = useState([])
   const [reviewCount, setReviewCount] = useState(2)
-  const {results} = reviews;
 
   useEffect(() => {
     if(results) {
@@ -38,7 +37,7 @@ const Reviews = ({reviews}) => {
       {/* {console.log(filterReviewFromRating)} */}
       <div className='renderReviews'>
         {renderReview && renderReview.map(review => {
-          return <Review key={review.review_id} review={review}/>
+          return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
         })}
       </div>
       {renderMoreReviewsBtn()}

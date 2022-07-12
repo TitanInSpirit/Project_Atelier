@@ -29,7 +29,7 @@ axios.defaults.headers.common['Authorization'] = GithubToken;
     );
     next();
   })
-  
+
 // Routes
 // Get Requests
 app.get('/products', (req, res) => {
@@ -107,7 +107,7 @@ app.get('/reviews', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${process.env.GITHUB_API_KEY}`
+      'Authorization': `${GithubToken}`
     },
     params
   };
@@ -181,7 +181,7 @@ app.get('/reviews/meta', (req, res) => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    }
+    },
     params
   };
 
@@ -198,7 +198,7 @@ app.get('/reviews/meta', (req, res) => {
 app.post('/styles', (req, res) => {
   let product_id = req.body.productId
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/styles`
-  
+
   var config = {
     method: 'get',
     url: endpointUrl,
@@ -241,19 +241,16 @@ app.post('/reviews', (req, res) => {
 
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {
-   
-  let updateInfo = req.body.update;
-  let product_id = req.params.review_id 
+  let product_id = req.params.review_id
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
-  
+
   var config = {
     method: 'put',
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    },
-    updateInfo
+    }
   };
 
   axios(config)
@@ -268,7 +265,7 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 
 app.put('/answers/report/:id', (req, res) => {
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
-  
+
   var config = {
     method: 'put',
     url: endpointUrl,
@@ -304,6 +301,29 @@ app.put('/answers/helpful/:id', (req, res) => {
     console.log(res.json(response.data));
   })
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+});
+
+app.put('/reviews/:review_id/report', (req, res) => {
+  let product_id = req.params.review_id
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/report`
+
+  var config = {
+    method: 'put',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    }
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+    // console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 });
 
 

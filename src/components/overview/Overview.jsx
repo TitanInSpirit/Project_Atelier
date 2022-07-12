@@ -19,7 +19,7 @@ class Overview extends React.Component {
   }
 
   getAllProducts = () => {
-    axios.get('http://localhost:3002/products')
+    axios.get('http://localhost:3001/products')
     .then((response) => {
       this.setState({products: response.data, current_product: response.data[0]})
       this.getInfo(response.data[0]['id'])
@@ -41,7 +41,7 @@ class Overview extends React.Component {
 
   getInfo = (productId) => {
     let payload = productId
-    axios.post('http://localhost:3002/reviews', {productId}).then((res) => {
+    axios.post('http://localhost:3001/reviews', {productId}).then((res) => {
       let response = res.data
       console.log(`Reviews for Product: ${productId}`)
       console.log(res.data)
@@ -53,7 +53,7 @@ class Overview extends React.Component {
       console.log('Axios Post Error, ', err)
     })
 
-    axios.post('http://localhost:3002/styles', {productId}).then((res) => {
+    axios.post('http://localhost:3001/styles', {productId}).then((res) => {
       let response = res.data
       this.setState({all_styles: res.data.results})
       this.setCurrentStyle(productId)
