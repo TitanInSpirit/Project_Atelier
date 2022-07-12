@@ -105,9 +105,11 @@ How can another developer get your project up and running on their own? What dep
     - Babel
     - React
     - Webpack
-    - (TBD)
+    - Jest
 
- - React Dependencies:
+</br>
+
+ - ### React Dependencies:
    - React for UI component librabry
    - ReactDOM for connecting the UI component library to the DOM
 
@@ -115,7 +117,9 @@ How can another developer get your project up and running on their own? What dep
 npm install react react-dom
 ```
 
- - Webpack Dependencies:
+</br>
+
+ - ### Webpack Dependencies:
    - webpack for bundling our code
    - webpack-cli for terminal commands around bundling our code
    - webpack-dev-server for hot reloading functionality.
@@ -124,11 +128,23 @@ npm install react react-dom
 npm install webpack-cli webpack-dev-server --dev
 ```
 
- - Babel Dependencies:
+</br>
+
+ - ### Babel Dependencies:
    - @babel/core for translations between js versions.
    - @babel/preset-env for latest support of js versions along with polyfils for browser support.
    - @babel/preset-react for react support that includes jsx.
 
 ```jsx
 npm install @babel/core @babel/preset-env @babel/preset-react --dev
+```
+
+</br>
+
+ - ### Jest Dependencies:
+   - uses babel
+   - [Jest Guides](https://jestjs.io/docs/tutorial-react)
+
+```jsx
+npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
 ```
