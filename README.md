@@ -141,10 +141,19 @@ npm install @babel/core @babel/preset-env @babel/preset-react --dev
 
 </br>
 
- - ### Jest Dependencies:
-   - uses babel
-   - [Jest Guides](https://jestjs.io/docs/tutorial-react)
+ - ### [Jest Dependencies:](https://jestjs.io/docs/tutorial-react)
+   - babel
+   - [Enzyme](https://jestjs.io/docs/tutorial-react#enzyme)
 
 ```jsx
 npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
+```
+
+</br>
+
+ - ### [Enzyme Dependencies:](https://jestjs.io/docs/tutorial-react#enzyme)
+   - [Enzyme]
+
+```jsx
+npm install --save-dev enzyme
 ```
