@@ -125,7 +125,7 @@ app.get('/reviews', (req, res) => {
 app.get('/questions', (req, res) => {
 
   /* TODO: Update question_id with data sent from client */
-  let question_id = 66643 // Fix me
+  let question_id = 66646 // Fix me
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${question_id}`
 
   var config = {
