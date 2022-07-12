@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const Overview = (props) => {
 
-
   if (props.products.length === 0) {
     return (
     <div>
