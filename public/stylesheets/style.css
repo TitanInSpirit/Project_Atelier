@@ -355,3 +355,16 @@
   width: 800px;
   height: 600px;
 }
+
+.starRatingContainer {
+  display: flex;
+}
+
+.starRatingRadio {
+  display: none;
+}
+
+.ratingStar {
+  cursor: pointer;
+  transition: color 200ms;
+}

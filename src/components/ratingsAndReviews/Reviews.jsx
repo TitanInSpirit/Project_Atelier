@@ -34,7 +34,7 @@ const Reviews = ({results, fetchReviewData}) => {
 
   return (
     <div>
-      {console.log(results)}
+      {/* {console.log(results)} */}
       {/* {console.log(filterReviewFromRating)} */}
       <div className='renderReviews'>
         {renderReview && renderReview.map(review => {

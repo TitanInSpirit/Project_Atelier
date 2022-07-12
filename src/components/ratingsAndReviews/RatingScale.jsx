@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 
 const RatingScale = ({characteristic}) => {
-  const des = {Comfort: ['Poor', 'Perfect'], Fit: ['Too big', 'Too small'], Length: ['Too long', 'Too short'], Quality: ['Poor', 'Perfect']}
+  const des = {Comfort: ['Uncomfortable', 'Perfect'], Fit: ['Too tight', 'Too loose'], Length: ['Too short', 'Too long'], Quality: ['Poor', 'Perfect'], Size: ['Too small', 'Too big'], Width: ['Too narrow', 'Too wide'] }
 
   let key = Object.keys(characteristic)[0]
 
@@ -11,7 +11,7 @@ const RatingScale = ({characteristic}) => {
     <div>
       <div>{key}</div>
       <div className='ratingScalepoints'>
-        {[1,2,3,4,5].map((ele, i) => {
+        {[...Array(5)].map((ele, i) => {
           return <div key={i} className='ratingScalepointslooking'></div>
         })}
       </div>
