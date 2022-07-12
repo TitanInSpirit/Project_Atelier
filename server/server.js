@@ -241,6 +241,7 @@ app.post('/reviews', (req, res) => {
 
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {
+
   let product_id = req.params.review_id
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
 
