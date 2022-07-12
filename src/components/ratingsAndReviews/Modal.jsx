@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom'
 
-const Modal = ({showModal, onCloseModal, children}) => {
+const Modal = ({showModal, children}) => {
   if(!showModal) return null;
 
   return ReactDom.createPortal(
@@ -9,7 +9,6 @@ const Modal = ({showModal, onCloseModal, children}) => {
       <div className='reviewModalBg'>
         <div className='reviewModal'>
           {children}
-
         </div>
       </div>
     </>,

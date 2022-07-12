@@ -82,9 +82,8 @@ const Review = ({review, fetchReviewData}) => {
         <button
           className='helpfulAndReport'
           onClick={handleReportClick}
-          disabled={report}
           >
-            {report ? 'Reported' : 'Report'}
+            Report
         </button>
       </div>
       <hr/>

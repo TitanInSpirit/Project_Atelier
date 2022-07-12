@@ -154,10 +154,10 @@
   font-size: 15px;
 }
 
-.helpfulAndReport:disabled {
+/* .helpfulAndReport:hover {
   color: red;
   font-weight: bolder;
-}
+} */
 
 .helpfulNum {
   position: relative;
@@ -347,4 +347,11 @@
   position: fixed;;
   top: 0;
   left: 0;
+}
+
+.newReviewContainer {
+  padding: 10px;;
+  background-color: #fff;
+  width: 800px;
+  height: 600px;
 }

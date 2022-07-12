@@ -34,6 +34,7 @@ const Reviews = ({results, fetchReviewData}) => {
 
   return (
     <div>
+      {console.log(results)}
       {/* {console.log(filterReviewFromRating)} */}
       <div className='renderReviews'>
         {renderReview && renderReview.map(review => {
@@ -41,7 +42,6 @@ const Reviews = ({results, fetchReviewData}) => {
         })}
       </div>
       {renderMoreReviewsBtn()}
-      <button>Add a review +</button>
       <NewReview/>
     </div>
   )
