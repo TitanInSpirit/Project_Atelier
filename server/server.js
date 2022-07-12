@@ -10,6 +10,7 @@ const cors = require("cors");
 const GithubToken = process.env.GITHUB_API_KEY;
 const port = process.env.port || 3001;
 axios.defaults.headers.common['Authorization'] = GithubToken;
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 // Middleware
   // Body Data
@@ -124,7 +125,7 @@ app.get('/reviews', (req, res) => {
 app.get('/questions', (req, res) => {
 
   /* TODO: Update question_id with data sent from client */
-  let question_id = 66642 // Fix me
+  let question_id = 66646 // Fix me
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${question_id}`
 
   var config = {
@@ -242,6 +243,10 @@ app.post('/reviews', (req, res) => {
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {
 
+<<<<<<< questions
+  let updateInfo = req.body.update;
+=======
+>>>>>>> main
   let product_id = req.params.review_id
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
 
@@ -264,43 +269,41 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
   });
 });
 
-app.put('/answers/report/:id', (req, res) => {
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
-
+app.put('/questions/helpful/:id', (req, res) => {
   var config = {
     method: 'put',
-    url: endpointUrl,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      // 'Authorization': `${GithubToken}`
-    }
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${req.params.id}/helpful`
   };
 
   axios(config)
-  .then(response => {
-    res.json(response.data);
-    console.log(res.json(response.data));
-  })
+  .then(response => res.json(response.data))
+  .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+});
+
+app.put('/answers/report/:id', (req, res) => {
+<<<<<<< questions
+=======
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
+
+>>>>>>> main
+  var config = {
+    method: 'put',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/report`
+  };
+
+  axios(config)
+  .then(response => res.json(response.data))
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
 
 app.put('/answers/helpful/:id', (req, res) => {
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/helpful`
-
   var config = {
     method: 'put',
-    url: endpointUrl,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      // 'Authorization': `${GithubToken}`
-    }
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/helpful`
   };
 
   axios(config)
-  .then(response => {
-    res.json(response.data);
-    console.log(res.json(response.data));
-  })
+  .then(response => res.json(response.data))
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
 

@@ -7,11 +7,18 @@ import IndividualQuestion from './IndividualQuestion.jsx';
 
 function QuestionList({questions, getUpdate}) {
 
+  /*----- RENDER FUNCTIONS -----*/
+  const renderIndividualQuestion = () => {
+    return questions.map((question) => <IndividualQuestion key={'Q-' + question.question_id} question={question} getUpdate={getUpdate}/>)
+  }
+
   /*----- RENDERER -----*/
   return (
     <div>
-      <SearchBar />
-      {questions.map((question) => <IndividualQuestion key={'Q-' + question.question_id} question={question} getUpdate={getUpdate}/>)}
+      <div style={{margin: '15px'}}>
+        <SearchBar />
+      </div>
+      {renderIndividualQuestion()}
     </div>
   )
 }
