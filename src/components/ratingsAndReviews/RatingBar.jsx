@@ -26,7 +26,6 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
       height: '100%',
       backgroundColor: 'green',
       width: `${ratingPercent}%`,
-      borderRadius: '5px 0 0 5px',
       boxSizing: 'border-box'
     }
 

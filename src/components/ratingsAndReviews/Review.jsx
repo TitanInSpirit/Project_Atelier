@@ -1,12 +1,16 @@
+import axios from 'axios'
 import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
-import axios from 'axios'
+import Modal from './Modal.jsx'
+
 
 const Review = ({review, fetchReviewData}) => {
   const [showMore, setShowMore] = useState(false);
   const [helpful, setHelpful] = useState(false);
   const [helpfulNum, setHelpfulNum] = useState(review.helpfulness);
   const [report, setReprot] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showImg, setShowImg] = useState('')
 
   const formatDate = format(parseISO(review.date), "LLLL d, yyyy");
 
@@ -41,6 +45,11 @@ const Review = ({review, fetchReviewData}) => {
       .catch(err => console.log('err in udpate report', err))
   }
 
+  const handleImgClick = (photo) => {
+    setShowModal(true)
+    // console.log(photo.url)
+    setShowImg(photo.url)
+  }
 
   return (
     <div>
@@ -59,8 +68,12 @@ const Review = ({review, fetchReviewData}) => {
       </div>
       <div className='reviewPhotos'>
         {review.photos.map(photo => {
-          return <img className='reviewPhoto' src={photo.url} key={photo.id} alt='' />
+          return <img className='reviewPhoto' src={photo.url} key={photo.id} alt='' onClick={() => handleImgClick(photo)}/>
         })}
+        <Modal showModal={showModal} >
+          {showImg && <img className='reviewModalImg' src={showImg} alt=''/>}
+          <button className='ModalCloseBtn' onClick={() => setShowModal(false)}>X</button>
+        </Modal>
       </div>
       <div className='reviewFooter'>
         <p>Helpful?</p>

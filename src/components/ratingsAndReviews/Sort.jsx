@@ -11,7 +11,7 @@ const Sort = ({handleSortValue, results}) => {
   }
   return (
     <form className='sortContainer'>
-      {console.log(results)}
+      {/* {console.log(results)} */}
       {results && results.length} reviews, sorted by
       <select
         className='sortForm'
