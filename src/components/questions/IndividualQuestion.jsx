@@ -45,6 +45,13 @@ function IndividualQuestion({question, getUpdate}) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // create variables for each of the required values existing that are set to false
+    // if required value is in state, set exists variable to true
+    // render alert if any required exists variable is still false and generate a list of the required fields that are empty
+    if (entry.nickname !== entry.nickname) {
+      console.alert()
+    }
+
     axios.post(`http://localhost:3001/questions/answers/${question_id}`, {body: entry.response, name: entry.nickname, email: entry.email})
     .then(response => getUpdate())
     .then(() => getUpdate())
@@ -73,7 +80,7 @@ function IndividualQuestion({question, getUpdate}) {
     <div style={{margin: '15px'}}>
       {renderQuestion()}
       <AnswerList answers={answers} getUpdate={getUpdate}/>
-      <Form showForm={showForm} submissionType={'Answer'} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <Form showForm={showForm} setShowForm={setShowForm}submissionType={'Answer'} handleChange={handleChange} handleSubmit={handleSubmit}/>
     </div>
   )
 }
