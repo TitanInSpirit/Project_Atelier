@@ -5,10 +5,10 @@ Our outdated client-facing retail web-portal has become significantly outdated a
 
 ---
 ## Table of Contents:
- - Git Work Flow
- - Installation
-  - Dependencies
- - Usage
+ - ### Git Work Flow
+ - ### Installation
+   - #### Dependencies
+ - ### Testing
 
 ---
 ## Git Work Flow
@@ -146,4 +146,6 @@ We have decided to use Jest as our testing framework. Jest has a variety of test
  - ### [Jest](https://jestjs.io/docs/getting-started)
  - ### [Mock Service Worker (MSW)](https://mswjs.io/docs/getting-started/install)
  - ### [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro)
+   - #### [RTL Tutorial](https://www.robinwieruch.de/react-testing-library/)
  - ### [Puppeteer](https://jestjs.io/docs/puppeteer)
+ - ### [Included React Test Utilities](https://reactjs.org/docs/test-utils.html)
