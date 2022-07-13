@@ -7,7 +7,7 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66681');
+  const [product_id, setProduct_id] = useState('66668');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)

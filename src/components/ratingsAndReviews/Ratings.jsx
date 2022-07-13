@@ -4,6 +4,7 @@ import RatingScale from './RatingScale.jsx'
 
 
 const Ratings = ({rating, handleFilterRating, rateArr}) => {
+  const {recommended} = rating;
   let aveRating = 0;
 
   const calAveRating = () => {
@@ -18,24 +19,15 @@ const Ratings = ({rating, handleFilterRating, rateArr}) => {
   }
 
   const calRecommend = () => {
-    if(rating) {
+    if(recommended) {
       let sum = 0;
       let recommend = 0
-      for(let key in rating.recommended) {
-        sum += Number(rating.recommended[key])
+      for(let key in recommended) {
+        sum += Number(recommended[key]);
       }
-      // let arr = Object.values(rating.recommended)
-      // console.log(arr[1])
-      // const {true} = rating.recommended
-      // recommend = Math.floor((Number(rating.recommended.true) / sum).toFixed(2) * 100);
-      // return recommend;
-      // console.log(true)
-
-      // console.log(rating.recommended)
+      recommend = Math.floor((Number(recommended.true) / sum).toFixed(2) * 100);
+      return recommend;
     }
-
-
-
   }
 
   const formatRating = () => {
@@ -64,15 +56,15 @@ const Ratings = ({rating, handleFilterRating, rateArr}) => {
 
   return (
     <div>
-      {console.log(rating)}
+      {/* {console.log(rating)}
+      {console.log(calRecommend())} */}
       <div className = 'ratingSum'>
         <h3 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
         <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p>
         </h3>
       </div>
 
-      <small>{rating && calRecommend()}% of reviews recommend this product</small>
-      <p>Rating Breakdown</p>
+      <small>{recommended && calRecommend()}% of reviews recommend this product</small>
 
       <div className='ratingLabelContainer'>
         {rateArr && rateArr.map((rate, i) => {

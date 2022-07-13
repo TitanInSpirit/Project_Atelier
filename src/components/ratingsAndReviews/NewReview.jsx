@@ -58,7 +58,7 @@ const NewReview = () => {
   const renderCharacteristic = () => {
     return ratingCharacteristicsDes.map((characteristic, i) => {
       return (
-        <div className='newReviewCharaDetailContainer'>
+        <div className='newReviewCharaDetailContainer' key={i}>
           <div className='newReviewCharaDetailtd1'>{characteristic[0]}</div>
             {characteristic[1].map((des, i) => {
               return (
@@ -84,7 +84,7 @@ const NewReview = () => {
   return (
     <div>
       {/* {console.log('photo', photos)} */}
-      {console.log('characteristics', characteristics)}
+      {/* {console.log('characteristics', characteristics)} */}
       <button onClick={() => setShowModal(true)}>Add a review +</button>
       <Modal showModal={showModal}>
         <div className='newReviewContainer'>
