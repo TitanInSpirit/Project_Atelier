@@ -10,7 +10,7 @@ function Styles(props) {
         let photo = style.photos[0].thumbnail_url
         let id = style.style_id
         return  (
-          <div>
+          <div key={id}>
           {props.current_style.style_id === id ? <BsCheckCircle className="selected_check"/> : null}
           <div key={id} className="style">
             <img onClick={() => {
@@ -20,8 +20,6 @@ function Styles(props) {
           </div>
         )
       })
-      // map over all_styles
-      // return div w/ photos[0].thumbnail_url
       )
   }
 }
