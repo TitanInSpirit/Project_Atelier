@@ -43,16 +43,16 @@ function Answer({answer, getUpdate}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <button className="button-link">Reported</button>;
+      return <button className="helpfulAndReport">Reported</button>;
     }
-    return <button className="button-link" onClick={handleReport} name={id}>Report</button>;
+    return <button className="helpfulAndReport" onClick={handleReport} name={id}>Report</button>;
   }
 
   const renderHelp = () => {
     if (wasHelpful) {
-      return <button className="button-link" name={id}>Yes</button>;
+      return <button className="helpfulAndReport" name={id}>Yes</button>;
     }
-    return <button className="button-link" onClick={handleHelpful} name={id}>Yes</button>;
+    return <button className="helpfulAndReport" onClick={handleHelpful} name={id}>Yes</button>;
   }
 
   /*----- RENDERER -----*/
