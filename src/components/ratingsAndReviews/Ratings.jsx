@@ -3,7 +3,7 @@ import RatingBar from './RatingBar.jsx'
 import RatingScale from './RatingScale.jsx'
 
 
-const Ratings = ({rating, handleFilterRating, rateArr}) => {
+const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabel}) => {
   const {recommended} = rating;
   let aveRating = 0;
 
@@ -54,6 +54,10 @@ const Ratings = ({rating, handleFilterRating, rateArr}) => {
     return arr;
   }
 
+  const clearRateArr = () => {
+    handleClearAllReviewsLabel();
+  }
+
   return (
     <div>
       {/* {console.log(rating)}
@@ -67,13 +71,13 @@ const Ratings = ({rating, handleFilterRating, rateArr}) => {
       <small>{recommended && calRecommend()}% of reviews recommend this product</small>
 
       <div className='ratingLabelContainer'>
-        {rateArr && rateArr.map((rate, i) => {
+        {rateArr.length > 0 && rateArr.map((rate, i) => {
           if(rate === '1') {
             return <div key={i} className='ratingLabel'>{rate} star</div>
           }
           return <div key={i} className='ratingLabel'>{rate} stars</div>
         })}
-        {rateArr.length > 0 && <div onClick={() => rateArr = []} className='ratingLabel removeLabel'>Remove all labels</div>}
+        {rateArr.length > 0 && <div onClick={clearRateArr} className='ratingLabel removeLabel'>Remove all labels</div>}
       </div>
 
       <div className='ratingChart'>

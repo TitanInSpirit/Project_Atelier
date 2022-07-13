@@ -69,6 +69,10 @@ const RatingsAndReviews = () => {
 
   }
 
+  const handleClearAllReviewsLabel = () => {
+    setRateArr([]);
+  }
+
   useEffect(() => {
     if(rateArr.length > 0) {
       let filterReview = [];
@@ -76,10 +80,8 @@ const RatingsAndReviews = () => {
         let filter = results.filter(review => review.rating === Number(rate))
         filterReview = [...filterReview, ...filter]
       }
-      console.log('filter review is',filterReview)
       setShowReviews(filterReview)
     } else {
-      // console.log('results',results)
       setShowReviews(results)
     }
   }, [rateArr])
@@ -90,7 +92,12 @@ const RatingsAndReviews = () => {
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
-            <Ratings rating={rating} handleFilterRating={handleFilterRating} rateArr={rateArr}/>
+            <Ratings
+              rating={rating}
+              handleFilterRating={handleFilterRating}
+              rateArr={rateArr}
+              handleClearAllReviewsLabel={handleClearAllReviewsLabel}
+            />
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue} results={showReviews}/>
