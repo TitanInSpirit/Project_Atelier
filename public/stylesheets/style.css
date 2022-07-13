@@ -1,3 +1,37 @@
+/* font-family: 'Alegreya Sans', sans-serif;
+font-family: 'Allerta', sans-serif;
+font-family: 'Amiko', sans-serif;
+font-family: 'Hind Madurai', sans-serif;
+font-family: 'Hind Siliguri', sans-serif; */
+
+
+h1 {
+  font-family: 'Amiko', sans-serif;
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin: 0px;
+}
+
+h2 {
+  font-family: 'Hind Siliguri', sans-serif;
+  font-weight: lighter;
+  font-size: 1.15rem;
+  margin: 0px;
+}
+
+p {
+  font-family: 'Hind Madurai', sans-serif;
+  font-size: .75rem;
+  margin: 0px;
+
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .sortForm {
   width: auto;
   display: inline;
@@ -172,7 +206,6 @@
 }
 
 
-
 .ratingContainer {
   height: 15px;
   width: 70%;
@@ -216,69 +249,6 @@
   right: -1.3rem;
   bottom: -0.3rem;
 }
-
-/* OVERVIEW COMPONENT STYLES */
-/* Overview Container */
-.overview_container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-/* Loading screen */
-.loading {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.loading div {
-  position: absolute;
-  border: 4px solid rgb(39, 39, 39);
-  opacity: 1;
-  border-radius: 50%;
-  animation: loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-}
-
-.loading div:nth-child(2) {
-  animation-delay: -0.5s;
-}
-
-@keyframes loading {
-  0% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-
-  4.9% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-
-  5% {
-    top: 36px;
-    left: 36px;
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-
-  100% {
-    top: 0px;
-    left: 0px;
-    width: 72px;
-    height: 72px;
-    opacity: 0;
-  }
-}
-
 
 .ratingLabelContainer {
   display: flex;
@@ -377,6 +347,70 @@
   transition: color 200ms;
 }
 
+/* OVERVIEW COMPONENT STYLES */
+
+/* Overview Container */
+.overview_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1400px;
+}
+
+/* Loading screen */
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.loading div {
+  position: absolute;
+  border: 4px solid rgb(39, 39, 39);
+  opacity: 1;
+  border-radius: 50%;
+  animation: loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.loading div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes loading {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
 /* Overview | Gallery Container */
 .gallery {
   display: flex;
@@ -385,19 +419,20 @@
 }
 
 /* Overview | Img Carousel */
-
 .slider {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   position: relative;
-  height: 100vh;
-  width: 75vw;
+  height: 500px;
+  width: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 0px;
-  padding-left: 0px;
+  padding-left: 500px;
+  margin-right: 0px;
+  padding-right: 0px;
 }
 
 .image {
@@ -405,14 +440,14 @@
   height: 455px;
   margin-top: 2.5px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .right-arrow {
   position: absolute;
   top: 50%;
-  right: 277.5px;
-  font-size: 3rem;
+  right: 10px;
+  font-size: 2.25rem;
   color: rgb(43, 43, 43);
   z-index: 10;
   cursor: pointer;
@@ -422,8 +457,8 @@
 .left-arrow {
   position: absolute;
   top: 50%;
-  left: 400px;
-  font-size: 3rem;
+  left: 10px;
+  font-size: 2.25rem;
   color: rgb(43, 43, 43);
   z-index: 10;
   cursor: pointer;
@@ -451,7 +486,7 @@
   object-fit: cover;
   margin-top: 5px;
   margin-right: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
 
 }
 
@@ -472,4 +507,41 @@
   margin-left: -150px;
   padding-left: 0px;
 
+}
+
+/* Overview | Product Info */
+
+.product_info_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin-bottom: 0%;
+}
+
+.product_info {
+  margin: 0px;
+  padding-left: 0px;
+}
+
+/* Overview | Style Selector */
+.style_selector_container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1 0 21%;
+}
+
+.style_image {
+  flex: 1 0 21%;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  margin: 5px;
+  margin-right: 10px;
+  border-radius: 50px;
+}
+
+.selected_check {
+  position: absolute;
 }
