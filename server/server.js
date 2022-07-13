@@ -292,6 +292,8 @@ app.put('/questions/helpful/:id', (req, res) => {
 });
 
 app.put('/answers/report/:id', (req, res) => {
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
+
   var config = {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/report`

@@ -28,10 +28,11 @@ const Overview = (props) => {
         current_style={props.current_style}
         total_reviews={props.total_reviews}
         average_reviews={props.average_reviews}
+        setCurrentStyle={props.setCurrentStyle}
         />
       </div>
     );
   }
 }
-//
+
 export default Overview;

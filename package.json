@@ -10,7 +10,8 @@
     "server-dev": "npx nodemon --watch server server/server.js",
     "start": "Webpack --mode=development",
     "build": "webpack --mode=production",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve --open",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
