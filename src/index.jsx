@@ -91,6 +91,7 @@ class App extends React.Component {
         current_style={this.state.current_style}
         total_reviews={this.state.total_reviews}
         average_reviews={this.state.average_reviews}
+        setCurrentStyle={this.setCurrentStyle}
         />
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
         <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts}/>

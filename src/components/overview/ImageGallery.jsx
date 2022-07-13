@@ -45,12 +45,12 @@ const ImageSlider = (props) => {
         <div className="imageGallery">
         <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
         </div>
-        <FaArrowAltCircleLeft className="left-arrow"  onClick={prevSlide}/>
-        <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
         {photos.map((photo, index) => {
           let bigPic = photo.url;
           return(
             <div key={index} className={index === current? 'slide active' : 'slide'}>
+              <FaArrowAltCircleLeft className="left-arrow"  onClick={prevSlide}/>
+              <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
               {index === current && (
                 <img key={index} src={`${bigPic}`} className="image"/>
               )}
