@@ -25,17 +25,17 @@ const StarRating = ({handleStarRating}) => {
         return (
           <label key={i}>
             <input
-            className='starRatingRadio'
-            type='radio'
-            name='rating'
-            value={ratingValue}
-            onClick={() => handleClick(ratingValue)}
+              className='starRatingRadio'
+              type='radio'
+              name='rating'
+              value={ratingValue}
+              onClick={() => handleClick(ratingValue)}
             />
             <div
-            className='ratingStar'
-            style={inlineStyle(ratingValue)}
-            onMouseOver={() => setHover(ratingValue)}
-            onMouseOut={() => setHover(null)}
+              className='ratingStar'
+              style={inlineStyle(ratingValue)}
+              onMouseOver={() => setHover(ratingValue)}
+              onMouseOut={() => setHover(null)}
             >
              ★
             </div>

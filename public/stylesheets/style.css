@@ -107,7 +107,7 @@ p {
 
 .ratingAveStar {
   position: absolute;
-  top: 7px;
+  top: 8px;
   left: 80px;
 }
 
@@ -115,6 +115,7 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .reviewsRatingTitle {
@@ -139,9 +140,20 @@ p {
   margin-left: 4rem;
 }
 
+.reviewResponseContainer {
+  background-color: rgba(0,0,0,0.1);
+  margin: 15px 0;
+  padding: 15px 15px 20px 15px;
+}
+
+.reviewResponse{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 .renderReviews {
   width: 700px;
-  height: 620px;
+  height: 550px;
   overflow-y: scroll;
 }
 
@@ -213,8 +225,7 @@ p {
   margin-left: 10px;
   position: relative;
   top: 18px;
-  right: 1.5rem;
-  /* border-radius: 5px; */
+  right: 30px;
   position: absolute;
   box-sizing: border-box;
 }
@@ -253,6 +264,7 @@ p {
 .ratingLabelContainer {
   display: flex;
   flex-direction: row;
+  margin-top: 25px
 }
 
 .ratingLabel {
@@ -273,24 +285,34 @@ p {
   position: relative;
 }
 
+.ratingScaleTitle {
+  position: relative;
+  bottom: -20px;
+  font-weight: bold;
+}
+
 .ratingScaleDes {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 0;
   position: relative;
-  top: -15px
+  top: 5px
 }
+
+/* .ratingScaleContainer {
+  height: 30px;
+} */
 
 .ratingScalepoints {
   display: flex;
   flex-direction: row;
-  margin-bottom: 5%;
+  margin-bottom: 0
 }
 
 .ratingScalepointslooking {
   height: 10px;
-  width: 40%;
+  width: 45%;
   background-color: rgb(231, 231, 231);
   margin-right: 2px;
   margin-top: 5px;
@@ -345,6 +367,49 @@ p {
 .ratingStar {
   cursor: pointer;
   transition: color 200ms;
+}
+
+.newReviewPhoto {
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+}
+
+.newReviewContainer{
+  /* float: inline-start; */
+  overflow-y: scroll;
+}
+
+
+.newReviewDes {
+  margin-right: 20px;
+}
+
+.newReviewRadio{
+  margin-right: 120px;
+  position: relative;
+  right: -70px
+  /* float: inline-end; */
+}
+
+
+.newReviewCharacteristic {
+  float: left;
+  margin-right: 30px;
+  font-weight: bold;
+}
+
+.newReviewCharaDetailContainer{
+  display: flex;
+  flex: row;
+}
+
+.newReviewCharaDetailtd1 {
+  font-weight: bold;
+}
+
+.newReviewCharaDetailtd2{
+  margin-left: 30px;
 }
 
 /* OVERVIEW COMPONENT STYLES */
