@@ -105,7 +105,7 @@ How can another developer get your project up and running on their own? What dep
     - Babel
     - React
     - Webpack
-    - Jest
+
 
 </br>
 
@@ -138,22 +138,12 @@ npm install webpack-cli webpack-dev-server --dev
 ```jsx
 npm install @babel/core @babel/preset-env @babel/preset-react --dev
 ```
+---
 
-</br>
+## Testing:
+We have decided to use Jest as our testing framework. Jest has a variety of testing solutions, some of which have also been installed for an easier testing experience. Links on how to get started have been included below.
 
- - ### [Jest Dependencies:](https://jestjs.io/docs/tutorial-react)
-   - babel
-   - [Enzyme](https://jestjs.io/docs/tutorial-react#enzyme)
-
-```jsx
-npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer
-```
-
-</br>
-
- - ### [Enzyme Dependencies:](https://jestjs.io/docs/tutorial-react#enzyme)
-   - [Enzyme]
-
-```jsx
-npm install --save-dev enzyme
-```
+ - ### [Jest](https://jestjs.io/docs/getting-started)
+ - ### [Mock Service Worker (MSW)](https://mswjs.io/docs/getting-started/install)
+ - ### [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro)
+ - ### [Puppeteer](https://jestjs.io/docs/puppeteer)

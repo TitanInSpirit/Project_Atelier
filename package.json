@@ -33,16 +33,14 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.3"
   },
-  "react-dotenv": {
-    "whitelist": "GITHUB_API_KEY"
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
+    "@testing-library/react": "^13.3.0",
     "babel-jest": "^28.1.2",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^28.1.2",
+    "jest-puppeteer": "^6.1.1",
+    "msw": "^0.44.0",
     "react-test-renderer": "^18.2.0"
   }
 }
