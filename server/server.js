@@ -243,10 +243,6 @@ app.post('/reviews', (req, res) => {
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {
 
-<<<<<<< questions
-  let updateInfo = req.body.update;
-=======
->>>>>>> main
   let product_id = req.params.review_id
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/${product_id}/helpful`
 
@@ -281,11 +277,8 @@ app.put('/questions/helpful/:id', (req, res) => {
 });
 
 app.put('/answers/report/:id', (req, res) => {
-<<<<<<< questions
-=======
   let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params}/report`
 
->>>>>>> main
   var config = {
     method: 'put',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${req.params.id}/report`

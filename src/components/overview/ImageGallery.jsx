@@ -4,9 +4,6 @@ import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 function VerticalGallery (props) {
 
   let photos = props.currentStyle.photos
-  const [current, setCurrent] = useState(0)
-
-
 
   if (!props.currentStyle.photos){
     return null;
@@ -27,7 +24,6 @@ function VerticalGallery (props) {
 const ImageSlider = (props) => {
   const [current, setCurrent] = useState(0)
 
-
   let photos = props.currentStyle.photos
 
   if (!props.currentStyle.photos) {
@@ -35,7 +31,7 @@ const ImageSlider = (props) => {
   } else {
     const changePic = (e) => {
       let newPic = parseInt(e.target.id)
-      setCurrent(current !== newPic ? newPic : null)
+      setCurrent(current !== newPic ? newPic : current)
     }
     const nextSlide = () => {
       setCurrent(current === length - 1 ? 0 : current +1)
