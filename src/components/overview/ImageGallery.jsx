@@ -4,9 +4,6 @@ import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 function VerticalGallery (props) {
 
   let photos = props.currentStyle.photos
-  const [current, setCurrent] = useState(0)
-
-
 
   if (!props.currentStyle.photos){
     return null;
@@ -27,7 +24,6 @@ function VerticalGallery (props) {
 const ImageSlider = (props) => {
   const [current, setCurrent] = useState(0)
 
-
   let photos = props.currentStyle.photos
 
   if (!props.currentStyle.photos) {
@@ -35,7 +31,7 @@ const ImageSlider = (props) => {
   } else {
     const changePic = (e) => {
       let newPic = parseInt(e.target.id)
-      setCurrent(current !== newPic ? newPic : null)
+      setCurrent(current !== newPic ? newPic : current)
     }
     const nextSlide = () => {
       setCurrent(current === length - 1 ? 0 : current +1)
@@ -49,12 +45,12 @@ const ImageSlider = (props) => {
         <div className="imageGallery">
         <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
         </div>
-        <FaArrowAltCircleLeft className="left-arrow"  onClick={prevSlide}/>
-        <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
         {photos.map((photo, index) => {
           let bigPic = photo.url;
           return(
             <div key={index} className={index === current? 'slide active' : 'slide'}>
+              <FaArrowAltCircleLeft className="left-arrow"  onClick={prevSlide}/>
+              <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
               {index === current && (
                 <img key={index} src={`${bigPic}`} className="image"/>
               )}
