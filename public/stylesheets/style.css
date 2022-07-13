@@ -373,6 +373,7 @@
 .ratingStar {
   cursor: pointer;
   transition: color 200ms;
+}
 
 /* Overview | Gallery Container */
 .gallery {
