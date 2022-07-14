@@ -34,6 +34,8 @@ function Sidebar(props) {
         total_reviews={props.total_reviews}
         average_reviews={props.average_reviews}
         setCurrentStyle={props.setCurrentStyle}
+        setCurrentSku={props.setCurrentSku}
+        currentSku={props.currentSku}
       />
     </div>
   );
