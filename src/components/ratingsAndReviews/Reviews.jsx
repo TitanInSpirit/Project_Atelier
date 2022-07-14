@@ -5,7 +5,7 @@ import Review from './Review.jsx'
 
 
 
-const Reviews = ({results, fetchReviewData}) => {
+const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
   const [renderReview, setRenderReview] = useState([])
   const [reviewCount, setReviewCount] = useState(2)
 
@@ -42,9 +42,11 @@ const Reviews = ({results, fetchReviewData}) => {
         })}
       </div>
       {renderMoreReviewsBtn()}
-      <NewReview/>
+      <NewReview onHandleAddNewReview={onHandleAddNewReview}/>
     </div>
   )
 }
 
 export default Reviews;
+
+//{photos: ['url', 'url']

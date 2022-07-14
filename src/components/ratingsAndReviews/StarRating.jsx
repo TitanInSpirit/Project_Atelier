@@ -30,6 +30,7 @@ const StarRating = ({handleStarRating}) => {
               name='rating'
               value={ratingValue}
               onClick={() => handleClick(ratingValue)}
+              required
             />
             <div
               className='ratingStar'

@@ -21,14 +21,14 @@ const Review = ({review, fetchReviewData}) => {
     if(review.body.length > 250) {
       return (
         <div>
-      <p>
-        {showMore ? review.body : review.body.slice(0, 250) + '...'}
-        <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
-      </p>
+          <div>
+            {showMore ? review.body : review.body.slice(0, 250) + '...'}
+            <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
+          </div>
       </div>
       )
     } else {
-      return <p>{review.body}</p>
+      return <div>{review.body}</div>
     }
   }
 
@@ -73,7 +73,7 @@ const Review = ({review, fetchReviewData}) => {
 
   return (
     <div>
-      {console.log(review)}
+      {/* {console.log(review)} */}
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`}></span>
         <div>
@@ -97,7 +97,7 @@ const Review = ({review, fetchReviewData}) => {
         </Modal>
       </div>
       <div className='reviewFooter'>
-        <p>Helpful?</p>
+        <div>Helpful?</div>
         <button className='helpfulAndReport' onClick={handleHelpfulClick} disabled={helpful}>Yes</button>
         <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button>
         <p className='helpfulNum'>({review.helpfulness})</p>

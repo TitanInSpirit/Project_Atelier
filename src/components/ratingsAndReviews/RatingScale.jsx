@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {VscTriangleDown} from 'react-icons/Vsc'
+import {VscTriangleDown} from 'react-icons/vsc'
 
 const RatingScale = ({characteristic}) => {
   const des = {Comfort: ['Uncomfortable', 'Perfect'], Fit: ['Too tight', 'Too long'], Length: ['Too short', 'Too long'], Quality: ['Poor', 'Perfect'], Size: ['Too small', 'Too wide'], Width: ['Too narrow', 'Too wide'] }

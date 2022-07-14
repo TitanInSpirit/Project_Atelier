@@ -2,18 +2,20 @@ import React, {useState, useEffect} from 'react';
 import Modal from './Modal.jsx'
 import StarRating from './StarRating.jsx'
 
-const NewReview = () => {
+const NewReview = ({onHandleAddNewReview}) => {
   const [showModal, setShowModal] = useState(false);
   const [starRating, setStarRating] = useState(null);
   const [recommend, setRecommend] = useState(true);
-  const [characteristics, setCharacteristics] = useState({Size: null, Width: null, Comfort: null, Quality: null, Length: null, Fit: null});
+  const [characteristics, setCharacteristics] = useState({});
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [count, setCount] = useState(50);
   const [photos, setPhotos] = useState([]);
   const [reviewer_name, setReviewer_name] = useState('');
+  const [email, setEmail] = useState('');
 
   const ratingDes = {1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'}
+
   const showDes = () => {
     for (let key in ratingDes) {
       if(starRating === Number(key)) {
@@ -22,7 +24,14 @@ const NewReview = () => {
     }
   }
 
-  const ratingCharacteristicsDes =[['Size', ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']], ['Width', ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide']], ['Comfort', ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect']], ['Quality', ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect']], ['Length', ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long']], ['Fit', ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']]]
+  const ratingCharacteristicsDes =[
+    [['Size', '223734'], ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']],
+    [['Width', '223735'], ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide']],
+    [['Comfort', '223667'], ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect']],
+    [['Quality', '223668'], ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect']],
+    [['Length', '223666'], ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long']],
+    [['Fit', '223665'], ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']]
+  ]
 
   const handleStarRating = (rating) => {
     setStarRating(rating)
@@ -43,15 +52,9 @@ const NewReview = () => {
 
   let newPhotoList;
   const handleChange = (e) => {
-    console.log(e.target.files)
-    // let newPhotoList;
     for (let i = 0; i < e.target.files.length; i++) {
-      console.log('check,,,', e.target.files.length[i])
-      // newPhotoList = photos.push({url: URL.createObjectURL(e.target.files[i])})
-      setPhotos([...photos, {url: URL.createObjectURL(e.target.files[i])}])
+      setPhotos([...photos, URL.createObjectURL(e.target.files[i])])
     }
-    // setPhotos(newPhotoList)
-    console.log('photos are', photos)
   }
 
 
@@ -59,17 +62,19 @@ const NewReview = () => {
     return ratingCharacteristicsDes.map((characteristic, i) => {
       return (
         <div className='newReviewCharaDetailContainer' key={i}>
-          <div className='newReviewCharaDetailtd1'>{characteristic[0]}</div>
+          <div className='newReviewCharaDetailtd1'>{characteristic[0][0]}</div>
             {characteristic[1].map((des, i) => {
               return (
                 <React.Fragment key={i}>
-                <span className='newReviewCharaDetailtd2'>{des}</span>
+                <div className='newReviewCharaDetailtd2'>{des}</div>
+                <br></br>
                 <div className='newReviewCharaDetailtd3'>
                   <input
                     type='radio'
                     value={des}
                     name={characteristic[0]}
-                    onChange={e => setCharacteristics({...characteristics, [characteristic[0]]: e.target.value})}
+                    onChange={e => setCharacteristics({...characteristics, [characteristic[0][1]]: i + 1})}
+                    required
                   />
                   </div>
                 </React.Fragment>
@@ -78,6 +83,12 @@ const NewReview = () => {
         </div>
       )
     })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onHandleAddNewReview({rating: starRating, summary, body, recommend, name: reviewer_name, email, photos, characteristics});
+    setShowModal(false);
   }
 
 
@@ -90,7 +101,7 @@ const NewReview = () => {
         <div className='newReviewContainer'>
           <h3>Write Your Review</h3>
           <small>About the [wait for name props pass here]</small>
-          <form >
+          <form  onSubmit={handleSubmit}>
 
             <div>
               <span>Overrall rating: </span> <span>{starRating && showDes()}</span>
@@ -99,7 +110,7 @@ const NewReview = () => {
 
             <div className='newReviewRecommend'>
               Do you recommend this product?
-              <input type='radio' value='true' name='recommend' onChange={() => setRecommend(true)}/>
+              <input type='radio' value='true' name='recommend' onChange={() => setRecommend(true)} required/>
               <label>Yes</label>
               <input type='radio' value='fasle' name='recommend' onChange={() => setRecommend(false)}/>
               <label>No</label>
@@ -138,7 +149,7 @@ const NewReview = () => {
               {photos.length < 5 && <input type='file' onChange={handleChange} multiple required/>}
               <div>
               {photos.map((photo, i) => {
-                return <img key={i} className='newReviewPhoto' src={photo.url}/>
+                return <img key={i} className='newReviewPhoto' src={photo}/>
               })}
               </div>
             </div>
@@ -161,6 +172,8 @@ const NewReview = () => {
               <input
                 type='email'
                 placeholder='Example: jackson11@email.com'
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 required
               />
             </div>

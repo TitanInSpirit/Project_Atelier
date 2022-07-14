@@ -7,7 +7,7 @@ import axios from 'axios'
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66668');
+  const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
@@ -73,6 +73,13 @@ const RatingsAndReviews = () => {
     setRateArr([]);
   }
 
+  const onHandleAddNewReview = (value) => {
+    // console.log({...value, product_id})
+    axios.post('http://localhost:3001/reviews', {...value, product_id: Number(product_id)})
+    .then(() => fetchReviewData())
+    .catch(err => console.log('catch errrrr', err))
+  }
+
   useEffect(() => {
     if(rateArr.length > 0) {
       let filterReview = [];
@@ -88,7 +95,7 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      {/* {console.log('reviews are', reviews)} */}
+      {console.log('reviews are', reviews)}
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
@@ -101,7 +108,7 @@ const RatingsAndReviews = () => {
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue} results={showReviews}/>
-            <Reviews results={showReviews} fetchReviewData={fetchReviewData}/>
+            <Reviews results={showReviews} fetchReviewData={fetchReviewData} onHandleAddNewReview={onHandleAddNewReview}/>
           </div>
         </div>
     </div>
