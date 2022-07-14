@@ -63,8 +63,13 @@ class App extends React.Component {
   }
 
   getInfo = (productId) => {
-    let payload = productId
-    axios.post('http://localhost:3001/reviews', {productId})
+    const configReview = {
+      params: {
+        product_id: productId,
+      }
+    }
+
+    axios.get('http://localhost:3001/reviews', configReview)
     .then((res) => {
       let response = res.data
       let reviewTotal = 0;
