@@ -41,7 +41,7 @@ class Questions extends React.Component {
   /*----- RENDERER -----*/
   render() {
     return (
-      <div style={{margin: '30px'}} className="questions-and-answeres">
+      <div style={{margin: '30px'}} className="questions-and-answers">
         <h5>QUESTIONS & ANSWERS</h5>
         {this.renderQuestionList()}
         <button style={{margin: '10px'}}>Answer More Questions</button>

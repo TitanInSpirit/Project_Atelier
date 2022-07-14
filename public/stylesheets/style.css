@@ -610,3 +610,12 @@ p {
 .selected_check {
   position: absolute;
 }
+
+
+/* ===== QUESTIONS ===== */
+
+.questions-and-answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

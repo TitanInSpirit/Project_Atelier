@@ -44,18 +44,34 @@ function IndividualQuestion({question, getUpdate}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    const validEmailRegex = RegExp(
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    );
     // create variables for each of the required values existing that are set to false
     // if required value is in state, set exists variable to true
     // render alert if any required exists variable is still false and generate a list of the required fields that are empty
-    if (entry.nickname !== entry.nickname) {
-      console.alert()
+
+    if (entry.nickname === undefined) {
+      alert('You must enter your nickname');
+      return;
+    }
+    if (entry.email === undefined) {
+      alert('You must enter your email');
+      return;
+    }
+    if (!validEmailRegex.test(entry.email)) {
+      alert('You must enter a valid email');
+      return;
+    }
+    if (entry.response === undefined) {
+      alert('You must enter a response');
+      return;
     }
 
     axios.post(`http://localhost:3001/questions/answers/${question_id}`, {body: entry.response, name: entry.nickname, email: entry.email})
     .then(response => getUpdate())
-    .then(() => getUpdate())
     .then(() => setShowForm(false))
+    .then(() => getUpdate())
     .catch(err => `Unable to submit your answer. Error: ${console.error(err.message)}`);
   }
 
