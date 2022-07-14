@@ -95,7 +95,7 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      {console.log('reviews are', reviews)}
+      {/* {console.log('reviews are', reviews)} */}
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>

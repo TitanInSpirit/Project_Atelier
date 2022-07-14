@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Modal from './Modal.jsx'
 import StarRating from './StarRating.jsx'
+import PhotoUpload from './PhotoUpload.jsx'
 
 const NewReview = ({onHandleAddNewReview}) => {
   const [showModal, setShowModal] = useState(false);
@@ -50,14 +51,6 @@ const NewReview = ({onHandleAddNewReview}) => {
   }, [body])
 
 
-  let newPhotoList;
-  const handleChange = (e) => {
-    for (let i = 0; i < e.target.files.length; i++) {
-      setPhotos([...photos, URL.createObjectURL(e.target.files[i])])
-    }
-  }
-
-
   const renderCharacteristic = () => {
     return ratingCharacteristicsDes.map((characteristic, i) => {
       return (
@@ -65,7 +58,7 @@ const NewReview = ({onHandleAddNewReview}) => {
           <div className='newReviewCharaDetailtd1'>{characteristic[0][0]}</div>
             {characteristic[1].map((des, i) => {
               return (
-                <React.Fragment key={i}>
+                <div key={i}>
                 <div className='newReviewCharaDetailtd2'>{des}</div>
                 <br></br>
                 <div className='newReviewCharaDetailtd3'>
@@ -77,7 +70,7 @@ const NewReview = ({onHandleAddNewReview}) => {
                     required
                   />
                   </div>
-                </React.Fragment>
+                </div>
               )
             })}
         </div>
@@ -145,13 +138,7 @@ const NewReview = ({onHandleAddNewReview}) => {
             </div>
 
             <div className='newReviewPhotos'>
-              <label>Upload photos</label>
-              {photos.length < 5 && <input type='file' onChange={handleChange} multiple required/>}
-              <div>
-              {photos.map((photo, i) => {
-                return <img key={i} className='newReviewPhoto' src={photo}/>
-              })}
-              </div>
+              <PhotoUpload setPhotos={setPhotos} photos={photos}/>
             </div>
 
             <div className='newReviewNickname'>
