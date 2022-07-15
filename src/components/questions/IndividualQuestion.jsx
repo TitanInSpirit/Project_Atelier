@@ -47,9 +47,6 @@ function IndividualQuestion({question, getUpdate}) {
     const validEmailRegex = RegExp(
       /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     );
-    // create variables for each of the required values existing that are set to false
-    // if required value is in state, set exists variable to true
-    // render alert if any required exists variable is still false and generate a list of the required fields that are empty
 
     if (entry.nickname === undefined) {
       alert('You must enter your nickname');
@@ -68,7 +65,7 @@ function IndividualQuestion({question, getUpdate}) {
       return;
     }
 
-    axios.post(`http://localhost:3001/questions/answers/${question_id}`, {body: entry.response, name: entry.nickname, email: entry.email})
+    axios.post(`http://localhost:3001/questions/answers/${question_id}`, {body: entry.submission, name: entry.nickname, email: entry.email, photos: [...entry.photos]})
     .then(response => getUpdate())
     .then(() => setShowForm(false))
     .then(() => getUpdate())
@@ -96,7 +93,7 @@ function IndividualQuestion({question, getUpdate}) {
     <div style={{margin: '15px'}}>
       {renderQuestion()}
       <AnswerList answers={answers} getUpdate={getUpdate}/>
-      <Form showForm={showForm} setShowForm={setShowForm}submissionType={'Answer'} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <Form showForm={showForm} setShowForm={setShowForm} submissionType={'Answer'} handleChange={handleChange} handleSubmit={handleSubmit}/>
     </div>
   )
 }
