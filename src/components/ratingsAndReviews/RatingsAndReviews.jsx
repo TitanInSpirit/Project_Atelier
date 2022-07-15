@@ -3,6 +3,7 @@ import Reviews from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
 import Sort from './Sort.jsx';
 import axios from 'axios'
+import SearchBar from './SearchBar.jsx'
 
 const RatingsAndReviews = () => {
   const [sort, setSort] = useState('relevant');
@@ -12,6 +13,7 @@ const RatingsAndReviews = () => {
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
   const [rateArr, setRateArr] = useState([]);
+  const [reviewsCount, setReviewsCount] = useState(0)
   const {results} = reviews;
 
   const handleSortValue = value => {
@@ -93,9 +95,17 @@ const RatingsAndReviews = () => {
     }
   }, [rateArr])
 
+  useEffect(() => {
+    if(showReviews) {
+      setReviewsCount(showReviews.length)
+    }
+  }, [showReviews])
+
+
   return (
     <div>
-      {/* {console.log('reviews are', reviews)} */}
+      {/* {console.log('reviews are', reviews)}
+      {console.log('showReview', showReviews)} */}
       <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
@@ -107,8 +117,12 @@ const RatingsAndReviews = () => {
             />
           </div>
           <div className="reviewsContainer">
-            <Sort handleSortValue={handleSortValue} results={showReviews}/>
-            <Reviews results={showReviews} fetchReviewData={fetchReviewData} onHandleAddNewReview={onHandleAddNewReview}/>
+            <Sort handleSortValue={handleSortValue} results={showReviews} reviewsCount={reviewsCount}/>
+            <Reviews
+              results={showReviews}
+              fetchReviewData={fetchReviewData}
+              onHandleAddNewReview={onHandleAddNewReview}
+            />
           </div>
         </div>
     </div>

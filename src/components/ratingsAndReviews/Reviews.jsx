@@ -8,6 +8,7 @@ import Review from './Review.jsx'
 const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
   const [renderReview, setRenderReview] = useState([])
   const [reviewCount, setReviewCount] = useState(2)
+  const [searchValue, setSearchValue] = useState('')
 
   useEffect(() => {
     if(results) {
@@ -27,19 +28,57 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
   }, [reviewCount])
 
   const renderMoreReviewsBtn = () => {
-    if(results && renderReview.length < results.length) {
+    if(results && renderReview && renderReview.length < results.length) {
       return <button className='moreReviewsBtn' onClick={handleMoreReview}>More reviews ></button>
+    }
+  }
+
+  let temp = [];
+  useEffect(() => {
+    if(searchValue.length > 3) {
+      for (let review of renderReview) {
+        if(review.body.toUpperCase().includes(searchValue.toUpperCase())) {
+          temp.push(review)
+        }
+      }
+    } else {
+      setRenderReview(results);
+      return;
+    }
+    setRenderReview(temp)
+  }, [searchValue])
+
+
+  const renderReviewResult = () => {
+    if(renderReview) {
+      if(renderReview.length <= 0) {
+        return <div>Nothing found</div>
+      } else {
+        return renderReview.map(review => {
+          return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
+        })
+      }
     }
   }
 
   return (
     <div>
-      {/* {console.log(results)} */}
+      {console.log(results)}
+      {console.log('renderReview', renderReview)}
       {/* {console.log(filterReviewFromRating)} */}
+      <div>
+        <input
+          type='text'
+          placeholder='Search...'
+          value={searchValue}
+          onChange={e => setSearchValue(e.target.value)}
+        />
+      </div>
       <div className='renderReviews'>
-        {renderReview && renderReview.map(review => {
+        {/* {renderReview && renderReview.map(review => {
           return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
-        })}
+        })} */}
+        {renderReviewResult()}
       </div>
       <hr className='reviewsBreak'/>
       {renderMoreReviewsBtn()}

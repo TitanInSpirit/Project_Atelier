@@ -145,6 +145,12 @@ p {
   margin-left: 4rem;
 }
 
+.sortAndSearchContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .reviewSummary {
   margin-bottom: 10px;
   font-weight: bold;
@@ -191,7 +197,7 @@ p {
 }
 
 .reviewBodyDetail{
-  line-height: 20px;
+  line-height: 25px;
 }
 
 
@@ -218,6 +224,8 @@ p {
   border: none;
   text-decoration: underline;
   background-color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .addNewRivewBtn {

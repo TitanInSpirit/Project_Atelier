@@ -23,8 +23,10 @@ const Review = ({review, fetchReviewData}) => {
           <div className='renderReviewBodycontainer'>
             <div className='reviewBodyDetail'>
             {showMore ? review.body : review.body.slice(0, 250) + '...'}
+            <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}
+            </button>
             </div>
-            <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
+
           </div>
       )
     } else {
