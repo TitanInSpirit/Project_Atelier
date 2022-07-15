@@ -37,29 +37,11 @@ function PhotoUpload({handleChange}) {
     })
   }
 
-  // const handleUpload = (event) => {
-  //   event.preventDefault();
-
-  //   queuedPhotos.map(photo => {
-  //     const formData = new FormData();
-
-  //     formData.append('file', photo);
-  //     formData.append('upload_preset', 'project_atelier');
-
-  //     return axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
-  //     .then(response => {
-  //       setPhotos(prev => [...prev, response.data.url]);
-  //       photoURLs.push(response.data.url);
-  //     })
-  //     .catch(err => console.error(`Unable to upload photos due to Error: ${err}`));
-  //   })
-  // }
-
   const handleRemove = ({target: {name}}) => {
     event.preventDefault();
-    const currentPhotos = photos
+    const currentPhotos = [...photos]
     currentPhotos.splice(name, 1);
-    setPhotos(...currentPhotos);
+    setPhotos(currentPhotos);
 
   }
 
@@ -94,7 +76,6 @@ function PhotoUpload({handleChange}) {
         <br/>
         <input type="file" onChange={handlePhotoSelect} name="photos"></input>
         <br/>
-        {/* <button onClick={handleUpload}>Upload</button> */}
     </div>
     )
   }
