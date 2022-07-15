@@ -10,20 +10,28 @@ h1 {
   font-size: 2.25rem;
   font-weight: bold;
   margin: 0px;
+  padding: 0px;
 }
 
 h2 {
   font-family: 'Hind Siliguri', sans-serif;
   font-weight: lighter;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   margin: 0px;
+  padding: 0px;
+}
+
+h3 {
+  font-family: 'Hind Madurai', sans-serif;
+  font-size: 1rem;
+  margin: 0px;
+  font-weight: 100;
 }
 
 p {
   font-family: 'Hind Madurai', sans-serif;
   font-size: .75rem;
   margin: 0px;
-
 }
 
 #root {
@@ -141,12 +149,12 @@ p {
 }
 
 .reviewResponseContainer {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   margin: 15px 0;
   padding: 15px 15px 20px 15px;
 }
 
-.reviewResponse{
+.reviewResponse {
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -375,7 +383,7 @@ p {
   margin-left: 10px;
 }
 
-.newReviewContainer{
+.newReviewContainer {
   /* float: inline-start; */
   overflow-y: scroll;
 }
@@ -385,11 +393,11 @@ p {
   margin-right: 20px;
 }
 
-.newReviewRadio{
+.newReviewRadio {
   margin-right: 120px;
   position: relative;
   right: -70px
-  /* float: inline-end; */
+    /* float: inline-end; */
 }
 
 
@@ -399,7 +407,7 @@ p {
   font-weight: bold;
 }
 
-.newReviewCharaDetailContainer{
+.newReviewCharaDetailContainer {
   display: flex;
   flex: row;
 }
@@ -408,7 +416,7 @@ p {
   font-weight: bold;
 }
 
-.newReviewCharaDetailtd2{
+.newReviewCharaDetailtd2 {
   margin-left: 30px;
 }
 
@@ -609,4 +617,65 @@ p {
 
 .selected_check {
   position: absolute;
+}
+
+/* Overview | Add To Cart */
+
+.overview_button {
+  background-color: transparent;
+  text-align: left;
+  text-indent: 5px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 10px;
+  width: 175px;
+  height: 45px;
+  border-color: rgb(72, 72, 72);
+}
+
+.overview_favorite_btn {
+  width: 50px;
+  text-align: center;
+  text-indent: 0px;
+}
+
+.add_to_cart_btn {
+  width: 250px;
+}
+
+.select_quantity {
+  width: 100px;
+}
+
+.select_size {
+  width: 200px;
+}
+
+.productinfo_rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview_ratings {
+  display: flex;
+  flex-direction: row;
+}
+
+.overview_review_link {
+  padding-left: 5px;
+}
+
+.overview_has_sale_price {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.sale_price {
+  padding-right: 5px;
+}
+
+.overview_review_link {
+  cursor: pointer;
 }
