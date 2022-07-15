@@ -6,12 +6,64 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 import PhotoUpload from './PhotoUpload.jsx'
 
-function Form({showForm, setShowForm, submissionType, handleChange, handleSubmit}) {
+function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
   if (!showForm) {
     return null;
   }
 
-/*----- RENDER FUNCTIONS -----*/
+
+  /*----- STATE HOOKS -----*/
+  const [entry, setEntry] = useState({});
+
+
+  /*----- EVENT HANDLERS -----*/
+
+  const handleChange = ({target: {value, name}}) => {
+    // const {target: {value, name}} = event;
+    setEntry(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const validEmailRegex = RegExp(
+      /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+    );
+
+    if (entry.nickname === undefined) {
+      alert('You must enter your nickname');
+      return;
+    }
+    if (entry.email === undefined) {
+      alert('You must enter your email');
+      return;
+    }
+    if (!validEmailRegex.test(entry.email)) {
+      alert('You must enter a valid email');
+      return;
+    }
+    if (entry.submission === undefined) {
+      alert('You must enter a response');
+      return;
+    }
+
+    axios.post(`http://localhost:3001/questions/${submissionType}/${id}`, {
+      body: entry.submission,
+      name: entry.nickname,
+      email: entry.email,
+      product_id: id
+      // photos: [...entry.photos] || null
+    })
+    .then(response => getUpdate())
+    .then(() => setShowForm(false))
+    .then(() => getUpdate())
+    .catch(err => `Unable to submit your answer. Error: ${console.error(err.message)}`);
+  }
+
+
+  /*----- RENDER FUNCTIONS -----*/
 
   const renderNickname = () => {
     return (
