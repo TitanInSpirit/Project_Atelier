@@ -11,87 +11,90 @@ function PhotoUpload({handleChange}) {
   const [photos, setPhotos] = useState([]);
 
   const photoURLs = [];
-  const uploadedPhotos = [];
+  const queuedPhotos = [];
 
 
   /*----- EVENT HANDLERS -----*/
 
-  const handlePhotoSelect = (event) => {
-    const {target: {name, files}} = event;
-    console.log(event);
-    console.log(FileList);
-    console.log(FileList[0]);
-    console.log(Array.from(files));
-    // setPhotos(prev => ({
-    //   ...prev,
-    //    [name]: [...photos, files]
-    // }))
-    setPhotos([...Array.from(files)]);
-
-    let reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onloadend = () => {
-      uploadedPhotos.push(reader.result);
-      console.log(uploadedPhotos);
+  const handlePhotoSelect = ({target: {name, files, files: {length}}}) => {
+    event.preventDefault();
+    for (let i = 0; i < length; i++) {
+      queuedPhotos.push(files[i])
     }
 
+    queuedPhotos.map(photo => {
+      const formData = new FormData();
+
+      formData.append('file', photo);
+      formData.append('upload_preset', 'project_atelier');
+
+      return axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
+      .then(response => {
+        setPhotos(prev => [...prev, response.data.url]);
+        photoURLs.push(response.data.url);
+      })
+      .catch(err => console.error(`Unable to upload photos due to Error: ${err}`));
+    })
   }
 
+  // const handleUpload = (event) => {
+  //   event.preventDefault();
 
+  //   queuedPhotos.map(photo => {
+  //     const formData = new FormData();
 
-  const handlePhotoSubmit = (event) => {
+  //     formData.append('file', photo);
+  //     formData.append('upload_preset', 'project_atelier');
+
+  //     return axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
+  //     .then(response => {
+  //       setPhotos(prev => [...prev, response.data.url]);
+  //       photoURLs.push(response.data.url);
+  //     })
+  //     .catch(err => console.error(`Unable to upload photos due to Error: ${err}`));
+  //   })
+  // }
+
+  const handleRemove = ({target: {name}}) => {
     event.preventDefault();
-    const photoURLs = [];
-    const formData = new FormData();
+    const currentPhotos = photos
+    currentPhotos.splice(name, 1);
+    setPhotos(...currentPhotos);
 
-    formData.append('upload_preset', 'project_atelier');
-    photos.map(photo => formData.append('files[]', photo));
-
-    axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
-    .then((response) => console.log(response.body) /* photoURLs = [...some value] */)
-    .catch((err) => console.error(`Unable to upload photos due to Error: ${err}`));
-
-        // map over photos array and upload each file to Cloudinary
-    // photos.map(() => {axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
-        // when cloudinary returns the uploaded photo URL, add it to the photoURL array
-    //   .then((response) => console.log(response.body) /* photoURLs = [...some value] */)
-    //   .catch((err) => console.error(`Unable to upload photos due to Error: ${err}`));
-    // });
-
-    // add finished photoURL array to state in parent component
   }
-
 
 /*----- RENDER FUNCTIONS -----*/
 
   const renderPhotoPreview = () => {
-
     return (
       <>
         <label>Preview</label>
-        <p>img</p>
-        <img src={uploadedPhotos[0]} />
-        {/* {uploadedPhotos.map((photo) => {
-          return (
-            <>
-              <p>img</p>
-              <img src={photo}/>
-            </>
-          )
-        })} */}
+        <br/>
+        <div>
+          {photos !== undefined && photos.map((photo, index) => {
+            return (
+              <span key={'photo' + index}>
+                <img style={{margin: '10px'}} key={index} src={photo} height="75em" width="auto" />
+                <button onClick={handleRemove} name={index}>Remove</button>
+              </span>
+            )
+          })}
+        </div>
       </>
     )
   }
 
   const renderPhotoUpload = () => {
-
+    if (photos && photos.length > 5) {
+      return <></>
+    }
     return (
       <div style={{width: '25em'}}>
         <label>Upload Photos</label>
         <br/>
-        <input type="file" multiple onChange={handlePhotoSelect} name="photos"></input>
+        <input type="file" onChange={handlePhotoSelect} name="photos"></input>
         <br/>
-        <button onClick={handlePhotoSubmit}>Upload</button>
+        {/* <button onClick={handleUpload}>Upload</button> */}
     </div>
     )
   }
