@@ -675,3 +675,7 @@ p {
 .sale_price {
   padding-right: 5px;
 }
+
+.overview_review_link {
+  cursor: pointer;
+}

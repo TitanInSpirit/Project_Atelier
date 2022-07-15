@@ -17,9 +17,11 @@ function ProductInfo(props) {
   }
 
   return <div className="product_info_container">
-    <div class="overview_ratings">
+    <div className="overview_ratings">
     <div className={`productinfo_rating rating-static rating-${formatRating() * 10}`}></div>
-    <p className="overview_review_link"><u>Read All Reviews</u></p>
+    <p className="overview_review_link" onClick={() => {
+      props.scrollToSection(props.reviewsRef)
+    }}><u>Read All Reviews</u></p>
     </div>
     <div className="product_category_title product_info">
       <span className="product_category product_info"><h2>{props.current_product.category.toUpperCase()}</h2></span>

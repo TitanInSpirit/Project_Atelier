@@ -11,6 +11,7 @@ const root = createRoot(document.getElementById('root'));
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.scrollToReviews = React.createRef()
     this.state = {
       products: [],
       all_styles:  [],
@@ -26,6 +27,13 @@ class App extends React.Component {
     this.getAllProducts()
   }
 
+  scrollToSection = (elementRef) => {
+    console.log(elementRef)
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: 'smooth'
+    })
+  }
   getAllProducts = () => {
     axios.get('http://localhost:3001/products')
     .then((response) => {
@@ -104,9 +112,11 @@ class App extends React.Component {
         setCurrentStyle={this.setCurrentStyle}
         setCurrentSku={this.setCurrentSku}
         currentSku={this.state.current_sku}
+        reviewsRef={this.scrollToReviews}
+        scrollToSection={this.scrollToSection}
         />
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
-        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts}/>
+        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts} reviewsRef={this.scrollToReviews}/>
       </div>
     );
   }

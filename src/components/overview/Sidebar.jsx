@@ -14,6 +14,9 @@ function Sidebar(props) {
         current_style={props.current_style}
         total_reviews={props.total_reviews}
         average_reviews={props.average_reviews}
+        scrollToReviews={props.scrollToReviews}
+        reviewsRef={props.reviewsRef}
+        scrollToSection={props.scrollToSection}
         />
       <StyleSelector
         products={props.products}

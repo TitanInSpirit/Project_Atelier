@@ -31,6 +31,8 @@ const Overview = (props) => {
         setCurrentStyle={props.setCurrentStyle}
         setCurrentSku={props.setCurrentSku}
         currentSku={props.currentSku}
+        reviewsRef={props.reviewsRef}
+        scrollToSection={props.scrollToSection}
         />
       </div>
     );
