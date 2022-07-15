@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
+import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
 function VerticalGallery (props) {
 
@@ -42,15 +42,15 @@ const ImageSlider = (props) => {
     const length = props.currentStyle.photos.length
     return (
       <section className="slider">
-        <div className="imageGallery">
-        <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
-        </div>
         {photos.map((photo, index) => {
           let bigPic = photo.url;
           return(
             <div key={index} className={index === current? 'slide active' : 'slide'}>
-              <FaArrowAltCircleLeft className="left-arrow"  onClick={prevSlide}/>
-              <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
+              <div className="imageGallery">
+                <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
+              </div>
+              <BsChevronLeft className="left-arrow"  onClick={prevSlide}/>
+              <BsChevronRight className="right-arrow" onClick={nextSlide}/>
               {index === current && (
                 <img key={index} src={`${bigPic}`} className="image"/>
               )}
