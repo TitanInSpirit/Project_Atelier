@@ -17,18 +17,21 @@ const Review = ({review, fetchReviewData}) => {
   const {response} = review;
 
 
+
   const renderBody = () => {
     if(review.body.length > 250) {
       return (
-        <div>
-      <p>
-        {showMore ? review.body : review.body.slice(0, 250) + '...'}
-        <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}</button>
-      </p>
-      </div>
+          <div className='renderReviewBodycontainer'>
+            <div className='reviewBodyDetail'>
+              {showMore ? review.body : review.body.slice(0, 250) + '...'}
+              <button className='showMore' onClick={() => setShowMore(!showMore)}>
+                {showMore ? 'Show less' : 'Show more'}
+              </button>
+            </div>
+          </div>
       )
     } else {
-      return <p>{review.body}</p>
+      return <div className='reviewBodyDetail'>{review.body}</div>
     }
   }
 
@@ -72,8 +75,8 @@ const Review = ({review, fetchReviewData}) => {
   }
 
   return (
-    <div>
-      {console.log(review)}
+    <div className='singleReviewContainer'>
+      {/* {console.log(review)} */}
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`}></span>
         <div>
@@ -82,9 +85,9 @@ const Review = ({review, fetchReviewData}) => {
         </div>
       </div>
       <div className='reviewBody'>
-        <b>{review.summary}</b>
+        <div className='reviewSummary'>{review.summary}</div>
         {renderBody()}
-        {review.recommend && <small>✓ I recommend this product</small>}
+        {review.recommend && <div className='reviewRecommend'>✓ I recommend this product</div>}
         {response && showResponse()}
       </div>
       <div className='reviewPhotos'>
@@ -97,19 +100,19 @@ const Review = ({review, fetchReviewData}) => {
         </Modal>
       </div>
       <div className='reviewFooter'>
-        <p>Helpful?</p>
-        <button className='helpfulAndReport' onClick={handleHelpfulClick} disabled={helpful}>Yes</button>
-        <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button>
+        {/* <div>Helpful?</div> */}
+        <button className='reviewHelpfulButton' onClick={handleHelpfulClick} disabled={helpful}>Helpful</button>
+        {/* <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button> */}
         <p className='helpfulNum'>({review.helpfulness})</p>
-        <p> | </p>
+        <p className='helpfulReportDevide'> | </p>
         <button
-          className='helpfulAndReport'
+          className='reviewReportButton'
           onClick={handleReportClick}
           >
             Report
         </button>
       </div>
-      <hr/>
+      {/* <hr className='reviewsBreak'/> */}
     </div>
     )
 }
