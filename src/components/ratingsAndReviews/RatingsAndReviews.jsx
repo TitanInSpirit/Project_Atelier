@@ -95,11 +95,12 @@ const RatingsAndReviews = () => {
     }
   }, [rateArr])
 
-  useEffect(() => {
-    if(showReviews) {
-      setReviewsCount(showReviews.length)
+  const handleGetFilterReviewCounts = (value) => {
+    if(value){
+      setReviewsCount(value.length)
     }
-  }, [showReviews])
+  }
+
 
 
   return (
@@ -122,6 +123,7 @@ const RatingsAndReviews = () => {
               results={showReviews}
               fetchReviewData={fetchReviewData}
               onHandleAddNewReview={onHandleAddNewReview}
+              handleGetFilterReviewCounts={handleGetFilterReviewCounts}
             />
           </div>
         </div>

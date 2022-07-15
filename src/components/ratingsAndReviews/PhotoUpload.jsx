@@ -30,25 +30,28 @@ const PhotoUpload = ({setPhotos, photos}) => {
 
 
   return (
-    <div>
+    <div className='newReviewPhotoContainer'>
       {/* {arr.length > 0 && console.log('arrrrr is', arr)}
       {console.log('returnUrl', {returnUrl})} */}
       {/* {console.log('imageSelected', imageSelected)} */}
       {/* {console.log('photos', photos)} */}
-      {photos.length < 5 && (
-        <input
-        type='file'
-        onChange={handleChange}
-        multiple
-      />
-      )}
-
-      <button onClick={uploadImage}>Upload Photo</button>
-        <div>
-        {photos.length > 0 && photos.map((url, i) => {
-          return <img key={i} className='newReviewPhoto' src={url} alt='' />
-        })}
-        </div>
+      <div className='newReviewPhotoUpload'>
+        {photos.length < 5 && (
+            <input
+            type='file'
+            onChange={handleChange}
+            multiple
+            className='newReviewPhotoInput'
+            id='fileInput'
+          />
+        )}
+        <button className='newReviewPhotoUploadBtn' onClick={uploadImage}>Upload Photo</button>
+      </div>
+      <div className='newReviewShowPhotos'>
+      {photos.length > 0 && photos.map((url, i) => {
+        return <img key={i} className='newReviewPhoto' src={url} alt='' />
+      })}
+      </div>
 
     </div>
   )

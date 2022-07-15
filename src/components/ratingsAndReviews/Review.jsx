@@ -17,20 +17,21 @@ const Review = ({review, fetchReviewData}) => {
   const {response} = review;
 
 
+
   const renderBody = () => {
     if(review.body.length > 250) {
       return (
           <div className='renderReviewBodycontainer'>
             <div className='reviewBodyDetail'>
-            {showMore ? review.body : review.body.slice(0, 250) + '...'}
-            <button className='showMore' onClick={() => setShowMore(!showMore)}>{showMore ? 'Show less' : 'Show more'}
-            </button>
+              {showMore ? review.body : review.body.slice(0, 250) + '...'}
+              <button className='showMore' onClick={() => setShowMore(!showMore)}>
+                {showMore ? 'Show less' : 'Show more'}
+              </button>
             </div>
-
           </div>
       )
     } else {
-      return <div>{review.body}</div>
+      return <div className='reviewBodyDetail'>{review.body}</div>
     }
   }
 

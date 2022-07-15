@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import NewReview from './NewReview.jsx';
 import Review from './Review.jsx'
+import {BsSearch} from 'react-icons/bs'
 
 
 
-
-const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
+const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilterReviewCounts}) => {
   const [renderReview, setRenderReview] = useState([])
   const [reviewCount, setReviewCount] = useState(2)
   const [searchValue, setSearchValue] = useState('')
@@ -48,11 +48,15 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
     setRenderReview(temp)
   }, [searchValue])
 
+  useEffect(() => {
+    handleGetFilterReviewCounts(renderReview)
+  }, [renderReview])
+
 
   const renderReviewResult = () => {
     if(renderReview) {
       if(renderReview.length <= 0) {
-        return <div>Nothing found</div>
+        return <div className='reviewNoFound'><BsSearch/> Nothing found...</div>
       } else {
         return renderReview.map(review => {
           return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
@@ -72,6 +76,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
           placeholder='Search...'
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
+          className='reivewSearchBar'
         />
       </div>
       <div className='renderReviews'>

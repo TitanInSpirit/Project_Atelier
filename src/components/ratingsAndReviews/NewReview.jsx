@@ -58,18 +58,18 @@ const NewReview = ({onHandleAddNewReview}) => {
           <div className='newReviewCharaDetailtd1'>{characteristic[0][0]}</div>
             {characteristic[1].map((des, i) => {
               return (
-                <div key={i}>
-                <div className='newReviewCharaDetailtd2'>{des}</div>
-                <br></br>
-                <div className='newReviewCharaDetailtd3'>
-                  <input
-                    type='radio'
-                    value={des}
-                    name={characteristic[0]}
-                    onChange={e => setCharacteristics({...characteristics, [characteristic[0][1]]: i + 1})}
-                    required
-                  />
-                  </div>
+                <div className='newReviewDesAndRadio' key={i}>
+                  <div className='newReviewCharaDetailtd2'>{des}</div>
+                  <br/>
+                  <div className='newReviewCharaDetailtd3'>
+                    <input
+                      type='radio'
+                      value={des}
+                      name={characteristic[0]}
+                      onChange={e => setCharacteristics({...characteristics, [characteristic[0][1]]: i + 1})}
+                      required
+                    />
+                    </div>
                 </div>
               )
             })}
@@ -92,49 +92,56 @@ const NewReview = ({onHandleAddNewReview}) => {
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
       <Modal showModal={showModal}>
         <div className='newReviewContainer'>
-          <h3>Write Your Review</h3>
-          <small>About the [wait for name props pass here]</small>
+          <h3 className='newReviewTitle'>Write Your Review</h3>
+          <div className='newReviewSubTitle'>About the [wait for name props pass here]</div>
           <form  onSubmit={handleSubmit}>
 
             <div>
-              <span>Overrall rating: </span> <span>{starRating && showDes()}</span>
+              <span style={{fontWeight: 'bold'}}>Overrall rating: </span> <span>{starRating && showDes()}</span>
               <StarRating handleStarRating={handleStarRating}/>
             </div>
 
             <div className='newReviewRecommend'>
-              Do you recommend this product?
+              <span style={{fontWeight: 'bold'}}>
+                Do you recommend this product?
+              </span>
               <input type='radio' value='true' name='recommend' onChange={() => setRecommend(true)} required/>
               <label>Yes</label>
               <input type='radio' value='fasle' name='recommend' onChange={() => setRecommend(false)}/>
               <label>No</label>
             </div>
-
+            <hr style={{color: 'lightgray', marginBottom: '20px'}}/>
             <div className='newReviewCharacteristics'>
               {renderCharacteristic()}
             </div>
-
+            <hr style={{color: 'lightgray', margin: '15px 0 15px 0'}}/>
             <div className='newReviewSummary'>
-              <label>Summary</label>
+              <label className='newReviewLabel'>Summary</label>
               <input
                 type='text'
                 value={summary}
                 onChange={e => setSummary(e.target.value)}
                 placeholder='Example: Best purchase ever!'
                 required
+                className='newReviewInput'
               />
             </div>
 
             <div className='newReviewBody'>
-              <label>Review</label>
-              <input
+              <label className='newReviewLabel'>Review</label>
+              <textarea
                 placeholder='Why did you like the product or not?'
                 value={body}
                 onChange={e => setBody(e.target.value)}
                 minLength='50'
                 maxLength='1000'
                 required
+                className='newReviewInput'
+                style={{height: '50px'}}
               />
-              {count > 0 ? <div>Minimum required characters left: {count}</div> : <div>Minimum reached</div>}
+              <div className='newReviewSubTitle' style={{top:'-5px'}}>
+              {count > 0 ? <div >Minimum required characters left: {count}</div> : <div>Minimum reached</div>}
+              </div>
             </div>
 
             <div className='newReviewPhotos'>
@@ -142,7 +149,7 @@ const NewReview = ({onHandleAddNewReview}) => {
             </div>
 
             <div className='newReviewNickname'>
-              <label>Nickname</label>
+              <label className='newReviewLabel'>Nickname</label>
               <input
                 type='text'
                 value={reviewer_name}
@@ -150,24 +157,26 @@ const NewReview = ({onHandleAddNewReview}) => {
                 onChange={e => setReviewer_name(e.target.value)}
                 maxLength='60'
                 required
+                className='newReviewInput'
               />
-              <div>For privacy reasons, do not use your full name or email address.</div>
+              <div className='newReviewSubTitle' style={{top:'-4px'}}>For privacy reasons, do not use your full name or email address.</div>
             </div>
 
             <div className='newReviewEmail'>
-              <label>Email</label>
+              <label className='newReviewLabel'>Email</label>
               <input
                 type='email'
                 placeholder='Example: jackson11@email.com'
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
+                className='newReviewInput'
               />
             </div>
 
-            <button>Submit</button>
+            <button className='newFormBtn' style={{marginTop: '20px'}}>SUBMIT</button>
           </form>
-          <button onClick={() => setShowModal(false)}>Close</button>
+          <button className='newFormBtn' onClick={() => setShowModal(false)}>CANCEL</button>
         </div>
     </Modal>
     </div>
