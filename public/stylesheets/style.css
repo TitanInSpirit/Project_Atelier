@@ -10,20 +10,28 @@ h1 {
   font-size: 2.25rem;
   font-weight: bold;
   margin: 0px;
+  padding: 0px;
 }
 
 h2 {
   font-family: 'Hind Siliguri', sans-serif;
   font-weight: lighter;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   margin: 0px;
+  padding: 0px;
+}
+
+h3 {
+  font-family: 'Hind Madurai', sans-serif;
+  font-size: 1rem;
+  margin: 0px;
+  font-weight: 100;
 }
 
 p {
   font-family: 'Hind Madurai', sans-serif;
   font-size: .75rem;
   margin: 0px;
-
 }
 
 #root {
@@ -641,4 +649,29 @@ p {
 
 .select_size {
   width: 200px;
+}
+
+.productinfo_rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview_ratings {
+  display: flex;
+  flex-direction: row;
+}
+
+.overview_review_link {
+  padding-left: 5px;
+}
+
+.overview_has_sale_price {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.sale_price {
+  padding-right: 5px;
 }
