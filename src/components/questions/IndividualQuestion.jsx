@@ -18,10 +18,10 @@ function IndividualQuestion({question, getUpdate}) {
     question_id,
     reported} = question
 
+  /*----- STATE HOOKS -----*/
   const [wasHelpful, setWasHelpful] = useState(false);
   const [increaseHelpfulness, setIncreaseHelpfulness] = useState(question_helpfulness);
   const [showForm, setShowForm] = useState(false);
-  const [entry, setEntry] = useState({});
 
   answers = Object.keys(answers).map((key) => answers[key]);
 
@@ -34,30 +34,6 @@ function IndividualQuestion({question, getUpdate}) {
       .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
-  const handleChange = (event) => {
-    const {target: {value, name}} = event;
-    setEntry(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // create variables for each of the required values existing that are set to false
-    // if required value is in state, set exists variable to true
-    // render alert if any required exists variable is still false and generate a list of the required fields that are empty
-    if (entry.nickname !== entry.nickname) {
-      console.alert()
-    }
-
-    axios.post(`http://localhost:3001/questions/answers/${question_id}`, {body: entry.response, name: entry.nickname, email: entry.email})
-    .then(response => getUpdate())
-    .then(() => getUpdate())
-    .then(() => setShowForm(false))
-    .catch(err => `Unable to submit your answer. Error: ${console.error(err.message)}`);
-  }
 
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
@@ -75,12 +51,13 @@ function IndividualQuestion({question, getUpdate}) {
     return <div>{`Q: ${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}</div>;
   }
 
+
   /*----- RENDERER -----*/
   return (
     <div style={{margin: '15px'}}>
       {renderQuestion()}
       <AnswerList answers={answers} getUpdate={getUpdate}/>
-      <Form showForm={showForm} setShowForm={setShowForm}submissionType={'Answer'} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
     </div>
   )
 }
