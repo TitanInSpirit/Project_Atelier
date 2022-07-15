@@ -28,7 +28,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
 
   const renderMoreReviewsBtn = () => {
     if(results && renderReview.length < results.length) {
-      return <button onClick={handleMoreReview}>More reviews</button>
+      return <button className='moreReviewsBtn' onClick={handleMoreReview}>More reviews ></button>
     }
   }
 
@@ -41,6 +41,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview}) => {
           return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
         })}
       </div>
+      <hr className='reviewsBreak'/>
       {renderMoreReviewsBtn()}
       <NewReview onHandleAddNewReview={onHandleAddNewReview}/>
     </div>
