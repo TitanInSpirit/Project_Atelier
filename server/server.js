@@ -258,7 +258,7 @@ app.post('/questions/Question/:id', (req, res) => {
   var config = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`,
-    data: req.body
+    data: req.body,
   };
 
   axios(config)

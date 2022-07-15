@@ -19,7 +19,6 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
   /*----- EVENT HANDLERS -----*/
 
   const handleChange = ({target: {value, name}}) => {
-    // const {target: {value, name}} = event;
     setEntry(prev => ({
       ...prev,
       [name]: value
@@ -53,7 +52,7 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
       body: entry.submission,
       name: entry.nickname,
       email: entry.email,
-      product_id: id
+      product_id: Number(id)
       // photos: [...entry.photos] || null
     })
     .then(response => getUpdate())
