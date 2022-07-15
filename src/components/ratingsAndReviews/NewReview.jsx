@@ -107,7 +107,7 @@ const NewReview = ({onHandleAddNewReview}) => {
               </span>
               <input type='radio' value='true' name='recommend' onChange={() => setRecommend(true)} required/>
               <label>Yes</label>
-              <input type='radio' value='fasle' name='recommend' onChange={() => setRecommend(false)}/>
+              <input type='radio' value='false' name='recommend' onChange={() => setRecommend(false)}/>
               <label>No</label>
             </div>
             <hr style={{color: 'lightgray', marginBottom: '20px'}}/>
