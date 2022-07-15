@@ -242,7 +242,7 @@ app.post('/reviews', (req, res) => {
   });
 });
 
-app.post('/questions/answers/:id', (req, res) => {
+app.post('/questions/Answer/:id', (req, res) => {
   var config = {
     method: 'post',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${req.params.id}/answers`,
@@ -256,6 +256,19 @@ app.post('/questions/answers/:id', (req, res) => {
   .catch(error => `Unable to modify. Error: ${console.log(error)}`);
 });
 
+app.post('/questions/Question/:id', (req, res) => {
+  var config = {
+    method: 'post',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`,
+    data: req.body,
+  };
+
+  axios(config)
+  .then(response => {
+    res.sendStatus(201);
+  })
+  .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+});
 
 // PUT Requests
 app.put('/reviews/:review_id/helpful', (req, res) => {

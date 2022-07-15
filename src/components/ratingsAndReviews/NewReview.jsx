@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from './Modal.jsx'
 import StarRating from './StarRating.jsx'
 import PhotoUpload from './PhotoUpload.jsx'
+
 
 const NewReview = ({onHandleAddNewReview}) => {
   const [showModal, setShowModal] = useState(false);
@@ -95,7 +96,6 @@ const NewReview = ({onHandleAddNewReview}) => {
           <h3 className='newReviewTitle'>Write Your Review</h3>
           <div className='newReviewSubTitle'>About the [wait for name props pass here]</div>
           <form  onSubmit={handleSubmit}>
-
             <div>
               <span style={{fontWeight: 'bold'}}>Overrall rating: </span> <span>{starRating && showDes()}</span>
               <StarRating handleStarRating={handleStarRating}/>
@@ -126,7 +126,6 @@ const NewReview = ({onHandleAddNewReview}) => {
                 className='newReviewInput'
               />
             </div>
-
             <div className='newReviewBody'>
               <label className='newReviewLabel'>Review</label>
               <textarea

@@ -921,3 +921,13 @@ p {
 .overview_review_link {
   cursor: pointer;
 }
+
+/* ===== QUESTIONS ===== */
+
+.questions-and-answers {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
