@@ -11,6 +11,7 @@ const root = createRoot(document.getElementById('root'));
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.scrollToReviews = React.createRef()
     this.state = {
       products: [],
       all_styles:  [],
@@ -26,6 +27,13 @@ class App extends React.Component {
     this.getAllProducts()
   }
 
+  scrollToSection = (elementRef) => {
+    console.log(elementRef)
+    window.scrollTo({
+      top: elementRef.current.offsetTop,
+      behavior: 'smooth'
+    })
+  }
   getAllProducts = () => {
     axios.get('http://localhost:3001/products')
     .then((response) => {
@@ -37,16 +45,21 @@ class App extends React.Component {
       console.log(err)
     })
   }
+  setCurrentSku = (event) => {
+    this.setState({current_sku: event.target.value})
+  }
 
   setCurrentStyle = (styleId, styles) => {
     styleId = styleId || null;
     if (!styleId) {
       styles.map((style) => {
-        style['default?'] ? this.setState({current_style: style}) : null
+        let defaultSku = Object.keys(style.skus)[0];
+        style['default?'] ? this.setState({current_style: style, current_sku: defaultSku}) : null
       })
     } else if (styleId) {
       this.state.all_styles.map((style) => {
-        style.style_id === styleId ? this.setState({current_style: style}) : null
+        let sku = Object.keys(style.skus)[0];
+        style.style_id === styleId ? this.setState({current_style: style, current_sku: sku}) : null
       })
     }
   }
@@ -97,9 +110,13 @@ class App extends React.Component {
         total_reviews={this.state.total_reviews}
         average_reviews={this.state.average_reviews}
         setCurrentStyle={this.setCurrentStyle}
+        setCurrentSku={this.setCurrentSku}
+        currentSku={this.state.current_sku}
+        reviewsRef={this.scrollToReviews}
+        scrollToSection={this.scrollToSection}
         />
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
-        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts}/>
+        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts} reviewsRef={this.scrollToReviews}/>
       </div>
     );
   }

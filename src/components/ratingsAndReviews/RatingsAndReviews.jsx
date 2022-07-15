@@ -5,7 +5,7 @@ import Sort from './Sort.jsx';
 import axios from 'axios'
 import SearchBar from './SearchBar.jsx'
 
-const RatingsAndReviews = () => {
+const RatingsAndReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
   const [product_id, setProduct_id] = useState('66666');
@@ -104,9 +104,8 @@ const RatingsAndReviews = () => {
 
   return (
     <div>
-      {/* {console.log('reviews are', reviews)}
-      {console.log('showReview', showReviews)} */}
-      <h5 className='reviewsRatingTitle'>RATINGS & REVIEWS</h5>
+      {/* {console.log('reviews are', reviews)} */}
+      <h5 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
             <Ratings
