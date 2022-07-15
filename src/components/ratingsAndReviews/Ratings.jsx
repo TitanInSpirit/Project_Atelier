@@ -9,12 +9,12 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
 
   const calAveRating = () => {
     let sum = 0;
-    let keySum = 0;
+    let reviewCounts = 0;
     for (let key in rating.ratings) {
       sum += key * Number(rating.ratings[key]);
-      keySum += Number(key);
+      reviewCounts += Number(rating.ratings[key]);
     }
-    aveRating = (sum / keySum).toFixed(1)
+    aveRating = (sum / reviewCounts).toFixed(1)
     return aveRating;
   }
 
@@ -60,8 +60,7 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
 
   return (
     <div>
-      {/* {console.log(rating)}
-      {console.log(calRecommend())} */}
+     {/* {console.log(rating)} */}
       <div className = 'ratingSum'>
         <h3 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
         <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p>

@@ -219,16 +219,18 @@ app.post('/styles', (req, res) => {
 });
 
 app.post('/reviews', (req, res) => {
-  let product_id = req.body.productId
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${product_id}`
+  // console.log('poooooost')
+  // let newReview = req.body;
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews'
 
   var config = {
-    method: 'get',
+    method: 'post',
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Authorization': `${GithubToken}`
-    }
+    },
+    data: req.body
   };
 
   axios(config)

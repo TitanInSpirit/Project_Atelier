@@ -3,15 +3,17 @@ import Reviews from './Reviews.jsx';
 import Ratings from './Ratings.jsx';
 import Sort from './Sort.jsx';
 import axios from 'axios'
+import SearchBar from './SearchBar.jsx'
 
 const RatingsAndReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66668');
+  const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
   const [rateArr, setRateArr] = useState([]);
+  const [reviewsCount, setReviewsCount] = useState(0)
   const {results} = reviews;
 
   const handleSortValue = value => {
@@ -73,6 +75,13 @@ const RatingsAndReviews = (props) => {
     setRateArr([]);
   }
 
+  const onHandleAddNewReview = (value) => {
+    // console.log({...value, product_id})
+    axios.post('http://localhost:3001/reviews', {...value, product_id: Number(product_id)})
+    .then(() => fetchReviewData())
+    .catch(err => console.log('catch errrrr', err))
+  }
+
   useEffect(() => {
     if(rateArr.length > 0) {
       let filterReview = [];
@@ -85,6 +94,14 @@ const RatingsAndReviews = (props) => {
       setShowReviews(results)
     }
   }, [rateArr])
+
+  const handleGetFilterReviewCounts = (value) => {
+    if(value){
+      setReviewsCount(value.length)
+    }
+  }
+
+
 
   return (
     <div>
@@ -100,8 +117,13 @@ const RatingsAndReviews = (props) => {
             />
           </div>
           <div className="reviewsContainer">
-            <Sort handleSortValue={handleSortValue} results={showReviews}/>
-            <Reviews results={showReviews} fetchReviewData={fetchReviewData}/>
+            <Sort handleSortValue={handleSortValue} results={showReviews} reviewsCount={reviewsCount}/>
+            <Reviews
+              results={showReviews}
+              fetchReviewData={fetchReviewData}
+              onHandleAddNewReview={onHandleAddNewReview}
+              handleGetFilterReviewCounts={handleGetFilterReviewCounts}
+            />
           </div>
         </div>
     </div>
