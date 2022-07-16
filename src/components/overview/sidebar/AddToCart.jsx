@@ -5,6 +5,7 @@ function AddToCart(props) {
     if(!props.current_style || !props.currentSku) {
       return null;
     } else {
+
       let skus = props.current_style.skus
       let sizes = []
       let availability = props.current_style.skus[props.currentSku].quantity
@@ -39,7 +40,7 @@ function AddToCart(props) {
           </div>
         </div>
         <div className="social_share_container">
-          <FaFacebook className="share_icon facebook"/>
+          <FaFacebook className="share_icon facebook" onClick={() => {location.href=`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}%2F&amp;src=sdkpreparse`}}/>
           <FaTwitter className="share_icon twitter"/>
           <FaPinterest className="share_icon pinterest"/>
         </div>
