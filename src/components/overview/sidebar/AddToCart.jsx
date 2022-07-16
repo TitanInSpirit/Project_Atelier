@@ -28,7 +28,7 @@ function AddToCart(props) {
           </select>
           <select name="select_quantity" id="quantity" className="overview_button select_quantity">
             <option value="default" disabled selected >-</option>
-            {availabilityArray.map((quantity) => {
+            {availabilityArray.length === 0 ? <option value='OOS'id="OOS" key='OOS' disabled selected>'OUT OF STOCK</option> : availabilityArray.map((quantity) => {
             return(
               <option value={quantity} id={quantity} key={quantity}>{quantity}</option>
               )
