@@ -895,6 +895,12 @@ p {
   text-indent: 0px;
 }
 
+.favorite_star {
+  margin-top: 2.5px;
+  height: 20px;
+  width: 20px;
+}
+
 .add_to_cart_btn {
   width: 250px;
 }

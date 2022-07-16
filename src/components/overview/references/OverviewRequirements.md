@@ -35,9 +35,9 @@ General information about the product will be displayed at the top of the Overvi
   - <input type="checkbox" checked> This free form text field may exist on some items. If it is available it should be displayed.
 
 - <input type="checkbox"> **Share on Social media**
-  - <input type="checkbox"> Below the product information, buttons should provide the ability to share this product on popular social media platforms. This includes:
-    - <input type="checkbox"> Facebook
-    - <input type="checkbox"> Twitter
+  - <input type="checkbox" > Below the product information, buttons should provide the ability to share this product on popular social media platforms. This includes:
+    - <input type="checkbox" checked> Facebook
+    - <input type="checkbox" checked> Twitter
     - <input type="checkbox"> Pinterest
 
 ## <input type="checkbox"> Style Selector

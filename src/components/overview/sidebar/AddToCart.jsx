@@ -1,11 +1,11 @@
 import {React, useState, useEffect} from 'react';
 import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/Fa'
+import {AiOutlineStar} from 'react-icons/Ai'
 
 function AddToCart(props) {
     if(!props.current_style || !props.currentSku) {
       return null;
     } else {
-
       let skus = props.current_style.skus
       let sizes = []
       let availability = props.current_style.skus[props.currentSku].quantity
@@ -36,12 +36,19 @@ function AddToCart(props) {
           </select>
           <div className="add_to_cart_favorite_container">
           <button type="submit" className="add_to_cart_btn overview_button">ADD TO BAG</button>
-          <button className="overview_favorite_btn overview_button">⭐</button>
+          <button className="overview_favorite_btn overview_button">
+            <AiOutlineStar className='favorite_star' />
+          </button>
           </div>
         </div>
         <div className="social_share_container">
-          <FaFacebook className="share_icon facebook" onClick={() => {location.href=`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}%2F&amp;src=sdkpreparse`}}/>
-          <FaTwitter className="share_icon twitter"/>
+          <FaFacebook className="share_icon facebook" onClick={() => {
+            location.href=`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}%2F&amp;src=sdkpreparse`}
+            }/>
+          <FaTwitter className="share_icon twitter" onClick={() => {
+            location.href=`https://twitter.com/intent/tweet?text=Check%20out%20these%20sick%20${props.current_product.category}%20from%20${window.location.href}`
+            }
+          }/>
           <FaPinterest className="share_icon pinterest"/>
         </div>
 
