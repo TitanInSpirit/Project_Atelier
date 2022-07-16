@@ -5,12 +5,11 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 
 
-function PhotoUpload({handleChange}) {
+function PhotoUpload({entry, setEntry}) {
 
   /*----- STATE HOOKS -----*/
-  const [photos, setPhotos] = useState([]);
+  const [images, setImages] = useState([]);
 
-  const photoURLs = [];
   const queuedPhotos = [];
 
 
@@ -30,8 +29,8 @@ function PhotoUpload({handleChange}) {
 
       return axios.post('https://api.cloudinary.com/v1_1/dsfj56bcp/image/upload', formData)
       .then(response => {
-        setPhotos(prev => [...prev, response.data.url]);
-        photoURLs.push(response.data.url);
+        setImages(prev => [...prev, response.data.url]);
+        setEntry({...entry, photos: [...entry.photos, response.data.url]})
       })
       .catch(err => console.error(`Unable to upload photos due to Error: ${err}`));
     })
@@ -39,10 +38,10 @@ function PhotoUpload({handleChange}) {
 
   const handleRemove = ({target: {name}}) => {
     event.preventDefault();
-    const currentPhotos = [...photos]
-    currentPhotos.splice(name, 1);
-    setPhotos(currentPhotos);
-
+    const currentImages = [...images]
+    currentImages.splice(name, 1);
+    setEntry(currentImages);
+    setImages(currentImages);
   }
 
 /*----- RENDER FUNCTIONS -----*/
@@ -53,7 +52,7 @@ function PhotoUpload({handleChange}) {
         <label>Preview</label>
         <br/>
         <div>
-          {photos !== undefined && photos.map((photo, index) => {
+          {images !== undefined && images.map((photo, index) => {
             return (
               <span key={'photo' + index}>
                 <img style={{margin: '10px'}} key={index} src={photo} height="75em" width="auto" />
@@ -67,7 +66,7 @@ function PhotoUpload({handleChange}) {
   }
 
   const renderPhotoUpload = () => {
-    if (photos && photos.length > 5) {
+    if (images && images.length > 5) {
       return <></>
     }
     return (
