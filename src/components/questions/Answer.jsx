@@ -5,6 +5,7 @@ import {format, parseISO} from  'date-fns';
 
 
 /*==================== INTERNAL MODULES ====================*/
+import {Submit, Thumbnail, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
 function Answer({answer, getUpdate}) {
@@ -43,23 +44,28 @@ function Answer({answer, getUpdate}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <button className="helpfulAndReport">Reported</button>;
+      return <LinkButton className="helpfulAndReport">Reported</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleReport} name={id}>Report</button>;
+    return <LinkButton className="helpfulAndReport" onClick={handleReport} name={id}>Report</LinkButton>;
   }
 
   const renderHelp = () => {
     if (wasHelpful) {
-      return <button className="helpfulAndReport" name={id}>Yes</button>;
+      return <LinkButton className="helpfulAndReport" name={id}>Yes</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleHelpful} name={id}>Yes</button>;
+    return <LinkButton className="helpfulAndReport" onClick={handleHelpful} name={id}>Yes</LinkButton>;
+  }
+
+  const renderPhotos = () => {
+    console.log(photos);
+    photos.map((photo) => <Thumbnail src={photo} key={`P-${photo}-${id}`}/>)
   }
 
   /*----- RENDERER -----*/
   return (
     <div>
       <div className="answer-body">{body}</div>
-      <div className="answer-photos">{photos.map((photo) => <img src={photo} width="auto" height="100" key={`P-${photo}-${id}`}/>)}</div>
+      {renderPhotos()}
       <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
     </div>
   )

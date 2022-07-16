@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
+import {Button} from '../../../public/stylesheets/styles.js';
 class AnswerList extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,6 @@ class AnswerList extends React.Component {
   }
 
   componentDidMount() {
-    // creates shortened answer list to show if there are more than two answers
     this.setState({visibleAnswers: this.state.answerList.slice(0,2)})
   }
 
@@ -32,13 +32,12 @@ class AnswerList extends React.Component {
 
   /*----- RENDER FUNCTIONS -----*/
   renderAnswerList = () => {
-    // if answer list has more than 2 answers, only show two answers and show a "load more answers"
     if (this.state.answerList.length > 2) {
       if (!this.state.showAnswers) {
         return (
           <React.Fragment>
             <div>{this.state.visibleAnswers}</div>
-            <button className="more-answers-button" onClick={this.toggleAnswers}>LOAD MORE ANSWERS</button>
+            <Button onClick={this.toggleAnswers}>LOAD MORE ANSWERS</Button>
           </React.Fragment>
         )
       }
@@ -46,7 +45,7 @@ class AnswerList extends React.Component {
         return (
           <div className="all-answers-list" style={{maxheight: '50vh'}}>
             {this.state.answerList}
-            <button className="more-answers-button" onClick={this.toggleAnswers}>COLLAPSE</button>
+            <Button onClick={this.toggleAnswers}>COLLAPSE</Button>
           </div>
         )
       }

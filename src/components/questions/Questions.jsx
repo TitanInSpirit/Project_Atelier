@@ -6,6 +6,7 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 import QuestionsList from './QuestionsList.jsx';
 import Form from './Form.jsx';
+import {Button} from '../../../public/stylesheets/styles.js';
 
 
 function Questions({products}) {
@@ -42,7 +43,7 @@ function Questions({products}) {
   }
 
   const renderAddQuestion = () => {
-    return <button style={{margin: '10px'}} onClick={() => setShowForm(true)}>Add a Question</button>;
+    return <Button style={{margin: '10px'}} onClick={() => setShowForm(true)}>Add a Question</Button>;
   }
 
 
@@ -51,7 +52,7 @@ function Questions({products}) {
     <div style={{margin: '30px'}} className="questions-and-answers">
       <h5>QUESTIONS & ANSWERS</h5>
       {renderQuestionList()}
-      <button style={{margin: '10px'}}>Answer More Questions</button>
+      <Button style={{margin: '10px'}}>Answer More Questions</Button>
       {renderAddQuestion()}
       <Form showForm={showForm} setShowForm={setShowForm} id={selectedProduct} getUpdate={getQuestions} submissionType={'Question'} />
     </div>

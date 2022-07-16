@@ -1,9 +1,11 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React, {useState} from 'react';
 import axios from 'axios';
+import {MdClear} from 'react-icons/md';
+
 
 /*==================== INTERNAL MODULES ====================*/
-
+import {Submit, Thumbnail, PhotoPreview, PhotoFrame, CloseModal} from '../../../public/stylesheets/styles.js';
 
 function PhotoUpload({entry, setEntry}) {
 
@@ -51,16 +53,16 @@ function PhotoUpload({entry, setEntry}) {
       <>
         <label>Preview</label>
         <br/>
-        <div>
+        <PhotoPreview>
           {images !== undefined && images.map((photo, index) => {
             return (
-              <span key={'photo' + index}>
-                <img style={{margin: '10px'}} key={index} src={photo} height="75em" width="auto" />
-                <button onClick={handleRemove} name={index}>Remove</button>
-              </span>
+              <PhotoFrame key={'photo' + index}>
+                <Thumbnail key={index} src={photo} />
+                <CloseModal onClick={handleRemove} name={index}>X</CloseModal>
+              </PhotoFrame>
             )
           })}
-        </div>
+        </PhotoPreview>
       </>
     )
   }

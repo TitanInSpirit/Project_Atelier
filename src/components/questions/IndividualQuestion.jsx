@@ -7,6 +7,7 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 import AnswerList from './AnswerList.jsx';
 import Form from './Form.jsx';
+import {LinkButton} from '../../../public/stylesheets/styles.js';
 
 
 function IndividualQuestion({question, getUpdate}) {
@@ -38,13 +39,13 @@ function IndividualQuestion({question, getUpdate}) {
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
     if (wasHelpful) {
-      return <button className="helpfulAndReport" name={question_id}>Yes</button>;
+      return <LinkButton className="helpfulAndReport" name={question_id}>Yes</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleHelpful} name={question_id}>Yes</button>;
+    return <LinkButton className="helpfulAndReport" onClick={handleHelpful} name={question_id}>Yes</LinkButton>;
   }
 
   const renderAddAnswer = () => {
-    return <button className="helpfulAndReport" onClick={() => setShowForm(true)}>Add Answer</button>;
+    return <LinkButton className="helpfulAndReport" onClick={() => setShowForm(true)}>Add Answer</LinkButton>;
   }
 
   const renderQuestion = () => {

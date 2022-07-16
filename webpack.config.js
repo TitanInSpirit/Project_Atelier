@@ -17,7 +17,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader','css-loader']
-      }
+      },
     ]
   },
   // [devtool] this is an additional source map that will let the browser know what files are running our code.

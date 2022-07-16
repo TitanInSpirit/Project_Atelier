@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 /*==================== INTERNAL MODULES ====================*/
+import {Submit, CloseModal} from '../../../public/stylesheets/styles.js';
 import PhotoUpload from './PhotoUpload.jsx'
 
 function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
@@ -99,8 +100,8 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
   const renderSubmit = () => {
     return (
       <>
-        <button onClick={handleSubmit}>Submit</button>
-        <button onClick={() => setShowForm(false)}>Close</button>
+        <Submit onClick={handleSubmit}>Submit</Submit>
+        <CloseModal onClick={() => setShowForm(false)}>X</CloseModal>
       </>
     )
   }
