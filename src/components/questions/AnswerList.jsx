@@ -1,69 +1,62 @@
 /*==================== EXTERNAL MODULES ====================*/
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
 import {Button} from '../../../public/stylesheets/styles.js';
-class AnswerList extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      answerList: this.props.answers
-        .sort((a,b) => b.helpfulness - a.helpfulness)
-        .sort((a,b) => {
-          if (a.answerer_name === 'Seller') {
-            return b.answerer_name - a.answerer_name;
-          }
-        })
-        .map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={this.props.getUpdate} />),
-      showAnswers: false
-    };
-  }
+function AnswerList({answers, getUpdate}) {
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [answerList, setAnswerList] = useState(() => {
+    const sortedAnswers = answers;
+    sortedAnswers.sort((a,b) => b.helpfulness - a.helpfulness)
+      .sort((a,b) => {
+        if (a.answerer_name === 'Seller') {
+          return b.answerer_name - a.answerer_name;
+        }
+      })
+      const mappedAnswers = sortedAnswers.map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} />)
+    return mappedAnswers;
+  });
 
-  componentDidMount() {
-    this.setState({visibleAnswers: this.state.answerList.slice(0,2)})
-  }
+  const visibleAnswers = answerList.slice(0,2);
 
-  toggleAnswers = () => {
-    this.setState({showAnswers: !this.state.showAnswers});
-  }
+  const toggleAnswers = () => setShowAnswers(showAnswers => !showAnswers);
 
   /*----- RENDER FUNCTIONS -----*/
-  renderAnswerList = () => {
-    if (this.state.answerList.length > 2) {
-      if (!this.state.showAnswers) {
+  const renderAnswerList = () => {
+    if (answerList.length > 2) {
+      if (!showAnswers) {
         return (
           <React.Fragment>
-            <div>{this.state.visibleAnswers}</div>
-            <Button onClick={this.toggleAnswers}>LOAD MORE ANSWERS</Button>
+            <div>{visibleAnswers}</div>
+            <Button onClick={toggleAnswers}>LOAD MORE ANSWERS</Button>
           </React.Fragment>
         )
       }
-      if (this.state.showAnswers) {
+      if (showAnswers) {
         return (
-          <div className="all-answers-list" style={{maxheight: '50vh'}}>
-            {this.state.answerList}
-            <Button onClick={this.toggleAnswers}>COLLAPSE</Button>
+          <div>
+            {answerList}
+            <Button onClick={toggleAnswers}>COLLAPSE</Button>
           </div>
         )
       }
     } else {
-      return <div> {this.state.answerList} </div>
+      return <div>{answerList}</div>
     }
   }
 
   /*----- RENDERER -----*/
-  render() {
-    return (
-      <div>
-        <div>A:{this.renderAnswerList()}</div>
-      </div>
-    )
-  }
-
+  return (
+    <div>
+      <div>A:{renderAnswerList()}</div>
+    </div>
+  )
 }
+
+
 
 /*==================== EXPORTS ====================*/
 export default AnswerList;

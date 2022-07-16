@@ -39,13 +39,13 @@ function IndividualQuestion({question, getUpdate}) {
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
     if (wasHelpful) {
-      return <LinkButton className="helpfulAndReport" name={question_id}>Yes</LinkButton>;
+      return <LinkButton name={question_id}>Yes</LinkButton>;
     }
-    return <LinkButton className="helpfulAndReport" onClick={handleHelpful} name={question_id}>Yes</LinkButton>;
+    return <LinkButton onClick={handleHelpful} name={question_id}>Yes</LinkButton>;
   }
 
   const renderAddAnswer = () => {
-    return <LinkButton className="helpfulAndReport" onClick={() => setShowForm(true)}>Add Answer</LinkButton>;
+    return <LinkButton onClick={() => setShowForm(true)}>Add Answer</LinkButton>;
   }
 
   const renderQuestion = () => {

@@ -46,14 +46,18 @@ function Questions({products}) {
     return <Button style={{margin: '10px'}} onClick={() => setShowForm(true)}>Add a Question</Button>;
   }
 
+  const renderMoreAnswered = () => {
+    return <Button style={{margin: '10px'}}>More Answered Questions</Button>
+  }
+
+
 
   /*----- RENDERER -----*/
   return (
     <div style={{margin: '30px'}} className="questions-and-answers">
       <h5>QUESTIONS & ANSWERS</h5>
       {renderQuestionList()}
-      <Button style={{margin: '10px'}}>Answer More Questions</Button>
-      {renderAddQuestion()}
+      <span> {renderMoreAnswered()} {renderAddQuestion()} </span>
       <Form showForm={showForm} setShowForm={setShowForm} id={selectedProduct} getUpdate={getQuestions} submissionType={'Question'} />
     </div>
   )

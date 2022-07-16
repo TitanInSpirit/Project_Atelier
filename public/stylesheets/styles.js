@@ -52,8 +52,8 @@ import styled, {ThemeProvider} from 'styled-components';
     align-content: center;
     justify-content: center;
     position: absolute;
-    top: 0.25em;
-    right: 0.25em;
+    top: 0;
+    right: 0;
     width: 20px;
     height: 20px;
     border: solid;
@@ -81,8 +81,8 @@ import styled, {ThemeProvider} from 'styled-components';
     display: flex;
     flex-direction: row;
     align-content: center;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 125px;
     margin-left: 10px;
   `;
 
@@ -102,8 +102,9 @@ import styled, {ThemeProvider} from 'styled-components';
 
   /*----- IMAGES -----*/
   const Thumbnail = styled.img`
-    width: 100px;
+    width: 125px;
     height: 100px;
+    align-self: center;
     object-fit: cover;
   `;
 
