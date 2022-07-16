@@ -39,6 +39,7 @@ function Sidebar(props) {
         setCurrentStyle={props.setCurrentStyle}
         setCurrentSku={props.setCurrentSku}
         currentSku={props.currentSku}
+        currentPhoto={props.currentPhoto}
       />
     </div>
   );

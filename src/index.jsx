@@ -16,6 +16,8 @@ class App extends React.Component {
     this.state = {
       products: [],
       all_styles:  [],
+      current_photo_index: 0,
+      current_photo: '',
       current_product: {},
       current_style: {},
       total_reviews: 0,
@@ -26,6 +28,18 @@ class App extends React.Component {
 
   componentDidMount = () => {
     this.getAllProducts()
+
+  }
+
+  setCurrentPhoto = (photo) => {
+    photo = photo || 0
+    if (!this.state.current_style){
+      return null
+    } else if (this.state.current_style.photos) {
+      console.log('hi')
+      console.log(this.state.current_style)
+      this.setState({current_photo_index: photo, current_photo: this.state.current_style.photos[photo].url})
+    }
   }
 
   scrollToSection = (elementRef) => {
@@ -54,7 +68,8 @@ class App extends React.Component {
     if (!styleId) {
       styles.map((style) => {
         let defaultSku = Object.keys(style.skus)[0];
-        style['default?'] ? this.setState({current_style: style, current_sku: defaultSku}) : null
+        let defaultPhoto = style.photos[0].url
+        style['default?'] ? this.setState({current_style: style, current_sku: defaultSku, current_photo: defaultPhoto}) : null
       })
     } else if (styleId) {
       this.state.all_styles.map((style) => {
@@ -114,6 +129,8 @@ class App extends React.Component {
         currentSku={this.state.current_sku}
         reviewsRef={this.scrollToReviews}
         scrollToSection={this.scrollToSection}
+        setCurrentPhoto={this.setCurrentPhoto}
+        currentPhoto={this.state.current_photo}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>

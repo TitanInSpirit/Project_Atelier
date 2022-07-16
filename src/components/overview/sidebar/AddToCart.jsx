@@ -49,9 +49,11 @@ function AddToCart(props) {
             location.href=`https://twitter.com/intent/tweet?text=Check%20out%20these%20sick%20${props.current_product.category}%20from%20${window.location.href}`
             }
           }/>
-          <FaPinterest className="share_icon pinterest"/>
+          <FaPinterest className="share_icon pinterest" onClick={() => {
+              location.href=`http://pinterest.com/pin/create/button/?url=${window.location.href}&media=${props.currentPhoto}&description=${props.current_product.description}`
+            }
+          }/>
         </div>
-
         </form>
         )
     }

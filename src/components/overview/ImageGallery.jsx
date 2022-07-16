@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BsChevronLeft, BsChevronRight} from 'react-icons/bs'
 
 function VerticalGallery (props) {
 
   let photos = props.currentStyle.photos
 
-  if (!props.currentStyle.photos){
+  if (!props.currentStyle){
     return null;
   } else {
     let key = 0;
@@ -20,12 +20,17 @@ function VerticalGallery (props) {
      )
   }
 }
+let didRun = false;
 
 const ImageSlider = (props) => {
   const [current, setCurrent] = useState(0)
 
-  let photos = props.currentStyle.photos
+  useEffect(() => {
+    props.setCurrentPhoto(current)
+    console.log(props)
+  }, [current])
 
+  let photos = props.currentStyle.photos
   if (!props.currentStyle.photos) {
     return null;
   } else {
@@ -45,15 +50,13 @@ const ImageSlider = (props) => {
         {photos.map((photo, index) => {
           let bigPic = photo.url;
           return(
-            <div key={index} className={index === current? 'slide active' : 'slide'}>
+            <div key={index} className={index === current ? 'slide active' : 'slide'}>
               <div className="imageGallery">
                 <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
               </div>
               <BsChevronLeft className="left-arrow"  onClick={prevSlide}/>
               <BsChevronRight className="right-arrow" onClick={nextSlide}/>
-              {index === current && (
-                <img key={index} src={`${bigPic}`} className="image"/>
-              )}
+              {index === current && (<img key={index} src={`${bigPic}`} className="image"/>)}
             </div>
           )
         })}
@@ -67,7 +70,11 @@ function ImageGallery (props) {
   return <div className="gallery">
 
       <div className="currentImg">
-        <ImageSlider currentStyle={props.currentStyle}/>
+        <ImageSlider
+        currentStyle={props.currentStyle}
+        setCurrentPhoto={props.setCurrentPhoto}
+        currentPhoto={props.currentPhoto}
+        />
       </div>
   </div>
 }

@@ -19,7 +19,12 @@ const Overview = (props) => {
   } else {
     return (
       <div className="overview_container">
-        <ImageGallery current_product={props.current_product} currentStyle = {props.current_style}/>
+        <ImageGallery
+        current_product={props.current_product}
+        currentStyle = {props.current_style}
+        setCurrentPhoto={props.setCurrentPhoto}
+        currentPhoto={props.currentPhoto}
+        />
         <Sidebar
         products={props.products}
         getAllProducts={props.getAllProducts}
@@ -33,6 +38,7 @@ const Overview = (props) => {
         currentSku={props.currentSku}
         reviewsRef={props.reviewsRef}
         scrollToSection={props.scrollToSection}
+        currentPhoto={props.currentPhoto}
         />
       </div>
     );
