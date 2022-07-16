@@ -29,7 +29,6 @@ class App extends React.Component {
   }
 
   scrollToSection = (elementRef) => {
-    console.log(elementRef)
     window.scrollTo({
       top: elementRef.current.offsetTop,
       behavior: 'smooth'

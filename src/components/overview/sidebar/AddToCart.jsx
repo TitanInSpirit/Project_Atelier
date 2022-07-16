@@ -1,4 +1,5 @@
 import {React, useState, useEffect} from 'react';
+import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/Fa'
 
 function AddToCart(props) {
     if(!props.current_style || !props.currentSku) {
@@ -36,6 +37,11 @@ function AddToCart(props) {
           <button type="submit" className="add_to_cart_btn overview_button">ADD TO BAG</button>
           <button className="overview_favorite_btn overview_button">⭐</button>
           </div>
+        </div>
+        <div className="social_share_container">
+          <FaFacebook className="share_icon facebook"/>
+          <FaTwitter className="share_icon twitter"/>
+          <FaPinterest className="share_icon pinterest"/>
         </div>
 
         </form>

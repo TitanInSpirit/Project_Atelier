@@ -4,6 +4,10 @@ font-family: 'Amiko', sans-serif;
 font-family: 'Hind Madurai', sans-serif;
 font-family: 'Hind Siliguri', sans-serif; */
 
+html,
+body {
+  height: 100%;
+}
 
 h1 {
   font-family: 'Amiko', sans-serif;
@@ -943,6 +947,7 @@ p {
 .product_description_container {
   display: flex;
   flex-direction: column;
+  max-width: 666px;
 }
 
 .ul_product_desc {
@@ -954,7 +959,23 @@ p {
   border-width: 2.5px;
   margin-top: 10px;
   margin-left: 40px;
-  height: 75px;
+  min-height: 4.5rem;
+}
+
+.social_share_container {
+  display: flex;
+  width: 250px;
+  margin: 5px;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: flex-start;
+}
+
+.share_icon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin: 10px;
 }
 
 /* ===== QUESTIONS ===== */

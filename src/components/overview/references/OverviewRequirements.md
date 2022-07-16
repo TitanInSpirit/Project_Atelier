@@ -30,9 +30,9 @@ General information about the product will be displayed at the top of the Overvi
 
     <input type="checkbox" checked> The price may be on sale. If the SKU is currently discounted, then the sale price should appear in red, followed by the original price which is struckthrough.
 
-- <input type="checkbox"> **Product Overview**
+- <input type="checkbox" checked> **Product Overview**
 
-  - <input type="checkbox"> This free form text field may exist on some items. If it is available it should be displayed.
+  - <input type="checkbox" checked> This free form text field may exist on some items. If it is available it should be displayed.
 
 - <input type="checkbox"> **Share on Social media**
   - <input type="checkbox"> Below the product information, buttons should provide the ability to share this product on popular social media platforms. This includes:
