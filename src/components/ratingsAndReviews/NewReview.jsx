@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from './Modal.jsx'
 import StarRating from './StarRating.jsx'
 import PhotoUpload from './PhotoUpload.jsx'
@@ -21,18 +21,18 @@ const NewReview = ({onHandleAddNewReview}) => {
   const showDes = () => {
     for (let key in ratingDes) {
       if(starRating === Number(key)) {
-        return ratingDes[key]
+        return <b>{ratingDes[key]}</b>
       }
     }
   }
 
   const ratingCharacteristicsDes =[
-    [['Size', '223734'], ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide']],
-    [['Width', '223735'], ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide']],
-    [['Comfort', '223667'], ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect']],
-    [['Quality', '223668'], ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect']],
-    [['Length', '223666'], ['Runs Short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long']],
-    [['Fit', '223665'], ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']]
+    [['Size:', '223734'], ['Too small', '½ a size too small', 'Perfect', '½ a size too big', 'Too wide']],
+    [['Width:', '223735'], ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too wide']],
+    [['Comfort:', '223667'], ['Uncomfortable', 'Slightly uncomfortable', 'OK', 'Comfortable', 'Perfect']],
+    [['Quality:', '223668'], ['Poor', 'Below average', 'OK', 'Pretty great', 'Perfect']],
+    [['Length:', '223666'], ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long']],
+    [['Fit:', '223665'], ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']]
   ]
 
   const handleStarRating = (rating) => {
@@ -60,17 +60,21 @@ const NewReview = ({onHandleAddNewReview}) => {
             {characteristic[1].map((des, i) => {
               return (
                 <div className='newReviewDesAndRadio' key={i}>
-                  <div className='newReviewCharaDetailtd2'>{des}</div>
-                  <br/>
-                  <div className='newReviewCharaDetailtd3'>
+                 <div className='newReviewCharaDetailtd3'>
                     <input
                       type='radio'
                       value={des}
                       name={characteristic[0]}
                       onChange={e => setCharacteristics({...characteristics, [characteristic[0][1]]: i + 1})}
                       required
+                      className='newReviewSingleRadio'
                     />
+                    {i !== 4 ?<hr className='newReviewRadioDevide'/> : <hr class="newReviewRadioDevidehide"></hr>}
                     </div>
+                  {/* <div className='newReviewCharaDetailtd2'>{des}</div> */}
+                  <br/>
+
+                    {i % 2 !== 0 ? <div className='newReviewCharaDetailtd2'></div> : <div className='newReviewCharaDetailtd2'>{des}</div>}
                 </div>
               )
             })}
@@ -83,6 +87,11 @@ const NewReview = ({onHandleAddNewReview}) => {
     e.preventDefault();
     onHandleAddNewReview({rating: starRating, summary, body, recommend, name: reviewer_name, email, photos, characteristics});
     setShowModal(false);
+    setSummary('');
+    setBody('');
+    setPhotos([]);
+    setReviewer_name('');
+    setEmail('')
   }
 
 
@@ -94,12 +103,15 @@ const NewReview = ({onHandleAddNewReview}) => {
       <Modal showModal={showModal}>
         <div className='newReviewContainer'>
           <h3 className='newReviewTitle'>Write Your Review</h3>
-          <div className='newReviewSubTitle'>About the [wait for name props pass here]</div>
-          <form  onSubmit={handleSubmit}>
-            <div>
+          {/* <div className='newReviewSubTitle'>About the [wait for name props pass here]</div> */}
+          <div>
+            <img src='https://res.cloudinary.com/may6688/image/upload/v1657917782/FEC/slbmsbyrwkmuy6qyzari.webp' alt='' className='newReviewShowProductPic'/>
+          </div>
+          <form  className='newReviewForm' onSubmit={handleSubmit}>
+            <div className='newReviewOverrall'>
               <span style={{fontWeight: 'bold'}}>Overrall rating: </span> <span>{starRating && showDes()}</span>
               <StarRating handleStarRating={handleStarRating}/>
-            </div>
+
 
             <div className='newReviewRecommend'>
               <span style={{fontWeight: 'bold'}}>
@@ -110,8 +122,10 @@ const NewReview = ({onHandleAddNewReview}) => {
               <input type='radio' value='false' name='recommend' onChange={() => setRecommend(false)}/>
               <label>No</label>
             </div>
-            <hr style={{color: 'lightgray', marginBottom: '20px'}}/>
+            </div>
+            <hr style={{color: 'lightgray', margin: '20px 0 20px 0'}}/>
             <div className='newReviewCharacteristics'>
+              <div className='newReviewChrarcteristicTitle'>Characteristics</div>
               {renderCharacteristic()}
             </div>
             <hr style={{color: 'lightgray', margin: '15px 0 15px 0'}}/>
@@ -138,7 +152,7 @@ const NewReview = ({onHandleAddNewReview}) => {
                 className='newReviewInput'
                 style={{height: '50px'}}
               />
-              <div className='newReviewSubTitle' style={{top:'-5px'}}>
+              <div className='newReviewSubTitle'>
               {count > 0 ? <div >Minimum required characters left: {count}</div> : <div>Minimum reached</div>}
               </div>
             </div>
@@ -158,7 +172,7 @@ const NewReview = ({onHandleAddNewReview}) => {
                 required
                 className='newReviewInput'
               />
-              <div className='newReviewSubTitle' style={{top:'-4px'}}>For privacy reasons, do not use your full name or email address.</div>
+              <div className='newReviewSubTitle'>For privacy reasons, do not use your full name or email address.</div>
             </div>
 
             <div className='newReviewEmail'>
@@ -171,11 +185,12 @@ const NewReview = ({onHandleAddNewReview}) => {
                 required
                 className='newReviewInput'
               />
+              <div className='newReviewSubTitle'>For authentication reasons, you will not be emailed.</div>
             </div>
 
-            <button className='newFormBtn' style={{marginTop: '20px'}}>SUBMIT</button>
+            <button className='newFormBtn' >SUBMIT</button>
           </form>
-          <button className='newFormBtn' onClick={() => setShowModal(false)}>CANCEL</button>
+          <button  className='newFormBtn newFormCancelBtn' onClick={() => setShowModal(false)}>CANCEL</button>
         </div>
     </Modal>
     </div>
