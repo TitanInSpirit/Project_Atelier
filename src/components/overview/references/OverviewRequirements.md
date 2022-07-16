@@ -40,7 +40,7 @@ General information about the product will be displayed at the top of the Overvi
     - <input type="checkbox" checked> Twitter
     - <input type="checkbox" checked> Pinterest
 
-## <input type="checkbox"> Style Selector
+## <input type="checkbox" checked> Style Selector
 
 Below the product information, the user should be presented all the styles of the product and have the ability to toggle between them.
 
@@ -49,7 +49,7 @@ Below the product information, the user should be presented all the styles of th
 - <input type="checkbox" checked> The current selection should be indicated within the list by the overlay of a checkmark on top of the thumbnail for that style.
   - <input type="checkbox" checked> Additionally, the title for that style should appear typed out in full above the thumbnail list.
 - <input type="checkbox" checked> A user will be able to change the selected style by clicking on the thumbnail displaying that style. Clicking on the thumbnail for the currently selected style will have no impact.
-- <input type="checkbox"> By default, the style selected will be the first in the list.
+- <input type="checkbox" checked> By default, the style selected will be the first in the list.
 - <input type="checkbox" checked> A product will always have at least one style.
 - <input type="checkbox" checked> Only one style can be selected at a time.
 - <input type="checkbox" checked> A style must be selected at all times.

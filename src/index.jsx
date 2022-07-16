@@ -105,6 +105,7 @@ class App extends React.Component {
         reviewTotal+= review.rating
       })
       let average = reviewTotal / response.count
+      console.log(res.data)
       this.setState({total_reviews: response.count, average_reviews: average})
     })
     .catch((err) => {
