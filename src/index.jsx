@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import Overview from './components/overview/Overview.jsx';
+import ProductDescription from './components/product_description/product_description.jsx'
 import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.jsx';
 import '../public/stylesheets/style.css';
 import Questions from './components/questions/Questions.jsx';
@@ -115,6 +116,7 @@ class App extends React.Component {
         reviewsRef={this.scrollToReviews}
         scrollToSection={this.scrollToSection}
         />
+        <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
         <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts} reviewsRef={this.scrollToReviews}/>
       </div>

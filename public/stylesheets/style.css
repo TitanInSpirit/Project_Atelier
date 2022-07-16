@@ -932,6 +932,31 @@ p {
   cursor: pointer;
 }
 
+/* Product Description */
+.product_description_container_parent {
+  display: flex;
+  flex-direction: row;
+  padding-top: 25px;
+  padding-left: 20%;
+}
+
+.product_description_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ul_product_desc {
+  list-style: none;
+}
+
+.vertical_divider {
+  border-left: 6px solid rgb(74, 74, 74);
+  border-width: 2.5px;
+  margin-top: 10px;
+  margin-left: 40px;
+  height: 75px;
+}
+
 /* ===== QUESTIONS ===== */
 
 .questions-and-answers {
