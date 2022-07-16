@@ -167,17 +167,18 @@ p {
 }
 
 .moreReviewsBtn{
-  border: none;
   background-color: #fff;
-  font-weight: bold;
-  font-size: 100%;
+  padding: 5px 20px;
+  border: none;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
+  border-radius: 5px;
+  width: 60%;
   margin-top: 10px;
   cursor: pointer;
 }
 
 .moreReviewsBtn:hover {
-  color: rgb(215, 104, 13);
-  text-decoration: underline;
+  background-color: rgba(0,0,0,.05);;
 }
 
 .reviewRecommend {
@@ -263,13 +264,19 @@ p {
   cursor: pointer;
   position: relative;
   left: -425px;
-  top: -22px;
+  top: -24px;
   width: 60%;
 
 }
 
 .addNewRivewBtn:hover {
   background-color: rgba(0,0,0,.05);;
+}
+
+.newReviewRange{
+  width: 30px;
+  position: relative;
+  bottom: -3px;
 }
 
 .reviewPhotos {
@@ -442,7 +449,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 50px;
+  /* padding: 50px; */
 }
 
 .reviewModalBg {
@@ -466,7 +473,7 @@ p {
 }
 
 .newReviewContainer {
-  padding: 10px 130px;
+  padding: 10px 140px;
   background-color: #fff;
   width: 1000px;
   height: 800px;
@@ -494,6 +501,11 @@ p {
   transform: scale(1.5);
 }
 
+.newReviewRecomRadio{
+  transform: scale(1.3);
+  margin-right: 5px;
+}
+
 .newReviewInput{
   display: block;
   width: 100%;
@@ -503,12 +515,12 @@ p {
   box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
   padding: 5px 10px;
   box-sizing: border-box;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .newReviewLabel{
   display: inline-block;
-  margin: 7px 0;
+  margin: 10px 0 5px;
   font-weight: bold;
   font-size: 18px;
 }
@@ -616,8 +628,9 @@ p {
 
 .newReviewTitle{
   font-size: 30px;
-  margin: 20px 0 20px 0;
   font-weight: bold;
+  text-align: center;
+  margin: 30px 0 50px;
 }
 
 .newReviewDes {
@@ -684,7 +697,7 @@ p {
   position: relative;
   right: -190px;
   top: -60px;
-
+  width: 50%;
 
 }
 
@@ -705,18 +718,24 @@ p {
 
 
 .newFormBtn {
-  width: 47%;
-  height: 30px;
+  width: 45%;
+  height: 35px;
   margin-top: 20px;
   border-radius: 5px;
   border: 1px lightgray solid;
   font-weight: bold;
   cursor: pointer;
+  font-size: 15px;
+}
+
+.newFormBtn:hover{
+  color: white;
+  background-color: black;
 }
 
 .newFormCancelBtn{
   position: relative;
-  top: -140px;
+  top: -145px;
   right: -388px;
 }
 

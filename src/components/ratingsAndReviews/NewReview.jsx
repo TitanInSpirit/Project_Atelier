@@ -21,7 +21,7 @@ const NewReview = ({onHandleAddNewReview}) => {
   const showDes = () => {
     for (let key in ratingDes) {
       if(starRating === Number(key)) {
-        return <b>{ratingDes[key]}</b>
+        return <span style={{fontSize:'23px'}}>{ratingDes[key]}</span>
       }
     }
   }
@@ -69,7 +69,7 @@ const NewReview = ({onHandleAddNewReview}) => {
                       required
                       className='newReviewSingleRadio'
                     />
-                    {i !== 4 ?<hr className='newReviewRadioDevide'/> : <hr class="newReviewRadioDevidehide"></hr>}
+                    {i !== 4 ?<hr className='newReviewRadioDevide'/> : <hr className="newReviewRadioDevidehide"></hr>}
                     </div>
                   {/* <div className='newReviewCharaDetailtd2'>{des}</div> */}
                   <br/>
@@ -94,13 +94,22 @@ const NewReview = ({onHandleAddNewReview}) => {
     setEmail('')
   }
 
+  // const handleRangeChange = e => {
+  //   console.log(e.target.value)
+  //   if(e.target.value === 0) {
+  //     setRecommend(false)
+  //   } else {
+  //     setRecommend(true)
+  //   }
+  // }
 
   return (
     <div>
       {/* {console.log('photo', photos)} */}
       {/* {console.log('characteristics', characteristics)} */}
+      {/* {console.log('recommend', recommend)} */}
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
-      <Modal showModal={showModal}>
+      <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className='newReviewContainer'>
           <h3 className='newReviewTitle'>Write Your Review</h3>
           {/* <div className='newReviewSubTitle'>About the [wait for name props pass here]</div> */}
@@ -109,28 +118,31 @@ const NewReview = ({onHandleAddNewReview}) => {
           </div>
           <form  className='newReviewForm' onSubmit={handleSubmit}>
             <div className='newReviewOverrall'>
-              <span style={{fontWeight: 'bold'}}>Overrall rating: </span> <span>{starRating && showDes()}</span>
+              <span style={{fontWeight: 'bold', fontSize:'23px'}}>Overrall rating:<span style={{color: 'red'}}>*</span></span> <span>{starRating && showDes()}</span>
               <StarRating handleStarRating={handleStarRating}/>
-
-
-            <div className='newReviewRecommend'>
-              <span style={{fontWeight: 'bold'}}>
-                Do you recommend this product?
-              </span>
-              <input type='radio' value='true' name='recommend' onChange={() => setRecommend(true)} required/>
-              <label>Yes</label>
-              <input type='radio' value='false' name='recommend' onChange={() => setRecommend(false)}/>
-              <label>No</label>
-            </div>
+                <div className='newReviewRecommend'>
+                <span style={{fontWeight: 'bold', marginRight: '10px'}}>
+                  Do you recommend this product?<span style={{color: 'red'}}>*</span>
+                </span>
+                <input className='newReviewRecomRadio' type='radio' value='true' name='recommend' onChange={() => setRecommend(true)} required/>
+                <label style={{marginRight: '10px'}}>Yes</label>
+                <input className='newReviewRecomRadio' type='radio' value='false' name='recommend' onChange={() => setRecommend(false)}/>
+                <label>No</label>
+                {/* <span style={{marginLeft: '10px'}}>
+                  <span style={{marginRight: '5px'}}>No</span>
+                  <input type='range' max='1' step='1' onChange={handleRangeChange} defaultValue={1} className='newReviewRange'/>
+                  <span style={{marginLeft: '5px'}}>Yes</span>
+                </span> */}
+              </div>
             </div>
             <hr style={{color: 'lightgray', margin: '20px 0 20px 0'}}/>
             <div className='newReviewCharacteristics'>
-              <div className='newReviewChrarcteristicTitle'>Characteristics</div>
+              <div className='newReviewChrarcteristicTitle'>Characteristics<span style={{color: 'red'}}>*</span></div>
               {renderCharacteristic()}
             </div>
             <hr style={{color: 'lightgray', margin: '15px 0 15px 0'}}/>
             <div className='newReviewSummary'>
-              <label className='newReviewLabel'>Summary</label>
+              <label className='newReviewLabel'>Summary<span style={{color: 'red'}}>*</span></label>
               <input
                 type='text'
                 value={summary}
@@ -141,7 +153,7 @@ const NewReview = ({onHandleAddNewReview}) => {
               />
             </div>
             <div className='newReviewBody'>
-              <label className='newReviewLabel'>Review</label>
+              <label className='newReviewLabel'>Review<span style={{color: 'red'}}>*</span></label>
               <textarea
                 placeholder='Why did you like the product or not?'
                 value={body}
@@ -162,7 +174,7 @@ const NewReview = ({onHandleAddNewReview}) => {
             </div>
 
             <div className='newReviewNickname'>
-              <label className='newReviewLabel'>Nickname</label>
+              <label className='newReviewLabel'>Nickname<span style={{color: 'red'}}>*</span></label>
               <input
                 type='text'
                 value={reviewer_name}
@@ -176,7 +188,7 @@ const NewReview = ({onHandleAddNewReview}) => {
             </div>
 
             <div className='newReviewEmail'>
-              <label className='newReviewLabel'>Email</label>
+              <label className='newReviewLabel'>Email<span style={{color: 'red'}}>*</span></label>
               <input
                 type='email'
                 placeholder='Example: jackson11@email.com'

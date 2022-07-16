@@ -8,7 +8,7 @@ import SearchBar from './SearchBar.jsx'
 const RatingsAndReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66666');
+  const [product_id, setProduct_id] = useState('66699');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
