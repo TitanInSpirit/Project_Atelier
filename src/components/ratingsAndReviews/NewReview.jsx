@@ -4,7 +4,7 @@ import StarRating from './StarRating.jsx'
 import PhotoUpload from './PhotoUpload.jsx'
 
 
-const NewReview = ({onHandleAddNewReview}) => {
+const NewReview = ({onHandleAddNewReview, styleUrl}) => {
   const [showModal, setShowModal] = useState(false);
   const [starRating, setStarRating] = useState(null);
   const [recommend, setRecommend] = useState(true);
@@ -105,7 +105,7 @@ const NewReview = ({onHandleAddNewReview}) => {
 
   return (
     <div>
-      {/* {console.log('photo', photos)} */}
+      {/* {console.log(styleUrl)} */}
       {/* {console.log('characteristics', characteristics)} */}
       {/* {console.log('recommend', recommend)} */}
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
@@ -114,7 +114,7 @@ const NewReview = ({onHandleAddNewReview}) => {
           <h3 className='newReviewTitle'>Write Your Review</h3>
           {/* <div className='newReviewSubTitle'>About the [wait for name props pass here]</div> */}
           <div>
-            <img src='https://res.cloudinary.com/may6688/image/upload/v1657917782/FEC/slbmsbyrwkmuy6qyzari.webp' alt='' className='newReviewShowProductPic'/>
+            {styleUrl && <img src={styleUrl[0].url} alt='' className='newReviewShowProductPic'/>}
           </div>
           <form  className='newReviewForm' onSubmit={handleSubmit}>
             <div className='newReviewOverrall'>

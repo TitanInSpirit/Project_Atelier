@@ -722,7 +722,7 @@ p {
   height: 35px;
   margin-top: 20px;
   border-radius: 5px;
-  border: 1px lightgray solid;
+  border: 1px #fff solid;
   font-weight: bold;
   cursor: pointer;
   font-size: 15px;

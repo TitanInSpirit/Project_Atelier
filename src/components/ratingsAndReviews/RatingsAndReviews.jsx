@@ -8,7 +8,7 @@ import SearchBar from './SearchBar.jsx'
 const RatingsAndReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66699');
+  const [product_id, setProduct_id] = useState('66666');
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
@@ -102,10 +102,10 @@ const RatingsAndReviews = (props) => {
   }
 
 
-
   return (
     <div>
       {/* {console.log('reviews are', reviews)} */}
+      {/* {console.log('style', props.style.photos)} */}
       <h5 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
@@ -118,12 +118,15 @@ const RatingsAndReviews = (props) => {
           </div>
           <div className="reviewsContainer">
             <Sort handleSortValue={handleSortValue} results={showReviews} reviewsCount={reviewsCount}/>
-            <Reviews
-              results={showReviews}
-              fetchReviewData={fetchReviewData}
-              onHandleAddNewReview={onHandleAddNewReview}
-              handleGetFilterReviewCounts={handleGetFilterReviewCounts}
-            />
+
+              <Reviews
+                results={showReviews}
+                fetchReviewData={fetchReviewData}
+                onHandleAddNewReview={onHandleAddNewReview}
+                handleGetFilterReviewCounts={handleGetFilterReviewCounts}
+                styleUrl = {props.style.photos}
+              />
+
           </div>
         </div>
     </div>
