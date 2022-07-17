@@ -4,9 +4,12 @@ import React, {useState} from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
-import {Button} from '../../../public/stylesheets/styles.js';
+import styled from 'styled-components';
+import {Button, Container} from '../../../public/stylesheets/styles.js';
 
 function AnswerList({answers, getUpdate}) {
+
+    /*----- STATE HOOKS -----*/
   const [showAnswers, setShowAnswers] = useState(false);
   const [answerList, setAnswerList] = useState(() => {
     const sortedAnswers = answers;
@@ -29,17 +32,17 @@ function AnswerList({answers, getUpdate}) {
     if (answerList.length > 2) {
       if (!showAnswers) {
         return (
-          <React.Fragment>
+          <>
             <div>{visibleAnswers}</div>
-            <Button onClick={toggleAnswers}>LOAD MORE ANSWERS</Button>
-          </React.Fragment>
+            <ExpandButton onClick={toggleAnswers}>LOAD MORE ANSWERS</ExpandButton>
+          </>
         )
       }
       if (showAnswers) {
         return (
           <div>
             {answerList}
-            <Button onClick={toggleAnswers}>COLLAPSE</Button>
+            <ExpandButton onClick={toggleAnswers}>COLLAPSE</ExpandButton>
           </div>
         )
       }
@@ -50,9 +53,10 @@ function AnswerList({answers, getUpdate}) {
 
   /*----- RENDERER -----*/
   return (
-    <div>
-      <div>A:{renderAnswerList()}</div>
-    </div>
+    <Container>
+      <b>A: </b>
+      <div>{renderAnswerList()}</div>
+    </Container>
   )
 }
 
@@ -60,3 +64,10 @@ function AnswerList({answers, getUpdate}) {
 
 /*==================== EXPORTS ====================*/
 export default AnswerList;
+
+const ExpandButton = styled(Button)`
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  font-size: 9pt;
+`

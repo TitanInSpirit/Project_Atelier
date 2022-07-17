@@ -3,12 +3,16 @@ import styled, {ThemeProvider} from 'styled-components';
 
 /*==================== INTERNAL MODULES ====================*/
 
+
+
+/*==================== EXPORTS ====================*/
+
   /*----- TEXT -----*/
 
 
 
   /*----- BUTTONS -----*/
-  const Submit = styled.button`
+  export const Submit = styled.button`
     font-size: 1em;
     margin: 1em;
     padding: 0.25em 1em;
@@ -27,18 +31,15 @@ import styled, {ThemeProvider} from 'styled-components';
   //   cursor: pointer;
   // `;
 
-    const Button = styled.button`
+  export const Button = styled.button`
       border: solid;
       border-width: thin;
-      padding: 5px 20px;
-      border: none;
-      box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
-      position: relative;
-      right: -5px;
+      background-color: #fff;
+      padding: 5px;
       cursor: pointer;
   `;
 
-    const LinkButton = styled.button`
+  export const LinkButton = styled.button`
       background: none!important;
       border: none;
       padding: 0!important;
@@ -47,7 +48,7 @@ import styled, {ThemeProvider} from 'styled-components';
       cursor: pointer;
     `;
 
-  const CloseModal = styled.button`
+  export const CloseModal = styled.button`
     display: flex;
     align-content: center;
     justify-content: center;
@@ -69,14 +70,14 @@ import styled, {ThemeProvider} from 'styled-components';
   `;
 
   /*----- DIVS -----*/
-  const PhotoPreview = styled.div`
+  export const PhotoPreview = styled.div`
     display: flex;
     flex-direction: row;
     align-content: center;
     padding: 0.25em;
   `;
 
-  const PhotoFrame = styled.div`
+  export const PhotoFrame = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
@@ -86,14 +87,21 @@ import styled, {ThemeProvider} from 'styled-components';
     margin-left: 10px;
   `;
 
+  export const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin: 10px;
+  `;
+
   /*----- FORMS -----*/
-  const Form = styled.form`
+  export const Form = styled.form`
 
   `;
 
 
   /*----- INPUTS -----*/
-  const Search = styled.input`
+  export const Search = styled.input`
     border: solid;
     border-width: thin;
     width: 90%;
@@ -101,21 +109,9 @@ import styled, {ThemeProvider} from 'styled-components';
   `;
 
   /*----- IMAGES -----*/
-  const Thumbnail = styled.img`
+  export const Thumbnail = styled.img`
     width: 125px;
     height: 100px;
     align-self: center;
     object-fit: cover;
   `;
-
-/*==================== EXPORTS ====================*/
-export {
-  Submit,
-  Thumbnail,
-  LinkButton,
-  Button,
-  PhotoPreview,
-  PhotoFrame,
-  CloseModal,
-  Search,
-}

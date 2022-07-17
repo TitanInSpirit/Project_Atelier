@@ -16,6 +16,7 @@ function Questions({products}) {
   const [selectedProduct, setSelectedProduct] = useState();
   const [questions, setQuestions] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [showQuestions, setShowQuestions] = useState(false);
 
 
   /*----- LIFECYCLE -----*/
@@ -43,7 +44,7 @@ function Questions({products}) {
   }
 
   const renderAddQuestion = () => {
-    return <Button style={{margin: '10px'}} onClick={() => setShowForm(true)}>Add a Question</Button>;
+    return <Button style={{margin: '10px'}} onClick={() => setShowForm(true)}>Add a Question +</Button>;
   }
 
   const renderMoreAnswered = () => {

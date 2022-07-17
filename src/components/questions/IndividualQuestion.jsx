@@ -7,7 +7,7 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 import AnswerList from './AnswerList.jsx';
 import Form from './Form.jsx';
-import {LinkButton} from '../../../public/stylesheets/styles.js';
+import {Container, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
 function IndividualQuestion({question, getUpdate}) {
@@ -49,13 +49,19 @@ function IndividualQuestion({question, getUpdate}) {
   }
 
   const renderQuestion = () => {
-    return <div>{`Q: ${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}</div>;
+    return (
+    <Container>
+      <b>Q:</b>
+      <div>
+        {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+      </div>
+    </Container>);
   }
 
 
   /*----- RENDERER -----*/
   return (
-    <div style={{margin: '15px'}}>
+    <div>
       {renderQuestion()}
       <AnswerList answers={answers} getUpdate={getUpdate}/>
       <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
