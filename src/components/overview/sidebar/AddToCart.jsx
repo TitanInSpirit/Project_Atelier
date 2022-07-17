@@ -11,6 +11,7 @@ function AddToCart(props) {
       let availability = props.current_style.skus[props.currentSku].quantity
       let availabilityArray = [...Array(availability+1).keys()]
       availabilityArray.shift()
+      availabilityArray.length > 15 ?  availabilityArray.length = 15 : null
         for (const item in skus) {
           let size = skus[item].size
           sizes.push({size:size, sku: item})
@@ -20,7 +21,7 @@ function AddToCart(props) {
           <div className="size_and_quantity_container">
             <select name="select_size" id="sizes" className="overview_button select_size" onChange={props.setCurrentSku}>
               <option value="default" disabled selected >SELECT SIZE</option>
-              {sizes.map((size) => {
+              {sizes.length === 0 ? <option value='OOS'id="OOS" key='OOS' disabled selected>'OUT OF STOCK</option> : sizes.map((size) => {
               return(
                 <option value={size.sku} id={size.sku} key={size.sku}>{size.size}</option>
                 )

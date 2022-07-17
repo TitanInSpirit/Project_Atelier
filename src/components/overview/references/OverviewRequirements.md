@@ -1,4 +1,4 @@
-# Overview
+# <input type="checkbox" > Overview
 
 The Overview module will be the top-most module on the Product Detail page. The functionality contained within this module can be divided into several pieces:
 
@@ -9,7 +9,7 @@ The Overview module will be the top-most module on the Product Detail page. The 
 
 This component will **guide the customer** through **selecting a specific style** and **size** to add to their cart. As such, portions of the Overview module, such as the image gallery and cart selection, will be **specific to a SKU chosen** as opposed to the overarching product.
 
-## Product Information
+## <input type="checkbox" checked> Product Information
 
 General information about the product will be displayed at the top of the Overview. The following information will show:
 - <input type="checkbox" checked> **Star Rating (# of Reviews)**
@@ -58,19 +58,19 @@ Below the product information, the user should be presented all the styles of th
 
 Below the style selector, two dropdowns should allow the user to select the size and quantity of the item to add to their cart. The options available within these dropdowns will vary based on the selected product style.
 
-- <input type="checkbox"> **1.1.3.1. Size Selector**
+- <input type="checkbox" checked> **1.1.3.1. Size Selector**
 
   - <input type="checkbox" checked> The first dropdown will list all of the available sizes for the currently selected style.
 
   - <input type="checkbox" checked> Only sizes that are currently in stock for the style selected should be listed.
   - <input type="checkbox" checked> Sizes not available should not appear within the list.
-  - <input type="checkbox"> If there is no remaining stock for the current style, the dropdown should become inactive and read “OUT OF STOCK”.
+  - <input type="checkbox" checked> If there is no remaining stock for the current style, the dropdown should become inactive and read “OUT OF STOCK”.
   - <input type="checkbox" checked> When collapsed, the dropdown should show the currently selected size.
   - <input type="checkbox" checked > By default, the dropdown should show “Select Size”.
 
 - <input type="checkbox"> **1.1.3.2. Quantity Selector**
 
-  - <input type="checkbox"> The second dropdown will allow the user to select a quantity of the current style and size to add to their cart.
+  - <input type="checkbox" checked> The second dropdown will allow the user to select a quantity of the current style and size to add to their cart.
     The options in this dropdown will be a sequence of integers ranging from 1 to the maximum. The maximum selection will be capped by either the quantity of this style and size in stock, or a hard limit of 15. For example, if the SKU for the selected product style and size has 4 units left in stock, the dropdown will allow choice of 1, 2, 3 or 4. However if there are 30 units in stock, the dropdown will only present from 1 to 15.
 
   - <input type="checkbox" checked> If the size has not been selected, then the quantity dropdown will display ‘-’ and the dropdown will be disabled.
