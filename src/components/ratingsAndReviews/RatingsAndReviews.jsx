@@ -105,7 +105,7 @@ const RatingsAndReviews = (props) => {
   return (
     <div>
       {/* {console.log('reviews are', reviews)} */}
-      {/* {console.log('style', props.style.photos)} */}
+      {/* {console.log('style', props.products[0].name)} */}
       <h5 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
@@ -125,6 +125,7 @@ const RatingsAndReviews = (props) => {
                 onHandleAddNewReview={onHandleAddNewReview}
                 handleGetFilterReviewCounts={handleGetFilterReviewCounts}
                 styleUrl = {props.style.photos}
+                product = {props.products[0]}
               />
 
           </div>

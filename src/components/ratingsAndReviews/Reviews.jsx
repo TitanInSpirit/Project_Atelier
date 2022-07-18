@@ -5,7 +5,7 @@ import {BsSearch} from 'react-icons/bs'
 
 
 
-const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilterReviewCounts, styleUrl}) => {
+const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilterReviewCounts, styleUrl, product}) => {
   const [renderReview, setRenderReview] = useState([])
   const [reviewCount, setReviewCount] = useState(2)
   const [searchValue, setSearchValue] = useState('')
@@ -90,7 +90,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
       <hr className='reviewsBreak'/>
       {renderMoreReviewsBtn()}
 
-      <NewReview onHandleAddNewReview={onHandleAddNewReview} styleUrl={styleUrl}/>
+      <NewReview onHandleAddNewReview={onHandleAddNewReview} styleUrl={styleUrl} product={product}/>
 
 
     </div>

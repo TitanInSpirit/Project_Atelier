@@ -4,7 +4,7 @@ import StarRating from './StarRating.jsx'
 import PhotoUpload from './PhotoUpload.jsx'
 
 
-const NewReview = ({onHandleAddNewReview, styleUrl}) => {
+const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
   const [showModal, setShowModal] = useState(false);
   const [starRating, setStarRating] = useState(null);
   const [recommend, setRecommend] = useState(true);
@@ -21,7 +21,7 @@ const NewReview = ({onHandleAddNewReview, styleUrl}) => {
   const showDes = () => {
     for (let key in ratingDes) {
       if(starRating === Number(key)) {
-        return <span style={{fontSize:'23px'}}>{ratingDes[key]}</span>
+        return <span style={{marginLeft: '5px', fontSize: '18px'}}>{ratingDes[key]}</span>
       }
     }
   }
@@ -105,20 +105,21 @@ const NewReview = ({onHandleAddNewReview, styleUrl}) => {
 
   return (
     <div>
-      {/* {console.log(styleUrl)} */}
+      {console.log(product)}
       {/* {console.log('characteristics', characteristics)} */}
       {/* {console.log('recommend', recommend)} */}
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className='newReviewContainer'>
           <h3 className='newReviewTitle'>Write Your Review</h3>
-          {/* <div className='newReviewSubTitle'>About the [wait for name props pass here]</div> */}
+
           <div>
             {styleUrl && <img src={styleUrl[0].url} alt='' className='newReviewShowProductPic'/>}
           </div>
           <form  className='newReviewForm' onSubmit={handleSubmit}>
             <div className='newReviewOverrall'>
-              <span style={{fontWeight: 'bold', fontSize:'23px'}}>Overrall rating:<span style={{color: 'red'}}>*</span></span> <span>{starRating && showDes()}</span>
+              {product && <div className='newReviewProTitle'>{product.name}</div>}
+              <span className='newReviewOverrallRate' >Overrall rating:<span style={{color: 'red'}}>*</span></span> <span>{starRating && showDes()}</span>
               <StarRating handleStarRating={handleStarRating}/>
                 <div className='newReviewRecommend'>
                 <span style={{fontWeight: 'bold', marginRight: '10px'}}>

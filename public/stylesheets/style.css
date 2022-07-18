@@ -473,7 +473,7 @@ p {
 }
 
 .newReviewContainer {
-  padding: 10px 140px;
+  padding: 30px 140px 0;
   background-color: #fff;
   width: 1000px;
   height: 800px;
@@ -520,7 +520,7 @@ p {
 
 .newReviewLabel{
   display: inline-block;
-  margin: 10px 0 5px;
+  margin: 10px 0 8px;
   font-weight: bold;
   font-size: 18px;
 }
@@ -696,14 +696,28 @@ p {
 .newReviewOverrall{
   position: relative;
   right: -190px;
-  top: -60px;
+  top: -20px;
   width: 50%;
+
+}
+
+.newReviewProTitle{
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 22px;
+  position: relative;
+  top: -5px;
+  color: #575555;
+}
+
+.newReviewOverrallRate{
+  font-weight: bold;
 
 }
 
 .newReviewForm{
   position: relative;
-  top: -90px;
+  top: -133px;
 }
 
 .newReviewShowProductPic {
@@ -720,12 +734,14 @@ p {
 .newFormBtn {
   width: 45%;
   height: 35px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border-radius: 5px;
   border: 1px #fff solid;
   font-weight: bold;
   cursor: pointer;
   font-size: 15px;
+  position: relative;
+  top: 50px;
 }
 
 .newFormBtn:hover{
@@ -735,7 +751,7 @@ p {
 
 .newFormCancelBtn{
   position: relative;
-  top: -145px;
+  top: -117px;
   right: -388px;
 }
 
