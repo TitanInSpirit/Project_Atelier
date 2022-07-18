@@ -39,6 +39,7 @@ const Overview = (props) => {
         reviewsRef={props.reviewsRef}
         scrollToSection={props.scrollToSection}
         currentPhoto={props.currentPhoto}
+        current_size={props.current_size}
         />
       </div>
     );

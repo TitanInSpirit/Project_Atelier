@@ -40,6 +40,7 @@ function Sidebar(props) {
         setCurrentSku={props.setCurrentSku}
         currentSku={props.currentSku}
         currentPhoto={props.currentPhoto}
+        current_size={props.current_size}
       />
     </div>
   );

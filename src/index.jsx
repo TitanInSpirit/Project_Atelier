@@ -20,6 +20,7 @@ class App extends React.Component {
       current_photo: '',
       current_product: {},
       current_style: {},
+      current_size: 'default',
       total_reviews: 0,
       average_reviews: 0,
     }
@@ -60,7 +61,9 @@ class App extends React.Component {
     })
   }
   setCurrentSku = (event) => {
-    this.setState({current_sku: event.target.value})
+    let size = event.target.value.split(' ')
+    console.log(size)
+    this.setState({current_sku: size[0], current_size: size[1]})
   }
 
   setCurrentStyle = (styleId, styles) => {
@@ -132,6 +135,7 @@ class App extends React.Component {
         scrollToSection={this.scrollToSection}
         setCurrentPhoto={this.setCurrentPhoto}
         currentPhoto={this.state.current_photo}
+        current_size={this.state.current_size}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
