@@ -5,7 +5,7 @@ import ProductDescription from './components/product_description/product_descrip
 import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.jsx';
 import '../public/stylesheets/style.css';
 import Questions from './components/questions/Questions.jsx';
-import axios from 'axios'
+import axios from 'axios';
 
 const root = createRoot(document.getElementById('root'));
 
@@ -119,7 +119,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1> Header: Hello World!!!!!!</h1>
+        <h1><img src='https://res.cloudinary.com/dsfj56bcp/image/upload/v1657991216/project_atelier/shop_ihqvtz.png'/> Shoppy McShop Face</h1>
         <Overview
         products={this.state.products}
         getAllProducts={this.getAllProducts}
@@ -139,7 +139,12 @@ class App extends React.Component {
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
-        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts} reviewsRef={this.scrollToReviews}/>
+        <RatingsAndReviews
+          products={this.state.products}
+          getAllProducts={this.getAllProducts}
+          reviewsRef={this.scrollToReviews}
+          style={this.state.current_style}
+        />
       </div>
     );
   }

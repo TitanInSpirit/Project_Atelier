@@ -2,12 +2,14 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {format, parseISO} from  'date-fns';
+import styled from 'styled-components';
 
 
 /*==================== INTERNAL MODULES ====================*/
+import {Container, Submit, Thumbnail, PhotoPreview, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
-function Answer({answer, getUpdate}) {
+function Answer({answer, getUpdate, searchTerm}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
 
   const [wasHelpful, setWasHelpful] = useState(false);
@@ -43,27 +45,67 @@ function Answer({answer, getUpdate}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <button className="helpfulAndReport">Reported</button>;
+      return <LinkButton>Reported</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleReport} name={id}>Report</button>;
+    return <LinkButton onClick={handleReport} name={id}>Report</LinkButton>;
   }
 
   const renderHelp = () => {
     if (wasHelpful) {
-      return <button className="helpfulAndReport" name={id}>Yes</button>;
+      return <LinkButton name={id}>Yes</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleHelpful} name={id}>Yes</button>;
+    return <LinkButton onClick={handleHelpful} name={id}>Yes</LinkButton>;
+  }
+
+  const renderPhotos = () => {
+    return photos.map((photo) => {
+      return <AnswerThumbnail src={photo} key={`P-${photo}${id}`}/>
+  })
+  }
+
+  const renderAnswer = () => {
+    if (searchTerm && searchTerm.length > 2) {
+      if (body.includes(searchTerm)) {
+        return (
+          <AnswerContainer>
+            <div>{body}</div>
+            <PhotoPreview>{renderPhotos()}</PhotoPreview>
+            <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+          </AnswerContainer>
+        )
+      }
+    } else {
+      return (
+        <AnswerContainer>
+          <div>{body}</div>
+          <PhotoPreview>{renderPhotos()}</PhotoPreview>
+          <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+        </AnswerContainer>
+      )
+    }
   }
 
   /*----- RENDERER -----*/
   return (
-    <div>
-      <div className="answer-body">{body}</div>
-      <div className="answer-photos">{photos.map((photo) => <img src={photo} width="auto" height="100" key={`P-${photo}-${id}`}/>)}</div>
-      <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
-    </div>
+    <>
+    {renderAnswer()}
+    </>
   )
 }
 
 /*==================== EXPORTS ====================*/
 export default Answer;
+
+
+  /*----- CUSTOMIZED COMPONENTS -----*/
+
+  const AnswerThumbnail = styled(Thumbnail)`
+    width: 100px;
+    height: 75px;
+    margin: 5px;
+  `;
+
+  const AnswerContainer = styled(Container)`
+    flex-direction: column;
+    margin: 0, 10px, 10px, 10px;
+  `;
