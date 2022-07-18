@@ -36,27 +36,18 @@ function Questions({product, questionsList, getQuestions}) {
         return (
           <>
             <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
-            <span> {renderMoreAnswered()} {renderAddQuestion()} </span>
           </>
         )
       }
       if (showQuestions) {
-        return (
-          <>
-            <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
-            {renderAddQuestion()}
-          </>
-        )
+        return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
       }
     } else {
-      return (
-        <>
-          <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
-          {renderAddQuestion()}
-        </>
-      )
+      return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
     }
   }
+
+
 
   const renderAddQuestion = () => {
     return <Button onClick={() => setShowForm(true)}>Add a Question +</Button>;
@@ -77,7 +68,10 @@ function Questions({product, questionsList, getQuestions}) {
       <QuestionContainer>
         <h5>QUESTIONS & ANSWERS</h5>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-        {renderQuestionList()}
+        <ScrollContainer className="scroll-container">
+          {renderQuestionList()}
+        </ScrollContainer>
+        <span> {renderMoreAnswered()} {renderAddQuestion()} </span>
         {renderAddQuestionForm()}
       </QuestionContainer>
     </QuestionAnswerContainer>
@@ -88,20 +82,26 @@ function Questions({product, questionsList, getQuestions}) {
 /*==================== EXPORTS ====================*/
 export default Questions;
 
+
 const QuestionContainer = styled(Container)`
   width: 800px;
   max-height: 50vh;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-  overflow: scroll;
-  *::-webkit-scollbar {
-    display: none;
-    width: 0 !important
-  }
-  /* overflow-x: hidden;
-  overflow-y: hidden; */
 `;
+
+const ScrollContainer = styled(QuestionContainer)`
+  overflow: scroll;
+  position: relative;
+  scrollbar-width: 0px;
+  ::-webkit-scollbar {
+    display: none;
+    width: 0;
+  }
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+`
 
 const QuestionAnswerContainer = styled(Container)`
   width: 100vh;

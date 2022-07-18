@@ -1081,6 +1081,10 @@ p {
 
 /* ===== QUESTIONS ===== */
 
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
 .questions-and-answers {
   display: flex;
   width: 100%;
