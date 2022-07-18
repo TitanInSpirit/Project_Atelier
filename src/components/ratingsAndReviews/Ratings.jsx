@@ -62,9 +62,9 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
     <div>
      {/* {console.log(rating)} */}
       <div className = 'ratingSum'>
-        <h3 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
+        <div className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
         <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p>
-        </h3>
+        </div>
       </div>
 
       <small>{recommended && calRecommend()}% of reviews recommend this product</small>

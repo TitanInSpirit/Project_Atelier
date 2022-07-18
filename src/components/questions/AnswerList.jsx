@@ -1,70 +1,75 @@
 /*==================== EXTERNAL MODULES ====================*/
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
-class AnswerList extends React.Component {
-  constructor(props) {
-    super(props);
+import styled from 'styled-components';
+import {Button, Container} from '../../../public/stylesheets/styles.js';
 
-    this.state = {
-      answerList: this.props.answers
-        .sort((a,b) => b.helpfulness - a.helpfulness)
-        .sort((a,b) => {
-          if (a.answerer_name === 'Seller') {
-            return b.answerer_name - a.answerer_name;
-          }
-        })
-        .map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={this.props.getUpdate} />),
-      showAnswers: false
-    };
-  }
+function AnswerList({answers, getUpdate, searchTerm}) {
 
-  componentDidMount() {
-    // creates shortened answer list to show if there are more than two answers
-    this.setState({visibleAnswers: this.state.answerList.slice(0,2)})
-  }
+    /*----- STATE HOOKS -----*/
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [answerList, setAnswerList] = useState(() => {
+    const sortedAnswers = answers;
+    sortedAnswers.sort((a,b) => b.helpfulness - a.helpfulness)
+      .sort((a,b) => {
+        if (a.answerer_name === 'Seller') {
+          return b.answerer_name - a.answerer_name;
+        }
+      })
+      const mappedAnswers = sortedAnswers.map((answer) => {
+        return <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} searchTerm={searchTerm}/>
+    })
+    return mappedAnswers;
+  });
 
-  toggleAnswers = () => {
-    this.setState({showAnswers: !this.state.showAnswers});
-  }
+  /*----- EVENT HANDLERS -----*/
+  const toggleAnswers = () => setShowAnswers(showAnswers => !showAnswers);
 
   /*----- RENDER FUNCTIONS -----*/
-  renderAnswerList = () => {
-    // if answer list has more than 2 answers, only show two answers and show a "load more answers"
-    if (this.state.answerList.length > 2) {
-      if (!this.state.showAnswers) {
+  const renderAnswerList = () => {
+    if (answerList.length > 2) {
+      if (!showAnswers) {
+        let visibleAnswers = answerList.slice(0,2);
         return (
-          <React.Fragment>
-            <div>{this.state.visibleAnswers}</div>
-            <button className="more-answers-button" onClick={this.toggleAnswers}>LOAD MORE ANSWERS</button>
-          </React.Fragment>
+          <>
+            <div>{visibleAnswers}</div>
+            <ExpandButton onClick={toggleAnswers}>LOAD MORE ANSWERS</ExpandButton>
+          </>
         )
       }
-      if (this.state.showAnswers) {
+      if (showAnswers) {
         return (
-          <div className="all-answers-list" style={{maxheight: '50vh'}}>
-            {this.state.answerList}
-            <button className="more-answers-button" onClick={this.toggleAnswers}>COLLAPSE</button>
+          <div>
+            {answerList}
+            <ExpandButton onClick={toggleAnswers}>COLLAPSE</ExpandButton>
           </div>
         )
       }
     } else {
-      return <div> {this.state.answerList} </div>
+      return <div>{answerList}</div>
     }
   }
 
   /*----- RENDERER -----*/
-  render() {
-    return (
-      <div>
-        <div>A:{this.renderAnswerList()}</div>
-      </div>
-    )
-  }
-
+  return (
+    <Container>
+      <b>A: </b>
+      <div>{renderAnswerList()}</div>
+    </Container>
+  )
 }
+
+
 
 /*==================== EXPORTS ====================*/
 export default AnswerList;
+
+const ExpandButton = styled(Button)`
+  border: none;
+  padding: 0;
+  font-weight: bold;
+  font-size: 9pt;
+`

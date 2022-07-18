@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 /*==================== INTERNAL MODULES ====================*/
+import {Button, CloseModal} from '../../../public/stylesheets/styles.js';
 import PhotoUpload from './PhotoUpload.jsx'
 
 function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
@@ -13,7 +14,7 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
 
 
   /*----- STATE HOOKS -----*/
-  const [entry, setEntry] = useState({});
+  const [entry, setEntry] = useState({photos: []});
 
 
   /*----- EVENT HANDLERS -----*/
@@ -52,8 +53,8 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
       body: entry.submission,
       name: entry.nickname,
       email: entry.email,
-      product_id: Number(id)
-      // photos: [...entry.photos] || null
+      product_id: Number(id),
+      photos: entry.photos
     })
     .then(response => getUpdate())
     .then(() => setShowForm(false))
@@ -99,8 +100,8 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
   const renderSubmit = () => {
     return (
       <>
-        <button onClick={handleSubmit}>Submit</button>
-        <button onClick={() => setShowForm(false)}>Close</button>
+        <Button onClick={handleSubmit}>Submit</Button>
+        <CloseModal onClick={() => setShowForm(false)}>X</CloseModal>
       </>
     )
   }
@@ -118,7 +119,7 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
         {renderSubmission()}
         <br/>
         <br/>
-         <PhotoUpload handleChange={handleChange}/>
+         <PhotoUpload entry={entry} setEntry={setEntry}/>
         <br/>
         <br/>
         {renderSubmit()}

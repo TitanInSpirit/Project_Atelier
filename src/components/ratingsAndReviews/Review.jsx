@@ -94,7 +94,7 @@ const Review = ({review, fetchReviewData}) => {
         {review.photos.map(photo => {
           return <img className='reviewPhoto' src={photo.url} key={photo.id} alt='' onClick={() => handleImgClick(photo)}/>
         })}
-        <Modal showModal={showModal} >
+        <Modal showModal={showModal} setShowModal={setShowModal}>
           {showImg && <img className='reviewModalImg' src={showImg} alt=''/>}
           <button className='ModalCloseBtn' onClick={() => setShowModal(false)}>X</button>
         </Modal>
