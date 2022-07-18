@@ -7,9 +7,10 @@ import axios from 'axios';
 /*==================== INTERNAL MODULES ====================*/
 import AnswerList from './AnswerList.jsx';
 import Form from './Form.jsx';
+import {Container, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
-function IndividualQuestion({question, getUpdate}) {
+function IndividualQuestion({question, getUpdate, searchTerm}) {
   let {answers,
     asker_name,
     question_body,
@@ -38,25 +39,50 @@ function IndividualQuestion({question, getUpdate}) {
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
     if (wasHelpful) {
-      return <button className="helpfulAndReport" name={question_id}>Yes</button>;
+      return <LinkButton name={question_id}>Yes</LinkButton>;
     }
-    return <button className="helpfulAndReport" onClick={handleHelpful} name={question_id}>Yes</button>;
+    return <LinkButton onClick={handleHelpful} name={question_id}>Yes</LinkButton>;
   }
 
   const renderAddAnswer = () => {
-    return <button className="helpfulAndReport" onClick={() => setShowForm(true)}>Add Answer</button>;
+    return <LinkButton onClick={() => setShowForm(true)}>Add Answer</LinkButton>;
   }
 
   const renderQuestion = () => {
-    return <div>{`Q: ${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}</div>;
+    if (searchTerm && searchTerm.length > 2) {
+      if (question_body.includes(searchTerm)) {
+        return (
+          <>
+            <Container>
+              <b>Q:</b>
+              <div>
+                {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+              </div>
+            </Container>
+            <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
+          </>
+        );
+      }
+    } else {
+      return (
+        <>
+          <Container>
+            <b>Q:</b>
+            <div>
+              {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+            </div>
+          </Container>
+          <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
+        </>
+      );
+    }
   }
 
 
   /*----- RENDERER -----*/
   return (
-    <div style={{margin: '15px'}}>
+    <div>
       {renderQuestion()}
-      <AnswerList answers={answers} getUpdate={getUpdate}/>
       <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
     </div>
   )

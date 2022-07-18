@@ -2,22 +2,18 @@
 import React from 'react';
 
 /*==================== INTERNAL MODULES ====================*/
-import SearchBar from './SearchBar.jsx';
 import IndividualQuestion from './IndividualQuestion.jsx';
 
-function QuestionList({questions, getUpdate}) {
+function QuestionList({questions, getUpdate, searchTerm}) {
 
   /*----- RENDER FUNCTIONS -----*/
   const renderIndividualQuestion = () => {
-    return questions.map((question) => <IndividualQuestion key={'Q-' + question.question_id} question={question} getUpdate={getUpdate}/>)
+    return questions.map((question) => <IndividualQuestion key={'Q-' + question.question_id} question={question} getUpdate={getUpdate} searchTerm={searchTerm}/>)
   }
 
   /*----- RENDERER -----*/
   return (
     <div>
-      <div style={{margin: '15px'}}>
-        <SearchBar />
-      </div>
       {renderIndividualQuestion()}
     </div>
   )
