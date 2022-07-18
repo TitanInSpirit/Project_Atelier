@@ -19,11 +19,11 @@ function AnswerList({answers, getUpdate, searchTerm}) {
           return b.answerer_name - a.answerer_name;
         }
       })
-      const mappedAnswers = sortedAnswers.map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} searchTerm={searchTerm}/>)
+      const mappedAnswers = sortedAnswers.map((answer) => {
+        return <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} searchTerm={searchTerm}/>
+    })
     return mappedAnswers;
   });
-
-  const visibleAnswers = answerList.slice(0,2);
 
   /*----- EVENT HANDLERS -----*/
   const toggleAnswers = () => setShowAnswers(showAnswers => !showAnswers);
@@ -32,6 +32,7 @@ function AnswerList({answers, getUpdate, searchTerm}) {
   const renderAnswerList = () => {
     if (answerList.length > 2) {
       if (!showAnswers) {
+        let visibleAnswers = answerList.slice(0,2);
         return (
           <>
             <div>{visibleAnswers}</div>

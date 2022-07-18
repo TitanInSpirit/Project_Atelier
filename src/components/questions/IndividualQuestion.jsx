@@ -52,23 +52,30 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
     if (searchTerm && searchTerm.length > 2) {
       if (question_body.includes(searchTerm)) {
         return (
+          <>
+            <Container>
+              <b>Q:</b>
+              <div>
+                {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+              </div>
+            </Container>
+            <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
+          </>
+        );
+      }
+    } else {
+      return (
+        <>
           <Container>
             <b>Q:</b>
             <div>
               {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
             </div>
-          </Container>);
-      }
-    } else {
-      return (
-        <Container>
-          <b>Q:</b>
-          <div>
-            {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
-          </div>
-        </Container>);
+          </Container>
+          <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
+        </>
+      );
     }
-
   }
 
 
@@ -76,7 +83,6 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
   return (
     <div>
       {renderQuestion()}
-      <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
       <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
     </div>
   )
