@@ -4,6 +4,10 @@ font-family: 'Amiko', sans-serif;
 font-family: 'Hind Madurai', sans-serif;
 font-family: 'Hind Siliguri', sans-serif; */
 
+html,
+body {
+  height: 100%;
+}
 
 h1 {
   font-family: 'Amiko', sans-serif;
@@ -155,7 +159,7 @@ p {
   position: relative;
 }
 
-.sortAndSearchContainer{
+.sortAndSearchContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -203,14 +207,14 @@ p {
   overflow-y: scroll;
 }
 
-.reviewNoFound{
+.reviewNoFound {
   font-size: 30px;
   position: relative;
   bottom: -30px;
   text-align: center;
 }
 
-.reivewSearchBar{
+.reivewSearchBar {
   position: absolute;
   right: -205px;
   top: 0;
@@ -219,11 +223,12 @@ p {
   padding: 5px 10px;
   border: 1px lightgray solid;
 }
+
 /* .renderReviewBodycontainer{
 
 } */
 
-.reviewBodyDetail{
+.reviewBodyDetail {
   line-height: 25px;
 }
 
@@ -270,7 +275,8 @@ p {
 }
 
 .addNewRivewBtn:hover {
-  background-color: rgba(0,0,0,.05);;
+  background-color: rgba(0, 0, 0, .05);
+  ;
 }
 
 .newReviewRange{
@@ -297,14 +303,15 @@ p {
   border-radius: 5px;
   padding: 5px 20px;
   border: none;
-  box-shadow: 0px 0px 4px rgba(0,0,0,.3);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, .3);
   position: relative;
   right: -5px;
   cursor: pointer;
 }
 
 .reviewHelpfulButton:hover {
-  background-color: rgba(0,0,0,.05);;
+  background-color: rgba(0, 0, 0, .05);
+  ;
 }
 
 .reviewReportButton {
@@ -518,19 +525,19 @@ p {
   margin-bottom: 22px;
 }
 
-.newReviewLabel{
+.newReviewLabel {
   display: inline-block;
   margin: 10px 0 8px;
   font-weight: bold;
   font-size: 18px;
 }
 
-.newReviewPhotos{
+.newReviewPhotos {
   display: flex;
 
 }
 
-.newReviewPhotoUpload{
+.newReviewPhotoUpload {
   position: relative;
   border: 1px lightgray solid;
   border-radius: 5px;
@@ -549,7 +556,7 @@ p {
   border: none;
 }
 
-.newReviewShowPhotos{
+.newReviewShowPhotos {
   display: block;
 }
 
@@ -569,15 +576,13 @@ p {
 
 } */
 
-.newReviewPhotoInput{
+.newReviewPhotoInput {
   /* display: none; */
 }
 
-.newReviewPhotoName{
+.newReviewPhotoName {}
 
-}
-
-.newReviewPhotoUploadBtn{
+.newReviewPhotoUploadBtn {
   width: 25%;
   height: 21px;
   border: none;
@@ -592,7 +597,7 @@ p {
 
 } */
 
-.newReviewSubTitle{
+.newReviewSubTitle {
   color: gray;
   position: relative;
   top: -17px;
@@ -626,7 +631,7 @@ p {
   overflow-y: scroll;
 }
 
-.newReviewTitle{
+.newReviewTitle {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
@@ -677,7 +682,7 @@ p {
 
 }
 
-.newReviewCharaDetailtd3{
+.newReviewCharaDetailtd3 {
   position: relative;
     /* top: -1px; */
   text-align: center;
@@ -725,7 +730,7 @@ p {
   height: 150px;
 }
 
-.newReviewRecommend{
+.newReviewRecommend {
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -826,33 +831,36 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  height: 500px;
+  width: 1000px;
 }
 
 /* Overview | Img Carousel */
 .slider {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   position: relative;
   height: 500px;
   width: 550px;
+  padding-left: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 0px;
-  padding-left: 500px;
   margin-right: 0px;
   padding-right: 0px;
 }
 
 .image {
-  width: 455px;
+  width: 700px;
   height: 455px;
   margin-top: 2.5px;
   object-fit: cover;
   border-radius: 0px;
   border: 1px solid rgba(79, 79, 79, .75);
 }
+
 
 .right-arrow {
   position: absolute;
@@ -920,8 +928,7 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: -150px;
-  padding-left: 0px;
+  padding-right: 100px;
 }
 
 /* Overview | Product Info */
@@ -983,6 +990,12 @@ p {
   text-indent: 0px;
 }
 
+.favorite_star {
+  margin-top: 2.5px;
+  height: 20px;
+  width: 20px;
+}
+
 .add_to_cart_btn {
   width: 250px;
 }
@@ -1024,6 +1037,48 @@ p {
   cursor: pointer;
 }
 
+/* Product Description */
+.product_description_container_parent {
+  display: flex;
+  flex-direction: row;
+  padding-top: 25px;
+  padding-left: 20%;
+}
+
+.product_description_container {
+  display: flex;
+  flex-direction: column;
+  max-width: 666px;
+}
+
+.ul_product_desc {
+  list-style: none;
+}
+
+.vertical_divider {
+  border-left: 6px solid rgb(74, 74, 74);
+  border-width: 2.5px;
+  margin-top: 10px;
+  margin-left: 40px;
+  min-height: 4.5rem;
+}
+
+.social_share_container {
+  display: flex;
+  width: 250px;
+  margin: 5px;
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: flex-start;
+}
+
+.share_icon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+}
+
 /* ===== QUESTIONS ===== */
 
 .questions-and-answers {
@@ -1032,4 +1087,3 @@ p {
   flex-direction: column;
   align-items: center;
 }
-

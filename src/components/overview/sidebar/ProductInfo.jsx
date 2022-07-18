@@ -5,13 +5,10 @@ function ProductInfo(props) {
     let str = props.average_reviews.toString();
     let check = Number(str.slice(-1));
     if (check === 5 || check === 0) {
-      console.log(props.average_reviews)
       return props.average_reviews;
     } else if (check < 5) {
-      console.log(Math.floor(props.average_reviews))
       return Math.floor(props.average_reviews)
     } else {
-      console.log(Math.ceil(props.average_reviews))
       return Math.ceil(props.average_reviews)
     }
   }
