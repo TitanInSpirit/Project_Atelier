@@ -8,18 +8,22 @@ function VerticalGallery (props) {
   if (!props.currentStyle){
     return null;
   } else {
-    let key = 0;
+    let key = -1;
     return (
       photos.map((photo) => {
         let thumb = photo.thumbnail_url;
         key++
         return(
-          <img key={key} id={key-1} src={`${thumb}`} className="thumb_image" onClick={props.changePic}/>
+          <div className="thumb_image_gallery">
+          <img key={key} id={key} src={`${thumb}`} className="thumb_image" onClick={props.changePic}/>
+          {key === props.currentVertGalIndex ? <div className="vert_gal_indicator"></div> : null}
+          </div>
         )
       })
      )
   }
 }
+
 let didRun = false;
 
 const ImageSlider = (props) => {
@@ -51,7 +55,7 @@ const ImageSlider = (props) => {
           return(
             <div key={index} className={index === current ? 'slide active' : 'slide'}>
               <div className="imageGallery">
-                <VerticalGallery changePic={changePic} currentStyle={props.currentStyle}/>
+                <VerticalGallery changePic={changePic} currentStyle={props.currentStyle} currentVertGalIndex={props.currentVertGalIndex} />
               </div>
               <BsChevronLeft className="left-arrow"  onClick={prevSlide}/>
               <BsChevronRight className="right-arrow" onClick={nextSlide}/>
@@ -73,6 +77,7 @@ function ImageGallery (props) {
         currentStyle={props.currentStyle}
         setCurrentPhoto={props.setCurrentPhoto}
         currentPhoto={props.currentPhoto}
+        currentVertGalIndex={props.currentVertGalIndex}
         />
       </div>
   </div>

@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.scrollToReviews = React.createRef()
+    this.addToCartError = React.createRef()
     this.state = {
       products: [],
       all_styles:  [],
@@ -28,13 +29,23 @@ class App extends React.Component {
 
   componentDidMount = () => {
     this.getAllProducts()
-
   }
 
   handleAddToCart = (event) => {
-    console.log('add to cart clicked')
-    console.log(event.target[0].value) // SKU and Size
-    console.log(event.target[1].value) // Quantity
+    let skuArray = event.target[0].value.split(' ')
+    let sku = skuArray[0]
+    let quantity = event.target[1].value // Quantity
+    const configCart = {
+      params: {
+        sku_id: sku,
+        count: quantity
+      }
+    }
+
+    axios.post('http://localhost:3001/cart', configCart)
+    .then((res) => {
+      console.log(res)
+    })
     event.preventDefault();
   }
 
@@ -43,8 +54,6 @@ class App extends React.Component {
     if (!this.state.current_style){
       return null
     } else if (this.state.current_style.photos) {
-      console.log('hi')
-      console.log(this.state.current_style)
       this.setState({current_photo_index: photo, current_photo: this.state.current_style.photos[photo].url})
     }
   }
@@ -144,6 +153,8 @@ class App extends React.Component {
         currentPhoto={this.state.current_photo}
         current_size={this.state.current_size}
         handleAddToCart={this.handleAddToCart}
+        addToCartError={this.addToCartError}
+        currentVertGalIndex={this.state.current_photo_index}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>

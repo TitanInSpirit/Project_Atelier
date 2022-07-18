@@ -54,7 +54,7 @@ Below the product information, the user should be presented all the styles of th
 - <input type="checkbox" checked> Only one style can be selected at a time.
 - <input type="checkbox" checked> A style must be selected at all times.
 
-## <input type="checkbox"> Add to Cart
+## <input type="checkbox" checked> Add to Cart
 
 Below the style selector, two dropdowns should allow the user to select the size and quantity of the item to add to their cart. The options available within these dropdowns will vary based on the selected product style.
 
@@ -76,12 +76,12 @@ Below the style selector, two dropdowns should allow the user to select the size
   - <input type="checkbox" checked> If the size has not been selected, then the quantity dropdown will display ‘-’ and the dropdown will be disabled.
   - <input type="checkbox" checked> Once a size has been selected, the dropdown should default to 1.
 
-- <input type="checkbox"> **1.1.3.3. Add to cart**
-  - <input type="checkbox"> A button labeled “Add to Cart” will appear below the size and quantity dropdowns. This button will be used to place the style, size and quantity of the product selected into the user’s cart.
-  - <input type="checkbox"> Depending on the current selection in the size and quantity dropdowns, this button will have differing functionality.
-    - <input type="checkbox"> If the default ‘Select Size’ is currently selected: Clicking this button should open the size dropdown, and a message should appear above the dropdown stating “Please select size”.
-    - <input type="checkbox"> If there is no stock: This button should be hidden
-    - <input type="checkbox"> If both a valid size and valid quantity are selected: Clicking this button will add the product to the user’s cart.
+- <input type="checkbox" checked> **1.1.3.3. Add to cart**
+  - <input type="checkbox" checked> A button labeled “Add to Cart” will appear below the size and quantity dropdowns. This button will be used to place the style, size and quantity of the product selected into the user’s cart.
+  - <input type="checkbox" checked> Depending on the current selection in the size and quantity dropdowns, this button will have differing functionality.
+    - <input type="checkbox" checked> If the default ‘Select Size’ is currently selected: Clicking this button should open the size dropdown, and a message should appear above the dropdown stating “Please select size”.
+    - <input type="checkbox" checked> If there is no stock: This button should be hidden
+    - <input type="checkbox" checked> If both a valid size and valid quantity are selected: Clicking this button will add the product to the user’s cart.
 
 ## <input type="checkbox"> Image Gallery
 
@@ -92,10 +92,10 @@ The gallery will be viewable in two states. A default collapsed view, and an exp
 - <input type="checkbox"> **1.1.4.1. Default View**
 
   - <input type="checkbox" checked> The default view of the image gallery will be a single main image, overlaid by the list of thumbnail images.
-  - <input type="checkbox"> By default, the first image in the set will be displayed as the main image. This image will match the smaller thumbnail image shown first.
-  - <input type="checkbox"> When switching between styles, the index of the image currently selected should be maintained when the gallery updates for the new style.
+  - <input type="checkbox" checked> By default, the first image in the set will be displayed as the main image. This image will match the smaller thumbnail image shown first.
+  - <input type="checkbox" checked> When switching between styles, the index of the image currently selected should be maintained when the gallery updates for the new style.
   - <input type="checkbox" checked> Clicking on any thumbnail should update the main image to match that shown in the thumbnail clicked.
-  - <input type="checkbox"> The thumbnail corresponding to the image currently selected as the main image should be highlighted to indicate the current selection.
+  - <input type="checkbox" > The thumbnail corresponding to the image currently selected as the main image should be highlighted to indicate the current selection.
   - <input type="checkbox" checked> Clicking on the currently selected thumbnail will have no further effect.
   - <input type="checkbox" checked> Up to 7 thumbnail images will be displayed at a given time in the list.
   - <input type="checkbox"> If more than 7 images are in the set for the style selected, the user should be able to scroll forward and backwards through the thumbnails. An arrow button pointing either direction should allow the customer to scroll through the remaining thumbnails in either direction.

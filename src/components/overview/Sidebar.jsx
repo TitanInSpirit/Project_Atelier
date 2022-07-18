@@ -42,6 +42,7 @@ function Sidebar(props) {
         currentPhoto={props.currentPhoto}
         current_size={props.current_size}
         handleAddToCart={props.handleAddToCart}
+        addToCartError={props.addToCartError}
       />
     </div>
   );

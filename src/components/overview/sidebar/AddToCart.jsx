@@ -1,8 +1,11 @@
 import {React, useState, useEffect} from 'react';
-import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/Fa'
+import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/fa'
 import {AiOutlineStar} from 'react-icons/Ai'
+import ErrModal from './ErrModal.jsx'
 
 function AddToCart(props) {
+  const [showModal, setShowModal] = useState(false);
+
     if(!props.current_style || !props.currentSku) {
       return null;
     } else {
@@ -19,7 +22,7 @@ function AddToCart(props) {
         return (
         <form className="add_to_cart_container" onSubmit={props.handleAddToCart} >
           <div className="size_and_quantity_container">
-            <select name="select_size" className="overview_button select_size" onChange={props.setCurrentSku} required>
+            <select name="select_size" ref={props.addToCartError}className="overview_button select_size" onChange={props.setCurrentSku} required>
               <option value="default" disabled selected required>SELECT SIZE</option>
               {sizes.length === 0 ? <option value='OOS'id="OOS" key='OOS' disabled selected required>'OUT OF STOCK</option> : sizes.map((size) => {
               return(
@@ -36,10 +39,21 @@ function AddToCart(props) {
           })}
           </select>
           <div className="add_to_cart_favorite_container">
-          <button type="submit" className="add_to_cart_btn overview_button">ADD TO BAG</button>
-          <button className="overview_favorite_btn overview_button">
+          {props.current_size === 'default' ?
+          <div>
+            <ErrModal showModal={showModal} setShowModal={setShowModal} />
+            <button type="submit" className="add_to_cart_btn overview_button" onClick={() => {
+            setShowModal(true)}}>ADD TO BAG</button>
+            <button className="overview_favorite_btn overview_button">
             <AiOutlineStar className='favorite_star' />
-          </button>
+            </button>
+          </div> :
+          <div>
+            <button type="submit" className="add_to_cart_btn overview_button">ADD TO BAG</button>
+            <button className="overview_favorite_btn overview_button">
+            <AiOutlineStar className='favorite_star' />
+            </button>
+          </div>}
           </div>
         </div>
         <div className="social_share_container">

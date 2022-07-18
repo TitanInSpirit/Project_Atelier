@@ -24,6 +24,7 @@ const Overview = (props) => {
         currentStyle = {props.current_style}
         setCurrentPhoto={props.setCurrentPhoto}
         currentPhoto={props.currentPhoto}
+        currentVertGalIndex={props.currentVertGalIndex}
         />
         <Sidebar
         products={props.products}
@@ -41,6 +42,7 @@ const Overview = (props) => {
         currentPhoto={props.currentPhoto}
         current_size={props.current_size}
         handleAddToCart={props.handleAddToCart}
+        addToCartError={props.addToCartError}
         />
       </div>
     );
