@@ -8,10 +8,21 @@ import {Search, PhotoPreview} from '../../../public/stylesheets/styles.js';
 
 
 
-function SearchBar() {
+function SearchBar({searchTerm, setSearchTerm}) {
+  /*----- STATE HOOKS -----*/
+
+  /*----- EVENT HANDLERS -----*/
+  const handleSearch = ({target: {name, value}}) => {
+    setSearchTerm(value);
+  }
+
+  /*----- RENDER FUNCTIONS -----*/
+
+
+  /*----- RENDERER -----*/
   return (
     <PhotoPreview>
-      <Search type="search" placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS . . ."></Search>
+      <Search type="search" onChange={handleSearch} placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS . . ."></Search>
       <BsSearch />
     </PhotoPreview>
   )

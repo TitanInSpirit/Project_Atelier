@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import {Container, Submit, Thumbnail, PhotoPreview, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
-function Answer({answer, getUpdate}) {
+function Answer({answer, getUpdate, searchTerm}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
 
   const [wasHelpful, setWasHelpful] = useState(false);
@@ -63,13 +63,33 @@ function Answer({answer, getUpdate}) {
   })
   }
 
+  const renderAnswer = () => {
+    if (searchTerm && searchTerm.length > 2) {
+      if (body.includes(searchTerm)) {
+        return (
+          <AnswerContainer>
+            <div>{body}</div>
+            <PhotoPreview>{renderPhotos()}</PhotoPreview>
+            <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+          </AnswerContainer>
+        )
+      }
+    } else {
+      return (
+        <AnswerContainer>
+          <div>{body}</div>
+          <PhotoPreview>{renderPhotos()}</PhotoPreview>
+          <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+        </AnswerContainer>
+      )
+    }
+  }
+
   /*----- RENDERER -----*/
   return (
-    <AnswerContainer>
-      <div>{body}</div>
-      <PhotoPreview>{renderPhotos()}</PhotoPreview>
-      <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
-    </AnswerContainer>
+    <>
+    {renderAnswer()}
+    </>
   )
 }
 

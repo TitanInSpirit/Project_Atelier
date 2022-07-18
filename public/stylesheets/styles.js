@@ -7,11 +7,19 @@ import styled, {ThemeProvider} from 'styled-components';
 
 /*==================== EXPORTS ====================*/
 
-  /*----- TEXT -----*/
+  /*
+  =====================================
+                  TEXT
+  =====================================
+  */
 
 
 
-  /*----- BUTTONS -----*/
+  /*
+  =====================================
+                  BUTTONS
+  =====================================
+  */
   export const Submit = styled.button`
     font-size: 1em;
     margin: 1em;
@@ -69,7 +77,11 @@ import styled, {ThemeProvider} from 'styled-components';
     }
   `;
 
-  /*----- DIVS -----*/
+  /*
+  =====================================
+                  DIVS
+  =====================================
+  */
   export const PhotoPreview = styled.div`
     display: flex;
     flex-direction: row;
@@ -94,13 +106,21 @@ import styled, {ThemeProvider} from 'styled-components';
     margin: 10px;
   `;
 
-  /*----- FORMS -----*/
+  /*
+  =====================================
+                  FORMS
+  =====================================
+  */
   export const Form = styled.form`
 
   `;
 
 
-  /*----- INPUTS -----*/
+    /*
+  =====================================
+                  INPUTS
+  =====================================
+  */
   export const Search = styled.input`
     border: solid;
     border-width: thin;
@@ -108,7 +128,11 @@ import styled, {ThemeProvider} from 'styled-components';
     height: 2em;
   `;
 
-  /*----- IMAGES -----*/
+  /*
+  =====================================
+                  IMAGES
+  =====================================
+  */
   export const Thumbnail = styled.img`
     width: 125px;
     height: 100px;

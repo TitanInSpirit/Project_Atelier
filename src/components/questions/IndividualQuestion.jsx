@@ -10,7 +10,7 @@ import Form from './Form.jsx';
 import {Container, LinkButton} from '../../../public/stylesheets/styles.js';
 
 
-function IndividualQuestion({question, getUpdate}) {
+function IndividualQuestion({question, getUpdate, searchTerm}) {
   let {answers,
     asker_name,
     question_body,
@@ -49,13 +49,26 @@ function IndividualQuestion({question, getUpdate}) {
   }
 
   const renderQuestion = () => {
-    return (
-    <Container>
-      <b>Q:</b>
-      <div>
-        {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
-      </div>
-    </Container>);
+    if (searchTerm && searchTerm.length > 2) {
+      if (question_body.includes(searchTerm)) {
+        return (
+          <Container>
+            <b>Q:</b>
+            <div>
+              {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+            </div>
+          </Container>);
+      }
+    } else {
+      return (
+        <Container>
+          <b>Q:</b>
+          <div>
+            {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
+          </div>
+        </Container>);
+    }
+
   }
 
 
@@ -63,7 +76,7 @@ function IndividualQuestion({question, getUpdate}) {
   return (
     <div>
       {renderQuestion()}
-      <AnswerList answers={answers} getUpdate={getUpdate}/>
+      <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
       <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
     </div>
   )

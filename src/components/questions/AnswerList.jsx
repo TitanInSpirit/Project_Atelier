@@ -7,7 +7,7 @@ import Answer from './Answer.jsx';
 import styled from 'styled-components';
 import {Button, Container} from '../../../public/stylesheets/styles.js';
 
-function AnswerList({answers, getUpdate}) {
+function AnswerList({answers, getUpdate, searchTerm}) {
 
     /*----- STATE HOOKS -----*/
   const [showAnswers, setShowAnswers] = useState(false);
@@ -19,12 +19,13 @@ function AnswerList({answers, getUpdate}) {
           return b.answerer_name - a.answerer_name;
         }
       })
-      const mappedAnswers = sortedAnswers.map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} />)
+      const mappedAnswers = sortedAnswers.map((answer) => <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} searchTerm={searchTerm}/>)
     return mappedAnswers;
   });
 
   const visibleAnswers = answerList.slice(0,2);
 
+  /*----- EVENT HANDLERS -----*/
   const toggleAnswers = () => setShowAnswers(showAnswers => !showAnswers);
 
   /*----- RENDER FUNCTIONS -----*/
