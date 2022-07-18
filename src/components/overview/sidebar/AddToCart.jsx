@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react';
-import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/Fa'
-import {AiOutlineStar} from 'react-icons/Ai'
+import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/fa'
+import {AiOutlineStar} from 'react-icons/ai'
 
 function AddToCart(props) {
     if(!props.current_style || !props.currentSku) {

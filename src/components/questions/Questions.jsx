@@ -11,42 +11,26 @@ import Form from './Form.jsx';
 import {Container, Button} from '../../../public/stylesheets/styles.js';
 
 
-function Questions({products}) {
+function Questions({product, questionsList, getQuestions}) {
 
   /*----- STATE HOOKS -----*/
-  const [inventory, setInventory] = useState(products);
-  const [selectedProduct, setSelectedProduct] = useState();
+  const [inventory, setInventory] = useState(product);
+  const [selectedProduct, setSelectedProduct] = useState(product.id);
   const [showForm, setShowForm] = useState(false);
   const [showQuestions, setShowQuestions] = useState(false);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(questionsList);
   const [searchTerm, setSearchTerm] = useState();
 
   /*----- LIFECYCLE -----*/
-  useEffect(() => getQuestions(), []);
+  useEffect(() => setQuestions(questionsList), [questionsList]);
 
-
-  /*----- EVENT HANDLERS -----*/
-  const getQuestions = () => {
-    axios.get(`http://localhost:3001/questions`)
-    .then(response => {
-      setSelectedProduct(response.data.product_id);
-      setQuestions(response.data.results);
-    })
-    .then(() =>{
-      const sortedQuestions = questions;
-      sortedQuestions.sort((a,b) => b.question_helpfulness - a.question_helpfulness)
-
-      return sortedQuestions;
-    })
-    .catch(err => `Unable to get questions due to following error: ${console.error(err.message)}`);
-}
 
   /*----- RENDER FUNCTIONS -----*/
   const renderQuestionList = () => {
-    if (questions.length === 0) {
+    if (!questions || (questions && questions.length === 0)) {
       return <div>{renderAddQuestion()}</div>
     }
-    if (questions.length > 2) {
+    if (questions && questions.length > 2) {
       if (!showQuestions) {
         let visibleQuestions = questions.slice(0,2);
         return (

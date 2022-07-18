@@ -122,28 +122,15 @@ app.get('/reviews', (req, res) => {
   });
 });
 
-app.get('/questions', (req, res) => {
-
-  /* TODO: Update question_id with data sent from client */
-  let question_id = 66646 // Fix me
-  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${question_id}`
-
+app.get('/questions/:id', (req, res) => {
   var config = {
     method: 'get',
-    url: endpointUrl,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
-    }
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${req.params.id}`,
   };
 
   axios(config)
-  .then(function (response) {
-    res.send(JSON.stringify(response.data))
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  .then(response => res.json(response.data))
+  .catch(error => `Unable to retrieve questions. Error: ${console.error(error)}`);
 });
 
 app.get('/related', (req, res) => {
@@ -316,7 +303,7 @@ app.put('/answers/report/:id', (req, res) => {
 
   axios(config)
   .then(response => res.json(response.data))
-  .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+  .catch(error => `Unable to modify. Error: ${console.error(error)}`);
 });
 
 app.put('/answers/helpful/:id', (req, res) => {
@@ -327,7 +314,7 @@ app.put('/answers/helpful/:id', (req, res) => {
 
   axios(config)
   .then(response => res.json(response.data))
-  .catch(error => `Unable to modify. Error: ${console.log(error)}`);
+  .catch(error => `Unable to modify. Error: ${console.error(error)}`);
 });
 
 app.put('/reviews/:review_id/report', (req, res) => {
