@@ -116,7 +116,12 @@ class App extends React.Component {
         scrollToSection={this.scrollToSection}
         />
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
-        <RatingsAndReviews products={this.state.products} getAllProducts={this.getAllProducts} reviewsRef={this.scrollToReviews}/>
+        <RatingsAndReviews
+          products={this.state.products}
+          getAllProducts={this.getAllProducts}
+          reviewsRef={this.scrollToReviews}
+          style={this.state.current_style}
+        />
       </div>
     );
   }
