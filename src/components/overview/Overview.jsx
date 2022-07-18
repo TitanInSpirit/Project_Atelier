@@ -40,6 +40,7 @@ const Overview = (props) => {
         scrollToSection={props.scrollToSection}
         currentPhoto={props.currentPhoto}
         current_size={props.current_size}
+        handleAddToCart={props.handleAddToCart}
         />
       </div>
     );

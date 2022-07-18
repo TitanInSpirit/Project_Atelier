@@ -24,12 +24,18 @@ class App extends React.Component {
       total_reviews: 0,
       average_reviews: 0,
     }
-
   }
 
   componentDidMount = () => {
     this.getAllProducts()
 
+  }
+
+  handleAddToCart = (event) => {
+    console.log('add to cart clicked')
+    console.log(event.target[0].value) // SKU and Size
+    console.log(event.target[1].value) // Quantity
+    event.preventDefault();
   }
 
   setCurrentPhoto = (photo) => {
@@ -49,6 +55,7 @@ class App extends React.Component {
       behavior: 'smooth'
     })
   }
+
   getAllProducts = () => {
     axios.get('http://localhost:3001/products')
     .then((response) => {
@@ -60,6 +67,7 @@ class App extends React.Component {
       console.log(err)
     })
   }
+
   setCurrentSku = (event) => {
     let size = event.target.value.split(' ')
     console.log(size)
@@ -108,7 +116,6 @@ class App extends React.Component {
         reviewTotal+= review.rating
       })
       let average = reviewTotal / response.count
-      console.log(res.data)
       this.setState({total_reviews: response.count, average_reviews: average})
     })
     .catch((err) => {
@@ -136,6 +143,7 @@ class App extends React.Component {
         setCurrentPhoto={this.setCurrentPhoto}
         currentPhoto={this.state.current_photo}
         current_size={this.state.current_size}
+        handleAddToCart={this.handleAddToCart}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>

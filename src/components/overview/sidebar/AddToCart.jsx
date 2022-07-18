@@ -17,13 +17,13 @@ function AddToCart(props) {
           sizes.push({size:size, sku: item})
         }
         return (
-        <form className="add_to_cart_container">
+        <form className="add_to_cart_container" onSubmit={props.handleAddToCart} >
           <div className="size_and_quantity_container">
-            <select name="select_size" className="overview_button select_size" onChange={props.setCurrentSku}>
-              <option value="default" disabled selected >SELECT SIZE</option>
-              {sizes.length === 0 ? <option value='OOS'id="OOS" key='OOS' disabled selected>'OUT OF STOCK</option> : sizes.map((size) => {
+            <select name="select_size" className="overview_button select_size" onChange={props.setCurrentSku} required>
+              <option value="default" disabled selected required>SELECT SIZE</option>
+              {sizes.length === 0 ? <option value='OOS'id="OOS" key='OOS' disabled selected required>'OUT OF STOCK</option> : sizes.map((size) => {
               return(
-                <option value={`${size.sku} ${size.size}`} id={size.size} key={size.sku}>{size.size}</option>
+                <option value={`${size.sku} ${size.size}`} id={size.size} key={size.sku} required>{size.size}</option>
                 )
                })}
           </select>

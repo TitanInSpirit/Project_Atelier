@@ -41,6 +41,7 @@ function Sidebar(props) {
         currentSku={props.currentSku}
         currentPhoto={props.currentPhoto}
         current_size={props.current_size}
+        handleAddToCart={props.handleAddToCart}
       />
     </div>
   );

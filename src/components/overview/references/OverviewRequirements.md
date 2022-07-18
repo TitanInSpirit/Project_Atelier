@@ -68,13 +68,13 @@ Below the style selector, two dropdowns should allow the user to select the size
   - <input type="checkbox" checked> When collapsed, the dropdown should show the currently selected size.
   - <input type="checkbox" checked > By default, the dropdown should show “Select Size”.
 
-- <input type="checkbox"> **1.1.3.2. Quantity Selector**
+- <input type="checkbox" checked> **1.1.3.2. Quantity Selector**
 
   - <input type="checkbox" checked> The second dropdown will allow the user to select a quantity of the current style and size to add to their cart.
     The options in this dropdown will be a sequence of integers ranging from 1 to the maximum. The maximum selection will be capped by either the quantity of this style and size in stock, or a hard limit of 15. For example, if the SKU for the selected product style and size has 4 units left in stock, the dropdown will allow choice of 1, 2, 3 or 4. However if there are 30 units in stock, the dropdown will only present from 1 to 15.
 
   - <input type="checkbox" checked> If the size has not been selected, then the quantity dropdown will display ‘-’ and the dropdown will be disabled.
-  - <input type="checkbox"> Once a size has been selected, the dropdown should default to 1.
+  - <input type="checkbox" checked> Once a size has been selected, the dropdown should default to 1.
 
 - <input type="checkbox"> **1.1.3.3. Add to cart**
   - <input type="checkbox"> A button labeled “Add to Cart” will appear below the size and quantity dropdowns. This button will be used to place the style, size and quantity of the product selected into the user’s cart.

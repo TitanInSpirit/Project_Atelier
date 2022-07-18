@@ -27,7 +27,6 @@ const ImageSlider = (props) => {
 
   useEffect(() => {
     props.setCurrentPhoto(current)
-    console.log(props)
   }, [current])
 
   let photos = props.currentStyle.photos
