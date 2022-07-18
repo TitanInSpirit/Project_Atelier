@@ -106,12 +106,17 @@ export default Questions;
 
 const QuestionContainer = styled(Container)`
   width: 800px;
+  max-height: 50vh;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
   overflow: scroll;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  *::-webkit-scollbar {
+    display: none;
+    width: 0 !important
+  }
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
 `;
 
 const QuestionAnswerContainer = styled(Container)`
