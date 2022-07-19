@@ -12,7 +12,10 @@ import styled, {ThemeProvider} from 'styled-components';
                   TEXT
   =====================================
   */
-
+  export const H3Text = styled.h3`
+  font-weight: bold;
+  font-size: 1.1rem;
+`;
 
 
   /*
@@ -55,6 +58,13 @@ import styled, {ThemeProvider} from 'styled-components';
       text-decoration: underline;
       cursor: pointer;
     `;
+
+  export const HelpfulButton = styled(LinkButton)`
+  `;
+
+  export const AnswerButton = styled(LinkButton)`
+    margin-left: 10px;
+  `;
 
   export const CloseModal = styled.button`
     display: flex;

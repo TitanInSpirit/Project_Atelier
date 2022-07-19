@@ -33,11 +33,7 @@ function Questions({product, questionsList, getQuestions}) {
     if (questions && questions.length > 2) {
       if (!showQuestions) {
         let visibleQuestions = questions.slice(0,2);
-        return (
-          <>
-            <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
-          </>
-        )
+        return <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
       }
       if (showQuestions) {
         return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
@@ -54,7 +50,9 @@ function Questions({product, questionsList, getQuestions}) {
   }
 
   const renderMoreAnswered = () => {
-    return <Button onClick={() => setShowQuestions(true)}>More Answered Questions</Button>
+    if (!showQuestions) {
+      return <Button onClick={() => setShowQuestions(true)}>More Answered Questions</Button>
+    }
   }
 
   const renderAddQuestionForm = () => {
@@ -71,7 +69,7 @@ function Questions({product, questionsList, getQuestions}) {
         <ScrollContainer className="scroll-container">
           {renderQuestionList()}
         </ScrollContainer>
-        <span> {renderMoreAnswered()} {renderAddQuestion()} </span>
+        <Container> {renderMoreAnswered()} {renderAddQuestion()} </Container>
         {renderAddQuestionForm()}
       </QuestionContainer>
     </QuestionAnswerContainer>
@@ -86,23 +84,20 @@ export default Questions;
 const QuestionContainer = styled(Container)`
   width: 800px;
   max-height: 50vh;
+  margin: 0;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
 `;
 
 const ScrollContainer = styled(QuestionContainer)`
-  overflow: scroll;
   position: relative;
-  scrollbar-width: 0px;
-  ::-webkit-scollbar {
-    display: none;
-    width: 0;
-  }
   overflow-x: hidden;
-  /* overflow-y: hidden; */
+  margin: 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
-
 const QuestionAnswerContainer = styled(Container)`
   width: 100vh;
   justify-content: center;

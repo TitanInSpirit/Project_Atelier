@@ -1078,16 +1078,3 @@ p {
   width: 20px;
   margin: 10px;
 }
-
-/* ===== QUESTIONS ===== */
-
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-.questions-and-answers {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-}

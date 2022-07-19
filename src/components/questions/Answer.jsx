@@ -14,7 +14,7 @@ function Answer({answer, getUpdate, searchTerm}) {
 
   const [wasHelpful, setWasHelpful] = useState(false);
   const [wasReported, setWasReported] = useState(false);
-  const [increaseHelpfulness, setIncreaseHelpfulness] = useState(helpfulness);
+  const [countHelpfulness, setCountHelpfulness] = useState(helpfulness);
 
   date = format(parseISO(date), 'MMMM d, yyyy');
 
@@ -28,7 +28,7 @@ function Answer({answer, getUpdate, searchTerm}) {
 
   const handleHelpful = () => {
     setWasHelpful(true);
-    setIncreaseHelpfulness(helpfulness + 1);
+    setCountHelpfulness(helpfulness + 1);
     axios.put(`http://localhost:3001/answers/helpful/${id}`)
       .then(response => getUpdate())
       .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
@@ -51,10 +51,7 @@ function Answer({answer, getUpdate, searchTerm}) {
   }
 
   const renderHelp = () => {
-    if (wasHelpful) {
-      return <LinkButton name={id}>Yes</LinkButton>;
-    }
-    return <LinkButton onClick={handleHelpful} name={id}>Yes</LinkButton>;
+    return <LinkButton onClick={handleHelpful} name={id} disabled={wasHelpful}>Yes</LinkButton>;
   }
 
   const renderPhotos = () => {
@@ -68,18 +65,18 @@ function Answer({answer, getUpdate, searchTerm}) {
       if (body.includes(searchTerm)) {
         return (
           <AnswerContainer>
-            <div>{body}</div>
-            <PhotoPreview>{renderPhotos()}</PhotoPreview>
-            <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+            <h3>{body}</h3>
+            <PhotoPreview >{renderPhotos()}</PhotoPreview>
+            <ByLine><p>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {countHelpfulness} {`) | `} {renderReport()}</p></ByLine>
           </AnswerContainer>
         )
       }
     } else {
       return (
         <AnswerContainer>
-          <div>{body}</div>
-          <PhotoPreview>{renderPhotos()}</PhotoPreview>
-          <div>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {increaseHelpfulness} {`) | `} {renderReport()}</div>
+          <h3>{body}</h3>
+          <PhotoPreview >{renderPhotos()}</PhotoPreview>
+          <ByLine><p>by {renderName()}, {date}</p><Spacer>|</Spacer> <p>Helpful? {renderHelp()} ({countHelpfulness})</p><Spacer>|</Spacer><p>{renderReport()}</p></ByLine>
         </AnswerContainer>
       )
     }
@@ -107,5 +104,12 @@ export default Answer;
 
   const AnswerContainer = styled(Container)`
     flex-direction: column;
-    margin: 0, 10px, 10px, 10px;
+    margin: 0 0 10px 5px;
+  `;
+
+  const Spacer = styled.p`
+    margin: 0 10px 0 10px;
+  `;
+  const ByLine = styled(Container)`
+    margin: 0;
   `;
