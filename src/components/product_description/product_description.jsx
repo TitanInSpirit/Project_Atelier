@@ -1,5 +1,5 @@
 import React from 'react'
-import {AiOutlineCheck} from 'react-icons/Ai'
+import {AiOutlineCheck} from 'react-icons/ai'
 
 function ProductDescription (props) {
   let productSlogan = props.current_product.slogan;

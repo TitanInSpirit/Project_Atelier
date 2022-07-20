@@ -24,6 +24,7 @@ class App extends React.Component {
       current_size: 'default',
       total_reviews: 0,
       average_reviews: 0,
+      questions: [],
       expanded: false,
     }
   }
@@ -75,9 +76,10 @@ class App extends React.Component {
   getAllProducts = () => {
     axios.get('http://localhost:3001/products')
     .then((response) => {
-      this.setState({products: response.data, current_product: response.data[0]})
-      this.getInfo(response.data[0]['id'])
-      this.getStyles(response.data[0]['id'])
+      this.setState({products: response.data, current_product: response.data[4]})
+      this.getInfo(response.data[4]['id'])
+      this.getStyles(response.data[4]['id'])
+      this.getQuestions(response.data[4].id)
     })
     .catch((err) => {
       console.log(err)
@@ -139,6 +141,17 @@ class App extends React.Component {
     })
   }
 
+  getQuestions = (productId) => {
+    axios.get(`http://localhost:3001/questions/${productId}`)
+    .then((response) => {
+      const sortedQuestions = response.data.results;
+      sortedQuestions.sort((a,b) => b.question_helpfulness - a.question_helpfulness)
+
+      this.setState({questions: sortedQuestions});
+      })
+    .catch(err => `Unable to get questions due to following error: ${console.error(err.message)}`);
+}
+
   render() {
     return (
       <div>
@@ -166,7 +179,7 @@ class App extends React.Component {
         isExpanded={this.state.expanded}
         />
         <ProductDescription current_product={this.state.current_product}/>
-        <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
+        <Questions product={this.state.current_product} getAllProducts={this.getAllProducts} questionsList={this.state.questions}/>
         <RatingsAndReviews
           products={this.state.products}
           getAllProducts={this.getAllProducts}

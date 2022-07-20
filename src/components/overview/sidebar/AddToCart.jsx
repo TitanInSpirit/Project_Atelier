@@ -1,7 +1,8 @@
 import {React, useState, useEffect} from 'react';
 import {FaFacebook, FaTwitter, FaPinterest} from 'react-icons/fa'
-import {AiOutlineStar} from 'react-icons/Ai'
+import {AiOutlineStar} from 'react-icons/ai'
 import ErrModal from './ErrModal.jsx'
+
 
 function AddToCart(props) {
   const [showModal, setShowModal] = useState(false);

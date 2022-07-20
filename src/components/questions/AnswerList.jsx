@@ -5,7 +5,7 @@ import React, {useState} from 'react';
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
 import styled from 'styled-components';
-import {Button, Container} from '../../../public/stylesheets/styles.js';
+import {Button, Container, H3Text} from '../../../public/stylesheets/styles.js';
 
 function AnswerList({answers, getUpdate, searchTerm}) {
 
@@ -55,10 +55,10 @@ function AnswerList({answers, getUpdate, searchTerm}) {
 
   /*----- RENDERER -----*/
   return (
-    <Container>
-      <b>A: </b>
+    <AnswerListContainer>
+      <H3Text>A: </H3Text>
       <div>{renderAnswerList()}</div>
-    </Container>
+    </AnswerListContainer>
   )
 }
 
@@ -73,3 +73,7 @@ const ExpandButton = styled(Button)`
   font-weight: bold;
   font-size: 9pt;
 `
+const AnswerListContainer = styled(Container)`
+  width: 100%;
+ margin: 0;
+`;
