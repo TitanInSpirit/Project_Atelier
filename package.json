@@ -2,15 +2,15 @@
   "name": "fec",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "jest": {
     "testEnvironment": "jsdom"
   },
   "scripts": {
     "server-dev": "npx nodemon --watch server server/server.js",
+    "dev": "npx webpack --watch",
     "start": "Webpack --mode=development",
     "build": "webpack --mode=production",
-    "dev": "webpack serve --open",
     "test": "jest"
   },
   "keywords": [],
