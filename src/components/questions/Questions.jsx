@@ -11,75 +11,48 @@ import Form from './Form.jsx';
 import {Container, Button} from '../../../public/stylesheets/styles.js';
 
 
-function Questions({products}) {
+function Questions({product, questionsList, getQuestions}) {
 
   /*----- STATE HOOKS -----*/
-  const [inventory, setInventory] = useState(products);
-  const [selectedProduct, setSelectedProduct] = useState();
+  const [inventory, setInventory] = useState(product);
+  const [selectedProduct, setSelectedProduct] = useState(product.id);
   const [showForm, setShowForm] = useState(false);
   const [showQuestions, setShowQuestions] = useState(false);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(questionsList);
   const [searchTerm, setSearchTerm] = useState();
 
   /*----- LIFECYCLE -----*/
-  useEffect(() => getQuestions(), []);
+  useEffect(() => setQuestions(questionsList), [questionsList]);
 
-
-  /*----- EVENT HANDLERS -----*/
-  const getQuestions = () => {
-    axios.get(`http://localhost:3001/questions`)
-    .then(response => {
-      setSelectedProduct(response.data.product_id);
-      setQuestions(response.data.results);
-    })
-    .then(() =>{
-      const sortedQuestions = questions;
-      sortedQuestions.sort((a,b) => b.question_helpfulness - a.question_helpfulness)
-
-      return sortedQuestions;
-    })
-    .catch(err => `Unable to get questions due to following error: ${console.error(err.message)}`);
-}
 
   /*----- RENDER FUNCTIONS -----*/
   const renderQuestionList = () => {
-    if (questions.length === 0) {
+    if (!questions || (questions && questions.length === 0)) {
       return <div>{renderAddQuestion()}</div>
     }
-    if (questions.length > 2) {
+    if (questions && questions.length > 2) {
       if (!showQuestions) {
         let visibleQuestions = questions.slice(0,2);
-        return (
-          <>
-            <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
-            <span> {renderMoreAnswered()} {renderAddQuestion()} </span>
-          </>
-        )
+        return <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
       }
       if (showQuestions) {
-        return (
-          <>
-            <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
-            {renderAddQuestion()}
-          </>
-        )
+        return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
       }
     } else {
-      return (
-        <>
-          <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
-          {renderAddQuestion()}
-        </>
-      )
+      return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
     }
   }
 
+
+
   const renderAddQuestion = () => {
-    return <Button onClick={() => setShowForm(true)}>Add a Question +</Button>;
+    return <QuestionButton onClick={() => setShowForm(true)}>Add a Question +</QuestionButton>;
   }
 
   const renderMoreAnswered = () => {
-    return <Button onClick={() => setShowQuestions(true)}>More Answered Questions</Button>
+    if (!showQuestions) {
+      return <QuestionButton onClick={() => setShowQuestions(true)}>More Answered Questions</QuestionButton>
+    }
   }
 
   const renderAddQuestionForm = () => {
@@ -91,9 +64,12 @@ function Questions({products}) {
   return (
     <QuestionAnswerContainer>
       <QuestionContainer>
-        <h5>QUESTIONS & ANSWERS</h5>
+        <h2><b>QUESTIONS & ANSWERS</b></h2>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
-        {renderQuestionList()}
+        <ScrollContainer className="scroll-container">
+          {renderQuestionList()}
+        </ScrollContainer>
+        <Container> {renderMoreAnswered()} {renderAddQuestion()} </Container>
         {renderAddQuestionForm()}
       </QuestionContainer>
     </QuestionAnswerContainer>
@@ -104,19 +80,26 @@ function Questions({products}) {
 /*==================== EXPORTS ====================*/
 export default Questions;
 
+
 const QuestionContainer = styled(Container)`
-  width: 800px;
+  width: 80vw;
   max-height: 50vh;
+  margin: 0;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
-  overflow: scroll;
-  *::-webkit-scollbar {
+`;
+
+const ScrollContainer = styled(QuestionContainer)`
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  &::-webkit-scrollbar {
     display: none;
-    width: 0 !important
   }
-  /* overflow-x: hidden;
-  overflow-y: hidden; */
+`
+const QuestionButton = styled(Button)`
+  margin: 0 10px 0 10px;
 `;
 
 const QuestionAnswerContainer = styled(Container)`

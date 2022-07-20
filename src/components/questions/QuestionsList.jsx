@@ -13,9 +13,9 @@ function QuestionList({questions, getUpdate, searchTerm}) {
 
   /*----- RENDERER -----*/
   return (
-    <div>
+    <>
       {renderIndividualQuestion()}
-    </div>
+    </>
   )
 }
 

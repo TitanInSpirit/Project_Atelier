@@ -2,12 +2,12 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
+import styled from 'styled-components';
 
 /*==================== INTERNAL MODULES ====================*/
 import AnswerList from './AnswerList.jsx';
 import Form from './Form.jsx';
-import {Container, LinkButton} from '../../../public/stylesheets/styles.js';
+import {Container, H3Text, HelpfulButton, AnswerButton} from '../../../public/stylesheets/styles.js';
 
 
 function IndividualQuestion({question, getUpdate, searchTerm}) {
@@ -21,7 +21,7 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
 
   /*----- STATE HOOKS -----*/
   const [wasHelpful, setWasHelpful] = useState(false);
-  const [increaseHelpfulness, setIncreaseHelpfulness] = useState(question_helpfulness);
+  const [countHelpfulness, setCountHelpfulness] = useState(question_helpfulness);
   const [showForm, setShowForm] = useState(false);
 
   answers = Object.keys(answers).map((key) => answers[key]);
@@ -29,7 +29,7 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
   /*----- EVENT HANDLER -----*/
   const handleHelpful = () => {
     setWasHelpful(true);
-    setIncreaseHelpfulness(question_helpfulness + 1);
+    setCountHelpfulness(question_helpfulness + 1);
     axios.put(`http://localhost:3001/questions/helpful/${question_id}`)
       .then(response => getUpdate())
       .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
@@ -38,14 +38,11 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
 
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
-    if (wasHelpful) {
-      return <LinkButton name={question_id}>Yes</LinkButton>;
-    }
-    return <LinkButton onClick={handleHelpful} name={question_id}>Yes</LinkButton>;
+    return <HelpfulButton onClick={handleHelpful} name={question_id} disabled={wasHelpful}>Yes</HelpfulButton>;
   }
 
   const renderAddAnswer = () => {
-    return <LinkButton onClick={() => setShowForm(true)}>Add Answer</LinkButton>;
+    return <AnswerButton onClick={() => setShowForm(true)}>Add Answer</AnswerButton>;
   }
 
   const renderQuestion = () => {
@@ -53,12 +50,9 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
       if (question_body.includes(searchTerm)) {
         return (
           <>
-            <Container>
-              <b>Q:</b>
-              <div>
-                {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
-              </div>
-            </Container>
+            <IndividualQuestionContainer>
+              <H3Text>Q: {question_body}</H3Text> <Responses><p>Helpful? {renderHelp()} ({countHelpfulness}) | {renderAddAnswer()}</p></Responses>
+            </IndividualQuestionContainer>
             <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
           </>
         );
@@ -66,12 +60,9 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
     } else {
       return (
         <>
-          <Container>
-            <b>Q:</b>
-            <div>
-              {`${question_body} Helpful? `} {renderHelp()} {`(`} {increaseHelpfulness} {`) | `} {renderAddAnswer()}
-            </div>
-          </Container>
+          <IndividualQuestionContainer>
+            <H3Text>Q: {question_body}</H3Text> <Responses><p>Helpful? {renderHelp()} ({countHelpfulness}) | {renderAddAnswer()}</p></Responses>
+          </IndividualQuestionContainer>
           <AnswerList answers={answers} getUpdate={getUpdate} searchTerm={searchTerm}/>
         </>
       );
@@ -81,12 +72,36 @@ function IndividualQuestion({question, getUpdate, searchTerm}) {
 
   /*----- RENDERER -----*/
   return (
-    <div>
+    <ResponseContainer>
       {renderQuestion()}
       <Form showForm={showForm} setShowForm={setShowForm} id={question_id} getUpdate={getUpdate} submissionType={'Answer'} />
-    </div>
+    </ResponseContainer>
   )
 }
 
 /*==================== EXPORTS ====================*/
 export default IndividualQuestion;
+
+
+const ResponseContainer = styled(Container)`
+  flex-direction: column;
+  margin: 10px 0 0 0;
+`;
+
+const IndividualQuestionContainer = styled(Container)`
+  position: relative;
+  width: 100%;
+  justify-items: flex-start;
+  margin: 0;
+`;
+
+const Responses = styled.span`
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-self: flex-end;
+`;
+
+const Count = styled.p`
+  margin-right: 10px;
+`
