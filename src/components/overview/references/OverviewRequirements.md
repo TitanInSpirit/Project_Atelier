@@ -89,20 +89,20 @@ The largest piece of the Overview module will be a photo gallery showing images 
 
 The gallery will be viewable in two states. A default collapsed view, and an expanded view.
 
-- <input type="checkbox"> **1.1.4.1. Default View**
+- <input type="checkbox" > **1.1.4.1. Default View**
 
   - <input type="checkbox" checked> The default view of the image gallery will be a single main image, overlaid by the list of thumbnail images.
   - <input type="checkbox" checked> By default, the first image in the set will be displayed as the main image. This image will match the smaller thumbnail image shown first.
   - <input type="checkbox" checked> When switching between styles, the index of the image currently selected should be maintained when the gallery updates for the new style.
   - <input type="checkbox" checked> Clicking on any thumbnail should update the main image to match that shown in the thumbnail clicked.
-  - <input type="checkbox" > The thumbnail corresponding to the image currently selected as the main image should be highlighted to indicate the current selection.
+  - <input type="checkbox" checked> The thumbnail corresponding to the image currently selected as the main image should be highlighted to indicate the current selection.
   - <input type="checkbox" checked> Clicking on the currently selected thumbnail will have no further effect.
   - <input type="checkbox" checked> Up to 7 thumbnail images will be displayed at a given time in the list.
-  - <input type="checkbox"> If more than 7 images are in the set for the style selected, the user should be able to scroll forward and backwards through the thumbnails. An arrow button pointing either direction should allow the customer to scroll through the remaining thumbnails in either direction.
+  - <input type="checkbox" checked> If more than 7 images are in the set for the style selected, the user should be able to scroll forward and backwards through the thumbnails. An arrow button pointing either direction should allow the customer to scroll through the remaining thumbnails in either direction.
   - <input type="checkbox" checked> Customers should also be able to change to the next or previous image in the set using forward and backwards arrow buttons appearing near the right and left edges of the image, respectively. Upon clicking the right or left arrow, the main image and the thumbnail highlighted should update.
-  - <input type="checkbox"> If upon navigating to the previous or next image using the arrows, the thumbnail corresponding to the now selected image is no longer visible, then the thumbnail list should scroll similarly such that the newly selected thumbnail is visible.
-  - <input type="checkbox"> If the user hovers over the main image anywhere other than the thumbnails, the left arrow, or the right arrow, the mouse icon should change to show a magnifying glass. If the user clicks on the image, the image gallery should change to the expanded view.
-  - <input type="checkbox"> If the first image is selected, the left arrow should not appear. Similarly, if the last image is selected, the right arrow should not appear.
+  - <input type="checkbox" checked> If upon navigating to the previous or next image using the arrows, the thumbnail corresponding to the now selected image is no longer visible, then the thumbnail list should scroll similarly such that the newly selected thumbnail is visible.
+  - <input type="checkbox" > If the user hovers over the main image anywhere other than the thumbnails, the left arrow, or the right arrow, the mouse icon should change to show a magnifying glass. If the user clicks on the image, the image gallery should change to the expanded view.
+  - <input type="checkbox" checked> If the first image is selected, the left arrow should not appear. Similarly, if the last image is selected, the right arrow should not appear.
 
 - <input type="checkbox"> **1.1.4.2. Expanded View**
   - <input type="checkbox"> The expanded view of the image gallery will overlay the rest of the item detail page. Much of the same functionality on the default view will also be available on the expanded view.

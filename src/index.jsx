@@ -24,11 +24,18 @@ class App extends React.Component {
       current_size: 'default',
       total_reviews: 0,
       average_reviews: 0,
+      expanded: false,
     }
   }
 
   componentDidMount = () => {
     this.getAllProducts()
+  }
+
+  handleExpandedView = (event) => {
+    let expanded = this.state.expanded
+    !expanded ? this.setState({expanded: true}) : this.setState({expanded: false})
+    event.preventDefault();
   }
 
   handleAddToCart = (event) => {
@@ -155,6 +162,8 @@ class App extends React.Component {
         handleAddToCart={this.handleAddToCart}
         addToCartError={this.addToCartError}
         currentVertGalIndex={this.state.current_photo_index}
+        handleExpandedView={this.handleExpandedView}
+        isExpanded={this.state.expanded}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
