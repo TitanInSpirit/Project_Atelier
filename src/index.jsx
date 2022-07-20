@@ -123,18 +123,21 @@ class App extends React.Component {
     const configReview = {
       params: {
         product_id: productId,
+        count: 999999,
       }
     }
 
     axios.get('http://localhost:3001/reviews', configReview)
     .then((res) => {
+      console.log(res.data)
       let response = res.data
       let reviewTotal = 0;
       let increment = response.results.map((review) => {
+        console.log(review)
         reviewTotal+= review.rating
       })
-      let average = reviewTotal / response.count
-      this.setState({total_reviews: response.count, average_reviews: average})
+      let average = (reviewTotal / response.results.length).toFixed(1)
+      this.setState({total_reviews: response.results.length, average_reviews: average})
     })
     .catch((err) => {
       console.log('Axios Post Error, ', err)

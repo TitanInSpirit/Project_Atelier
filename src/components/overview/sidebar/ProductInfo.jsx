@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ProductInfo(props) {
+
   const formatRating = () => {
     let str = props.average_reviews.toString();
     let check = Number(str.slice(-1));
@@ -12,6 +13,8 @@ function ProductInfo(props) {
       return Math.ceil(props.average_reviews)
     }
   }
+
+  console.log(formatRating())
 
   return <div className="product_info_container">
       {!props.total_reviews ? null : <div className="overview_ratings">
