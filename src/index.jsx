@@ -144,6 +144,7 @@ class App extends React.Component {
           getAllProducts={this.getAllProducts}
           reviewsRef={this.scrollToReviews}
           style={this.state.current_style}
+          product_id = {this.state.current_product}
         />
       </div>
     );

@@ -8,13 +8,19 @@ import SearchBar from './SearchBar.jsx'
 const RatingsAndReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [reviews, setReviews] = useState({});
-  const [product_id, setProduct_id] = useState('66666');
+  // if(props.current_product)
+  // const [product_id, setProduct_id] = useState(props.product_id.id);
   const [count, setCount] = useState('100');
   const [rating, setRating] = useState({});
   const [showReviews, setShowReviews] = useState(reviews.results)
   const [rateArr, setRateArr] = useState([]);
   const [reviewsCount, setReviewsCount] = useState(0)
   const {results} = reviews;
+
+  let product_id;
+  if(props.product_id) {
+    product_id = props.product_id.id;
+  }
 
   const handleSortValue = value => {
     setSort(value)
@@ -67,7 +73,7 @@ const RatingsAndReviews = (props) => {
       let filterRating = rateArr.filter(rate => rate !== level);
       setRateArr(filterRating);
     }
-    console.log('rating arr', rateArr)
+    // console.log('rating arr', rateArr)
 
   }
 
@@ -106,6 +112,7 @@ const RatingsAndReviews = (props) => {
     <div>
       {/* {console.log('reviews are', reviews)} */}
       {/* {console.log('style', props.products[0].name)} */}
+      {/* {props.product_id &&console.log('product is', props.product_id)} */}
       <h5 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h5>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>

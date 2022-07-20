@@ -25,12 +25,11 @@ const StarRating = ({handleStarRating}) => {
         return (
           <label key={i}>
             <input
-              className='starRatingRadio'
               type='radio'
               name='rating'
               value={ratingValue}
               onClick={() => handleClick(ratingValue)}
-              required
+              className='starRatingRadio'
             />
             <div
               className='ratingStar'
