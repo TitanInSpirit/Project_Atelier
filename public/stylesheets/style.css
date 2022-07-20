@@ -145,7 +145,7 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 0 5px 0;
+  margin: 10px 0 0 0;
 }
 
 .ratingsContainer {
@@ -170,29 +170,28 @@ p {
 }
 
 .reviewSummary {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .moreReviewsBtn {
   background-color: #fff;
-  padding: 5px 20px;
   border: none;
-  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
-  border-radius: 5px;
-  width: 60%;
-  margin-top: 10px;
   cursor: pointer;
+  font-size: 18px;
+  color: black;
+  margin-top: 15px;
 }
 
 .moreReviewsBtn:hover {
+  font-weight: bold;
   background-color: rgba(0, 0, 0, .05);
-  ;
 }
 
 .reviewRecommend {
-  color: rgb(101, 101, 101);
-  margin: 10px 0;
+  color: rgb(73 72 72);
+  margin: 18px 0 5px;
 }
 
 .reviewResponseContainer {
@@ -208,7 +207,7 @@ p {
 
 .renderReviews {
   width: 700px;
-  height: 550px;
+  height: 600px;
   overflow-y: scroll;
 }
 
@@ -224,9 +223,18 @@ p {
   right: -205px;
   top: 0;
   cursor: pointer;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 5px 10px;
-  border: 1px lightgray solid;
+  /* border: 1px lightgray solid; */
+  border: none;
+  outline-color: #fff;
+}
+
+.reviewSearchLine{
+  width: 33%;
+  position: relative;
+  right: -374px;
+  top: -18px;
 }
 
 /* .renderReviewBodycontainer{
@@ -235,6 +243,7 @@ p {
 
 .reviewBodyDetail {
   line-height: 25px;
+  color: rgb(101, 101, 101);
 }
 
 
@@ -245,7 +254,7 @@ p {
 .reviewFooter {
   display: flex;
   flex-direction: row;
-  margin: 20px 0 10px 0;
+  margin: 10px 0 10px 0;
 }
 
 .reviewFooter p {
@@ -255,6 +264,7 @@ p {
 .reviewsBreak {
   color: lightgray;
   width: 150%;
+  display: none;
 }
 
 .showMore {
@@ -267,21 +277,31 @@ p {
 
 .addNewRivewBtn {
   background-color: #fff;
-  padding: 5px 20px;
+  padding: 8px 20px;
   border: none;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   position: relative;
   left: -425px;
-  top: -24px;
+  top: -28px;
   width: 60%;
+  font-size: 18px;
 
 }
 
 .addNewRivewBtn:hover {
-  background-color: rgba(0, 0, 0, .05);
-  ;
+  /* background-color: rgba(0, 0, 0, .05); */
+  font-weight: bold;
+  color: #fff;
+  background-color:black;
+}
+
+.newReviewUserIcon{
+  font-size: 25px;
+  position: relative;
+  bottom: -6px;
+  left: -3px;
 }
 
 .newReviewRange {
@@ -291,26 +311,27 @@ p {
 }
 
 .reviewPhotos {
-  margin: 20px 0 30px 0;
+  /* margin: 20px 0 30px 0; */
   display: flex;
   flex-direction: row;
   cursor: pointer;
 }
 
 .reviewPhoto {
-  width: 100px;
-  height: 100px;
-  margin-left: 10px
+ width: 100px;
+    height: 100px;
+    margin: 10px 8px 10px 0;
 }
 
 .reviewHelpfulButton {
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 5px 20px;
   border: none;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, .3);
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
   position: relative;
   right: -5px;
+  top: 2px;
   cursor: pointer;
 }
 
@@ -402,7 +423,9 @@ p {
 .ratingLabelContainer {
   display: flex;
   flex-direction: row;
-  margin-top: 25px
+  margin-top: 25px;
+  flex-wrap: wrap;
+  width: 400px;
 }
 
 .ratingLabel {
@@ -411,6 +434,7 @@ p {
   border-radius: 3rem;
   margin-right: 5px;
   font-size: 80%;
+  margin-top: 5px;
 }
 
 .removeLabel {
@@ -435,7 +459,8 @@ p {
   justify-content: space-between;
   margin-top: 0;
   position: relative;
-  top: 5px
+  top: 5px;
+  color: rgb(101, 101, 101);
 }
 
 /* .ratingScaleContainer {
@@ -521,13 +546,14 @@ p {
 .newReviewInput {
   display: block;
   width: 100%;
-  height: 30px;
-  border-radius: 5px;
-  border: 1px rgb(0 0 0 / 30%) solid;
+  height: 40px;
+  border-radius: 2px;
+  border: none;
   box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
   padding: 5px 10px;
   box-sizing: border-box;
   margin-bottom: 22px;
+  outline-color: gray;
 }
 
 .newReviewLabel {
@@ -542,10 +568,24 @@ p {
 
 }
 
+.newReviewPhotoUpload input[type='file'] {
+  display: none;
+}
+
 .newReviewPhotoUpload {
-  position: relative;
-  border: 1px lightgray solid;
-  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
+  box-sizing: border-box;
+  margin: 10px 0 10px 0;
+}
+
+.newReviewPhotoInputLabel{
+  position: absolute;
+  top: 21px;
+  margin-left: 25px;
 
 }
 
@@ -581,21 +621,34 @@ p {
 
 } */
 
-.newReviewPhotoInput {
-  /* display: none; */
-}
 
-.newReviewPhotoName {}
 
 .newReviewPhotoUploadBtn {
   width: 25%;
-  height: 21px;
-  border: none;
-  top: 0;
-  position: absolute;
-  right: 0;
-  border-radius: 0 5px 5px 0;
-  border-left: 1px lightgray solid;
+    height: 40px;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    border-left: 1px lightgray solid;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.newReviewImageAdd{
+  background-color: #f0f0f0;
+  height: 40px;
+  width: 180px;
+  display: inline-block;
+  border-radius: 2px 0 0 2px;
+  line-height: 39px;
+  text-align: center;
+  border-right: 1px lightgray solid;
+}
+
+.newReviewFilesAddCount{
+  position: relative;
+  top: -28px;
+  right: -200px;
 }
 
 /* .newReviewSummary{
@@ -743,7 +796,7 @@ p {
 
 .newFormBtn {
   width: 45%;
-  height: 35px;
+  height: 40px;
   /* margin-top: 20px; */
   border-radius: 5px;
   border: 1px #fff solid;
@@ -761,8 +814,8 @@ p {
 
 .newFormCancelBtn {
   position: relative;
-  top: -117px;
-  right: -388px;
+  top: -123px;
+  right: -395px;
 }
 
 

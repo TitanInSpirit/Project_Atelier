@@ -80,6 +80,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
           onChange={e => setSearchValue(e.target.value)}
           className='reivewSearchBar'
         />
+        <hr className='reviewSearchLine'/>
       </div>
       <div className='renderReviews'>
         {/* {renderReview && renderReview.map(review => {

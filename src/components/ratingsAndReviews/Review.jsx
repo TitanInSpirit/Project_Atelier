@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
 import Modal from './Modal.jsx'
+import {BiUserCircle} from 'react-icons/bi'
+//BiUserCircle
 
 
 const Review = ({review, fetchReviewData}) => {
@@ -78,9 +80,9 @@ const Review = ({review, fetchReviewData}) => {
     <div className='singleReviewContainer'>
       {/* {console.log(review)} */}
       <div className='ratingAndTimeContainer'>
-        <span className={`rating-static rating-${review.rating * 10}`}></span>
+        <span className={`rating-static rating-${review.rating * 10}`} style={{transform: 'scale(1.1)', marginLeft: '2px'}}></span>
         <div>
-        <span>{review.reviewer_name},  </span>
+        <span><span className='newReviewUserIcon'><BiUserCircle/></span>{review.reviewer_name},  </span>
         <span>{formatDate}</span>
         </div>
       </div>

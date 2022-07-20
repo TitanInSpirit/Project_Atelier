@@ -6,7 +6,7 @@ import PhotoUpload from './PhotoUpload.jsx'
 
 const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
   const [showModal, setShowModal] = useState(false);
-  const [starRating, setStarRating] = useState(null);
+  const [starRating, setStarRating] = useState();
   const [recommend, setRecommend] = useState(true);
   const [characteristics, setCharacteristics] = useState({});
   const [summary, setSummary] = useState('');
@@ -85,6 +85,16 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (starRating === undefined) {
+      alert('You must enter an overrall rating');
+      return;
+    }
+
+    if (body.length < 50) {
+      alert('You must enter at least 50 characters');
+      return;
+    }
     onHandleAddNewReview({rating: starRating, summary, body, recommend, name: reviewer_name, email, photos, characteristics});
     setShowModal(false);
     setSummary('');
@@ -94,18 +104,9 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
     setEmail('')
   }
 
-  // const handleRangeChange = e => {
-  //   console.log(e.target.value)
-  //   if(e.target.value === 0) {
-  //     setRecommend(false)
-  //   } else {
-  //     setRecommend(true)
-  //   }
-  // }
-
   return (
     <div>
-      {console.log(product)}
+      {/* {console.log(product)} */}
       {/* {console.log('characteristics', characteristics)} */}
       {/* {console.log('recommend', recommend)} */}
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
@@ -129,11 +130,6 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
                 <label style={{marginRight: '10px'}}>Yes</label>
                 <input className='newReviewRecomRadio' type='radio' value='false' name='recommend' onChange={() => setRecommend(false)}/>
                 <label>No</label>
-                {/* <span style={{marginLeft: '10px'}}>
-                  <span style={{marginRight: '5px'}}>No</span>
-                  <input type='range' max='1' step='1' onChange={handleRangeChange} defaultValue={1} className='newReviewRange'/>
-                  <span style={{marginLeft: '5px'}}>Yes</span>
-                </span> */}
               </div>
             </div>
             <hr style={{color: 'lightgray', margin: '20px 0 20px 0'}}/>
@@ -163,7 +159,7 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
                 maxLength='1000'
                 required
                 className='newReviewInput'
-                style={{height: '50px'}}
+                style={{height: '88px'}}
               />
               <div className='newReviewSubTitle'>
               {count > 0 ? <div >Minimum required characters left: {count}</div> : <div>Minimum reached</div>}
@@ -172,6 +168,7 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
 
             <div className='newReviewPhotos'>
               <PhotoUpload setPhotos={setPhotos} photos={photos}/>
+
             </div>
 
             <div className='newReviewNickname'>
