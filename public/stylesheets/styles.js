@@ -14,7 +14,7 @@ import styled, {ThemeProvider} from 'styled-components';
   */
   export const H3Text = styled.h3`
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 `;
 
 
@@ -68,7 +68,7 @@ import styled, {ThemeProvider} from 'styled-components';
 
   export const CloseModal = styled.button`
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     position: absolute;
     top: 0;
@@ -95,7 +95,7 @@ import styled, {ThemeProvider} from 'styled-components';
   export const PhotoPreview = styled.div`
     display: flex;
     flex-direction: row;
-    align-content: center;
+    align-items: center;
     padding: 0.25em;
   `;
 
@@ -103,7 +103,7 @@ import styled, {ThemeProvider} from 'styled-components';
     position: relative;
     display: flex;
     flex-direction: row;
-    align-content: center;
+    align-items: center;
     width: 150px;
     height: 125px;
     margin-left: 10px;
@@ -112,7 +112,6 @@ import styled, {ThemeProvider} from 'styled-components';
   export const Container = styled.div`
     display: flex;
     flex-direction: row;
-    align-content: center;
     margin: 10px;
   `;
 
@@ -132,10 +131,10 @@ import styled, {ThemeProvider} from 'styled-components';
   =====================================
   */
   export const Search = styled.input`
-    border: solid;
-    border-width: thin;
+    border: none;
     width: 90%;
     height: 2em;
+    outline: none;
   `;
 
   /*

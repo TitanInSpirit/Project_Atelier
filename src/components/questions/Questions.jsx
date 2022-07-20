@@ -46,12 +46,12 @@ function Questions({product, questionsList, getQuestions}) {
 
 
   const renderAddQuestion = () => {
-    return <Button onClick={() => setShowForm(true)}>Add a Question +</Button>;
+    return <QuestionButton onClick={() => setShowForm(true)}>Add a Question +</QuestionButton>;
   }
 
   const renderMoreAnswered = () => {
     if (!showQuestions) {
-      return <Button onClick={() => setShowQuestions(true)}>More Answered Questions</Button>
+      return <QuestionButton onClick={() => setShowQuestions(true)}>More Answered Questions</QuestionButton>
     }
   }
 
@@ -64,7 +64,7 @@ function Questions({product, questionsList, getQuestions}) {
   return (
     <QuestionAnswerContainer>
       <QuestionContainer>
-        <h5>QUESTIONS & ANSWERS</h5>
+        <h2><b>QUESTIONS & ANSWERS</b></h2>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <ScrollContainer className="scroll-container">
           {renderQuestionList()}
@@ -82,7 +82,7 @@ export default Questions;
 
 
 const QuestionContainer = styled(Container)`
-  width: 800px;
+  width: 80vw;
   max-height: 50vh;
   margin: 0;
   flex-direction: column;
@@ -98,6 +98,10 @@ const ScrollContainer = styled(QuestionContainer)`
     display: none;
   }
 `
+const QuestionButton = styled(Button)`
+  margin: 0 10px 0 10px;
+`;
+
 const QuestionAnswerContainer = styled(Container)`
   width: 100vh;
   justify-content: center;
