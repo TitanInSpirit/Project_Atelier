@@ -13,6 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.scrollToReviews = React.createRef()
+    this.addToCartError = React.createRef()
     this.state = {
       products: [],
       all_styles:  [],
@@ -23,13 +24,36 @@ class App extends React.Component {
       current_size: 'default',
       total_reviews: 0,
       average_reviews: 0,
+      expanded: false,
     }
-
   }
 
   componentDidMount = () => {
     this.getAllProducts()
+  }
 
+  handleExpandedView = (event) => {
+    let expanded = this.state.expanded
+    !expanded ? this.setState({expanded: true}) : this.setState({expanded: false})
+    event.preventDefault();
+  }
+
+  handleAddToCart = (event) => {
+    let skuArray = event.target[0].value.split(' ')
+    let sku = skuArray[0]
+    let quantity = event.target[1].value // Quantity
+    const configCart = {
+      params: {
+        sku_id: sku,
+        count: quantity
+      }
+    }
+
+    axios.post('http://localhost:3001/cart', configCart)
+    .then((res) => {
+      console.log(res)
+    })
+    event.preventDefault();
   }
 
   setCurrentPhoto = (photo) => {
@@ -37,8 +61,6 @@ class App extends React.Component {
     if (!this.state.current_style){
       return null
     } else if (this.state.current_style.photos) {
-      console.log('hi')
-      console.log(this.state.current_style)
       this.setState({current_photo_index: photo, current_photo: this.state.current_style.photos[photo].url})
     }
   }
@@ -49,6 +71,7 @@ class App extends React.Component {
       behavior: 'smooth'
     })
   }
+
   getAllProducts = () => {
     axios.get('http://localhost:3001/products')
     .then((response) => {
@@ -60,6 +83,7 @@ class App extends React.Component {
       console.log(err)
     })
   }
+
   setCurrentSku = (event) => {
     let size = event.target.value.split(' ')
     console.log(size)
@@ -108,7 +132,6 @@ class App extends React.Component {
         reviewTotal+= review.rating
       })
       let average = reviewTotal / response.count
-      console.log(res.data)
       this.setState({total_reviews: response.count, average_reviews: average})
     })
     .catch((err) => {
@@ -136,6 +159,11 @@ class App extends React.Component {
         setCurrentPhoto={this.setCurrentPhoto}
         currentPhoto={this.state.current_photo}
         current_size={this.state.current_size}
+        handleAddToCart={this.handleAddToCart}
+        addToCartError={this.addToCartError}
+        currentVertGalIndex={this.state.current_photo_index}
+        handleExpandedView={this.handleExpandedView}
+        isExpanded={this.state.expanded}
         />
         <ProductDescription current_product={this.state.current_product}/>
         <Questions products={this.state.products} getAllProducts={this.getAllProducts}/>
