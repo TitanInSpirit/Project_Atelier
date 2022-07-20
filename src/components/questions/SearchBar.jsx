@@ -33,7 +33,7 @@ export default SearchBar;
 
 const SearchContainer = styled(Container)`
   margin: 0.25em 0 0.25em 0;
-  width: 80vw;
+  width: 60vw;
   border: solid;
   border-width: thin;
   align-items: center;
