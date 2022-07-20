@@ -24,16 +24,16 @@ const Review = ({review, fetchReviewData}) => {
     if(review.body.length > 250) {
       return (
           <div className='renderReviewBodycontainer'>
-            <div className='reviewBodyDetail'>
+            <p className='reviewBodyDetail'>
               {showMore ? review.body : review.body.slice(0, 250) + '...'}
               <button className='showMore' onClick={() => setShowMore(!showMore)}>
                 {showMore ? 'Show less' : 'Show more'}
               </button>
-            </div>
+            </p>
           </div>
       )
     } else {
-      return <div className='reviewBodyDetail'>{review.body}</div>
+      return <p className='reviewBodyDetail'>{review.body}</p>
     }
   }
 
@@ -82,14 +82,14 @@ const Review = ({review, fetchReviewData}) => {
       <div className='ratingAndTimeContainer'>
         <span className={`rating-static rating-${review.rating * 10}`} style={{transform: 'scale(1.1)', marginLeft: '2px'}}></span>
         <div>
-        <span><span className='newReviewUserIcon'><BiUserCircle/></span>{review.reviewer_name},  </span>
-        <span>{formatDate}</span>
+        <p className='reviewUsenameDate'><span className='newReviewUserIcon'><BiUserCircle/></span>{review.reviewer_name},  </p>
+        <p className='reviewUsenameDate'>{formatDate}</p>
         </div>
       </div>
       <div className='reviewBody'>
-        <div className='reviewSummary'>{review.summary}</div>
+        <h3 className='reviewSummary'>{review.summary}</h3>
         {renderBody()}
-        {review.recommend && <div className='reviewRecommend'>✓ I recommend this product</div>}
+        {review.recommend && <p className='reviewRecommend'>✓ I recommend this product</p>}
         {response && showResponse()}
       </div>
       <div className='reviewPhotos'>

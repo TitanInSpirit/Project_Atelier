@@ -54,6 +54,7 @@ p {
   border: none;
   text-decoration: underline;
   font-size: 16px;
+  display: inline-block;
 }
 
 .sortContainer {
@@ -139,6 +140,8 @@ p {
 .reviewsRatingTitle {
   position: relative;
   left: 17.5%;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .ratingAndTimeContainer {
@@ -146,6 +149,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   margin: 10px 0 0 0;
+  height: 20px;
 }
 
 .ratingsContainer {
@@ -173,6 +177,7 @@ p {
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 20px;
+  color: #212121;
 }
 
 .moreReviewsBtn {
@@ -180,13 +185,12 @@ p {
   border: none;
   cursor: pointer;
   font-size: 18px;
-  color: black;
+  color: #212121;
   margin-top: 15px;
 }
 
 .moreReviewsBtn:hover {
   font-weight: bold;
-  background-color: rgba(0, 0, 0, .05);
 }
 
 .reviewRecommend {
@@ -243,7 +247,8 @@ p {
 
 .reviewBodyDetail {
   line-height: 25px;
-  color: rgb(101, 101, 101);
+  /* color: rgb(101, 101, 101); */
+  font-size: 15px;
 }
 
 
@@ -294,7 +299,13 @@ p {
   /* background-color: rgba(0, 0, 0, .05); */
   font-weight: bold;
   color: #fff;
-  background-color:black;
+  background-color:#212121;
+}
+
+.reviewUsenameDate{
+  display: inline-block;
+  font-size: 15px;
+  margin-right: 5px;
 }
 
 .newReviewUserIcon{
@@ -343,7 +354,7 @@ p {
 .reviewReportButton {
   border: none;
   outline: none;
-  background-color: white;
+  background-color: #fff;
   cursor: pointer;
   font-size: 15px;
   color: gray;
@@ -397,7 +408,7 @@ p {
 .ratinglevel {
   text-decoration: underline;
   width: 60px;
-
+  color: #212121;
   position: absolute;
   top: 15px
 }
@@ -418,6 +429,7 @@ p {
   position: absolute;
   right: -1.3rem;
   bottom: -0.3rem;
+  color: #212112;
 }
 
 .ratingLabelContainer {
@@ -451,6 +463,7 @@ p {
   position: relative;
   bottom: -20px;
   font-weight: bold;
+  color: #212121;
 }
 
 .ratingScaleDes {
@@ -808,8 +821,8 @@ p {
 }
 
 .newFormBtn:hover {
-  color: white;
-  background-color: black;
+  color: #fff;
+  background-color: #212121;
 }
 
 .newFormCancelBtn {

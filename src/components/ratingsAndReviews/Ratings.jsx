@@ -67,7 +67,7 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
         </div>
       </div>
 
-      <small>{recommended && calRecommend()}% of reviews recommend this product</small>
+      <p>{recommended && calRecommend()}% of reviews recommend this product</p>
 
       <div className='ratingLabelContainer'>
         {rateArr.length > 0 && rateArr.map((rate, i) => {

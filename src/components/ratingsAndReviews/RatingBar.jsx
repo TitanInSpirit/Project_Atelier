@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const RatingBar = ({level, ratings, handleFilterRating}) => {
-  const [ratingPercent, serRatingPercent] = useState('')
+  const [ratingPercent, setRatingPercent] = useState(0)
   const [show, setShow] = useState(true);
 
   const calRating = () => {
@@ -11,7 +11,7 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
     }
     for (let key in ratings) {
       if(key === level) {
-        serRatingPercent(Math.floor((Number(ratings[key]) / sum).toFixed(2) * 100))
+        setRatingPercent(Math.floor((Number(ratings[key]) / sum).toFixed(2) * 100))
       }
     }
   }
@@ -24,10 +24,12 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
 
   const style = {
       height: '100%',
-      backgroundColor: 'green',
+      backgroundColor: '#5C5C5C',
       width: `${ratingPercent}%`,
       boxSizing: 'border-box'
     }
+
+
 
     //why show state here update immediately??? because it's callback???
 
@@ -40,12 +42,15 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
     <div className='ratingBarContainer' onClick={handleClick}>
       {/* {console.log('rating',ratingPercent)} */}
       {level === '1' ?
-      <div className='ratinglevel' >{level} star</div> :
-      <div className='ratinglevel' >{level} stars</div>}
+      <h3 className='ratinglevel' >{level} star</h3> :
+      <h3 className='ratinglevel' >{level} stars</h3>}
       <div className='ratingContainer'>
         <div style={style}></div>
       </div>
-      <div className='ratingPercent'>{`${ratingPercent}%`}</div>
+      {ratingPercent > 0 ?
+      <h3 className='ratingPercent'>{`${ratingPercent}%`}</h3> :
+      <h3 className='ratingPercent'>0%</h3>}
+
     </div>
   )
 }
