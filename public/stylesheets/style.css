@@ -999,7 +999,7 @@ p {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 557px;
+  height: 467px;
   width: 66px;
   position: absolute;
   left: 210px;
@@ -1007,10 +1007,15 @@ p {
   overflow-y: scroll;
   top: 16px;
   margin-bottom: 0 px;
+  -ms-overflow-style: none;
+  /* Hide Scrollbar for IE and Edge */
+  scrollbar-width: none;
+  /* Hide Scrollbar for Firefox */
 }
 
-.imageGallery ::-webkit-scrollbar {
+.imageGallery::-webkit-scrollbar {
   display: none;
+  /* Hide Scrollbar for Chrome, Safari, Opera */
 }
 
 .currentImg {
@@ -1204,96 +1209,18 @@ p {
   cursor: zoom-in;
   border-radius: 0px;
   border: 1px solid rgba(79, 79, 79, .75);
+  animation-name: grow;
+  animation-duration: 1s;
+}
+
+@keyframes grow {
+  0% {
+    width: 700px;
+  }
+
+  100% {
+    width: 1100px;
+  }
 }
 
 /* children will be positioned relativly to this element */
-.square {
-  position: relative;
-  height: 100px;
-}
-
-.left,
-.center,
-.right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-
-.left {
-  background: red;
-}
-
-.center {
-  background: yellow;
-}
-
-.right {
-  background: blue;
-}
-
-/* we need room for a 20 pixel border radius (on one side) */
-.left,
-.right {
-  width: 20px;
-}
-
-.left {
-  border-radius: 20px 0 0 20px;
-}
-
-.right {
-  border-radius: 0 20px 20px 0;
-}
-
-/* child layout definitions */
-.center {
-  /* center needs to be 20 pixels from the left,
-  so it doesn't overlap with the .left element */
-  left: 20px;
-
-  /* needs a width of 1 pixel, this causes
-  scaleX(60) is equal to 60 pixels */
-  width: 1px;
-  transform: scaleX(60);
-
-  /* we need to scale the texture from the left side
-  for it to align correctly, default is center */
-  transform-origin: left;
-}
-
-.right {
-  /* we need to move the right element to align with
-  the right side of the .center element
-  20px + 60px = 80px */
-  transform: translateX(80px);
-}
-
-/* Overview | Expanded Animation */
-.center {
-  animation: center-animate 1s ease infinite alternate;
-}
-
-.right {
-  animation: right-animate 1s ease infinite alternate;
-}
-
-@keyframes right-animate {
-  0% {
-    transform: translateX(140px);
-  }
-
-  100% {
-    transform: translateX(20px);
-  }
-}
-
-@keyframes center-animate {
-  0% {
-    transform: scaleX(120);
-  }
-
-  100% {
-    transform: scaleX(0);
-  }
-}
