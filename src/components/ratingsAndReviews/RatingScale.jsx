@@ -23,7 +23,7 @@ const RatingScale = ({characteristic}) => {
     <div>
       {/* {console.log('chara',characteristic)}
       {console.log(calScore())} */}
-      <div className='ratingScaleTitle'>{key}</div>
+      <h3 className='ratingScaleTitle'>{key}</h3>
       <div className='ratingScaleContainer'>
         <VscTriangleDown style={inlineStyle}/>
         <div className='ratingScalepoints'>
@@ -33,8 +33,8 @@ const RatingScale = ({characteristic}) => {
         </div>
       </div>
       <div className='ratingScaleDes'>
-        <div>{des[key][0]}</div>
-        <div>{des[key][1]}</div>
+        <p style={{fontSize:'13px'}}>{des[key][0]}</p>
+        <p style={{fontSize:'13px'}}>{des[key][1]}</p>
       </div>
     </div>
   )

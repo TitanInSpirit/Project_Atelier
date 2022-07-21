@@ -5,7 +5,6 @@ const PhotoUpload = ({setPhotos, photos}) => {
   const [imageSelected, setImageSelected] = useState('');
   const [uploadImages, setUploadImages] = useState([]);
 
-  // let arr = [];
   let returnUrl = [];
 
 
@@ -23,12 +22,8 @@ const PhotoUpload = ({setPhotos, photos}) => {
   };
 
   const handleChange = e => {
-    // console.log(e.target.files)
-    // console.log('file 1', e.target.files[0].name)
-    // console.log('file 2', e.target.files[1].name)
     const {length} = e.target.files;
     for (let i = 0; i < length; i++) {
-      // arr.push(e.target.files[i])
       setUploadImages(prev => [...prev, e.target.files[i]]);
     }
   }
@@ -36,10 +31,6 @@ const PhotoUpload = ({setPhotos, photos}) => {
 
   return (
     <div className='newReviewPhotoContainer'>
-      {/* {imageName.length > 0 && console.log(imageName)} */}
-      {/* {console.log('returnUrl', {returnUrl})} */}
-      {/* {console.log('imageSelected', imageSelected)} */}
-      {/* {console.log('photos', photos)} */}
       <div className='newReviewPhotoUpload'>
         {/* <span className='newReviewImageAdd'>Add Images</span> */}
         <label htmlFor='newReviewImage' className='newReviewImageAdd'>Choose file</label>

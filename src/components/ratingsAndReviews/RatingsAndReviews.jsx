@@ -64,17 +64,12 @@ const RatingsAndReviews = (props) => {
 
 
   const handleFilterRating = (level, show) => {
-    // console.log(reviews)
-    // console.log(results)
-    // console.log(level, show)
     if(show) {
       setRateArr([...rateArr, level])
     } else {
       let filterRating = rateArr.filter(rate => rate !== level);
       setRateArr(filterRating);
     }
-    // console.log('rating arr', rateArr)
-
   }
 
   const handleClearAllReviewsLabel = () => {
@@ -110,10 +105,7 @@ const RatingsAndReviews = (props) => {
 
   return (
     <div>
-      {/* {console.log('reviews are', reviews)} */}
-      {/* {console.log('style', props.products[0].name)} */}
-      {/* {props.product_id &&console.log('product is', props.product_id)} */}
-      <h5 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h5>
+      <h2 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h2>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>
             <Ratings

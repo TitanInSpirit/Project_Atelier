@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react';
 import { format, parseISO } from "date-fns";
 import Modal from './Modal.jsx'
 import {BiUserCircle} from 'react-icons/bi'
+import { FiThumbsUp } from 'react-icons/fi';
+import { HiOutlineThumbUp, HiThumbUp } from 'react-icons/hi';
 //BiUserCircle
 
 
@@ -24,26 +26,29 @@ const Review = ({review, fetchReviewData}) => {
     if(review.body.length > 250) {
       return (
           <div className='renderReviewBodycontainer'>
-            <div className='reviewBodyDetail'>
+            <p className='reviewBodyDetail'>
               {showMore ? review.body : review.body.slice(0, 250) + '...'}
               <button className='showMore' onClick={() => setShowMore(!showMore)}>
                 {showMore ? 'Show less' : 'Show more'}
               </button>
-            </div>
+            </p>
           </div>
       )
     } else {
-      return <div className='reviewBodyDetail'>{review.body}</div>
+      return <p className='reviewBodyDetail'>{review.body}</p>
     }
   }
 
 
   const handleHelpfulClick = async() => {
-    setNotHelpful(true)
-    await setHelpful(true);
-    axios.put(`http://localhost:3001/reviews/${review.review_id}/helpful`)
-      .then(() => fetchReviewData())
-      .catch(err => console.log('err in udpate helpful', err))
+    if(!helpful) {
+      setNotHelpful(true)
+      await setHelpful(true);
+      axios.put(`/reviews/${review.review_id}/helpful`)
+        .then(() => fetchReviewData())
+        .catch(err => console.log('err in udpate helpful', err))
+    }
+
   }
 
   const handleNotHelpfulClick = () => {
@@ -52,16 +57,14 @@ const Review = ({review, fetchReviewData}) => {
   }
 
   const handleReportClick = async() => {
-    // console.log(review)
     await setReprot(true);
-    axios.put(`http://localhost:3001/reviews/${review.review_id}/report`)
+    axios.put(`/reviews/${review.review_id}/report`)
       .then(() => fetchReviewData())
       .catch(err => console.log('err in udpate report', err))
   }
 
   const handleImgClick = (photo) => {
     setShowModal(true)
-    // console.log(photo.url)
     setShowImg(photo.url)
   }
 
@@ -76,20 +79,27 @@ const Review = ({review, fetchReviewData}) => {
     }
   }
 
+  const starStyle = {
+    '--rating-value': `${review.rating}`,
+    position: 'relative',
+    top: '-10px',
+    fontSize: '20px',
+  }
+
   return (
     <div className='singleReviewContainer'>
-      {/* {console.log(review)} */}
       <div className='ratingAndTimeContainer'>
-        <span className={`rating-static rating-${review.rating * 10}`} style={{transform: 'scale(1.1)', marginLeft: '2px'}}></span>
+        {/* <span className={`rating-static rating-${review.rating * 10}`} style={{transform: 'scale(1.1)', marginLeft: '2px'}}></span> */}
+        <span className="rating" style={starStyle}></span>
         <div>
-        <span><span className='newReviewUserIcon'><BiUserCircle/></span>{review.reviewer_name},  </span>
-        <span>{formatDate}</span>
+        <p className='reviewUsenameDate'><span className='newReviewUserIcon'><BiUserCircle/></span>{review.reviewer_name},  </p>
+        <p className='reviewUsenameDate'>{formatDate}</p>
         </div>
       </div>
       <div className='reviewBody'>
-        <div className='reviewSummary'>{review.summary}</div>
+        <h3 className='reviewSummary'>{review.summary}</h3>
         {renderBody()}
-        {review.recommend && <div className='reviewRecommend'>✓ I recommend this product</div>}
+        {review.recommend && <p className='reviewRecommend'>✓ I recommend this product</p>}
         {response && showResponse()}
       </div>
       <div className='reviewPhotos'>
@@ -103,7 +113,11 @@ const Review = ({review, fetchReviewData}) => {
       </div>
       <div className='reviewFooter'>
         {/* <div>Helpful?</div> */}
-        <button className='reviewHelpfulButton' onClick={handleHelpfulClick} disabled={helpful}>Helpful</button>
+        {/* <button className='reviewHelpfulButton' onClick={handleHelpfulClick} disabled={helpful}>Helpful</button> */}
+        {helpful ?
+        <div className='reviewThumbUp' onClick={handleHelpfulClick} ><HiThumbUp/></div>:
+        <div className='reviewThumbUp' onClick={handleHelpfulClick} ><HiOutlineThumbUp/></div>}
+        {/* <div className='reviewThumbUp' onClick={handleHelpfulClick} ><FiThumbsUp/></div> */}
         {/* <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button> */}
         <p className='helpfulNum'>({review.helpfulness})</p>
         <p className='helpfulReportDevide'> | </p>

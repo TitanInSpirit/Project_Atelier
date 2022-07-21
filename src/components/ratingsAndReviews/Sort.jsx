@@ -11,9 +11,8 @@ const Sort = ({handleSortValue, results, reviewsCount}) => {
   }
   return (
     <form className='sortContainer'>
-      {/* {console.log(results)} */}
       {/* {results && results.length} reviews, sorted by */}
-      Showing {reviewsCount} reviews, sorted by
+      <h2 style={{display: 'inline-block', fontWeight: '500'}}>Showing {reviewsCount} reviews, sorted by</h2>
       <select
         className='sortForm'
         value = {sortValue}
