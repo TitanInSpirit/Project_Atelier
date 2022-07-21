@@ -6,6 +6,7 @@ import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.
 import '../public/stylesheets/style.css';
 import Questions from './components/questions/Questions.jsx';
 import axios from 'axios';
+import Header from './components/header/Header.jsx'
 
 const root = createRoot(document.getElementById('root'));
 
@@ -123,18 +124,21 @@ class App extends React.Component {
     const configReview = {
       params: {
         product_id: productId,
+        count: 999999,
       }
     }
 
     axios.get('/reviews', configReview)
     .then((res) => {
+      console.log(res.data)
       let response = res.data
       let reviewTotal = 0;
       let increment = response.results.map((review) => {
+        console.log(review)
         reviewTotal+= review.rating
       })
-      let average = reviewTotal / response.count
-      this.setState({total_reviews: response.count, average_reviews: average})
+      let average = (reviewTotal / response.results.length).toFixed(1)
+      this.setState({total_reviews: response.results.length, average_reviews: average})
     })
     .catch((err) => {
       console.log('Axios Post Error, ', err)
@@ -155,7 +159,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1><img src='https://res.cloudinary.com/dsfj56bcp/image/upload/v1657991216/project_atelier/shop_ihqvtz.png'/> Shoppy McShop Face</h1>
+        <Header />
         <Overview
         products={this.state.products}
         getAllProducts={this.getAllProducts}

@@ -7,6 +7,48 @@ font-family: 'Hind Siliguri', sans-serif; */
 html,
 body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #212121;
+  min-width: 100vw;
+  min-height: 100px;
+  max-height: 10vh;
+}
+
+.header_logo_container {
+  height: 40px;
+  margin: 15px;
+}
+
+.header_logo {
+  padding-top: 2.5px;
+  padding-left: 100px;
+  min-height: 5em;
+}
+
+#site-search {
+  min-height: 2.5em;
+  width: 20em;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 200px;
+  color: rgb(231, 231, 231);
+  outline: none;
+  border-style: solid;
+  border-top: #ffffff;
+  border-left: transparent;
+  border-right: transparent;
+  border-width: thin;
+  background-color: transparent;
+  outline-color: #fff;
 }
 
 h1 {
@@ -59,6 +101,29 @@ p {
 .sortContainer {
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+
+/* star rating */
+:root {
+  --rating-max: 5;
+  --rating-content: '★★★★★';
+  --rating-inactive-color: #CCCCCC;
+  --rating-background: #81DBD8;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 30px;
+}
+
+.rating::before {
+  --rating-percent: calc(var(--rating-value) / var(--rating-max) * 100%);
+  content: var(--rating-content);
+  background: linear-gradient(90deg, var(--rating-background) var(--rating-percent), var(--rating-inactive-color) var(--rating-percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .rating-static {
@@ -139,6 +204,7 @@ p {
 .reviewsRatingTitle {
   position: relative;
   left: 17.5%;
+  width: 155px;
 }
 
 .ratingAndTimeContainer {
@@ -230,7 +296,7 @@ p {
   outline-color: #fff;
 }
 
-.reviewSearchLine{
+.reviewSearchLine {
   width: 33%;
   position: relative;
   right: -374px;
@@ -294,10 +360,10 @@ p {
   /* background-color: rgba(0, 0, 0, .05); */
   font-weight: bold;
   color: #fff;
-  background-color:black;
+  background-color: black;
 }
 
-.newReviewUserIcon{
+.newReviewUserIcon {
   font-size: 25px;
   position: relative;
   bottom: -6px;
@@ -318,9 +384,9 @@ p {
 }
 
 .reviewPhoto {
- width: 100px;
-    height: 100px;
-    margin: 10px 8px 10px 0;
+  width: 100px;
+  height: 100px;
+  margin: 10px 8px 10px 0;
 }
 
 .reviewHelpfulButton {
@@ -582,7 +648,7 @@ p {
   margin: 10px 0 10px 0;
 }
 
-.newReviewPhotoInputLabel{
+.newReviewPhotoInputLabel {
   position: absolute;
   top: 21px;
   margin-left: 25px;
@@ -625,16 +691,16 @@ p {
 
 .newReviewPhotoUploadBtn {
   width: 25%;
-    height: 40px;
-    border: none;
-    border-radius: 0 2px 2px 0;
-    border-left: 1px lightgray solid;
-    position: absolute;
-    right: 0;
-    top: 10px;
+  height: 40px;
+  border: none;
+  border-radius: 0 2px 2px 0;
+  border-left: 1px lightgray solid;
+  position: absolute;
+  right: 0;
+  top: 10px;
 }
 
-.newReviewImageAdd{
+.newReviewImageAdd {
   background-color: #f0f0f0;
   height: 40px;
   width: 180px;
@@ -645,7 +711,7 @@ p {
   border-right: 1px lightgray solid;
 }
 
-.newReviewFilesAddCount{
+.newReviewFilesAddCount {
   position: relative;
   top: -28px;
   right: -200px;
@@ -827,7 +893,10 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 1400px;
+  justify-content: center;
+  /* justify-items: center; */
+  /* width: 1400px; */
+  margin-left: 0vw;
 }
 
 /* Loading screen */
@@ -885,6 +954,46 @@ p {
 }
 
 /* Overview | Gallery Container */
+/* Overview | Sidebar */
+.overview_sidebar {
+  animation: sidebar_fadein;
+  animation-duration: 1.57s;
+}
+
+@keyframes sidebar_fadein {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.overview_sidebar_expand {
+  animation: sidebar_fadeout;
+  animation-duration: .25s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes sidebar_fadeout {
+  0% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
 .gallery {
   display: flex;
   flex-direction: column;
@@ -937,29 +1046,117 @@ p {
   cursor: zoom-in;
   border-radius: 0px;
   border: 1px solid rgba(79, 79, 79, .75);
+  animation: shrink;
+  animation-duration: 1s;
+  position: absolute;
+  left: -350px;
+  top: -231px;
+}
+
+@keyframes shrink {
+  0% {
+    width: 1100px;
+  }
+
+  100% {
+    width: 700px;
+  }
 }
 
 
 .right-arrow {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: -300px;
   font-size: 2.25rem;
-  color: rgba(0, 255, 217, 0.75);
+  color: #81DBD8;
   z-index: 10;
   cursor: pointer;
   user-select: none;
+  animation-name: fadeoutandin;
+  animation-duration: 2s;
+}
+
+.right-arrow:hover {
+  background-color: rgba(33, 33, 33, 0.174);
+  border-radius: 100%;
+  padding: -100px;
+}
+
+@keyframes fadeoutandin {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.grow_r {
+  position: absolute;
+  top: 50%;
+  right: -700px;
+  font-size: 2.25rem;
+  color: #81DBD8;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  animation-name: rightgrow;
+  animation-duration: 1s;
+}
+
+@keyframes rightgrow {
+  0% {
+    right: -300px;
+  }
+
+  100% {
+    right: -700px;
+  }
 }
 
 .left-arrow {
   position: absolute;
   top: 50%;
-  left: 90px;
+  left: -252px;
   font-size: 2.25rem;
-  color: rgba(0, 255, 238, 0.75);
+  color: #81DBD8;
   z-index: 10;
   cursor: pointer;
   user-select: none;
+  animation-name: leftfadeoutin;
+  animation-duration: 2s;
+}
+
+
+.left-arrow-trigger {
+  position: absolute;
+  top: 50%;
+  left: -252px;
+  font-size: 2.25rem;
+  color: #81DBD8;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes leftfadeoutin {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }
 
 .slide {
@@ -999,7 +1196,7 @@ p {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 557px;
+  height: 467px;
   width: 66px;
   position: absolute;
   left: 210px;
@@ -1007,10 +1204,15 @@ p {
   overflow-y: scroll;
   top: 16px;
   margin-bottom: 0 px;
+  -ms-overflow-style: none;
+  /* Hide Scrollbar for IE and Edge */
+  scrollbar-width: none;
+  /* Hide Scrollbar for Firefox */
 }
 
-.imageGallery ::-webkit-scrollbar {
+.imageGallery::-webkit-scrollbar {
   display: none;
+  /* Hide Scrollbar for Chrome, Safari, Opera */
 }
 
 .currentImg {
@@ -1137,7 +1339,7 @@ p {
   display: flex;
   flex-direction: row;
   padding-top: 25px;
-  padding-left: 20%;
+  margin-left: 34.5vw;
 }
 
 .product_description_container {
@@ -1204,96 +1406,19 @@ p {
   cursor: zoom-in;
   border-radius: 0px;
   border: 1px solid rgba(79, 79, 79, .75);
+  animation-name: grow;
+  animation-duration: 1s;
+  top: -231px;
+}
+
+@keyframes grow {
+  0% {
+    width: 700px;
+  }
+
+  100% {
+    width: 1100px;
+  }
 }
 
 /* children will be positioned relativly to this element */
-.square {
-  position: relative;
-  height: 100px;
-}
-
-.left,
-.center,
-.right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-
-.left {
-  background: red;
-}
-
-.center {
-  background: yellow;
-}
-
-.right {
-  background: blue;
-}
-
-/* we need room for a 20 pixel border radius (on one side) */
-.left,
-.right {
-  width: 20px;
-}
-
-.left {
-  border-radius: 20px 0 0 20px;
-}
-
-.right {
-  border-radius: 0 20px 20px 0;
-}
-
-/* child layout definitions */
-.center {
-  /* center needs to be 20 pixels from the left,
-  so it doesn't overlap with the .left element */
-  left: 20px;
-
-  /* needs a width of 1 pixel, this causes
-  scaleX(60) is equal to 60 pixels */
-  width: 1px;
-  transform: scaleX(60);
-
-  /* we need to scale the texture from the left side
-  for it to align correctly, default is center */
-  transform-origin: left;
-}
-
-.right {
-  /* we need to move the right element to align with
-  the right side of the .center element
-  20px + 60px = 80px */
-  transform: translateX(80px);
-}
-
-/* Overview | Expanded Animation */
-.center {
-  animation: center-animate 1s ease infinite alternate;
-}
-
-.right {
-  animation: right-animate 1s ease infinite alternate;
-}
-
-@keyframes right-animate {
-  0% {
-    transform: translateX(140px);
-  }
-
-  100% {
-    transform: translateX(20px);
-  }
-}
-
-@keyframes center-animate {
-  0% {
-    transform: scaleX(120);
-  }
-
-  100% {
-    transform: scaleX(0);
-  }
-}
