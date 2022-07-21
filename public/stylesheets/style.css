@@ -7,6 +7,48 @@ font-family: 'Hind Siliguri', sans-serif; */
 html,
 body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #212121;
+  min-width: 100vw;
+  min-height: 100px;
+  max-height: 10vh;
+}
+
+.header_logo_container {
+  height: 40px;
+  margin: 15px;
+}
+
+.header_logo {
+  padding-top: 2.5px;
+  padding-left: 100px;
+  min-height: 5em;
+}
+
+#site-search {
+  min-height: 2.5em;
+  width: 20em;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 200px;
+  color: rgb(231, 231, 231);
+  outline: none;
+  border-style: solid;
+  border-top: #ffffff;
+  border-left: transparent;
+  border-right: transparent;
+  border-width: thin;
+  background-color: transparent;
+  outline-color: #fff;
 }
 
 h1 {
@@ -59,6 +101,29 @@ p {
 .sortContainer {
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+
+/* star rating */
+:root {
+  --rating-max: 5;
+  --rating-content: '★★★★★';
+  --rating-inactive-color: #CCCCCC;
+  --rating-background: #81DBD8;
+}
+
+.rating {
+  display: inline-block;
+  font-size: 30px;
+}
+
+.rating::before {
+  --rating-percent: calc(var(--rating-value) / var(--rating-max) * 100%);
+  content: var(--rating-content);
+  background: linear-gradient(90deg, var(--rating-background) var(--rating-percent), var(--rating-inactive-color) var(--rating-percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .rating-static {
@@ -139,6 +204,7 @@ p {
 .reviewsRatingTitle {
   position: relative;
   left: 17.5%;
+  width: 155px;
 }
 
 .ratingAndTimeContainer {
@@ -827,7 +893,10 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 1400px;
+  justify-content: center;
+  /* justify-items: center; */
+  /* width: 1400px; */
+  margin-left: 0vw;
 }
 
 /* Loading screen */
@@ -885,6 +954,46 @@ p {
 }
 
 /* Overview | Gallery Container */
+/* Overview | Sidebar */
+.overview_sidebar {
+  animation: sidebar_fadein;
+  animation-duration: 1.57s;
+}
+
+@keyframes sidebar_fadein {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.overview_sidebar_expand {
+  animation: sidebar_fadeout;
+  animation-duration: .25s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes sidebar_fadeout {
+  0% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
 .gallery {
   display: flex;
   flex-direction: column;
@@ -937,29 +1046,117 @@ p {
   cursor: zoom-in;
   border-radius: 0px;
   border: 1px solid rgba(79, 79, 79, .75);
+  animation: shrink;
+  animation-duration: 1s;
+  position: absolute;
+  left: -350px;
+  top: -231px;
+}
+
+@keyframes shrink {
+  0% {
+    width: 1100px;
+  }
+
+  100% {
+    width: 700px;
+  }
 }
 
 
 .right-arrow {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: -300px;
   font-size: 2.25rem;
-  color: rgba(0, 255, 217, 0.75);
+  color: #81DBD8;
   z-index: 10;
   cursor: pointer;
   user-select: none;
+  animation-name: fadeoutandin;
+  animation-duration: 2s;
+}
+
+.right-arrow:hover {
+  background-color: rgba(33, 33, 33, 0.174);
+  border-radius: 100%;
+  padding: -100px;
+}
+
+@keyframes fadeoutandin {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.grow_r {
+  position: absolute;
+  top: 50%;
+  right: -700px;
+  font-size: 2.25rem;
+  color: #81DBD8;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  animation-name: rightgrow;
+  animation-duration: 1s;
+}
+
+@keyframes rightgrow {
+  0% {
+    right: -300px;
+  }
+
+  100% {
+    right: -700px;
+  }
 }
 
 .left-arrow {
   position: absolute;
   top: 50%;
-  left: 90px;
+  left: -252px;
   font-size: 2.25rem;
-  color: rgba(0, 255, 238, 0.75);
+  color: #81DBD8;
   z-index: 10;
   cursor: pointer;
   user-select: none;
+  animation-name: leftfadeoutin;
+  animation-duration: 2s;
+}
+
+
+.left-arrow-trigger {
+  position: absolute;
+  top: 50%;
+  left: -252px;
+  font-size: 2.25rem;
+  color: #81DBD8;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes leftfadeoutin {
+  0% {
+    opacity: 0%;
+  }
+
+  50% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
 }
 
 .slide {
@@ -1142,7 +1339,7 @@ p {
   display: flex;
   flex-direction: row;
   padding-top: 25px;
-  padding-left: 20%;
+  margin-left: 34.5vw;
 }
 
 .product_description_container {
@@ -1211,6 +1408,7 @@ p {
   border: 1px solid rgba(79, 79, 79, .75);
   animation-name: grow;
   animation-duration: 1s;
+  top: -231px;
 }
 
 @keyframes grow {

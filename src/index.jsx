@@ -6,6 +6,7 @@ import RatingsAndReviews from './components/ratingsAndReviews/RatingsAndReviews.
 import '../public/stylesheets/style.css';
 import Questions from './components/questions/Questions.jsx';
 import axios from 'axios';
+import Header from './components/header/Header.jsx'
 
 const root = createRoot(document.getElementById('root'));
 
@@ -158,7 +159,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1><img src='https://res.cloudinary.com/dsfj56bcp/image/upload/v1657991216/project_atelier/shop_ihqvtz.png'/> Shoppy McShop Face</h1>
+        <Header />
         <Overview
         products={this.state.products}
         getAllProducts={this.getAllProducts}
