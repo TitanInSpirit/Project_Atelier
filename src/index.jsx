@@ -74,7 +74,7 @@ class App extends React.Component {
   }
 
   getAllProducts = () => {
-    axios.get('http://localhost:3001/products')
+    axios.get('/products')
     .then((response) => {
       this.setState({products: response.data, current_product: response.data[4]})
       this.getInfo(response.data[4]['id'])
@@ -127,7 +127,7 @@ class App extends React.Component {
       }
     }
 
-    axios.get('http://localhost:3001/reviews', configReview)
+    axios.get('/reviews', configReview)
     .then((res) => {
       console.log(res.data)
       let response = res.data

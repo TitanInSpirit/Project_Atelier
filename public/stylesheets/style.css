@@ -230,7 +230,7 @@ p {
   outline-color: #fff;
 }
 
-.reviewSearchLine{
+.reviewSearchLine {
   width: 33%;
   position: relative;
   right: -374px;
@@ -294,10 +294,10 @@ p {
   /* background-color: rgba(0, 0, 0, .05); */
   font-weight: bold;
   color: #fff;
-  background-color:black;
+  background-color: black;
 }
 
-.newReviewUserIcon{
+.newReviewUserIcon {
   font-size: 25px;
   position: relative;
   bottom: -6px;
@@ -318,9 +318,9 @@ p {
 }
 
 .reviewPhoto {
- width: 100px;
-    height: 100px;
-    margin: 10px 8px 10px 0;
+  width: 100px;
+  height: 100px;
+  margin: 10px 8px 10px 0;
 }
 
 .reviewHelpfulButton {
@@ -582,7 +582,7 @@ p {
   margin: 10px 0 10px 0;
 }
 
-.newReviewPhotoInputLabel{
+.newReviewPhotoInputLabel {
   position: absolute;
   top: 21px;
   margin-left: 25px;
@@ -625,16 +625,16 @@ p {
 
 .newReviewPhotoUploadBtn {
   width: 25%;
-    height: 40px;
-    border: none;
-    border-radius: 0 2px 2px 0;
-    border-left: 1px lightgray solid;
-    position: absolute;
-    right: 0;
-    top: 10px;
+  height: 40px;
+  border: none;
+  border-radius: 0 2px 2px 0;
+  border-left: 1px lightgray solid;
+  position: absolute;
+  right: 0;
+  top: 10px;
 }
 
-.newReviewImageAdd{
+.newReviewImageAdd {
   background-color: #f0f0f0;
   height: 40px;
   width: 180px;
@@ -645,7 +645,7 @@ p {
   border-right: 1px lightgray solid;
 }
 
-.newReviewFilesAddCount{
+.newReviewFilesAddCount {
   position: relative;
   top: -28px;
   right: -200px;

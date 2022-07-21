@@ -104,3 +104,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# adds .pem file to git ignore
+*.pem

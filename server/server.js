@@ -17,12 +17,12 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   app.use(express.json())
 
   // Serves Static Files
-  app.use(express.static(path.join(__dirname, '/client/dist')));
+  app.use(express.static(path.join(__dirname, '../public/')));
 
   // Headers / CORS Settings
-  app.options("*", cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
-  app.use(cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
-
+  // app.options("*", cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
+  // app.use(cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
+  app.use(cors())
   // Custom Request Logging Middleware
   app.use((req,res,next) => {
     console.log(
@@ -41,7 +41,8 @@ app.get('/products', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
+      'Authorization': `${GithubToken}`,
+      'contentType': 'application/json'
     }
   };
 
