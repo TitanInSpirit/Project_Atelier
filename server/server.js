@@ -36,7 +36,8 @@ app.get('/products', (req, res) => {
     url: endpointUrl,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Authorization': `${GithubToken}`
+      'Authorization': `${GithubToken}`,
+      'contentType': 'application/json'
     }
   };
 

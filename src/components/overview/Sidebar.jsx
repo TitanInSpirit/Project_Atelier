@@ -4,11 +4,11 @@ import ProductInfo from './sidebar/ProductInfo.jsx';
 import StyleSelector from './sidebar/StyleSelector.jsx';
 
 function Sidebar(props) {
-  if (props.isExpanded) {
-    return null
-  } else {
+  // if (props.isExpanded) {
+  //   return null
+  // } else {
   return (
-      <div className={'overview_sidebar'}>
+      <div className={props.isExpanded ? 'overview_sidebar_expand' : 'overview_sidebar'}>
         <ProductInfo
           products={props.products}
           getAllProducts={props.getAllProducts}
@@ -20,6 +20,7 @@ function Sidebar(props) {
           scrollToReviews={props.scrollToReviews}
           reviewsRef={props.reviewsRef}
           scrollToSection={props.scrollToSection}
+          isExpanded={props.isExpanded}
           />
         <StyleSelector
           products={props.products}
@@ -49,7 +50,7 @@ function Sidebar(props) {
         />
       </div>
     );
-  }
+  // }
 }
 
 export default Sidebar;
