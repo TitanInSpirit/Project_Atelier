@@ -4,11 +4,16 @@ font-family: 'Amiko', sans-serif;
 font-family: 'Hind Madurai', sans-serif;
 font-family: 'Hind Siliguri', sans-serif; */
 
+/* * {
+  outline: 1px solid red;
+  outline-offset: -1px;
+} */
+
 /* html */
 body {
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -372,10 +377,10 @@ label {
   /* background-color: rgba(0, 0, 0, .05); */
   font-weight: bold;
   color: #fff;
-  background-color:#212121;
+  background-color: #212121;
 }
 
-.reviewUsenameDate{
+.reviewUsenameDate {
   display: inline-block;
   font-size: 15px;
   margin-right: 5px;
@@ -419,7 +424,7 @@ label {
   cursor: pointer;
 }
 
-.reviewThumbUp{
+.reviewThumbUp {
   cursor: pointer;
   font-size: 20px;
 }
@@ -744,7 +749,7 @@ label {
   right: -200px;
 }
 
-.newReviewCharacteristics{
+.newReviewCharacteristics {
   margin-bottom: 13px;
 }
 
@@ -930,9 +935,6 @@ label {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* justify-items: center; */
-  /* width: 1400px; */
-  margin-left: 0vw;
 }
 
 /* Loading screen */
@@ -1035,19 +1037,16 @@ label {
   flex-direction: column;
   justify-content: flex-start;
   height: 500px;
-  width: 1000px;
+  width: 782px;
 }
 
 /* Overview | Img Carousel */
 .slider {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   position: relative;
-  /* overflow: hidden; */
   height: 500px;
-  width: 966px;
-  padding-left: 146px;
+  width: 741px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1235,7 +1234,7 @@ label {
   height: 467px;
   width: 66px;
   position: absolute;
-  left: 210px;
+  left: 15px;
   z-index: 1;
   overflow-y: scroll;
   top: 16px;
@@ -1374,8 +1373,10 @@ label {
 .product_description_container_parent {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding-top: 25px;
-  margin-left: 34.5vw;
+  padding-right: 47px;
 }
 
 .product_description_container {
