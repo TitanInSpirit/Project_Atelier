@@ -106,9 +106,6 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
 
   return (
     <div>
-      {/* {console.log(product)} */}
-      {/* {console.log('characteristics', characteristics)} */}
-      {/* {console.log('recommend', recommend)} */}
       <button className='addNewRivewBtn' onClick={() => setShowModal(true)}>Add a review +</button>
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className='newReviewContainer'>

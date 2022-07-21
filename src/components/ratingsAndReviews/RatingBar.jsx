@@ -40,7 +40,6 @@ const RatingBar = ({level, ratings, handleFilterRating}) => {
 
   return (
     <div className='ratingBarContainer' onClick={handleClick}>
-      {/* {console.log('rating',ratingPercent)} */}
       {level === '1' ?
       <h3 className='ratinglevel' >{level} star</h3> :
       <h3 className='ratinglevel' >{level} stars</h3>}

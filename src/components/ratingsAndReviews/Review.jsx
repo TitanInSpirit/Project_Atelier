@@ -4,8 +4,7 @@ import { format, parseISO } from "date-fns";
 import Modal from './Modal.jsx'
 import {BiUserCircle} from 'react-icons/bi'
 import { FiThumbsUp } from 'react-icons/fi';
-import { HiOutlineThumbUp } from 'react-icons/hi';
-import { HiThumbUp } from 'react-icons/hi';
+import { HiOutlineThumbUp, HiThumbUp } from 'react-icons/hi';
 //BiUserCircle
 
 
@@ -45,7 +44,7 @@ const Review = ({review, fetchReviewData}) => {
     if(!helpful) {
       setNotHelpful(true)
       await setHelpful(true);
-      axios.put(`reviews/${review.review_id}/helpful`)
+      axios.put(`/reviews/${review.review_id}/helpful`)
         .then(() => fetchReviewData())
         .catch(err => console.log('err in udpate helpful', err))
     }
@@ -58,16 +57,14 @@ const Review = ({review, fetchReviewData}) => {
   }
 
   const handleReportClick = async() => {
-    // console.log(review)
     await setReprot(true);
-    axios.put(`reviews/${review.review_id}/report`)
+    axios.put(`/reviews/${review.review_id}/report`)
       .then(() => fetchReviewData())
       .catch(err => console.log('err in udpate report', err))
   }
 
   const handleImgClick = (photo) => {
     setShowModal(true)
-    // console.log(photo.url)
     setShowImg(photo.url)
   }
 
@@ -91,7 +88,6 @@ const Review = ({review, fetchReviewData}) => {
 
   return (
     <div className='singleReviewContainer'>
-      {/* {console.log(review)} */}
       <div className='ratingAndTimeContainer'>
         {/* <span className={`rating-static rating-${review.rating * 10}`} style={{transform: 'scale(1.1)', marginLeft: '2px'}}></span> */}
         <span className="rating" style={starStyle}></span>

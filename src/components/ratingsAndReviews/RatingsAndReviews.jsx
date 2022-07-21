@@ -35,7 +35,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const fetchReviewData = () => {
-    axios.get('reviews', configReview)
+    axios.get('/reviews', configReview)
     .then(res => setReviews(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
@@ -45,7 +45,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const fetchRatingData = () => {
-    axios.get('reviews/meta', configRating)
+    axios.get('/reviews/meta', configRating)
     .then(res => setRating(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
@@ -64,17 +64,12 @@ const RatingsAndReviews = (props) => {
 
 
   const handleFilterRating = (level, show) => {
-    // console.log(reviews)
-    // console.log(results)
-    // console.log(level, show)
     if(show) {
       setRateArr([...rateArr, level])
     } else {
       let filterRating = rateArr.filter(rate => rate !== level);
       setRateArr(filterRating);
     }
-    // console.log('rating arr', rateArr)
-
   }
 
   const handleClearAllReviewsLabel = () => {
@@ -82,8 +77,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const onHandleAddNewReview = (value) => {
-    // console.log({...value, product_id})
-    axios.post('reviews', {...value, product_id: Number(product_id)})
+    axios.post('/reviews', {...value, product_id: Number(product_id)})
     .then(() => fetchReviewData())
     .catch(err => console.log('catch errrrr', err))
   }
@@ -110,9 +104,6 @@ const RatingsAndReviews = (props) => {
 
   return (
     <div>
-      {/* {console.log('reviews are', reviews)} */}
-      {/* {console.log('style', props.products[0].name)} */}
-      {/* {props.product_id &&console.log('product is', props.product_id)} */}
       <h2 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h2>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>

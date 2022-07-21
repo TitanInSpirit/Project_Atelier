@@ -69,9 +69,6 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
 
   return (
     <div>
-       {/* {console.log(styleUrl)} */}
-      {/* {console.log('renderReview', renderReview)} */}
-      {/* {console.log(filterReviewFromRating)} */}
       <div>
         <input
           type='text'
