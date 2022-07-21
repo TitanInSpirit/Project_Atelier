@@ -33,13 +33,13 @@ function Questions({product, questionsList, getQuestions}) {
     if (questions && questions.length > 2) {
       if (!showQuestions) {
         let visibleQuestions = questions.slice(0,2);
-        return <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getUpdate={getQuestions} />
+        return <QuestionsList questions={visibleQuestions} searchTerm={searchTerm} getQuestions={getQuestions} />
       }
       if (showQuestions) {
-        return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
+        return <QuestionsList questions={questions} searchTerm={searchTerm} getQuestions={getQuestions} />
       }
     } else {
-      return <QuestionsList questions={questions} searchTerm={searchTerm} getUpdate={getQuestions} />
+      return <QuestionsList questions={questions} searchTerm={searchTerm} getQuestions={getQuestions} />
     }
   }
 
@@ -51,12 +51,12 @@ function Questions({product, questionsList, getQuestions}) {
 
   const renderMoreAnswered = () => {
     if (!showQuestions) {
-      return <QuestionButton onClick={() => setShowQuestions(true)}>More Answered Questions</QuestionButton>
+      return <QuestionButton onClick={() => setShowQuestions(true)}>More Questions ></QuestionButton>
     }
   }
 
   const renderAddQuestionForm = () => {
-    return <Form showForm={showForm} setShowForm={setShowForm} id={selectedProduct} getUpdate={getQuestions} submissionType={'Question'} />
+    return <Form showForm={showForm} setShowForm={setShowForm} id={selectedProduct} getQuestions={getQuestions} submissionType={'Question'} />
   }
 
 
@@ -101,8 +101,5 @@ const QuestionButton = styled(Button)`
 `;
 
 const QuestionAnswerContainer = styled(Container)`
-  width: 80vw;
-  max-width: 1000px;
-  padding-left: 146px;
   justify-content: center;
 `;

@@ -3,13 +3,15 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {format, parseISO} from  'date-fns';
 import styled from 'styled-components';
+import {BiUserCircle} from 'react-icons/bi';
+import {AiOutlineLike, AiFillLike, AiOutlineDislike, AiFillDislike} from 'react-icons/ai';
 
 
 /*==================== INTERNAL MODULES ====================*/
-import {Container, Submit, Thumbnail, PhotoPreview, LinkButton} from '../../../public/stylesheets/styles.js';
+import {Container, Submit, Thumbnail, PhotoPreview, LinkButton, Spacer, HelpfulButton} from '../../../public/stylesheets/styles.js';
 
 
-function Answer({answer, getUpdate, searchTerm}) {
+function Answer({answer, getQuestions, searchTerm}) {
   let {answerer_name, body, date, helpfulness, id, photos} = answer;
 
   const [wasHelpful, setWasHelpful] = useState(false);
@@ -21,16 +23,16 @@ function Answer({answer, getUpdate, searchTerm}) {
   /*----- EVENT HANDLER -----*/
   const handleReport = () => {
     setWasReported(true);
-    axios.put(`http://localhost:3001/answers/report/${id}`)
-    .then(response => getUpdate())
+    axios.put(`/answers/report/${id}`)
+    .then(response => getQuestions())
     .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
   const handleHelpful = () => {
     setWasHelpful(true);
     setCountHelpfulness(helpfulness + 1);
-    axios.put(`http://localhost:3001/answers/helpful/${id}`)
-      .then(response => getUpdate())
+    axios.put(`/answers/helpful/${id}`)
+      .then(response => getQuestions())
       .catch(err => `Unable to complete your request. Error: ${console.error(err.message)}`);
   }
 
@@ -45,13 +47,17 @@ function Answer({answer, getUpdate, searchTerm}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <LinkButton>Reported</LinkButton>;
+      return <LinkButton><AiFillDislike/> Reported</LinkButton>;
     }
-    return <LinkButton onClick={handleReport} name={id}>Report</LinkButton>;
+    return <LinkButton onClick={handleReport} name={id}><AiOutlineDislike/> Report</LinkButton>;
   }
 
   const renderHelp = () => {
-    return <LinkButton onClick={handleHelpful} name={id} disabled={wasHelpful}>Yes</LinkButton>;
+    if (wasHelpful) {
+      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiFillLike/></HelpfulButton>;
+    } else {
+      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiOutlineLike/></HelpfulButton>;
+    }
   }
 
   const renderPhotos = () => {
@@ -67,7 +73,7 @@ function Answer({answer, getUpdate, searchTerm}) {
           <AnswerContainer>
             <h3>{body}</h3>
             <PhotoPreview >{renderPhotos()}</PhotoPreview>
-            <ByLine><p>by {renderName()} {`, ${date} | Helpful? `} {renderHelp()} {` (`} {countHelpfulness} {`) | `} {renderReport()}</p></ByLine>
+            <ByLine><BiUserCircle/><p> {renderName()}, {date}</p><Spacer>|</Spacer> <p>{renderHelp()} ({countHelpfulness})</p><Spacer>|</Spacer><p>{renderReport()}</p></ByLine>
           </AnswerContainer>
         )
       }
@@ -76,7 +82,7 @@ function Answer({answer, getUpdate, searchTerm}) {
         <AnswerContainer>
           <h3>{body}</h3>
           <PhotoPreview >{renderPhotos()}</PhotoPreview>
-          <ByLine><p>by {renderName()}, {date}</p><Spacer>|</Spacer> <p>Helpful? {renderHelp()} ({countHelpfulness})</p><Spacer>|</Spacer><p>{renderReport()}</p></ByLine>
+          <ByLine><BiUserCircle/><p> {renderName()}, {date}</p><Spacer>|</Spacer> {renderHelp()}<p>({countHelpfulness})</p><Spacer>|</Spacer>{renderReport()}</ByLine>
         </AnswerContainer>
       )
     }
@@ -107,9 +113,14 @@ export default Answer;
     margin: 0 0 10px 5px;
   `;
 
-  const Spacer = styled.p`
-    margin: 0 10px 0 10px;
-  `;
   const ByLine = styled(Container)`
     margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `;
+
+  const User = styled(BiUserCircle)`
+    transform: scale(2);
+    font-weight: bold;
   `;
