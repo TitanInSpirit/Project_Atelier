@@ -7,7 +7,7 @@ import Answer from './Answer.jsx';
 import styled from 'styled-components';
 import {Button, Container, H3Text} from '../../../public/stylesheets/styles.js';
 
-function AnswerList({answers, getUpdate, searchTerm}) {
+function AnswerList({answers, getQuestions, searchTerm}) {
 
     /*----- STATE HOOKS -----*/
   const [showAnswers, setShowAnswers] = useState(false);
@@ -20,7 +20,7 @@ function AnswerList({answers, getUpdate, searchTerm}) {
         }
       })
       const mappedAnswers = sortedAnswers.map((answer) => {
-        return <Answer key={'A-' + answer.id} answer={answer} getUpdate={getUpdate} searchTerm={searchTerm}/>
+        return <Answer key={'A-' + answer.id} answer={answer} getQuestions={getQuestions} searchTerm={searchTerm}/>
     })
     return mappedAnswers;
   });
@@ -36,7 +36,7 @@ function AnswerList({answers, getUpdate, searchTerm}) {
         return (
           <>
             <div>{visibleAnswers}</div>
-            <ExpandButton onClick={toggleAnswers}>LOAD MORE ANSWERS</ExpandButton>
+            <ExpandButton onClick={toggleAnswers}>MORE ANSWERS ></ExpandButton>
           </>
         )
       }
@@ -67,11 +67,18 @@ function AnswerList({answers, getUpdate, searchTerm}) {
 /*==================== EXPORTS ====================*/
 export default AnswerList;
 
-const ExpandButton = styled(Button)`
-  border: none;
-  padding: 0;
-  font-weight: bold;
-  font-size: 9pt;
+const ExpandButton = styled.button`
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 9pt;
+    /* font-weight: bold; */
+    color: black;
+    padding: 0;
+    margin-top: 15px;
+    &:hover {
+      font-weight: bold;
+    }
 `
 const AnswerListContainer = styled(Container)`
   width: 100%;
