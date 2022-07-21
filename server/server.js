@@ -4,25 +4,19 @@ const axios = require('axios');
 const path = require('path');
 const express = require('express');
 const app = express();
-const cors = require("cors");
 
 // System Variables
 const GithubToken = process.env.GITHUB_API_KEY;
-const port = process.env.port || 3001;
+const port = process.env.port || 3000;
 axios.defaults.headers.common['Authorization'] = GithubToken;
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 // Middleware
   // Body Data
   app.use(express.json())
 
   // Serves Static Files
-  app.use(express.static(path.join(__dirname, '../public/')));
+  app.use(express.static(path.join(__dirname, '../public')));
 
-  // Headers / CORS Settings
-  // app.options("*", cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
-  // app.use(cors({ origin: `http://localhost:3000`, optionsSuccessStatus: 200 }));
-  app.use(cors())
   // Custom Request Logging Middleware
   app.use((req,res,next) => {
     console.log(
@@ -33,6 +27,7 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 // Routes
 // Get Requests
+
 app.get('/products', (req, res) => {
   let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products';
 
@@ -358,6 +353,6 @@ app.put('/reviews/:review_id/report', (req, res) => {
 
 
 // Initialize Server
-app.listen(port, () => console.log(`listening to port ${port}`));
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 

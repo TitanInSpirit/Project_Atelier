@@ -50,7 +50,7 @@ class App extends React.Component {
       }
     }
 
-    axios.post('http://localhost:3001/cart', configCart)
+    axios.post('/cart', configCart)
     .then((res) => {
       console.log(res)
     })
@@ -109,7 +109,7 @@ class App extends React.Component {
   }
 
   getStyles = (productId) => {
-    return axios.post('http://localhost:3001/styles', {productId})
+    return axios.post('/styles', {productId})
     .then((results) => {
       this.setCurrentStyle(null, results.data.results)
       this.setState({all_styles: results.data.results})
@@ -145,7 +145,7 @@ class App extends React.Component {
   }
 
   getQuestions = (productId) => {
-    axios.get(`http://localhost:3001/questions/${productId}`)
+    axios.get(`/questions/${productId}`)
     .then((response) => {
       const sortedQuestions = response.data.results;
       sortedQuestions.sort((a,b) => b.question_helpfulness - a.question_helpfulness)

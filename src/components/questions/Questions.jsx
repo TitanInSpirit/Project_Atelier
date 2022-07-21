@@ -82,7 +82,6 @@ export default Questions;
 
 
 const QuestionContainer = styled(Container)`
-  width: 80vw;
   max-height: 50vh;
   margin: 0;
   flex-direction: column;
@@ -91,7 +90,6 @@ const QuestionContainer = styled(Container)`
 `;
 
 const ScrollContainer = styled(QuestionContainer)`
-  position: relative;
   overflow-x: hidden;
   margin: 0;
   &::-webkit-scrollbar {
@@ -103,6 +101,8 @@ const QuestionButton = styled(Button)`
 `;
 
 const QuestionAnswerContainer = styled(Container)`
-  width: 100vh;
+  width: 80vw;
+  max-width: 1000px;
+  padding-left: 146px;
   justify-content: center;
 `;
