@@ -183,7 +183,7 @@ class App extends React.Component {
         isExpanded={this.state.expanded}
         />
         <ProductDescription current_product={this.state.current_product}/>
-        <Questions product={this.state.current_product} getAllProducts={this.getAllProducts} questionsList={this.state.questions}/>
+        <Questions product={this.state.current_product} getQuestions={this.getAllProducts} questionsList={this.state.questions}/>
         <RatingsAndReviews
           products={this.state.products}
           getAllProducts={this.getAllProducts}

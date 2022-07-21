@@ -1,6 +1,5 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React from 'react';
-import {BsSearch} from 'react-icons/bs';
 import styled from 'styled-components';
 
 
@@ -17,13 +16,10 @@ function SearchBar({searchTerm, setSearchTerm}) {
     setSearchTerm(value);
   }
 
-  /*----- RENDER FUNCTIONS -----*/
-
-
   /*----- RENDERER -----*/
   return (
     <SearchContainer>
-      <Search type="search" onChange={handleSearch} placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS . . ."></Search><SearchIcon />
+      <Search type="search" onChange={handleSearch} placeholder=" HAVE A QUESTION? SEARCH FOR ANSWERS . . ."></Search>
     </SearchContainer>
   )
 }
@@ -35,16 +31,12 @@ const SearchContainer = styled(Container)`
   margin: 0.25em 0 0.25em 0;
   width: 60vw;
   border: solid;
+  border-color: #5c5c5c;
+  border-top: none;
+  border-right: none;
+  border-left: none;
   border-width: thin;
   align-items: center;
   justify-items: space-between;
   height: 2em;
-`;
-
-const SearchIcon = styled(BsSearch)`
-  display: flex:
-  padding: 4em;
-  font-size: 1.25em;
-  margin-left: 0.5rem;
-  justify-self: flex-end;
 `;

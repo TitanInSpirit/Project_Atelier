@@ -1,5 +1,5 @@
 /*==================== EXTERNAL MODULES ====================*/
-import styled, {ThemeProvider} from 'styled-components';
+import styled from 'styled-components';
 
 /*==================== INTERNAL MODULES ====================*/
 
@@ -17,6 +17,13 @@ import styled, {ThemeProvider} from 'styled-components';
   font-size: 1rem;
 `;
 
+ export const Spacer = styled.p`
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ margin: 0 10px 0 10px;
+`;
+
 
   /*
   =====================================
@@ -31,35 +38,38 @@ import styled, {ThemeProvider} from 'styled-components';
     border-radius: 3px;
   `;
 
-  // const Button = styled.button`
-  //   background-color: #fff;
-  //   border-radius: 5px;
-  //   padding: 5px 20px;
-  //   border: none;
-  //   box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
-  //   position: relative;
-  //   right: -5px;
-  //   cursor: pointer;
-  // `;
-
-  export const Button = styled.button`
-      border: solid;
-      border-width: thin;
-      background-color: #fff;
-      padding: 5px;
-      cursor: pointer;
-  `;
+export const Button = styled.button`
+  background-color: #fff;
+  padding: 8px 20px;
+  border: none;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  width: 60%;
+  font-size: 18px;
+  &:hover {
+    font-weight: bold;
+    color: #fff;
+    background-color:black;;
+  }
+`;
 
   export const LinkButton = styled.button`
-      background: none!important;
-      border: none;
-      padding: 0!important;
-      color: black;
-      text-decoration: underline;
-      cursor: pointer;
-    `;
+    border: none;
+    outline: none;
+    background-color: white;
+    cursor: pointer;
+    color: gray;
+  `;
 
   export const HelpfulButton = styled(LinkButton)`
+    cursor: pointer;
+    margin-right: 3px;
+    &:hover {
+      transform: scale(1.25);
+      color: #212121;
+    }
   `;
 
   export const AnswerButton = styled(LinkButton)`
