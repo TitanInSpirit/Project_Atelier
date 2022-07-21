@@ -6,7 +6,7 @@ const StarRating = ({handleStarRating}) => {
 
   const inlineStyle = (ratingValue) => {
     if(ratingValue <= (hover || rating)) {
-      return {color: '#ffc107'}
+      return {color: '#81DBD8'}
     } else {
       return {color: '#e4e5e9'}
     }

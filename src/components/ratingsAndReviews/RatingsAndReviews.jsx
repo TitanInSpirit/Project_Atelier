@@ -35,7 +35,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const fetchReviewData = () => {
-    axios.get('http://localhost:3001/reviews', configReview)
+    axios.get('reviews', configReview)
     .then(res => setReviews(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
@@ -45,7 +45,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const fetchRatingData = () => {
-    axios.get('http://localhost:3001/reviews/meta', configRating)
+    axios.get('reviews/meta', configRating)
     .then(res => setRating(res.data))
     .catch(err => console.log('err in fetching data', err))
   }
@@ -83,7 +83,7 @@ const RatingsAndReviews = (props) => {
 
   const onHandleAddNewReview = (value) => {
     // console.log({...value, product_id})
-    axios.post('http://localhost:3001/reviews', {...value, product_id: Number(product_id)})
+    axios.post('reviews', {...value, product_id: Number(product_id)})
     .then(() => fetchReviewData())
     .catch(err => console.log('catch errrrr', err))
   }

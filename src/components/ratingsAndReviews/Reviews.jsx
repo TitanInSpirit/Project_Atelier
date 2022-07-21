@@ -58,7 +58,7 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
   const renderReviewResult = () => {
     if(renderReview) {
       if(renderReview.length <= 0) {
-        return <div className='reviewNoFound'><BsSearch/> Nothing found...</div>
+        return <h1 className='reviewNoFound'><BsSearch/> Nothing found...</h1>
       } else {
         return renderReview.map(review => {
           return <Review key={review.review_id} review={review} fetchReviewData={fetchReviewData}/>
@@ -80,7 +80,6 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
           onChange={e => setSearchValue(e.target.value)}
           className='reivewSearchBar'
         />
-        <hr className='reviewSearchLine'/>
       </div>
       <div className='renderReviews'>
         {/* {renderReview && renderReview.map(review => {

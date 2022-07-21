@@ -58,13 +58,21 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
     handleClearAllReviewsLabel();
   }
 
+  const starStyle = {
+    '--rating-value': `${calAveRating()}`,
+    position: 'relative',
+    top: '-15px',
+    marginLeft: '8px'
+  }
+
   return (
     <div>
      {/* {console.log(rating)} */}
       <div className = 'ratingSum'>
-        <div className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
-        <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p>
-        </div>
+        <h1 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
+        {/* <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p> */}
+        <div className="rating" style={starStyle}></div>
+        </h1>
       </div>
 
       <p>{recommended && calRecommend()}% of reviews recommend this product</p>
