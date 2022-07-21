@@ -77,6 +77,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const onHandleAddNewReview = (value) => {
+    // console.log({...value, product_id})
     axios.post('/reviews', {...value, product_id: Number(product_id)})
     .then(() => fetchReviewData())
     .catch(err => console.log('catch errrrr', err))

@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ProductInfo(props) {
+
   const formatRating = () => {
     let str = props.average_reviews.toString();
     let check = Number(str.slice(-1));
@@ -13,9 +14,16 @@ function ProductInfo(props) {
     }
   }
 
+  const starStyle = {
+    '--rating-value': props.average_reviews,
+  }
+
+  console.log(formatRating())
+
   return <div className="product_info_container">
       {!props.total_reviews ? null : <div className="overview_ratings">
-    <div className={`productinfo_rating rating-static rating-${formatRating() * 10}`}></div>
+    {/* <div className={`productinfo_rating rating-static rating-${formatRating() * 10}`}></div> */}
+    <div className="rating" style={starStyle}></div>
     <p className="overview_review_link" onClick={() => {
       props.scrollToSection(props.reviewsRef)
     }}><u>Read All {props.total_reviews} Reviews</u></p>
