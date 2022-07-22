@@ -115,7 +115,7 @@ const Review = ({review, fetchReviewData}) => {
         {/* <div>Helpful?</div> */}
         {/* <button className='reviewHelpfulButton' onClick={handleHelpfulClick} disabled={helpful}>Helpful</button> */}
         {helpful ?
-        <div className='reviewThumbUp' onClick={handleHelpfulClick} ><HiThumbUp/></div>:
+        <div className='reviewThumbUp' style={{color: '#81DBD8'}} onClick={handleHelpfulClick} ><HiThumbUp/></div>:
         <div className='reviewThumbUp' onClick={handleHelpfulClick} ><HiOutlineThumbUp/></div>}
         {/* <div className='reviewThumbUp' onClick={handleHelpfulClick} ><FiThumbsUp/></div> */}
         {/* <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button> */}

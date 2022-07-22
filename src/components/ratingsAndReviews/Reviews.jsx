@@ -86,14 +86,9 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
       </div>
       <hr className='reviewsBreak'/>
       {renderMoreReviewsBtn()}
-
       <NewReview onHandleAddNewReview={onHandleAddNewReview} styleUrl={styleUrl} product={product}/>
-
-
     </div>
   )
 }
 
 export default Reviews;
-
-//{photos: ['url', 'url']

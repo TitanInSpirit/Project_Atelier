@@ -36,6 +36,7 @@ const RatingScale = ({characteristic}) => {
         <p style={{fontSize:'13px'}}>{des[key][0]}</p>
         <p style={{fontSize:'13px'}}>{des[key][1]}</p>
       </div>
+
     </div>
   )
 }
