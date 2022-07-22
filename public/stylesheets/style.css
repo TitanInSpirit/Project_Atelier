@@ -15,34 +15,35 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: 0px;
 }
 
+/* Header */
 header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   background-color: #212121;
+  padding-top: -9px;
   min-width: 100vw;
   min-height: 100px;
   max-height: 10vh;
 }
 
-.header_logo_container {
-  height: 40px;
-  margin: 15px;
-}
+.header_logo_container {}
 
 .header_logo {
   padding-top: 2.5px;
   padding-left: 100px;
   min-height: 5em;
+  cursor: pointer;
 }
 
 #site-search {
   min-height: 2.5em;
   width: 20em;
-  cursor: pointer;
+  cursor: text;
   padding: 5px 10px;
   margin-right: 200px;
   color: rgb(231, 231, 231);
@@ -55,6 +56,58 @@ header {
   background-color: transparent;
   outline-color: #fff;
 }
+
+/* Header | Live Search */
+.search_item_holder {
+  position: fixed;
+  max-height: 183px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* Hide Scrollbar for IE and Edge */
+  scrollbar-width: none;
+  /* Hide Scrollbar for Firefox */
+}
+
+.search_item_holder::-webkit-scrollbar {
+  display: none;
+  /* Hide Scrollbar for Chrome, Safari, Opera */
+}
+
+.livesearch_product_info {
+  display: flex;
+  padding-left: 5px;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .95);
+  color: #212121;
+  width: 16.4em;
+  animation: slide_down;
+  animation-duration: 1s;
+  border: transparent;
+  height: 22px;
+}
+
+.livesearch_product_info:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+@keyframes slide_down {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.livesearch_product_name {
+  cursor: pointer;
+}
+
+
+.livesearch_product_category {}
 
 h1 {
   font-family: 'Amiko', sans-serif;
@@ -1112,11 +1165,11 @@ label {
   animation-duration: 2s;
 }
 
-.right-arrow:hover {
+/* .right-arrow:hover {
   background-color: rgba(33, 33, 33, 0.174);
   border-radius: 100%;
   padding: -100px;
-}
+} */
 
 @keyframes fadeoutandin {
   0% {
@@ -1316,6 +1369,13 @@ label {
   border-color: rgb(72, 72, 72);
 }
 
+.add_to_cart_flex_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .overview_favorite_btn {
   width: 50px;
   text-align: center;
@@ -1349,6 +1409,7 @@ label {
 .overview_ratings {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .overview_review_link {
@@ -1377,6 +1438,7 @@ label {
   align-items: center;
   padding-top: 25px;
   padding-right: 47px;
+  margin-bottom: 35px;
 }
 
 .product_description_container {
