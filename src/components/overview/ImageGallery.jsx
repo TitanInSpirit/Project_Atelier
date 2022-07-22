@@ -31,13 +31,19 @@ const ImageSlider = (props) => {
   const [hovered, setHovered] = useState(false)
   const [cursorX, setCursorX] = useState(0)
   const [cursorY, setCursorY] = useState(0)
+  const [imgClassName, setImgClassName] = useState('image')
+  const [isClicked, setIsClicked] = useState(false);
 
-  let className = 'image'
 
-  props.isExpanded ? className ='big_image' : null
   useEffect(() => {
+    (!props.isExpanded && imgClassName === 'shrink') ? setImgClassName('image') : null;
     props.setCurrentPhoto(current)
   }, [current])
+
+  useEffect(() => {
+    props.isExpanded ? setImgClassName('big_image') : null;
+    (!props.isExpanded && imgClassName === 'big_image') ? setImgClassName('shrink') : null;
+  }, [isClicked])
 
   const cursor = {
     x: 0,
@@ -64,12 +70,15 @@ const sizes = {
     const changePic = (e) => {
       let newPic = parseInt(e.target.id)
       setCurrent(current !== newPic ? newPic : current)
+      event.stopPropagation()
     }
-    const nextSlide = () => {
+    const nextSlide = (e) => {
       setCurrent(current === length - 1 ? 0 : current +1)
+      event.stopPropagation()
     }
-    const prevSlide = () => {
+    const prevSlide = (e) => {
       setCurrent(current === 0 ? length - 1 : current -1)
+      event.stopPropagation()
     }
     const length = props.currentStyle.photos.length
     return (
@@ -90,22 +99,25 @@ const sizes = {
               {(() => {
                 if (current === length-1) {
                   return (
-                  <>
-                  {index === current && (<div><BsChevronLeft className={props.isExpanded ? 'left-arrow-trigger' : 'left-arrow'}  onClick={prevSlide}/><img key={index} src={`${bigPic}`} className={`${className}`} onClick={props.handleExpandedView} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px ,${cursorY*2}px)` : null}}/></div>)}
-                  </>
+                  <div className="slidey_boi">
+                  {index === current && (<div><BsChevronLeft className={props.isExpanded ? 'left-arrow' : 'left-arrow'}  onClick={prevSlide}/><img key={index} src={`${bigPic}`} className={`${imgClassName}`} onClick={() => {
+                    isClicked === false ? setIsClicked(true) : setIsClicked(false); props.handleExpandedView()}} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px ,${cursorY*2}px)` : null}}/></div>)}
+                  </div>
                   )
                 } else if (current === 0) {
                   return (
-                  <>
-                  {index === current && (<div><BsChevronRight  className={props.isExpanded ? 'grow_r' : 'right-arrow'}  onClick={nextSlide} /><img key={index} src={`${bigPic}`} className={`${className}`} onClick={props.handleExpandedView} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px ,${cursorY*2}px)` : null}}/></div>)}
-                  </>
+                 <div className="slidey_boi">
+                  {index === current && (<div><BsChevronRight  className={props.isExpanded ? 'grow_r' : 'right-arrow'}  onClick={nextSlide} /><img key={index} src={`${bigPic}`} className={`${imgClassName}`} onClick={() => {
+                    isClicked === false ? setIsClicked(true) : setIsClicked(false); props.handleExpandedView()}} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px ,${cursorY*2}px)` : null}}/></div>)}
+                  </div>
                   )
                 } else {
                   return (
-                  <>
-                  {index === current && (<div><BsChevronLeft className={props.isExpanded ? 'left-arrow-trigger' : 'left-arrow'}  onClick={prevSlide}/>
-                  <BsChevronRight className={props.isExpanded ? 'grow_r' : 'right-arrow'} onClick={nextSlide}/><img key={index} src={`${bigPic}`} className={`${className}`}onClick={props.handleExpandedView} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px, ${cursorY*2}px)` : null}}/></div>)}
-                  </>
+                  <div className="slidey_boi">
+                  {index === current && (<div><BsChevronLeft className={props.isExpanded ? 'left-arrow' : 'left-arrow'}  onClick={prevSlide}/>
+                  <BsChevronRight className={props.isExpanded ? 'grow_r' : 'right-arrow'} onClick={nextSlide}/><img key={index} src={`${bigPic}`} className={`${imgClassName}`} onClick={() => {
+                    isClicked === false ? setIsClicked(true) : setIsClicked(false); props.handleExpandedView()}} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{transform: `${hovered}` ? `translate(${cursorX}px, ${cursorY*2}px)` : null}}/></div>)}
+                  </div>
                   )
                 }
               })(current)}
