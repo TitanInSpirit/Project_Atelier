@@ -37,6 +37,7 @@ header {
   padding-top: 2.5px;
   padding-left: 100px;
   min-height: 5em;
+  cursor: pointer;
 }
 
 #site-search {

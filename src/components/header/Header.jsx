@@ -44,7 +44,9 @@ function Header (props) {
   return (
     <header>
         <div className="header_logo_container">
-        <img src={headerLogo} className="header_logo" />
+        <img src={headerLogo} onClick={()=>{
+          location.href=`${window.location.href}`
+        }}className="header_logo" />
         </div>
         <div className="search_bar_container">
           <input type="search" id="site-search" placeholder="Search . . ." onChange={(e) => {handleChange(e)}}/>
