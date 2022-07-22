@@ -32,7 +32,6 @@ const PhotoUpload = ({setPhotos, photos}) => {
   return (
     <div className='newReviewPhotoContainer'>
       <div className='newReviewPhotoUpload'>
-        {/* <span className='newReviewImageAdd'>Add Images</span> */}
         <label htmlFor='newReviewImage' className='newReviewImageAdd'>Choose file</label>
         {uploadImages.length > 0 ?
           <div className='newReviewFilesAddCount'>{uploadImages.length} files added</div> :

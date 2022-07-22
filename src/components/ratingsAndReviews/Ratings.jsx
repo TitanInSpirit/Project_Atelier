@@ -92,6 +92,8 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
         })}
       </div>
 
+      <hr className='ratingBar_ratingScale_break'/>
+
       <div className='ratingScale'>
         {convertCharaToArr().map((characteristic, i) => {
           return <RatingScale key={i} characteristic={characteristic} />
