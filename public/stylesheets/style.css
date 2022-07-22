@@ -137,7 +137,7 @@ h3 {
 
 p {
   font-family: 'Hind Madurai', sans-serif;
-  font-size: .75rem;
+  font-size: 1em;
   color: #5c5c5c;
   margin: 0px;
 }
@@ -1448,6 +1448,15 @@ label {
 }
 
 .ul_product_desc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Hind Madurai', sans-serif;
+  font-size: 1em;
+  color: #5c5c5c;
+  padding-top: 1em;
+  margin: 0px;
   list-style: none;
 }
 
