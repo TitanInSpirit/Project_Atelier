@@ -87,9 +87,17 @@ class App extends React.Component {
     })
   }
 
+  setCurrentProduct = (product_id) => {
+    this.getInfo(product_id)
+    this.getStyles(product_id)
+    this.getQuestions(product_id)
+    this.state.products.map((productObj) => {
+      productObj.id === product_id ? this.setState({current_product: productObj}) : null
+    })
+  }
+
   setCurrentSku = (event) => {
     let size = event.target.value.split(' ')
-    // console.log(size)
     this.setState({current_sku: size[0], current_size: size[1]})
   }
 
@@ -130,11 +138,9 @@ class App extends React.Component {
 
     axios.get('/reviews', configReview)
     .then((res) => {
-      // console.log(res.data)
       let response = res.data
       let reviewTotal = 0;
       let increment = response.results.map((review) => {
-        // console.log(review)
         reviewTotal+= review.rating
       })
       let average = (reviewTotal / response.results.length).toFixed(1)
@@ -159,7 +165,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header
+        products={this.state.products}
+        setCurrentProduct={this.setCurrentProduct}
+        setCurrentStyle={this.setCurrentStyle}
+        />
         <Overview
         products={this.state.products}
         getAllProducts={this.getAllProducts}

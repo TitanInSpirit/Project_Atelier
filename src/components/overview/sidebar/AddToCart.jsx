@@ -41,7 +41,7 @@ function AddToCart(props) {
           </select>
           <div className="add_to_cart_favorite_container">
           {props.current_size === 'default' ?
-          <div>
+          <div className="add_to_cart_flex_container">
             <ErrModal showModal={showModal} setShowModal={setShowModal} />
             <button type="submit" className="add_to_cart_btn overview_button" onClick={() => {
             setShowModal(true)}}>ADD TO BAG</button>

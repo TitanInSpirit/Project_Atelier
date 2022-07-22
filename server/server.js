@@ -178,6 +178,29 @@ app.get('/reviews/meta', (req, res) => {
   });
 });
 
+app.get('/styles', (req, res) => {
+  let product_id = req.body.params.product_id
+  console.log(product_id)
+  console.log(req.body.params)
+  let endpointUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product_id}/styles`
+
+  var config = {
+    method: 'get',
+    url: endpointUrl,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': `${GithubToken}`
+    },
+  };
+
+  axios(config)
+  .then(function (response) {
+    res.send(JSON.stringify(response.data))
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+});
 // Post Requests
 app.post('/styles', (req, res) => {
   let product_id = req.body.productId
