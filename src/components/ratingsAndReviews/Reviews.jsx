@@ -72,10 +72,11 @@ const Reviews = ({results, fetchReviewData, onHandleAddNewReview, handleGetFilte
       <div>
         <input
           type='text'
-          placeholder='Search...'
+          placeholder='SEARCH...'
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
           className='reivewSearchBar'
+          style={{fontSize: '15px'}}
         />
       </div>
       <div className='renderReviews'>
