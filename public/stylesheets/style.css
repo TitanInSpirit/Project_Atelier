@@ -324,8 +324,9 @@ label {
 }
 
 .reviewRecommend {
-  color: rgb(73 72 72);
+  color: #5c5c5c;
   margin: 18px 0 5px;
+  font-size: 15px;
 }
 
 .reviewResponseContainer {
@@ -355,13 +356,14 @@ label {
 .reivewSearchBar {
   position: absolute;
   right: -23px;
-  top: 0;
+  top: -5px;
   cursor: pointer;
   padding: 5px 10px;
   outline-color: #fff;
   border-left: none;
   border-top: none;
   border-right: none;
+  width: 130px;
 }
 
 .reviewSearchLine {
@@ -500,6 +502,16 @@ label {
   color: #5C5C5C;
 }
 
+.reviewReportIcon{
+  font-size: 20px;
+  display: inline-block;
+  position: relative;
+  bottom: -3px;
+  margin-right: 5px;
+}
+
+
+
 .helpfulReportDevide {
   position: relative;
   bottom: -4px;
@@ -596,6 +608,8 @@ label {
 .ratingBar_ratingScale_break{
   position: relative;
   bottom: -35px;
+  border-width: thin;
+  border-color: #dbdbdbb7;
 }
 
 .ratingScale {
