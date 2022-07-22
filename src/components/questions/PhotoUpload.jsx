@@ -1,11 +1,11 @@
 /*==================== EXTERNAL MODULES ====================*/
 import React, {useState} from 'react';
 import axios from 'axios';
-import {MdClear} from 'react-icons/md';
+import {FaWindowClose} from 'react-icons/fa';
 
 
 /*==================== INTERNAL MODULES ====================*/
-import {Submit, Thumbnail, PhotoPreview, PhotoFrame, CloseModal} from '../../../public/stylesheets/styles.js';
+import {Submit, Thumbnail, PhotoPreview, PhotoFrame, CloseModal, InputArea, Label, H3} from '../../../public/stylesheets/styles.js';
 
 function PhotoUpload({entry, setEntry}) {
 
@@ -51,14 +51,13 @@ function PhotoUpload({entry, setEntry}) {
   const renderPhotoPreview = () => {
     return (
       <>
-        <label>Preview</label>
-        <br/>
+        <Label><label><H3>Preview</H3></label></Label>
         <PhotoPreview>
           {images !== undefined && images.map((photo, index) => {
             return (
               <PhotoFrame key={'photo' + index}>
                 <Thumbnail key={index} src={photo} />
-                <CloseModal onClick={handleRemove} name={index}>X</CloseModal>
+                <CloseModal onClick={handleRemove} name={index}><FaWindowClose/></CloseModal>
               </PhotoFrame>
             )
           })}
@@ -72,12 +71,10 @@ function PhotoUpload({entry, setEntry}) {
       return <></>
     }
     return (
-      <div style={{width: '25em'}}>
-        <label>Upload Photos</label>
-        <br/>
+      <>
+        <Label>Upload Photos</Label>
         <input type="file" onChange={handlePhotoSelect} name="photos"></input>
-        <br/>
-    </div>
+    </>
     )
   }
 

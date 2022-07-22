@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import QuestionsList from './QuestionsList.jsx';
 import SearchBar from './SearchBar.jsx';
 import Form from './Form.jsx';
-import {Container, Button, ExpandButton} from '../../../public/stylesheets/styles.js';
+import {Container, Button, ExpandButton, H2} from '../../../public/stylesheets/styles.js';
 
 
 function Questions({product, questionsList, getQuestions}) {
@@ -64,7 +64,7 @@ function Questions({product, questionsList, getQuestions}) {
   return (
     <QuestionAnswerContainer>
       <QuestionContainer>
-        <h2><b>QUESTIONS & ANSWERS</b></h2>
+        <H2><b>QUESTIONS & ANSWERS</b></H2>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         <ScrollContainer className="scroll-container">
           {renderQuestionList()}
