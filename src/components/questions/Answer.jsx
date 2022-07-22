@@ -47,16 +47,16 @@ function Answer({answer, getQuestions, searchTerm}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <LinkButton><AiFillDislike/> Reported</LinkButton>;
+      return <LinkButton style = {{color: '#72DBBD'}}><AiFillDislike/> Reported</LinkButton>;
     }
     return <LinkButton onClick={handleReport} name={id}><AiOutlineDislike/> Report</LinkButton>;
   }
 
   const renderHelp = () => {
     if (wasHelpful) {
-      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiFillLike/></HelpfulButton>;
+      return <HelpfulAnswerButton onClick={handleHelpful} name={id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiFillLike/></HelpfulAnswerButton>;
     } else {
-      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiOutlineLike/></HelpfulButton>;
+      return <HelpfulAnswerButton onClick={handleHelpful} name={id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiOutlineLike/></HelpfulAnswerButton>;
     }
   }
 
@@ -123,4 +123,9 @@ export default Answer;
   const User = styled(BiUserCircle)`
     transform: scale(2);
     font-weight: bold;
+    color: #212121;
   `;
+
+const HelpfulAnswerButton = styled(HelpfulButton)`
+  transform: scale(${({wasHelpful}) => wasHelpful ? 1.5 : 1});
+`

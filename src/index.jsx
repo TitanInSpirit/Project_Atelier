@@ -53,7 +53,7 @@ class App extends React.Component {
 
     axios.post('/cart', configCart)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     event.preventDefault();
   }

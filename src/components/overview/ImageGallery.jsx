@@ -60,7 +60,7 @@ const sizes = {
   if (!props.currentStyle.photos) {
     return null;
   } else {
-    console.log(props.isExpanded)
+    // console.log(props.isExpanded)
     const changePic = (e) => {
       let newPic = parseInt(e.target.id)
       setCurrent(current !== newPic ? newPic : current)
