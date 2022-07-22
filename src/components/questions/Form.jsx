@@ -5,7 +5,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 /*==================== INTERNAL MODULES ====================*/
-import {Button, CloseModal, H3, FormStyle} from '../../../public/stylesheets/styles.js';
+import {Button, CloseModal, H3, FormStyle, Container, InputArea, Label} from '../../../public/stylesheets/styles.js';
 import PhotoUpload from './PhotoUpload.jsx'
 
 function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
@@ -69,9 +69,9 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   const renderNickname = () => {
     return (
       <>
-        <Label><label>Your Nickname</label><Required>*</Required></Label>
-        <input type="text" required maxLength="60" onChange={handleChange} name="nickname" placeholder="Example: jack543!"></input>
-        <p className="disclaimer">For privacy reasons, do not use your full name or email address</p>
+        <Label><label><H3>Your Nickname</H3></label><Required>*</Required></Label>
+        <InputArea type="text" required maxLength="60" onChange={handleChange} name="nickname" placeholder="Example: jack543!"></InputArea>
+        <Disclaimer>For privacy reasons, do not use your full name or email address</Disclaimer>
       </>
     )
   }
@@ -79,9 +79,9 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   const renderEmail = () => {
     return (
       <>
-        <Label><label>Your Email</label><Required>*</Required></Label>
-        <input type="email" required maxLength="60" onChange={handleChange} name="email" placeholder="jackfrost@not.real"></input>
-        <p className="disclaimer">For authentification reasons, you will not be emailed</p>
+        <Label><label><H3>Your Email</H3></label><Required>*</Required></Label>
+        <InputArea type="email" required maxLength="60" onChange={handleChange} name="email" placeholder="jackfrost@not.real"></InputArea>
+        <Disclaimer>For authentification reasons, you will not be emailed</Disclaimer>
       </>
     )
   }
@@ -89,8 +89,8 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   const renderSubmission = () => {
     return (
       <>
-        <Label><label>Your {submissionType}</label><Required>*</Required></Label>
-        <textarea type="text" required maxLength="1000" onChange={handleChange} name="submission" placeholder="What you wanna say"></textarea>
+        <Label><label><H3>Your {submissionType}</H3></label><Required>*</Required></Label>
+        <SubmissionArea type="text" required maxLength="1000" onChange={handleChange} name="submission" placeholder="What you wanna say"></SubmissionArea>
       </>
     )
   }
@@ -99,7 +99,6 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
     return (
       <>
         <Button onClick={handleSubmit}>Submit</Button>
-        {/* <CloseModal onClick={() => setShowForm(false)}>X</CloseModal> */}
       </>
     )
   }
@@ -108,7 +107,7 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   return ReactDOM.createPortal(
     <div className="reviewModalBg" onClick={() => setShowForm(false)}>
       <FormStyle onClick={(e) => e.stopPropagation()} className='reviewModal'>
-        <H3>Submit your{submissionType}</H3>
+        <H3>{`Submit your ${submissionType}`}</H3>
         <br/>
         <br/>
         {renderNickname()}
@@ -118,10 +117,14 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
         {renderSubmission()}
         <br/>
         <br/>
-         <PhotoUpload entry={entry} setEntry={setEntry}/>
+        <PhotoContainer>
+          <PhotoUpload entry={entry} setEntry={setEntry}/>
+        </PhotoContainer>
         <br/>
         <br/>
-        {renderSubmit()}
+        <PhotoContainer>
+          {renderSubmit()}
+        </PhotoContainer>
       </FormStyle>
     </div>,
     document.getElementById('portal')
@@ -132,11 +135,28 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
 export default Form;
 
 
-const Required = styled.p`
+const Required = styled(H3)`
   color: red;
 `
-const Label = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+
+const Disclaimer = styled.p`
+  font-size: 7pt;
+`;
+
+const PhotoContainer = styled(Container)`
+  justify-content: center;
+`;
+
+const SubmissionArea = styled.textarea`
+  width: 80%;
+  height: 20%;
+  background-color: transparent;
+  padding: 4px 20px;
+  border: solid;
+  font-family: 'Hind Madurai', sans-serif;
+  border-width: thin;
+  border-color: #dbdbdbb7;
+  outline-color: #5c5c5c;
+  box-shadow: 0px 0px 4px rgb(0, 0, 0, 0.3);
+  border-radius: 4px;
 `

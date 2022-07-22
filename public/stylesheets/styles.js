@@ -33,6 +33,17 @@ export const Spacer = styled.p`
   margin: 0 10px 0 10px;
 `;
 
+export const InputArea = styled.input`
+  background-color: transparent;
+  padding: 4px 20px;
+  border: solid;
+  font-family: 'Hind Madurai', sans-serif;
+  border-width: thin;
+  border-color: #dbdbdbb7;
+  outline-color: #5c5c5c;
+  box-shadow: 0px 0px 4px rgb(0, 0, 0, 0.3);
+  border-radius: 4px;
+`;
 
 /*
 =====================================
@@ -107,17 +118,12 @@ export const CloseModal = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
-  border: solid;
-  border-width: thin;
-  border-radius: 50%;
-  /* background-color: rgba(0,0,0,0); */
+  border: none;
   background: none!important;
-  color: black;
+  color: #212121;
   cursor: pointer;
   &:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform: scale(1.5)
   }
 `;
 
@@ -149,15 +155,21 @@ export const Container = styled.div`
   margin: 10px;
 `;
 
+export const Label = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 /*
 =====================================
                 FORMS
 =====================================
 */
 export const FormStyle = styled.form`
-  padding: 30px 140px 0;
+  padding: 15px 70px 0;
   background-color: #fff;
-  width: 1000px;
+  width: 600px;
   height: 800px;
   box-sizing: border-box;
 `;
