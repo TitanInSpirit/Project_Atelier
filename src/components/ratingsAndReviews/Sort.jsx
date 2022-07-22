@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 const Sort = ({handleSortValue, results, reviewsCount}) => {
   const [sortValue, setSortValue] = useState('')
 
-  const options = ['relevance', 'newest', 'helpful']
+  const options = ['RELEVANCE', 'NEWEST', 'HELPFUL']
 
   const handleChange = e => {
     setSortValue(e.target.value);
@@ -12,7 +12,7 @@ const Sort = ({handleSortValue, results, reviewsCount}) => {
   return (
     <form className='sortContainer'>
       {/* {results && results.length} reviews, sorted by */}
-      <h2 style={{display: 'inline-block', fontWeight: '500'}}>Showing {reviewsCount} reviews, sorted by</h2>
+      <h2 style={{display: 'inline-block', fontWeight: '500'}}>SHOWING {reviewsCount} REVIEWS, SORTED BY</h2>
       <select
         className='sortForm'
         value = {sortValue}

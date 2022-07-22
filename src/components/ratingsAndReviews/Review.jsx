@@ -5,6 +5,7 @@ import Modal from './Modal.jsx'
 import {BiUserCircle} from 'react-icons/bi'
 import { FiThumbsUp } from 'react-icons/fi';
 import { HiOutlineThumbUp, HiThumbUp } from 'react-icons/hi';
+import {AiOutlineLike, AiFillLike, AiOutlineDislike, AiFillDislike} from 'react-icons/ai';
 //BiUserCircle
 
 
@@ -115,16 +116,18 @@ const Review = ({review, fetchReviewData}) => {
         {/* <div>Helpful?</div> */}
         {/* <button className='reviewHelpfulButton' onClick={handleHelpfulClick} disabled={helpful}>Helpful</button> */}
         {helpful ?
-        <div className='reviewThumbUp' style={{color: '#81DBD8'}} onClick={handleHelpfulClick} ><HiThumbUp/></div>:
-        <div className='reviewThumbUp' onClick={handleHelpfulClick} ><HiOutlineThumbUp/></div>}
+        <div className='reviewThumbUp' style={{color: '#81DBD8'}} onClick={handleHelpfulClick} ><AiFillLike/></div>:
+        <div className='reviewThumbUp' onClick={handleHelpfulClick} ><AiOutlineLike/></div>}
         {/* <div className='reviewThumbUp' onClick={handleHelpfulClick} ><FiThumbsUp/></div> */}
         {/* <button className='helpfulAndReport' onClick={handleNotHelpfulClick} disabled={notHelpful}>No</button> */}
         <p className='helpfulNum'>({review.helpfulness})</p>
         <p className='helpfulReportDevide'> | </p>
+
         <button
           className='reviewReportButton'
           onClick={handleReportClick}
           >
+            <span className='reviewReportIcon'><AiOutlineDislike/></span>
             Report
         </button>
       </div>
