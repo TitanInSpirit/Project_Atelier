@@ -2,9 +2,10 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 
 /*==================== INTERNAL MODULES ====================*/
-import {Button, CloseModal} from '../../../public/stylesheets/styles.js';
+import {Button, CloseModal, H3, FormStyle} from '../../../public/stylesheets/styles.js';
 import PhotoUpload from './PhotoUpload.jsx'
 
 function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
@@ -65,12 +66,10 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
 
 
   /*----- RENDER FUNCTIONS -----*/
-
   const renderNickname = () => {
     return (
       <>
-        <label>Your Nickname<span style={{color:'red'}}>*required*</span></label>
-        <br/>
+        <Label><label>Your Nickname</label><Required>*</Required></Label>
         <input type="text" required maxLength="60" onChange={handleChange} name="nickname" placeholder="Example: jack543!"></input>
         <p className="disclaimer">For privacy reasons, do not use your full name or email address</p>
       </>
@@ -80,8 +79,7 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   const renderEmail = () => {
     return (
       <>
-        <label>Your Email<span style={{color:'red'}}>*required*</span></label>
-        <br/>
+        <Label><label>Your Email</label><Required>*</Required></Label>
         <input type="email" required maxLength="60" onChange={handleChange} name="email" placeholder="jackfrost@not.real"></input>
         <p className="disclaimer">For authentification reasons, you will not be emailed</p>
       </>
@@ -91,8 +89,7 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   const renderSubmission = () => {
     return (
       <>
-        <label>Your {submissionType}<span style={{color:'red'}}>*required*</span></label>
-        <br/>
+        <Label><label>Your {submissionType}</label><Required>*</Required></Label>
         <textarea type="text" required maxLength="1000" onChange={handleChange} name="submission" placeholder="What you wanna say"></textarea>
       </>
     )
@@ -102,15 +99,16 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
     return (
       <>
         <Button onClick={handleSubmit}>Submit</Button>
-        <CloseModal onClick={() => setShowForm(false)}>X</CloseModal>
+        {/* <CloseModal onClick={() => setShowForm(false)}>X</CloseModal> */}
       </>
     )
   }
 
   /*----- RENDERER -----*/
   return ReactDOM.createPortal(
-    <div className="reviewModalBg">
-      <form className="reviewModal newReviewContainer">Submit your {submissionType}
+    <div className="reviewModalBg" onClick={() => setShowForm(false)}>
+      <FormStyle onClick={(e) => e.stopPropagation()} className='reviewModal'>
+        <H3>Submit your{submissionType}</H3>
         <br/>
         <br/>
         {renderNickname()}
@@ -124,7 +122,7 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
         <br/>
         <br/>
         {renderSubmit()}
-      </form>
+      </FormStyle>
     </div>,
     document.getElementById('portal')
   )
@@ -132,3 +130,13 @@ function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
 
 /*==================== EXPORTS ====================*/
 export default Form;
+
+
+const Required = styled.p`
+  color: red;
+`
+const Label = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`

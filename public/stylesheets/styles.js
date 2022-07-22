@@ -12,14 +12,18 @@ import styled from 'styled-components';
                 TEXT
 =====================================
 */
+export const H2 = styled.h2`
+  font-weight: bold;
+  font-size: 25px;
+`;
+
 export const H3Text = styled.h3`
   font-weight: bold;
   font-size: 1rem;
 `;
 
-export const H2 = styled.h2`
-  font-weight: bold;
-  font-size: 25px;
+export const H3 = styled(H3Text)`
+  color: #212121;
 `;
 
 export const Spacer = styled.p`
@@ -150,8 +154,12 @@ export const Container = styled.div`
                 FORMS
 =====================================
 */
-export const Form = styled.form`
-
+export const FormStyle = styled.form`
+  padding: 30px 140px 0;
+  background-color: #fff;
+  width: 1000px;
+  height: 800px;
+  box-sizing: border-box;
 `;
 
 

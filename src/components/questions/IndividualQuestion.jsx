@@ -8,7 +8,7 @@ import {AiOutlineLike, AiFillLike, AiOutlineDislike, AiFillDislike} from 'react-
 /*==================== INTERNAL MODULES ====================*/
 import AnswerList from './AnswerList.jsx';
 import Form from './Form.jsx';
-import {Container, H3Text, HelpfulButton, AnswerButton, Spacer} from '../../../public/stylesheets/styles.js';
+import {Container, H3, HelpfulButton, AnswerButton, Spacer} from '../../../public/stylesheets/styles.js';
 
 
 function IndividualQuestion({question, getQuestions, searchTerm}) {
@@ -56,7 +56,7 @@ function IndividualQuestion({question, getQuestions, searchTerm}) {
         return (
           <>
             <IndividualQuestionContainer>
-              <H3Text>Q: {question_body}</H3Text> <Responses>{renderHelp()}<p>({countHelpfulness})<Spacer>|</Spacer>{renderAddAnswer()}</p></Responses>
+              <H3>Q: {question_body}</H3> <Responses>{renderHelp()}<p>({countHelpfulness})<Spacer>|</Spacer>{renderAddAnswer()}</p></Responses>
             </IndividualQuestionContainer>
             <AnswerList answers={answers} getQuestions={getQuestions} searchTerm={searchTerm}/>
           </>
@@ -66,7 +66,7 @@ function IndividualQuestion({question, getQuestions, searchTerm}) {
       return (
         <>
           <IndividualQuestionContainer>
-            <H3Text>Q: {question_body}</H3Text> <Responses>{renderHelp()} <p>({countHelpfulness})</p> <Spacer>|</Spacer>{renderAddAnswer()}</Responses>
+            <H3>Q: {question_body}</H3> <Responses>{renderHelp()} <p>({countHelpfulness})</p> <Spacer>|</Spacer>{renderAddAnswer()}</Responses>
           </IndividualQuestionContainer>
           <AnswerList answers={answers} getQuestions={getQuestions} searchTerm={searchTerm}/>
         </>
