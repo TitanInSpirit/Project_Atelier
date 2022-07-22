@@ -40,9 +40,9 @@ function IndividualQuestion({question, getQuestions, searchTerm}) {
   /*----- RENDER FUNCTIONS -----*/
   const renderHelp = () => {
     if (wasHelpful) {
-      return <HelpfulQuestionButton onClick={handleHelpful} name={question_id} disabled={wasHelpful}><AiFillLike/></HelpfulQuestionButton>;
+      return <HelpfulQuestionButton onClick={handleHelpful} name={question_id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiFillLike/></HelpfulQuestionButton>;
     } else {
-      return <HelpfulQuestionButton onClick={handleHelpful} name={question_id} disabled={wasHelpful}><AiOutlineLike/></HelpfulQuestionButton>;
+      return <HelpfulQuestionButton onClick={handleHelpful} name={question_id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiOutlineLike/></HelpfulQuestionButton>;
     }
   }
 
@@ -112,9 +112,8 @@ const Count = styled.p`
 `
 
 const HelpfulQuestionButton = styled(HelpfulButton)`
-  color: ${({wasHelpful}) => wasHelpful ? '#72DBBD':'#212121'};
   margin-right: 8px;
-  transform: scale(1.5);
+  transform: scale(${({wasHelpful}) => wasHelpful ? 1.75 : 1.5});
   &:hover {
     transform: scale(1.75);
   }

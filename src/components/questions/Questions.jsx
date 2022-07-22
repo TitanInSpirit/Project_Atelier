@@ -69,7 +69,7 @@ function Questions({product, questionsList, getQuestions}) {
         <ScrollContainer className="scroll-container">
           {renderQuestionList()}
         </ScrollContainer>
-        <Container> {renderMoreAnswered()} {renderAddQuestion()} </Container>
+        <Container> {renderAddQuestion()} {renderMoreAnswered()}  </Container>
         {renderAddQuestionForm()}
       </QuestionContainer>
     </QuestionAnswerContainer>
@@ -83,23 +83,39 @@ export default Questions;
 
 const QuestionContainer = styled(Container)`
   max-height: 50vh;
-  margin: 0;
+  width: 1100px;
   flex-direction: column;
   align-content: center;
   justify-content: flex-start;
+  margin: 17px 0 17px 0;
+  padding: 7px 0 15px 0;
+  border: solid;
+  border-width: thin;
+  border-color: #dbdbdbb7;
+  border-right: none;
+  border-left: none;
 `;
 
 const ScrollContainer = styled(QuestionContainer)`
+  border-top: none;
   overflow-x: hidden;
-  margin: 0;
+  margin-bottom: 5px;
   &::-webkit-scrollbar {
     display: none;
   }
 `
 const QuestionButton = styled(Button)`
   margin: 0 10px 0 10px;
+  width: 15em;
 `;
 
 const QuestionAnswerContainer = styled(Container)`
   justify-content: center;
+  /* margin: 15px 0 15px 0;
+  padding: 5px 0 5px 0;
+  border: solid;
+  border-width: thin;
+  border-color: #dbdbdb;
+  border-right: none;
+  border-left: none; */
 `;

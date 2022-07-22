@@ -58,17 +58,18 @@ export const Button = styled.button`
   export const LinkButton = styled.button`
     border: none;
     outline: none;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     color: gray;
   `;
 
   export const HelpfulButton = styled(LinkButton)`
+    color: ${({wasHelpful}) => wasHelpful ? '#72DBBD':'#212121'};
     cursor: pointer;
     margin-right: 3px;
     &:hover {
       transform: scale(1.25);
-      color: #212121;
+      color: ${({wasHelpful}) => wasHelpful ? '#72DBBD':'#212121'};
     }
   `;
 

@@ -54,9 +54,9 @@ function Answer({answer, getQuestions, searchTerm}) {
 
   const renderHelp = () => {
     if (wasHelpful) {
-      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiFillLike/></HelpfulButton>;
+      return <HelpfulAnswerButton onClick={handleHelpful} name={id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiFillLike/></HelpfulAnswerButton>;
     } else {
-      return <HelpfulButton onClick={handleHelpful} name={id} disabled={wasHelpful}><AiOutlineLike/></HelpfulButton>;
+      return <HelpfulAnswerButton onClick={handleHelpful} name={id} disabled={wasHelpful} wasHelpful={wasHelpful}><AiOutlineLike/></HelpfulAnswerButton>;
     }
   }
 
@@ -124,3 +124,7 @@ export default Answer;
     transform: scale(2);
     font-weight: bold;
   `;
+
+const HelpfulAnswerButton = styled(HelpfulButton)`
+  transform: scale(${({wasHelpful}) => wasHelpful ? 1.5 : 1});
+`
