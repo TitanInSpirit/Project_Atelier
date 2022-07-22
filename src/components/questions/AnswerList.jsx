@@ -5,7 +5,7 @@ import React, {useState} from 'react';
 /*==================== INTERNAL MODULES ====================*/
 import Answer from './Answer.jsx';
 import styled from 'styled-components';
-import {Button, Container, H3Text} from '../../../public/stylesheets/styles.js';
+import {Button, Container, H3Text, ExpandButton} from '../../../public/stylesheets/styles.js';
 
 function AnswerList({answers, getQuestions, searchTerm}) {
 
@@ -67,20 +67,7 @@ function AnswerList({answers, getQuestions, searchTerm}) {
 /*==================== EXPORTS ====================*/
 export default AnswerList;
 
-const ExpandButton = styled.button`
-    border: none;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 9pt;
-    /* font-weight: bold; */
-    color: black;
-    padding: 0;
-    margin-top: 15px;
-    &:hover {
-      font-weight: bold;
-    }
-`
 const AnswerListContainer = styled(Container)`
   width: 100%;
- margin: 0;
+  margin: 0;
 `;

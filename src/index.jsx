@@ -53,7 +53,7 @@ class App extends React.Component {
 
     axios.post('/cart', configCart)
     .then((res) => {
-      console.log(res)
+      // console.log(res)
     })
     event.preventDefault();
   }
@@ -89,7 +89,7 @@ class App extends React.Component {
 
   setCurrentSku = (event) => {
     let size = event.target.value.split(' ')
-    console.log(size)
+    // console.log(size)
     this.setState({current_sku: size[0], current_size: size[1]})
   }
 
@@ -130,11 +130,11 @@ class App extends React.Component {
 
     axios.get('/reviews', configReview)
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       let response = res.data
       let reviewTotal = 0;
       let increment = response.results.map((review) => {
-        console.log(review)
+        // console.log(review)
         reviewTotal+= review.rating
       })
       let average = (reviewTotal / response.results.length).toFixed(1)

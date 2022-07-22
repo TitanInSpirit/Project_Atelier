@@ -47,7 +47,7 @@ function Answer({answer, getQuestions, searchTerm}) {
 
   const renderReport = () => {
     if (wasReported) {
-      return <LinkButton><AiFillDislike/> Reported</LinkButton>;
+      return <LinkButton style = {{color: '#72DBBD'}}><AiFillDislike/> Reported</LinkButton>;
     }
     return <LinkButton onClick={handleReport} name={id}><AiOutlineDislike/> Report</LinkButton>;
   }
@@ -123,6 +123,7 @@ export default Answer;
   const User = styled(BiUserCircle)`
     transform: scale(2);
     font-weight: bold;
+    color: #212121;
   `;
 
 const HelpfulAnswerButton = styled(HelpfulButton)`

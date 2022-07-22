@@ -39,22 +39,34 @@ import styled from 'styled-components';
   `;
 
 export const Button = styled.button`
-  background-color: #fff;
-  padding: 8px 20px;
+  background-color: transparent;
+  padding: 4px 20px;
   border: none;
-  box-shadow: 0px 0px 4px rgb(0 0 0 / 30%);
+  box-shadow: 0px 0px 4px rgb(0, 0, 0, 0.3);
   border-radius: 4px;
   cursor: pointer;
   position: relative;
   width: 60%;
-  font-size: 18px;
+  font-size: 12pt;
   &:hover {
     font-weight: bold;
     color: #fff;
-    background-color:black;;
+    background-color: #212121;
   }
 `;
 
+export const ExpandButton = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 9pt;
+  color: #212121;
+  padding: 0;
+  margin-top: 15px;
+  &:hover {
+    font-weight: bold;
+  }
+`
   export const LinkButton = styled.button`
     border: none;
     outline: none;
@@ -64,18 +76,20 @@ export const Button = styled.button`
   `;
 
   export const HelpfulButton = styled(LinkButton)`
-    color: ${({wasHelpful}) => wasHelpful ? '#72DBBD':'#212121'};
+    color: ${({wasHelpful}) => wasHelpful ? '#81DBD8':'#212121'};
     cursor: pointer;
+    transform: scale(${({wasHelpful}) => wasHelpful ? 1.25 : 1});
     margin-right: 3px;
     &:hover {
       transform: scale(1.25);
-      color: ${({wasHelpful}) => wasHelpful ? '#72DBBD':'#212121'};
+      color: ${({wasHelpful}) => wasHelpful ? '#81DBD8':'#212121'};
     }
   `;
 
   export const AnswerButton = styled(LinkButton)`
     margin-left: 10px;
   `;
+
 
   export const CloseModal = styled.button`
     display: flex;

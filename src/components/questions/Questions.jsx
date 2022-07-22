@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import QuestionsList from './QuestionsList.jsx';
 import SearchBar from './SearchBar.jsx';
 import Form from './Form.jsx';
-import {Container, Button} from '../../../public/stylesheets/styles.js';
+import {Container, Button, ExpandButton} from '../../../public/stylesheets/styles.js';
 
 
 function Questions({product, questionsList, getQuestions}) {
@@ -23,7 +23,7 @@ function Questions({product, questionsList, getQuestions}) {
 
   /*----- LIFECYCLE -----*/
   useEffect(() => setQuestions(questionsList), [questionsList]);
-
+  useEffect(() => setSelectedProduct(product.id), [product]);
 
   /*----- RENDER FUNCTIONS -----*/
   const renderQuestionList = () => {
@@ -49,9 +49,9 @@ function Questions({product, questionsList, getQuestions}) {
     return <QuestionButton onClick={() => setShowForm(true)}>Add a Question +</QuestionButton>;
   }
 
-  const renderMoreAnswered = () => {
+  const renderMoreQuestions = () => {
     if (!showQuestions) {
-      return <QuestionButton onClick={() => setShowQuestions(true)}>More Questions ></QuestionButton>
+      return <MoreQuestionsButton onClick={() => setShowQuestions(true)}>More Questions ></MoreQuestionsButton>
     }
   }
 
@@ -69,7 +69,7 @@ function Questions({product, questionsList, getQuestions}) {
         <ScrollContainer className="scroll-container">
           {renderQuestionList()}
         </ScrollContainer>
-        <Container> {renderAddQuestion()} {renderMoreAnswered()}  </Container>
+        <Container> {renderAddQuestion()} {renderMoreQuestions()}  </Container>
         {renderAddQuestionForm()}
       </QuestionContainer>
     </QuestionAnswerContainer>
@@ -80,6 +80,10 @@ function Questions({product, questionsList, getQuestions}) {
 /*==================== EXPORTS ====================*/
 export default Questions;
 
+
+const QuestionAnswerContainer = styled(Container)`
+  justify-content: center;
+`;
 
 const QuestionContainer = styled(Container)`
   max-height: 50vh;
@@ -107,15 +111,11 @@ const ScrollContainer = styled(QuestionContainer)`
 const QuestionButton = styled(Button)`
   margin: 0 10px 0 10px;
   width: 15em;
+  height: 2.5em;
 `;
 
-const QuestionAnswerContainer = styled(Container)`
-  justify-content: center;
-  /* margin: 15px 0 15px 0;
-  padding: 5px 0 5px 0;
-  border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
-  border-right: none;
-  border-left: none; */
+const MoreQuestionsButton = styled(ExpandButton)`
+  font-size: 18px;
+  margin: 0 10px 0 10px;
+  padding: 8px 20px;
 `;

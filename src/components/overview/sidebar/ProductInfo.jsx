@@ -18,7 +18,7 @@ function ProductInfo(props) {
     '--rating-value': props.average_reviews,
   }
 
-  console.log(formatRating())
+  // console.log(formatRating())
 
   return <div className="product_info_container">
       {!props.total_reviews ? null : <div className="overview_ratings">

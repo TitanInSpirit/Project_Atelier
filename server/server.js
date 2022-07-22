@@ -29,7 +29,7 @@ axios.defaults.headers.common['Authorization'] = GithubToken;
 // Get Requests
 
 app.get('/products', (req, res) => {
-  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products';
+  let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products?count=100';
 
   var config = {
     method: 'get',

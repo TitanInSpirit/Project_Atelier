@@ -7,7 +7,7 @@ import axios from 'axios';
 import {Button, CloseModal} from '../../../public/stylesheets/styles.js';
 import PhotoUpload from './PhotoUpload.jsx'
 
-function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
+function Form({showForm, setShowForm, id, getQuestions, submissionType}) {
   if (!showForm) {
     return null;
   }
@@ -18,7 +18,6 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
 
 
   /*----- EVENT HANDLERS -----*/
-
   const handleChange = ({target: {value, name}}) => {
     setEntry(prev => ({
       ...prev,
@@ -49,16 +48,18 @@ function Form({showForm, setShowForm, id, getUpdate, submissionType}) {
       return;
     }
 
-    axios.post(`http://localhost:3001/questions/${submissionType}/${id}`, {
+    axios.post(`/questions/${submissionType}/${id}`, {
       body: entry.submission,
       name: entry.nickname,
       email: entry.email,
       product_id: Number(id),
       photos: entry.photos
     })
-    .then(response => getUpdate())
+    .then(response => {
+      console.log(response);
+      getQuestions()
+    })
     .then(() => setShowForm(false))
-    .then(() => getUpdate())
     .catch(err => `Unable to submit your answer. Error: ${console.error(err.message)}`);
   }
 
