@@ -71,7 +71,6 @@ const NewReview = ({onHandleAddNewReview, styleUrl, product}) => {
                     />
                     {i !== 4 ?<hr className='newReviewRadioDevide'/> : <hr className="newReviewRadioDevidehide"></hr>}
                     </div>
-                  {/* <div className='newReviewCharaDetailtd2'>{des}</div> */}
                   <br/>
 
                     {i % 2 !== 0 ? <p className='newReviewCharaDetailtd2'></p> : <p className='newReviewCharaDetailtd2'>{des}</p>}
