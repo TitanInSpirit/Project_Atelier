@@ -16,7 +16,7 @@
   <img src="src/components/header/HeaderLogo.svg" width=200px>
 </div>
 <div style="display: flex; flex-direction: row; align-items: center;">
-<img src="Assets/Favicon.svg" height=30px style="padding-right: 15px"> <h2 style="color:#81DBD8"> About Project Atelier: </h2>
+ <h2 style="color:#81DBD8"> <img src="Assets/Favicon.svg" height=30px> &nbsp;&nbsp;About Project Atelier: </h2>
 </div>
 
 Our team was tasked with creating a complete redesign of an outadated client-facing retail web-portal including but not limited to branding, and website functionality. This project comprises a complete redesign of the retail portal intended to address the client's concerns and modernize the site. This document outlines the design and features our team implemented.
