@@ -5,7 +5,6 @@
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/axios"/>
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/nodemon"/>
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/dev/jest"/>
-<img src=""/>
 <br></br>
 <div align="center">
   <img src="src/components/header/HeaderLogo.svg" width=200px>
