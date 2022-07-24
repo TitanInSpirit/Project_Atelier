@@ -101,7 +101,7 @@ General information about the product is displayed at the top of the Overview co
 
 ## Installation:
 
-Getting your own copy of Project Atelia is easy!
+Getting your own copy of Project Atelier is easy!
 
 - Fork and clone this repo to your local machine
 - Run npm install to install dependencies
