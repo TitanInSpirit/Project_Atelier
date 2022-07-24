@@ -23,6 +23,7 @@ const RatingsAndReviews = (props) => {
   }
 
   const handleSortValue = value => {
+    console.log(sort)
     setSort(value)
   }
 
@@ -104,7 +105,7 @@ const RatingsAndReviews = (props) => {
 
 
   return (
-    <div>
+    <div className='review_outside_container'>
       <h2 className='reviewsRatingTitle' ref={props.reviewsRef}>RATINGS & REVIEWS</h2>
         <div className='ratingAndReviewContainer'>
           <div className='ratingsContainer'>

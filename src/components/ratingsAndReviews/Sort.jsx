@@ -7,12 +7,11 @@ const Sort = ({handleSortValue, results, reviewsCount}) => {
 
   const handleChange = e => {
     setSortValue(e.target.value);
-    handleSortValue(e.target.value)
+    handleSortValue(e.target.value.toLowerCase())
   }
   return (
     <form className='sortContainer'>
-      {/* {results && results.length} reviews, sorted by */}
-      <h2 style={{display: 'inline-block', fontWeight: '500'}}>SHOWING {reviewsCount} REVIEWS, SORTED BY</h2>
+      <h2 style={{display: 'inline-block', fontWeight: '500'}}>{results && results.length} REVIEWS, SORTED BY</h2>
       <select
         className='sortForm'
         value = {sortValue}

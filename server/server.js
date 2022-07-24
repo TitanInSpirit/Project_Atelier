@@ -98,7 +98,6 @@ app.get('/cart', (req, res) => {
 app.get('/reviews', (req, res) => {
   let endpointUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews'
   let params = req.query;
-
   var config = {
     method: 'get',
     url: endpointUrl,
