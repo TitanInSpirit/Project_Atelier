@@ -4,6 +4,7 @@ const axios = require('axios');
 const path = require('path');
 const express = require('express');
 const app = express();
+const compression = require('compression')
 
 // System Variables
 const GithubToken = process.env.GITHUB_API_KEY;
@@ -12,7 +13,8 @@ axios.defaults.headers.common['Authorization'] = GithubToken;
 
 // Middleware
   // Body Data
-  app.use(express.json())
+  app.use(compression());
+  app.use(express.json());
 
   // Serves Static Files
   app.use(express.static(path.join(__dirname, '../public')));

@@ -2,7 +2,7 @@
 
 
 /*==================== INTERNAL MODULES ====================*/
-import Questions from './Questions.jsx';
+import Questions from '../Questions.jsx';
 
 
 /*==================== TESTS ====================*/
