@@ -70,7 +70,7 @@ const Ratings = ({rating, handleFilterRating, rateArr, handleClearAllReviewsLabe
       <div className = 'ratingSum'>
         <h1 className='ratingScore'>{Object.keys(rating).length > 0 && calAveRating()}
         {/* <p className={`ratingAveStar rating-static rating-${formatRating() * 10}`}></p> */}
-        <div className="rating" style={starStyle}></div>
+        <span className="rating" style={starStyle}></span>
         </h1>
       </div>
 
