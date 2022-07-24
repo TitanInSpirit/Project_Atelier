@@ -3,8 +3,8 @@ logs
 package-lock.json
 *.pem
 *.log
-./public/bundle.js
-./public/bundle.js.map
+/public/bundle.js
+/public/bundle.js.map
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

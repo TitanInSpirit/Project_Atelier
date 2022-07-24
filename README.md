@@ -88,6 +88,32 @@ General information about the product is displayed at the top of the Overview co
 
 ### Questions & Answers
 
+The Questions & Answers component allows the end user to ask and answer questions for the product selected. The functionality contained within this module can be divided into several pieces:
+
+ - View questions
+ - Search for a question
+ - Asking a question
+ - Answering a question
+
+This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
+
+#### Searching for a Question
+
+
+The search bar that appears above the Questions List allows the end user to search the submitted questions and answers. The search function will begin to automatically filter the results within the component once three or more characters have been entered. The search filter will be automatically removed if the search bar is cleared or if the search term is less than three characters in length.
+
+#### Asking a Question
+
+If the end user is unable to find the answer they are looking for, they are able to submit their own questions by clicking on the "Add a Question +" button located on the bottom of the component. Clicking this button will open a modal form that will require the end user to submit their "nickname" (login) as well as an email address and their question. Upon clicking submit, the question will be added to the shown list of questions for other users to answer or interact with
+
+#### Answering a Question
+
+## ![Answer a Question](https://giphy.com/embed/If58DYGbd9Kaihc08X)
+
+Much like asking a question, users are also able to submit answers to the questions of other users by clicking on the "Add an Answer" button located in-line with each question. Doing so will open a modal form that requires the same information as adding a question along with the ability to attach up to 5 photos. Once the question is submitted, other users will be able to mark each answer as helpful (which will result in the answer appearing closer to the top of the search) or report the answer, which will remove the answer from future searches.
+
+
+
 ### Ratings & Reviews
 
 #### Star Filter
