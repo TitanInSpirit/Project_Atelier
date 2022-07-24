@@ -110,3 +110,6 @@ dist
 
 # adds .pem file to git ignore
 *.pem
+
+# OS generated files
+.DS_Store
