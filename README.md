@@ -21,8 +21,8 @@ Our team was tasked with creating a complete redesign of an outadated client-fac
 <a href="#overview">Overview</a> |
 <a href="#questions--answers">Questions & Answers</a> |
 <a href="#ratings--reviews">Ratings & Reviews</a> |
-<a href="#git-work-flow">Git Work Flow</a> |
 <a href="#installation">Installation</a> |
+<a href="#git-work-flow">Git Work Flow</a> |
 <a href="#dependencies">Dependencies</a> |
 <a href="#testing">Testing</a>
 </p>
@@ -96,6 +96,57 @@ General information about the product is displayed at the top of the Overview co
 ## ![Star Filter](https://media.giphy.com/media/uuzVZLv4BWPzOIIUMl/giphy.gif)
 
 - talk about things here
+
+---
+
+## Installation:
+
+Getting your own copy of Project Atelia is easy!
+
+- Fork and clone this repo to your local machine
+- Run npm install to install dependencies
+- Read about the following scripts to understand their functionality
+- Enjoy!
+
+### Scripts
+
+The following scripts can be found in package.json
+
+---
+
+`npm run server-dev`
+
+<i> Launches nodemon to watch the server path and serve static files </i>
+
+`npm run dev`
+
+<i> Launches webpack to bundle your webapp and watch for any changes </i>
+
+`npm run start`
+
+<i> Bundles your webpack in development mode </i>
+
+`npm run build`
+
+<i> Bundles your webpack in production mode </i>
+
+`npm run test`
+
+<i> Calls jest to run any user defined tests </i>
+
+```
+// in package.json
+
+"scripts": {
+    "server-dev": "npx nodemon --watch server server/server.js",
+    "dev": "npx webpack --watch",
+    "start": "Webpack --mode=development",
+    "build": "webpack --mode=production",
+    "test": "jest"
+  },
+```
+
+---
 
 ## Git Work Flow
 
@@ -184,55 +235,6 @@ git push origin a-second-new-branch // push to the feature branch you created
          1. After conflicts are fixed
             1. add, commit (commit? push?)
             2. complete merge on github
-
----
-
-## Installation:
-
-Getting your own copy of Project Atelia is easy!
-
-- Fork and clone this repo to your local machine
-- Run npm install to install dependencies
-- Read about the following scripts to understand their functionality
-- Enjoy!
-
-### Scripts
-
-The following scripts can be found in package.json
-
----
-
-`npm run server-dev`
-
-<i> Launches nodemon to watch the server path and serve static files </i>
-
-`npm run dev`
-
-<i> Launches webpack to bundle your webapp and watch for any changes </i>
-
-`npm run start`
-
-<i> Bundles your webpack in development mode </i>
-
-`npm run build`
-
-<i> Bundles your webpack in production mode </i>
-
-`npm run test`
-
-<i> Calls jest to run any user defined tests </i>
-
-```
-// in package.json
-
-"scripts": {
-    "server-dev": "npx nodemon --watch server server/server.js",
-    "dev": "npx webpack --watch",
-    "start": "Webpack --mode=development",
-    "build": "webpack --mode=production",
-    "test": "jest"
-  },
-```
 
 ---
 
