@@ -1,34 +1,40 @@
-# Project Atelier | Sole Inc.
+<!-- <div style="display: flex; flex-direction: column; justify-content: center;"> -->
+<div style="position: relative;">
 
+<div style="align-self: flex-start;>
+<h1 style="color: white"> Project Atelier | Sole Inc. </h1>
+
+<div align="left">
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/react" />
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/webpack" />
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/axios"/>
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/nodemon"/>
 <img src="https://img.shields.io/github/package-json/dependency-version/TitanInSpirit/Project_Atelier/dev/jest"/>
+</div>
 <br></br>
 <div align="center">
   <img src="src/components/header/HeaderLogo.svg" width=200px>
 </div>
 
-## About Project Atelier:
+ <h2 style="color:#81DBD8"> <img src="Assets/Favicon.svg" height=30px> &nbsp;&nbsp;About Project Atelier: </h2>
 
 Our team was tasked with creating a complete redesign of an outadated client-facing retail web-portal including but not limited to branding, and website functionality. This project comprises a complete redesign of the retail portal intended to address the client's concerns and modernize the site. This document outlines the design and features our team implemented.
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
 <p align="center">
-<a href="#overview">Overview</a> |
-<a href="#questions--answers">Questions & Answers</a> |
-<a href="#ratings--reviews">Ratings & Reviews</a> |
-<a href="#installation">Installation</a> |
-<a href="#git-work-flow">Git Work Flow</a> |
-<a href="#dependencies">Dependencies</a> |
-<a href="#testing">Testing</a>
+<a href="#overview" style="color: white">Overview</a> |
+<a href="#questions--answers" style="color: white">Questions & Answers</a> |
+<a href="#ratings--reviews" style="color: white">Ratings & Reviews</a> |
+<a href="#installation" style="color: white">Installation</a> |
+<a href="#git-work-flow" style="color: white">Git Work Flow</a> |
+<a href="#dependencies" style="color: white">Dependencies</a> |
+<a href="#testing" style="color: white">Testing</a>
 </p>
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## Components
+<h2 style="color:#81DBD8"> Components </h2>
 
 This section provides a broad overview of just a few of the exciting functionalities our team implemented for the Sole incorpertated product detail page.
 
@@ -122,9 +128,9 @@ Much like asking a question, users are also able to submit answers to the questi
 
 - talk about things here
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## Installation:
+<h2 style="color:#81DBD8"> Installation: </h2>
 
 Getting your own copy of Project Atelier is easy!
 
@@ -137,7 +143,7 @@ Getting your own copy of Project Atelier is easy!
 
 The following scripts can be found in package.json
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
 `npm run server-dev`
 
@@ -171,9 +177,9 @@ The following scripts can be found in package.json
   },
 ```
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## Git Work Flow
+<h2 style="color:#81DBD8"> Git Work Flow </h2>
 
 ### Steps
 
@@ -261,30 +267,30 @@ git push origin a-second-new-branch // push to the feature branch you created
             1. add, commit (commit? push?)
             2. complete merge on github
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## Testing:
+<h2 style="color:#81DBD8"> Testing: </h2>
 
 Our team decided on Jest as our testing framework. Jest has a variety of testing solutions, some of which have also been installed for an easier testing experience. Links on how to get started have been included below.
 
-- #### [Jest](https://jestjs.io/docs/getting-started)
-- #### [Mock Service Worker (MSW)](https://mswjs.io/docs/getting-started/install)
-- #### [React Testing Library (RTL)](https://testing-library.com/docs/react-testing-library/intro)
-  - #### [RTL Tutorial](https://www.robinwieruch.de/react-testing-library/)
-- #### [Puppeteer](https://jestjs.io/docs/puppeteer)
-- #### [Included React Test Utilities](https://reactjs.org/docs/test-utils.html)
+- <a href="https://jestjs.io/docs/getting-started" style="color: white; text-decoration: underline;">Jest</a>
+- <a href="https://mswjs.io/docs/getting-started/install" style="color: white; text-decoration: underline;">Mock Service Worker (MSW)</a>
+- <a href="https://testing-library.com/docs/react-testing-library/intro" style="color: white; text-decoration: underline;">React Testing Library (RTL)</a>
+  - <a href="https://www.robinwieruch.de/react-testing-library/" style="color: white; text-decoration: underline;">RTL Tutorial</a>
+- <a href="https://jestjs.io/docs/puppeteer" style="color: white; text-decoration: underline;">Puppeteer</a>
+- <a href="https://reactjs.org/docs/test-utils.html" style="color: white; text-decoration: underline;">Included React Test Utilities</a>
 
----
+<hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
-## Contributors
+<h2 style="color:#81DBD8"> Contributors </h2>
 
-<table>
+<table >
     <td align="center">
-        <a href="https://github.com/mayliang021">
+        <a href="https://github.com/mayliang021" style="color: white; text-decoration: none;">
             <img src="https://avatars.githubusercontent.com/u/97858299?v=4?s=100" width="100px;" alt=""/>
             <br />
             <sub>
-                <b>May L. | mayliang021</b>
+                <b><span style="color: white"> May L.</span> | <span style="color: #81DBD8"> mayliang021</span></b>
             </sub>
         </a>
         <br /><br>
@@ -292,11 +298,11 @@ Our team decided on Jest as our testing framework. Jest has a variety of testing
         <a href="https://github.com/TitanInSpirit/Project_Atelier/tree/main/src/components/ratingsAndReviews" title="Component">📖</a> &nbsp;
     </td>
     <td align="center">
-        <a href="https://github.com/sbirvin1s">
+        <a href="https://github.com/sbirvin1s" style="color: white; text-decoration: none;">
             <img src="https://avatars.githubusercontent.com/u/101069215?v=4?s=100" width="100px;" alt=""/>
             <br />
             <sub>
-                <b>Sam I. | sbirvin1s</b>
+                <b><span style="color: white"> Sam I. </span> | <span style="color: #81DBD8">sbirvin1s</span></b>
             </sub>
         </a>
         <br /><br>
@@ -304,11 +310,11 @@ Our team decided on Jest as our testing framework. Jest has a variety of testing
         <a href="https://github.com/TitanInSpirit/Project_Atelier/tree/main/src/components/questions" title="Component">📖</a> &nbsp;
     </td>
     <td align="center">
-        <a href="https://github.com/Symphon-y">
+        <a href="https://github.com/Symphon-y" style="color: white; text-decoration: none;">
             <img src="https://avatars.githubusercontent.com/u/90964291?v=4?s=100" width="100px;" alt=""/>
             <br />
             <sub>
-                <b>Travis R. | Symphon-y</b>
+                <b><span style="color: white"> Travis R. </span> | <span style="color: #81DBD8"> Travis R. </span></b>
             </sub>
         </a>
         <br /><br>
@@ -316,3 +322,14 @@ Our team decided on Jest as our testing framework. Jest has a variety of testing
         <a href="https://github.com/TitanInSpirit/Project_Atelier/tree/main/src/components/overview" title="Component">📖</a> &nbsp;
     </td>
 <table>
+</div>
+    <div style="position: absolute; top: 150vw; left: -8vw; opacity: .04; background-image: url(Assets/leftFoot.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+        <div style="position: absolute; top: 400vw; margin-left: 90vw; opacity: .04; background-image: url(Assets/Favicon.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+        <div style="position: absolute; top: 850vw; left: -8vw; opacity: .04; background-image: url(Assets/leftFoot.svg); background-repeat: no-repeat; transform: scale(100);">
+    &nbsp;
+    </div>
+</div>
