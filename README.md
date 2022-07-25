@@ -26,10 +26,9 @@ Our team was tasked with creating a complete redesign of an outadated client-fac
 <a href="#overview" style="color: white">Overview</a> |
 <a href="#questions--answers" style="color: white">Questions & Answers</a> |
 <a href="#ratings--reviews" style="color: white">Ratings & Reviews</a> |
-<a href="#installation" style="color: white">Installation</a> |
-<a href="#git-work-flow" style="color: white">Git Work Flow</a> |
-<a href="#dependencies" style="color: white">Dependencies</a> |
-<a href="#testing" style="color: white">Testing</a>
+<a href="#-installation-" style="color: white">Installation</a> |
+<a href="#-git-work-flow-" style="color: white">Git Work Flow</a> |
+<a href="#-testing-" style="color: white">Testing</a>
 </p>
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
@@ -126,16 +125,63 @@ Once a Question or Answer is submitted, other users will be able to mark each an
 
  If a user feels that an answer is unhelpful or offensive they are able to report the answer by clicking on the report button. On click the report button will change to indicate that answer was reported, which will remove the answer from future searches.
 
-
-
-
 ### Ratings & Reviews
+The Ratings & Reviews module allows for the viewing and submission of reviews for the product selected. The functionality contained within this module can be divided into several pieces:
+- Write new review
+- Reviews List
+- Sorting 
+- Rating Breakdown
+- Product Breakdown
 
-#### Star Filter
+This component extends the ability to write, read, and browse through reviews for the current product. 
 
+The heart of the Ratings and Reviews module is the list of reviews available for the user to read. This list displays all the reviews that have been submitted for the product being viewed. 
+
+#### Sorting Reviews | Star Filter
 ## ![Star Filter](https://media.giphy.com/media/uuzVZLv4BWPzOIIUMl/giphy.gif)
+A breakdown of the ratings received for the product doubles as a filtering option for the reviews list. This breakdown is displayed at the top left corner of the Rating and Reviews module. 
 
-- talk about things here
+The top of the breakdown displays the average rating for the product. The rating is displayed both as a number value as well as an array of star icons. 
+
+
+#### Sorting Reviews | Newest, Relevent, Most Helpful
+## ![Sorting Reviews 1](https://media.giphy.com/media/TF7l4P7CQjKTSMhtsb/giphy.gif)
+Users are able to change the review ordering by means of a dropdown menue. The options within the sort drop down include 
+- Helpful 
+  - This sort order prioritizes reviews that have been found helpful.
+- Newest
+  - This is a straightforward sort based on the date the review was submitted. The most recent reviews appear first.
+- Relevant
+  - Relevance is determined by a combination of both the date that the review was submitted as well as ‘helpfulness’ feedback received. This combination weighs the two characteristics such that recent reviews appear near the top, but do not outweigh reviews that have been found helpful. Similarly, reviews that have been helpful appear near the top, but yield to more recent reviews if they are older.
+  
+By default, the reviews in the list appear in order of relevance. Upon selecting any of the other options, the dropdown updates to display the current selection, and the list refreshs to show the first results for that sort order.
+
+Below the average rating, is a section titled “Rating Breakdown." Within this section, the rating distribution is broken down. 
+5 bars appear; each representing the star ratings that a customer can give to a product. To the left of the bar, the star count is explicitly stated in the form “# Stars”. 
+
+To the right of the bar, a label with the total number of reviews submitted with that particular rating is shown. Each rating breakdown, consisting of the label, the bar, and the count, acts as a filter. Clicking on the breakdown for a star count filters the reviews list so that only reviews of that rating display. Hovering over this breakdown changes the background color to indicate it is actionable.
+
+These filters are additive. If the list has already been filtered for 1 star reviews, clicking on the “2 star” breakdown updates the reviews list such that 1 and 2 star reviews are displayed. 
+
+The filters can also toggled on and off with each click. Clicking a second time on a rating breakdown will remove the filter for that rating type. If this action removes the last or only filter, then the list returns to its default state and all reviews should be shown. 
+
+Once one or more filters are applied, a message appears below the “Rating Breakdown” title. It lists the filters that have been currently applied. It also includes a link to “Remove all filters”. Clicking on this link will remove any filters applied and return the list to the default state.
+
+#### Sorting Reviews | By Text
+## ![Sorting Reviews 2](https://media.giphy.com/media/Rl71nHoTa4aE4gcfXH/giphy.gif)
+
+Above the reviews list, a search bar allows the user to filter the reviews for any that contain text matching the search term.
+After the user types 3 or more characters into the search bar the results will begin to filter to only those containing matching text. The filter continues to update as the user adds or removes characters. 
+If the user clears the search term, or removes characters so that less than 3 remain, the list returns to the state where it is not filtered to match text. 
+The search filter works with any other filters or sorts that have been applied, and narrows the results further. Changes to the sort and rating filters do not remove the search term filter.
+
+
+### Adding A Review
+## ![Adding A Review](https://media.giphy.com/media/yJnzkrcnNTSKIDxMvi/giphy.gif)
+At the bottom of the Ratings & Reviews module, a button appears allowing users to create new reviews for the product. This button is always available on any product page. 
+
+Upon clicking the button a modal window opens, overlaying the product page and allowing users to submit their own review.
+
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
 
