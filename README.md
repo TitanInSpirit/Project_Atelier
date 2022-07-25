@@ -179,7 +179,7 @@ At the bottom of the Ratings & Reviews module, a button appears allowing users t
 
 Upon clicking the button a modal window opens, overlaying the product page and allowing users to submit their own review.
 
-In this section users are able to give the product a rating from 1-5, recommend or not recommend the product, as well as to select multiple options about the products characteristics on a 5 point scale. Additionally, users can write a the text for their review as well as adding images which will appear with their review. All inputs are required, a warning will show up if it's not filled out.
+In this section users are able to give the product a rating from 1-5, recommend or not recommend the product, as well as to select multiple options about the products characteristics on a 5 point scale. Additionally, users can write the text for their review as well as adding images which will appear with their review. All inputs are required, a warning will show up if it's not filled out.
 
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
