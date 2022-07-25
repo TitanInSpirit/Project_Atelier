@@ -105,13 +105,13 @@ This component extends the ability to view and search questions, ask questions, 
 
 #### Searching for a Question
 
-![Searching Questions]()
+![Searching Questions](https://media.giphy.com/media/1I0etZvRKYTz9iPTEu/giphy.gif)
 
 The search bar that appears above the Questions List allows the end user to search the submitted questions and answers. The search function will begin to automatically filter the results within the component once three or more characters have been entered. The search filter will be automatically removed if the search bar is cleared or if the search term is less than three characters in length.
 
 #### Asking and Answering a Question
 
-![Answer a Question](https://giphy.com/embed/If58DYGbd9Kaihc08X)
+![Answer a Question](https://media.giphy.com/media/If58DYGbd9Kaihc08X/giphy.gif)
 
 If the end user is unable to find the answer they are looking for, they are able to submit their own questions by clicking on the "Add a Question +" button located on the bottom of the component. Clicking this button will open a modal form that will require the end user to submit their "nickname" (login) as well as an email address and their question. Upon clicking submit, the question will be added to the shown list of questions for other users to answer or interact with
 
@@ -120,7 +120,7 @@ with each question. Doing so will open a modal form that requires the same infor
 
 #### Liking and Reporting
 
-![Liking and Reporting]()
+![Liking and Reporting](https://media.giphy.com/media/UcfLC679FHG8fzvkag/giphy.gif)
 
 Once a Question or Answer is submitted, other users will be able to mark each answer as helpful by clicking on the the thumb located to the right of the question or below each answer. Clicking on this thumb will increass the "helpfullness" rating of the question or answer as well as changing the button to indicate the helpfulness. Questions and Answers with higher helpfullness ratings be shown higher up the list to all other users.
 
