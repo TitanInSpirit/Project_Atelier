@@ -137,11 +137,18 @@ This component extends the ability to write, read, and browse through reviews fo
 
 The heart of the Ratings and Reviews module is the list of reviews available for the user to read. This list displays all the reviews that have been submitted for the product being viewed. 
 
-#### Sorting Reviews | Star Filter
+#### Sorting Reviews | Rating Breakdown
 ## ![Star Filter](https://media.giphy.com/media/uuzVZLv4BWPzOIIUMl/giphy.gif)
-A breakdown of the ratings received for the product doubles as a filtering option for the reviews list. This breakdown is displayed at the top left corner of the Rating and Reviews module. 
+Below the average rating, is a section “Rating Breakdown." Within this section, the rating distribution is broken down. 
+5 bars appear; each representing the star ratings that a customer can give to a product. To the left of the bar, the star count is explicitly stated in the form “# Stars”. 
 
-The top of the breakdown displays the average rating for the product. The rating is displayed both as a number value as well as an array of star icons. 
+To the right of the bar, a label with the total number of reviews submitted with that particular rating is shown. Each rating breakdown, consisting of the label, the bar, and the count, acts as a filter. Clicking on the breakdown for a star count filters the reviews list so that only reviews of that rating display. Hovering over this breakdown changes the background color to indicate it is actionable.
+
+These filters are additive. If the list has already been filtered for 1 star reviews, clicking on the “2 star” breakdown updates the reviews list such that 1 and 2 star reviews are displayed. 
+
+The filters can also toggled on and off with each click. Clicking a second time on a rating breakdown will remove the filter for that rating type. If this action removes the last or only filter, then the list returns to its default state and all reviews should be shown. 
+
+Once one or more filters are applied, a message appears below the “Rating Breakdown” title. It lists the filters that have been currently applied. It also includes a link to “Remove all filters”. Clicking on this link will remove any filters applied and return the list to the default state. 
 
 
 #### Sorting Reviews | Newest, Relevent, Most Helpful
@@ -156,16 +163,6 @@ Users are able to change the review ordering by means of a dropdown menue. The o
   
 By default, the reviews in the list appear in order of relevance. Upon selecting any of the other options, the dropdown updates to display the current selection, and the list refreshs to show the first results for that sort order.
 
-Below the average rating, is a section titled “Rating Breakdown." Within this section, the rating distribution is broken down. 
-5 bars appear; each representing the star ratings that a customer can give to a product. To the left of the bar, the star count is explicitly stated in the form “# Stars”. 
-
-To the right of the bar, a label with the total number of reviews submitted with that particular rating is shown. Each rating breakdown, consisting of the label, the bar, and the count, acts as a filter. Clicking on the breakdown for a star count filters the reviews list so that only reviews of that rating display. Hovering over this breakdown changes the background color to indicate it is actionable.
-
-These filters are additive. If the list has already been filtered for 1 star reviews, clicking on the “2 star” breakdown updates the reviews list such that 1 and 2 star reviews are displayed. 
-
-The filters can also toggled on and off with each click. Clicking a second time on a rating breakdown will remove the filter for that rating type. If this action removes the last or only filter, then the list returns to its default state and all reviews should be shown. 
-
-Once one or more filters are applied, a message appears below the “Rating Breakdown” title. It lists the filters that have been currently applied. It also includes a link to “Remove all filters”. Clicking on this link will remove any filters applied and return the list to the default state.
 
 #### Sorting Reviews | By Text
 ## ![Sorting Reviews 2](https://media.giphy.com/media/Rl71nHoTa4aE4gcfXH/giphy.gif)
@@ -181,6 +178,8 @@ The search filter works with any other filters or sorts that have been applied, 
 At the bottom of the Ratings & Reviews module, a button appears allowing users to create new reviews for the product. This button is always available on any product page. 
 
 Upon clicking the button a modal window opens, overlaying the product page and allowing users to submit their own review.
+
+In this section users are able to give the product a rating from 1-5, recommend or not recommend the product, as well as to select multiple options about the products characteristics on a 5 point scale. Additionally, users can write a the text for their review as well as adding images which will appear with their review. All inputs are required, a warning will show up if it's not filled out.
 
 
 <hr style="background-color: #5c5c5c;height: 2.0px;"/>
