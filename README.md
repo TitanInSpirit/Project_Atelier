@@ -369,7 +369,7 @@ Our team decided on Jest as our testing framework. Jest has a variety of testing
             <img src="https://avatars.githubusercontent.com/u/90964291?v=4?s=100" width="100px;" alt=""/>
             <br />
             <sub>
-                <b><span style="color: white"> Travis R. </span> | <span style="color: #81DBD8"> Travis R. </span></b>
+                <b><span style="color: white"> Travis R. </span> | <span style="color: #81DBD8"> Symphon-y </span></b>
             </sub>
         </a>
         <br /><br>
