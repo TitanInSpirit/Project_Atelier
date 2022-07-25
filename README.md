@@ -105,18 +105,27 @@ This component extends the ability to view and search questions, ask questions, 
 
 #### Searching for a Question
 
+![Searching Questions]()
 
 The search bar that appears above the Questions List allows the end user to search the submitted questions and answers. The search function will begin to automatically filter the results within the component once three or more characters have been entered. The search filter will be automatically removed if the search bar is cleared or if the search term is less than three characters in length.
 
-#### Asking a Question
+#### Asking and Answering a Question
+
+![Answer a Question](https://giphy.com/embed/If58DYGbd9Kaihc08X)
 
 If the end user is unable to find the answer they are looking for, they are able to submit their own questions by clicking on the "Add a Question +" button located on the bottom of the component. Clicking this button will open a modal form that will require the end user to submit their "nickname" (login) as well as an email address and their question. Upon clicking submit, the question will be added to the shown list of questions for other users to answer or interact with
 
-#### Answering a Question
+Much like asking a question, users are also able to submit answers to the questions of other users by clicking on the "Add an Answer" button located in-line
+with each question. Doing so will open a modal form that requires the same information as adding a question along with the ability to attach up to 5 photos.
 
-## ![Answer a Question](https://giphy.com/embed/If58DYGbd9Kaihc08X)
+#### Liking and Reporting
 
-Much like asking a question, users are also able to submit answers to the questions of other users by clicking on the "Add an Answer" button located in-line with each question. Doing so will open a modal form that requires the same information as adding a question along with the ability to attach up to 5 photos. Once the question is submitted, other users will be able to mark each answer as helpful (which will result in the answer appearing closer to the top of the search) or report the answer, which will remove the answer from future searches.
+![Liking and Reporting]()
+
+Once a Question or Answer is submitted, other users will be able to mark each answer as helpful by clicking on the the thumb located to the right of the question or below each answer. Clicking on this thumb will increass the "helpfullness" rating of the question or answer as well as changing the button to indicate the helpfulness. Questions and Answers with higher helpfullness ratings be shown higher up the list to all other users.
+
+ If a user feels that an answer is unhelpful or offensive they are able to report the answer by clicking on the report button. On click the report button will change to indicate that answer was reported, which will remove the answer from future searches.
+
 
 
 
